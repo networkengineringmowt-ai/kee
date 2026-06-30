@@ -518,10 +518,16 @@ window.navigateToTab = function(tabId, query = '') {
                 renderDictionary(query);
             }
         } else if (tabId === 'boq') {
-            const boqSearch = document.getElementById('boqSearch');
-            if (boqSearch) {
-                boqSearch.value = query;
-                // Add boq search logic if needed
+            const procSearch = document.getElementById('procurementSearch');
+            if (procSearch) {
+                procSearch.value = query;
+                if (typeof renderProcurementTable === 'function') renderProcurementTable(query);
+            }
+        } else if (tabId === 'specs') {
+            const specsSearch = document.getElementById('specsSearchInput');
+            if (specsSearch) {
+                specsSearch.value = query;
+                if (typeof renderTOC === 'function') renderTOC(query);
             }
         }
     }
@@ -602,6 +608,7 @@ function renderProcurementTable(query = '') {
                     <button onclick="navigateToTab('dictionary', '${safeComponent}')" title="View Data Dictionary" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 4px; padding: 6px 10px; cursor: pointer; transition: 0.2s;">
                         <i class="fa-solid fa-book-atlas"></i>
                     </button>
+                    ${hasSpecDoc ? `<button onclick="navigateToTab('specs', '${safeComponent}')" title="Read Technical Spec" style="background: rgba(234, 179, 8, 0.1); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.2); border-radius: 4px; padding: 6px 10px; cursor: pointer; transition: 0.2s;"><i class="fa-solid fa-book-open-reader"></i></button>` : ''}
                 </div>
             </td>
         `;
