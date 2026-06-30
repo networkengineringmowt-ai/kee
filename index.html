@@ -182,6 +182,29 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="glass-panel" style="margin: 1.5rem; display: flex; flex-direction: column;">
+                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-file-invoice-dollar"></i> Geospatial Bill of Quantities (BOQ)</h3>
+                        <span id="boqTotalSum" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">$0</span>
+                    </div>
+                    <div class="table-wrap" style="flex: 1; overflow: auto; padding: 0; max-height: 500px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 10; text-align: left;">
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">BOQ ID</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Component</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Technical Specification</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">Qty</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">X (Lon) / Y (Lat)</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">Unit Cost (USD)</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">Amount (USD)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="boqTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
             </section>
 
         </main>
@@ -190,6 +213,7 @@
     <!-- Data -->
     <script src="data/road-network.js"></script>
     <script src="data/its-data.js"></script>
+    <script src="data/boq-data.js"></script>
     <script src="data/docs-content.js"></script>
     
     <!-- App Logic -->

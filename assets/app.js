@@ -318,3 +318,38 @@ setTimeout(() => { map.invalidateSize(); fitBounds(); }, 1500);
     renderTOC();
     if (searchInput) searchInput.addEventListener('input', e => renderTOC(e.target.value));
 })();
+
+function renderBOQ() {
+    const tbody = document.getElementById('boqTableBody');
+    const totalEl = document.getElementById('boqTotalSum');
+    if (!tbody || !window.BOQ_DATA) return;
+    
+    tbody.innerHTML = '';
+    let grandTotal = 0;
+    
+    window.BOQ_DATA.forEach(row => {
+        grandTotal += row.total_cost_usd;
+        
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        
+        tr.innerHTML = 
+            <td style="padding: 1rem 1.5rem; font-family: monospace; font-size: 0.85rem; color: var(--primary);">+ "$" +{row.id}</td>
+            <td style="padding: 1rem 1.5rem;">
+                <div style="font-weight: 600; margin-bottom: 0.2rem;">+ "$" +{row.site}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);"><span style="color: + "$" +{typeById[row.asset_type]?.color || '#fff'}">•</span> + "$" +{row.asset_type} | + "$" +{row.corridor}</div>
+            </td>
+            <td style="padding: 1rem 1.5rem; font-size: 0.85rem; color: #cbd5e1; max-width: 300px; line-height: 1.4;">+ "$" +{row.tech_spec}</td>
+            <td style="padding: 1rem 1.5rem; text-align: right; font-weight: 600;">+ "$" +{row.qty}</td>
+            <td style="padding: 1rem 1.5rem; text-align: right; font-family: monospace; font-size: 0.8rem; color: var(--text-muted);">
+                + "$" +{row.x_lon.toFixed(5)}<br>+ "$" +{row.y_lat.toFixed(5)}
+            </td>
+            <td style="padding: 1rem 1.5rem; text-align: right; color: #94a3b8;">$+ "$" +{row.unit_cost_usd.toLocaleString()}</td>
+            <td style="padding: 1rem 1.5rem; text-align: right; font-weight: 600; color: #e2e8f0;">$+ "$" +{row.total_cost_usd.toLocaleString()}</td>
+        ;
+        tbody.appendChild(tr);
+    });
+    
+    totalEl.textContent = $+ "$" +{grandTotal.toLocaleString()} Total Estimated Cost;
+}
+renderBOQ();
