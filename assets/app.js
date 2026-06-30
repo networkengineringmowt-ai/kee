@@ -125,6 +125,11 @@ function drawMarkers() {
 }
 
 function fitBounds() {
+    if (state.corridor === 'All' && state.query === '' && state.type === 'All' && state.status === 'All') {
+        // Explicit default extent: Bweyogerere (NE) to Entebbe Airport (SW)
+        map.fitBounds([[0.045, 32.440], [0.360, 32.660]], { paddingTopLeft: [24, 80], paddingBottomRight: [24, 220] });
+        return;
+    }
     const b = [];
     geoData.corridors.forEach(c => { if (!corridorVisible(c.id)) return; c.paths.forEach(p => p.coordinates.forEach(pt => b.push(pt))); });
     filtered().forEach(i => b.push([i.lat, i.lon]));
