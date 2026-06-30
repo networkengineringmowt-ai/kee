@@ -1,3 +1,801 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KEE ITS Geospatial Installation Plan</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQkEtB4G3q9LSjEkXx2UuTdp2g1l6u8=" crossorigin="">
+  <style>
+:root {
+  --ink: #17202b;
+  --muted: #637083;
+  --line: #d8e0e8;
+  --panel: #ffffff;
+  --paper: #f4f7fa;
+  --deep: #0f172a;
+  --teal: #0f766e;
+  --blue: #2563eb;
+  --coral: #e4572e;
+  --amber: #b45309;
+  --red: #b91c1c;
+  --green-soft: #e7f6f1;
+  --blue-soft: #e8f0ff;
+  --orange-soft: #fff0e8;
+  --shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr) 360px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.side-panel,
+.detail-panel {
+  position: relative;
+  z-index: 600;
+  min-width: 0;
+  overflow-y: auto;
+  background: var(--panel);
+}
+
+.side-panel {
+  border-right: 1px solid var(--line);
+  padding: 18px;
+}
+
+.detail-panel {
+  border-left: 1px solid var(--line);
+}
+
+.brand-block {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+  align-items: center;
+  min-height: 62px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  background: var(--deep);
+  color: #fff;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.brand-block h1 {
+  font-size: 21px;
+  line-height: 1.1;
+}
+
+.brand-block p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.metric {
+  min-width: 0;
+  min-height: 92px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfcfd;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.metric em {
+  display: block;
+  margin-top: 9px;
+  color: var(--teal);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.control-section {
+  display: grid;
+  gap: 12px;
+}
+
+.section-title {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.segmented,
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.segmented button,
+.chip-grid button,
+.actions button {
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 7px 10px;
+}
+
+.segmented button.active,
+.chip-grid button.active {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: #fff;
+}
+
+select,
+input[type="search"] {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 8px 10px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.actions button {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: #fff;
+  font-weight: 700;
+}
+
+.note {
+  margin-top: 18px;
+  border: 1px solid #f2c9a7;
+  border-radius: 8px;
+  background: var(--orange-soft);
+  color: #7c3f10;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.note strong,
+.note span {
+  display: block;
+}
+
+.note span {
+  margin-top: 5px;
+}
+
+.map-area {
+  position: relative;
+  min-width: 0;
+}
+
+.top-strip {
+  position: absolute;
+  z-index: 500;
+  left: 18px;
+  right: 18px;
+  top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 76px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.top-strip h2 {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.legend-item {
+  display: inline-grid;
+  grid-template-columns: 12px auto;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 4px 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+}
+
+#map {
+  width: 100%;
+  height: 100vh;
+  background: #dce5ec;
+}
+
+.map-vector-overlay,
+.map-point-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 460;
+  pointer-events: none;
+}
+
+.map-vector-overlay path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.map-point {
+  position: absolute;
+  z-index: 470;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.map-point.selected {
+  width: 42px;
+  height: 42px;
+  border-width: 3px;
+}
+
+.bottom-panel {
+  position: absolute;
+  z-index: 500;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  min-width: 0;
+  max-height: 31vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.panel-head {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+}
+
+.panel-head h3 {
+  font-size: 16px;
+}
+
+.panel-head span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.table-wrap {
+  min-width: 0;
+  max-width: 100%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th,
+td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #172033;
+  color: #fff;
+  font-weight: 700;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background: #f0f7f5;
+}
+
+.status-pill,
+.phase-pill,
+.priority-pill {
+  display: inline-grid;
+  place-items: center;
+  min-height: 25px;
+  border-radius: 7px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pill {
+  background: #eef2f7;
+  color: var(--muted);
+}
+
+.status-pill.design {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.status-pill.planned {
+  background: var(--green-soft);
+  color: var(--teal);
+}
+
+.status-pill.survey {
+  background: var(--orange-soft);
+  color: var(--amber);
+}
+
+.status-pill.existing {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.phase-pill {
+  background: #f1f5f9;
+  color: var(--deep);
+}
+
+.priority-pill {
+  background: #fee2e2;
+  color: var(--red);
+}
+
+.asset-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.asset-icon.selected {
+  width: 42px;
+  height: 42px;
+  border-width: 3px;
+}
+
+.detail-panel {
+  padding: 18px;
+}
+
+.empty-detail {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-detail span {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.empty-detail strong {
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: 20px;
+}
+
+.detail-card {
+  display: grid;
+  gap: 14px;
+}
+
+.detail-top {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.detail-top .type {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.detail-top h3 {
+  margin-top: 6px;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.detail-top p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.kv {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  padding: 10px;
+}
+
+.kv span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.kv strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.detail-note {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  padding: 12px;
+  line-height: 1.4;
+}
+
+.detail-note span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  min-width: 210px;
+}
+
+.popup-title {
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.popup-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.popup-purpose {
+  margin-top: 8px;
+  line-height: 1.35;
+}
+
+@media (max-width: 1240px) {
+  .app-shell {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .detail-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  body {
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  .side-panel {
+    width: 100%;
+    max-width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .summary-grid,
+  .control-section,
+  .segmented,
+  .chip-grid,
+  .actions,
+  .note,
+  .map-area,
+  .top-strip,
+  .bottom-panel {
+    max-width: 100%;
+  }
+
+  .segmented button,
+  .chip-grid button,
+  .actions button {
+    min-width: 0;
+  }
+
+  #map {
+    height: 70vh;
+  }
+
+  .top-strip {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 12px;
+  }
+
+  .bottom-panel {
+    position: static;
+    max-height: none;
+    margin: 12px;
+  }
+
+  table {
+    min-width: 760px;
+  }
+
+  .legend {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .side-panel {
+    padding: 16px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .segmented,
+  .chip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .metric {
+    min-height: 86px;
+    padding: 10px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .top-strip h2 {
+    font-size: 20px;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="side-panel">
+      <header class="brand-block">
+        <div class="brand-mark">ITS</div>
+        <div>
+          <h1>Installation Map</h1>
+          <p>KEE, KNBP and Entebbe Dual</p>
+        </div>
+      </header>
+
+      <section class="summary-grid" id="summaryGrid" aria-label="Installation summary"></section>
+
+      <section class="control-section" aria-label="Map filters">
+        <div class="section-title">Corridor</div>
+        <div class="segmented" id="corridorFilter"></div>
+
+        <div class="section-title">Asset Type</div>
+        <div class="chip-grid" id="typeFilter"></div>
+
+        <div class="section-title">Status</div>
+        <select id="statusFilter">
+          <option value="All">All statuses</option>
+          <option value="Existing interface">Existing interface</option>
+          <option value="Design">Design</option>
+          <option value="Planned">Planned</option>
+          <option value="Survey required">Survey required</option>
+        </select>
+
+        <div class="section-title">Search</div>
+        <input id="searchInput" type="search" placeholder="Site, asset, purpose or ID">
+
+        <div class="actions">
+          <button id="exportGeojson" title="Download filtered GeoJSON">GeoJSON</button>
+          <button id="exportCsv" title="Download filtered CSV">CSV</button>
+        </div>
+      </section>
+
+      <section class="note">
+        <strong>Planning basis</strong>
+        <span>Route geometry is based on planning coordinates and public map context. Final installation coordinates, chainage, mounting, power and fibre tie-ins must be confirmed by detailed survey.</span>
+      </section>
+    </aside>
+
+    <main class="map-area">
+      <div class="top-strip">
+        <div>
+          <span class="eyebrow">Geospatial deployment console</span>
+          <h2 id="mapTitle">ITS assets along the road network</h2>
+        </div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div id="map" aria-label="ITS geospatial map"></div>
+      <section class="bottom-panel">
+        <div class="panel-head">
+          <h3>Installation Schedule</h3>
+          <span id="resultCount"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Corridor</th>
+                <th>Asset</th>
+                <th>Site</th>
+                <th>Purpose</th>
+                <th>Status</th>
+                <th>Phase</th>
+              </tr>
+            </thead>
+            <tbody id="assetTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <aside class="detail-panel" id="detailPanel" aria-label="Selected installation detail">
+      <div class="empty-detail">
+        <span>Selected Site</span>
+        <strong>Choose an installation point</strong>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
 window.ITS_GEOSPATIAL_DATA = {
   corridors: [
     {
@@ -676,3 +1474,418 @@ window.ITS_GEOSPATIAL_DATA = {
     }
   ]
 };
+
+</script>
+  <script>
+const data = window.ITS_GEOSPATIAL_DATA;
+
+const state = {
+  corridor: "All",
+  type: "All",
+  status: "All",
+  query: "",
+  selectedId: null,
+};
+
+const typeById = Object.fromEntries(data.assetTypes.map((type) => [type.id, type]));
+const corridorById = Object.fromEntries(data.corridors.map((corridor) => [corridor.id, corridor]));
+const routeLayers = new Map();
+const markerLayers = new Map();
+
+const map = L.map("map", {
+  zoomControl: false,
+  preferCanvas: true,
+}).setView([0.215, 32.545], 11);
+
+L.control.zoom({ position: "bottomright" }).addTo(map);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+const corridorGroup = L.layerGroup().addTo(map);
+const markerGroup = L.layerGroup().addTo(map);
+const mapRoot = document.getElementById("map");
+const vectorOverlay = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+vectorOverlay.classList.add("map-vector-overlay");
+const pointLayer = document.createElement("div");
+pointLayer.className = "map-point-layer";
+mapRoot.append(vectorOverlay, pointLayer);
+
+function statusClass(status) {
+  if (status === "Design") return "design";
+  if (status === "Planned") return "planned";
+  if (status === "Survey required") return "survey";
+  if (status === "Existing interface") return "existing";
+  return "";
+}
+
+function installationMatches(item) {
+  const corridorMatch = state.corridor === "All" || item.corridor === state.corridor;
+  const typeMatch = state.type === "All" || item.type === state.type;
+  const statusMatch = state.status === "All" || item.status === state.status;
+  const haystack = `${item.id} ${item.site} ${item.type} ${item.purpose} ${item.status} ${item.phase} ${item.corridor}`.toLowerCase();
+  const searchMatch = haystack.includes(state.query.toLowerCase());
+  return corridorMatch && typeMatch && statusMatch && searchMatch;
+}
+
+function filteredInstallations() {
+  return data.installations.filter(installationMatches);
+}
+
+function corridorVisible(corridorId) {
+  return state.corridor === "All" || state.corridor === corridorId;
+}
+
+function makeIcon(item, selected = false) {
+  const type = typeById[item.type];
+  return L.divIcon({
+    className: "",
+    html: `<div class="asset-icon ${selected ? "selected" : ""}" style="background:${type.color}">${type.short}</div>`,
+    iconSize: selected ? [42, 42] : [34, 34],
+    iconAnchor: selected ? [21, 21] : [17, 17],
+    popupAnchor: [0, selected ? -22 : -18],
+  });
+}
+
+function popupHtml(item) {
+  const corridor = corridorById[item.corridor];
+  const type = typeById[item.type];
+  return `
+    <div class="popup-title">${item.id} - ${item.site}</div>
+    <div class="popup-meta">${corridor.name} - ${type.label}</div>
+    <div class="popup-purpose">${item.purpose}</div>
+  `;
+}
+
+function drawCorridors() {
+  corridorGroup.clearLayers();
+  routeLayers.clear();
+  data.corridors.forEach((corridor) => {
+    corridor.paths.forEach((path) => {
+      const visible = corridorVisible(corridor.id);
+      const layer = L.polyline(path.coordinates, {
+        color: corridor.color,
+        weight: visible ? 7 : 4,
+        opacity: visible ? 0.92 : 0.18,
+        lineCap: "round",
+        lineJoin: "round",
+      }).bindTooltip(`${corridor.name} - ${path.name}`, { sticky: true });
+      routeLayers.set(path.id, layer);
+      layer.addTo(corridorGroup);
+    });
+  });
+}
+
+function drawMarkers() {
+  markerGroup.clearLayers();
+  markerLayers.clear();
+  const rows = filteredInstallations();
+  rows.forEach((item) => {
+    const marker = L.marker([item.lat, item.lon], {
+      icon: makeIcon(item, item.id === state.selectedId),
+      riseOnHover: true,
+    });
+    marker.bindPopup(popupHtml(item));
+    marker.on("click", () => selectInstallation(item.id, true));
+    marker.addTo(markerGroup);
+    markerLayers.set(item.id, marker);
+  });
+  drawProjectedOverlay();
+}
+
+function drawProjectedOverlay() {
+  const size = map.getSize();
+  vectorOverlay.setAttribute("viewBox", `0 0 ${size.x} ${size.y}`);
+  vectorOverlay.setAttribute("width", size.x);
+  vectorOverlay.setAttribute("height", size.y);
+  vectorOverlay.innerHTML = "";
+  pointLayer.innerHTML = "";
+
+  data.corridors.forEach((corridor) => {
+    corridor.paths.forEach((path) => {
+      const projected = path.coordinates.map((point) => map.latLngToContainerPoint(point));
+      const d = projected.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" ");
+      const route = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      route.setAttribute("d", d);
+      route.setAttribute("stroke", corridor.color);
+      route.setAttribute("stroke-width", corridorVisible(corridor.id) ? "9" : "5");
+      route.setAttribute("opacity", corridorVisible(corridor.id) ? "0.96" : "0.18");
+      vectorOverlay.append(route);
+    });
+  });
+
+  filteredInstallations().forEach((item) => {
+    const type = typeById[item.type];
+    const point = map.latLngToContainerPoint([item.lat, item.lon]);
+    const button = document.createElement("button");
+    button.className = `map-point ${item.id === state.selectedId ? "selected" : ""}`;
+    button.style.left = `${point.x}px`;
+    button.style.top = `${point.y}px`;
+    button.style.background = type.color;
+    button.textContent = type.short;
+    button.title = `${item.id} - ${item.site}`;
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      selectInstallation(item.id, false);
+      const marker = markerLayers.get(item.id);
+      if (marker) marker.openPopup();
+    });
+    pointLayer.append(button);
+  });
+}
+
+function fitCurrentBounds() {
+  const bounds = [];
+  data.corridors.forEach((corridor) => {
+    if (!corridorVisible(corridor.id)) return;
+    corridor.paths.forEach((path) => path.coordinates.forEach((point) => bounds.push(point)));
+  });
+  const rows = filteredInstallations();
+  rows.forEach((item) => bounds.push([item.lat, item.lon]));
+  if (bounds.length) {
+    map.fitBounds(bounds, {
+      paddingTopLeft: [24, 98],
+      paddingBottomRight: [24, 240],
+      maxZoom: state.corridor === "All" ? 11 : 13,
+    });
+  }
+}
+
+function renderCorridorFilter() {
+  const wrapper = document.getElementById("corridorFilter");
+  wrapper.innerHTML = ["All", ...data.corridors.map((corridor) => corridor.id)]
+    .map((id) => `<button class="${state.corridor === id ? "active" : ""}" data-corridor="${id}">${id}</button>`)
+    .join("");
+  wrapper.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.corridor = button.dataset.corridor;
+      state.selectedId = null;
+      render();
+      fitCurrentBounds();
+    });
+  });
+}
+
+function renderTypeFilter() {
+  const wrapper = document.getElementById("typeFilter");
+  wrapper.innerHTML = [`<button class="${state.type === "All" ? "active" : ""}" data-type="All">All</button>`]
+    .concat(data.assetTypes.map((type) => `<button class="${state.type === type.id ? "active" : ""}" data-type="${type.id}">${type.short}</button>`))
+    .join("");
+  wrapper.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.type = button.dataset.type;
+      state.selectedId = null;
+      render();
+    });
+  });
+}
+
+function renderLegend() {
+  document.getElementById("legend").innerHTML = data.assetTypes
+    .slice(0, 6)
+    .map((type) => `<span class="legend-item"><span class="legend-dot" style="background:${type.color}"></span>${type.short}</span>`)
+    .join("");
+}
+
+function renderSummary() {
+  const rows = filteredInstallations();
+  const critical = rows.filter((item) => item.priority === "Critical").length;
+  const survey = rows.filter((item) => item.status === "Survey required").length;
+  const planned = rows.filter((item) => item.status === "Planned" || item.status === "Design").length;
+  const corridorsVisible = state.corridor === "All" ? 3 : 1;
+  document.getElementById("summaryGrid").innerHTML = [
+    ["Assets", rows.length, `${critical} critical`],
+    ["Corridors", corridorsVisible, state.corridor === "All" ? "network view" : corridorById[state.corridor].status],
+    ["Survey", survey, "coordinate lock pending"],
+    ["Design/Planned", planned, "implementation queue"],
+  ]
+    .map((metric) => `<article class="metric"><span>${metric[0]}</span><strong>${metric[1]}</strong><em>${metric[2]}</em></article>`)
+    .join("");
+}
+
+function renderTable() {
+  const rows = filteredInstallations();
+  document.getElementById("resultCount").textContent = `${rows.length} shown`;
+  document.getElementById("assetTable").innerHTML = rows
+    .map((item) => {
+      const type = typeById[item.type];
+      return `
+        <tr data-id="${item.id}">
+          <td><strong>${item.id}</strong></td>
+          <td>${item.corridor}</td>
+          <td>${type.label}</td>
+          <td>${item.site}</td>
+          <td>${item.purpose}</td>
+          <td><span class="status-pill ${statusClass(item.status)}">${item.status}</span></td>
+          <td><span class="phase-pill">${item.phase}</span></td>
+        </tr>
+      `;
+    })
+    .join("");
+  document.querySelectorAll("#assetTable tr").forEach((row) => {
+    row.addEventListener("click", () => selectInstallation(row.dataset.id, true));
+  });
+}
+
+function renderDetail(item) {
+  const panel = document.getElementById("detailPanel");
+  if (!item) {
+    panel.innerHTML = `
+      <div class="empty-detail">
+        <span>Selected Site</span>
+        <strong>Choose an installation point</strong>
+      </div>
+    `;
+    return;
+  }
+  const type = typeById[item.type];
+  const corridor = corridorById[item.corridor];
+  panel.innerHTML = `
+    <article class="detail-card">
+      <div class="detail-top">
+        <div class="type">${type.label}</div>
+        <h3>${item.site}</h3>
+        <p>${item.id} - ${corridor.name}</p>
+      </div>
+      <div class="detail-grid">
+        <div class="kv"><span>Status</span><strong><span class="status-pill ${statusClass(item.status)}">${item.status}</span></strong></div>
+        <div class="kv"><span>Phase</span><strong>${item.phase}</strong></div>
+        <div class="kv"><span>Priority</span><strong><span class="priority-pill">${item.priority}</span></strong></div>
+        <div class="kv"><span>Chainage</span><strong>${Number.isFinite(item.km) ? `${item.km} km` : "TBC"}</strong></div>
+        <div class="kv"><span>Power</span><strong>${item.power}</strong></div>
+        <div class="kv"><span>Comms</span><strong>${item.comms}</strong></div>
+      </div>
+      <div class="detail-note"><span>Purpose</span>${item.purpose}</div>
+      <div class="detail-note"><span>Dependency</span>${item.dependency}</div>
+      <div class="detail-note"><span>Coordinates</span>${item.lat.toFixed(6)}, ${item.lon.toFixed(6)}</div>
+    </article>
+  `;
+}
+
+function selectInstallation(id, pan = false) {
+  state.selectedId = id;
+  drawMarkers();
+  drawProjectedOverlay();
+  const item = data.installations.find((installation) => installation.id === id);
+  renderDetail(item);
+  if (item && pan) {
+    map.setView([item.lat, item.lon], Math.max(map.getZoom(), 14), { animate: true });
+    const marker = markerLayers.get(id);
+    if (marker) marker.openPopup();
+  }
+}
+
+function toGeoJson(rows) {
+  return {
+    type: "FeatureCollection",
+    name: "ITS installation plan",
+    features: rows.map((item) => ({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [item.lon, item.lat] },
+      properties: {
+        id: item.id,
+        corridor: item.corridor,
+        type: item.type,
+        site: item.site,
+        km: item.km,
+        status: item.status,
+        phase: item.phase,
+        priority: item.priority,
+        purpose: item.purpose,
+        power: item.power,
+        comms: item.comms,
+        dependency: item.dependency,
+      },
+    })),
+  };
+}
+
+function downloadFile(name, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = name;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportGeoJson() {
+  downloadFile("its-installation-plan.geojson", JSON.stringify(toGeoJson(filteredInstallations()), null, 2), "application/geo+json");
+}
+
+function csvEscape(value) {
+  const text = String(value ?? "");
+  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+}
+
+function exportCsv() {
+  const headers = ["id", "corridor", "type", "site", "km", "lat", "lon", "status", "phase", "priority", "purpose", "power", "comms", "dependency"];
+  const rows = filteredInstallations().map((item) => headers.map((key) => csvEscape(item[key])).join(","));
+  downloadFile("its-installation-plan.csv", [headers.join(","), ...rows].join("\n"), "text/csv");
+}
+
+function renderTitle() {
+  const title = document.getElementById("mapTitle");
+  if (state.corridor === "All") {
+    title.textContent = "ITS assets along the road network";
+  } else {
+    const corridor = corridorById[state.corridor];
+    title.textContent = `${corridor.name} - ${corridor.status}`;
+  }
+}
+
+function render() {
+  renderCorridorFilter();
+  renderTypeFilter();
+  renderSummary();
+  renderTitle();
+  drawCorridors();
+  drawMarkers();
+  drawProjectedOverlay();
+  renderTable();
+  renderDetail(data.installations.find((item) => item.id === state.selectedId));
+}
+
+document.getElementById("statusFilter").addEventListener("change", (event) => {
+  state.status = event.target.value;
+  state.selectedId = null;
+  render();
+});
+
+document.getElementById("searchInput").addEventListener("input", (event) => {
+  state.query = event.target.value.trim();
+  state.selectedId = null;
+  render();
+});
+
+document.getElementById("exportGeojson").addEventListener("click", exportGeoJson);
+document.getElementById("exportCsv").addEventListener("click", exportCsv);
+
+renderLegend();
+render();
+fitCurrentBounds();
+drawProjectedOverlay();
+
+setTimeout(() => {
+  map.invalidateSize();
+  fitCurrentBounds();
+  drawProjectedOverlay();
+}, 250);
+
+setTimeout(() => {
+  map.invalidateSize();
+  fitCurrentBounds();
+  drawProjectedOverlay();
+}, 1500);
+
+map.on("move zoom resize moveend zoomend", drawProjectedOverlay);
+
+</script>
+</body>
+</html>
+
