@@ -18,6 +18,9 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="assets/styles.css">
+    
+    <!-- Data -->
+    <script src="data/dictionary-data.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -44,6 +47,10 @@
                     <i class="fa-solid fa-book-open-reader"></i>
                     <span>Tech Specs & Ops</span>
                 </li>
+                <li class="nav-item" data-view="dictionary">
+                    <i class="fa-solid fa-book-atlas"></i>
+                    <span>Data Dictionary</span>
+                </li>
             </ul>
             
             <div class="top-nav-right">
@@ -56,6 +63,27 @@
 
         <!-- Main Content -->
         <main class="main-content">
+
+            <!-- ═══ Data Dictionary View ═══ -->
+            <section id="dictionary-view" class="view-section">
+                <header class="section-header">
+                    <div class="header-titles">
+                        <span class="eyebrow">ITS Encyclopedia</span>
+                        <h1>Data Dictionary (1000+ Components)</h1>
+                    </div>
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fa-solid fa-search"></i>
+                            <input type="text" id="dictSearch" placeholder="Search components, specs, categories...">
+                        </div>
+                    </div>
+                </header>
+                <div class="dictionary-grid-wrapper">
+                    <div class="dictionary-grid" id="dictionaryGrid">
+                        <!-- Cards will be dynamically populated here -->
+                    </div>
+                </div>
+            </section>
 
             <!-- ═══ Map View ═══ -->
             <section id="map-view" class="view-section active">

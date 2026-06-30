@@ -375,3 +375,70 @@ function renderBOQ() {
     totalEl.textContent = `$${grandTotal.toLocaleString()} Master Budget`;
 }
 renderBOQ();
+
+// ═══ Data Dictionary ═══
+function renderDictionary(query = '') {
+    const grid = document.getElementById('dictionaryGrid');
+    if (!grid || !window.DICTIONARY_DATA) return;
+    
+    grid.innerHTML = '';
+    const q = query.toLowerCase();
+    
+    // Filter items (limit to 100 for performance if no query)
+    const filtered = window.DICTIONARY_DATA.filter(item => {
+        if (!q) return true;
+        return item.name.toLowerCase().includes(q) || 
+               item.category.toLowerCase().includes(q) || 
+               item.description.toLowerCase().includes(q);
+    });
+    
+    const displayItems = q ? filtered : filtered.slice(0, 100);
+    
+    displayItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'dict-card';
+        
+        let mediaHtml = '';
+        if (item.video) {
+            mediaHtml = `
+                <div class="dict-media">
+                    <span class="media-badge"><i class="fa-brands fa-youtube"></i> Video Demo</span>
+                    <iframe src="${item.video}?modestbranding=1&rel=0" allowfullscreen></iframe>
+                </div>`;
+        } else if (item.image) {
+            mediaHtml = `
+                <div class="dict-media">
+                    <img src="${item.image}" alt="${item.name}" loading="lazy">
+                </div>`;
+        }
+        
+        card.innerHTML = `
+            ${mediaHtml}
+            <div class="dict-content">
+                <div class="dict-cat">${item.category}</div>
+                <div class="dict-title">${item.name}</div>
+                <div class="dict-desc">${item.description}</div>
+                <div class="dict-footer">
+                    <span><i class="fa-solid fa-server"></i> ITS Network Component</span>
+                    <span class="dict-id">${item.id}</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div style="color:var(--text-muted);grid-column:1/-1;text-align:center;padding:3rem;">No components found matching your search.</div>';
+    } else if (!q && filtered.length > 100) {
+        const more = document.createElement('div');
+        more.style.cssText = 'grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-muted)';
+        more.innerHTML = `Showing 100 of ${filtered.length} components. Use search to find specific items.`;
+        grid.appendChild(more);
+    }
+}
+
+renderDictionary();
+const dictSearch = document.getElementById('dictSearch');
+if (dictSearch) {
+    dictSearch.addEventListener('input', e => renderDictionary(e.target.value));
+}
