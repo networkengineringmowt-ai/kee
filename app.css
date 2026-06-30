@@ -368,6 +368,83 @@ a {
     background: #0B0F19;
 }
 
+.map-header-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--soft);
+    font-weight: 600;
+    font-size: 0.86rem;
+    cursor: pointer;
+    transition: all 160ms var(--ease);
+    white-space: nowrap;
+}
+
+.ghost-btn:hover {
+    border-color: var(--line-strong);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.085);
+}
+
+.ghost-btn.active {
+    color: #06b6d4;
+    border-color: rgba(6, 182, 212, 0.5);
+    background: rgba(6, 182, 212, 0.10);
+}
+
+.map-detail-overlay {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 620;
+    width: min(322px, calc(100% - 28px));
+    max-height: calc(100% - 28px);
+    overflow: auto;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: rgba(12, 14, 20, 0.88);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-soft);
+}
+
+.overlay-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 14px 0;
+}
+
+.overlay-head h4 {
+    color: var(--text);
+    font-size: 1.02rem;
+    margin-top: 2px;
+}
+
+.map-detail-overlay .empty-state {
+    min-height: 120px;
+    padding: 18px;
+}
+
+.map-detail-overlay .empty-state i {
+    font-size: 1.5rem;
+}
+
+.detail-actions.triple {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .nexus-eyebrow {
     font-size: 0.75rem;
     font-weight: 700;
@@ -1595,6 +1672,23 @@ tbody tr.active-row {
 
 .media-card-btn:hover {
     background: rgba(6, 182, 212, 0.2);
+}
+
+.media-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.media-card-btn.ghost {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--soft);
+    border-color: var(--line);
+}
+
+.media-card-btn.ghost:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: var(--text);
 }
 
 .video-modal {

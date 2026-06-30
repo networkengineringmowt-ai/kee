@@ -34,6 +34,7 @@
         map: null,
         routeLayer: null,
         markerLayer: null,
+        projectBounds: null,
         markers: new Map(),
         workbook: null,
         workbookCharts: [],
@@ -74,10 +75,7 @@
         $$(".view-section").forEach((view) => view.classList.toggle("active", view.id === `${viewId}-view`));
 
         if (viewId === "map" && state.map) {
-            setTimeout(() => {
-                state.map.invalidateSize();
-                fitMapToAssets();
-            }, 120);
+            setTimeout(() => state.map.invalidateSize(), 120);
         }
     }
 
@@ -192,7 +190,7 @@
         bindMapControls();
         renderComponentChips();
         applyMapFilters();
-        fitMapToAssets();
+        fitMapToProject();
     }
 
     function drawRoutes() {
@@ -313,7 +311,7 @@
             applyMapFilters();
         });
 
-        $("#mapFitBtn")?.addEventListener("click", fitMapToAssets);
+        $("#mapFitBtn")?.addEventListener("click", fitMapToProject);
         $("#mapTourBtn")?.addEventListener("click", toggleMapTour);
         $("#assetTableTopBtn")?.addEventListener("click", () => $(".asset-table-wrap")?.scrollTo({ top: 0, behavior: "smooth" }));
     }
@@ -564,15 +562,27 @@
                 <span>Dependency</span><strong>${escapeHtml(asset.dependency)}</strong>
                 <span>Purpose</span><strong>${escapeHtml(asset.purpose)}</strong>
             </div>
-            <div class="detail-actions">
+            <div class="detail-actions triple">
                 <button class="btn-analyze" type="button" id="selectedReadSpecBtn"><i class="fa-solid fa-book-open"></i> Specs</button>
-                <button class="btn-analyze" type="button" id="selectedFilterBtn"><i class="fa-solid fa-filter"></i> Filter type</button>
+                <button class="btn-analyze" type="button" id="selectedDictBtn"><i class="fa-solid fa-photo-film"></i> Media</button>
+                <button class="btn-analyze" type="button" id="selectedFilterBtn"><i class="fa-solid fa-filter"></i> Isolate</button>
             </div>
         `;
 
         $("#selectedReadSpecBtn")?.addEventListener("click", () => {
             switchView("specs");
+            const reader = document.querySelector('.spec-sub-tab[data-target="specs-reader"]');
+            if (reader) reader.click();
             const search = $("#specsSearchInput");
+            if (search) {
+                search.value = asset.type;
+                search.dispatchEvent(new Event("input"));
+            }
+        });
+
+        $("#selectedDictBtn")?.addEventListener("click", () => {
+            switchView("explorer");
+            const search = $("#mediaSearchInput");
             if (search) {
                 search.value = asset.type;
                 search.dispatchEvent(new Event("input"));
@@ -583,6 +593,7 @@
             const typeFilter = $("#mapTypeFilter");
             if (typeFilter) typeFilter.value = asset.type;
             applyMapFilters();
+            setTimeout(fitMapToAssets, 80);
         });
     }
 
@@ -590,6 +601,51 @@
         if (!state.map || !state.filteredAssets.length) return;
         const bounds = L.latLngBounds(state.filteredAssets.map((asset) => [asset.lat, asset.lon]));
         state.map.fitBounds(bounds, { padding: [42, 42], maxZoom: 14 });
+    }
+
+    // Full project extent = corridor route geometry + declared corridor paths + all assets.
+    function fitMapToProject() {
+        if (!state.map) return;
+        if (!state.projectBounds) state.projectBounds = computeProjectBounds();
+        if (state.projectBounds && state.projectBounds.isValid()) {
+            state.map.fitBounds(state.projectBounds, { padding: [40, 40] });
+        } else {
+            fitMapToAssets();
+        }
+    }
+
+    function computeProjectBounds() {
+        const pts = [];
+        state.assets.forEach((asset) => {
+            if (Number.isFinite(asset.lat) && Number.isFinite(asset.lon)) pts.push([asset.lat, asset.lon]);
+        });
+        state.corridors.forEach((corridor) => (corridor.paths || []).forEach((path) => (path.coordinates || []).forEach((point) => {
+            const lat = Number(point[0]);
+            const lon = Number(point[1]);
+            if (Number.isFinite(lat) && Number.isFinite(lon)) pts.push([lat, lon]);
+        })));
+        if (roadNetworkData && Array.isArray(roadNetworkData.features)) {
+            roadNetworkData.features.forEach((feature) => {
+                const roadNo = String(feature.properties?.Road_No_1 || "");
+                if (roadNo.startsWith("M20") || roadNo.startsWith("M3") || roadNo.startsWith("A003N2")) {
+                    collectGeoCoords(feature.geometry, pts);
+                }
+            });
+        }
+        return pts.length ? L.latLngBounds(pts) : null;
+    }
+
+    function collectGeoCoords(geometry, out) {
+        if (!geometry || !geometry.coordinates) return;
+        const walk = (node) => {
+            if (!Array.isArray(node)) return;
+            if (typeof node[0] === "number" && typeof node[1] === "number") {
+                out.push([node[1], node[0]]); // GeoJSON [lon, lat] -> Leaflet [lat, lon]
+                return;
+            }
+            node.forEach(walk);
+        };
+        walk(geometry.coordinates);
     }
 
     function toggleMapTour() {
@@ -796,30 +852,57 @@
         const grid = $("#mediaGrid");
         if (!grid || !window.MEDIA_DICTIONARY) return;
 
+        const idToType = {
+            "comp-anpr": "ANPR", "comp-vms": "VMS", "comp-toll": "Toll",
+            "comp-wim": "WIM", "comp-hcc": "TOC", "comp-fiber": "Comms"
+        };
+
         let html = "";
         window.MEDIA_DICTIONARY.forEach(comp => {
+            const keyword = idToType[comp.id] || (comp.title.match(/\(([^)]+)\)/)?.[1] || String(comp.title).split(" ")[0]);
             html += `
-                <article class="media-card" data-video="${escapeHtml(comp.videoId)}" data-title="${escapeHtml(comp.title)}">
+                <article class="media-card" data-video="${escapeHtml(comp.videoId)}" data-title="${escapeHtml(comp.title)}" data-keyword="${escapeAttr(keyword)}">
                     <img src="${escapeHtml(comp.imageUrl)}" alt="${escapeHtml(comp.title)}" class="media-card-img" loading="lazy">
                     <div class="media-card-body">
                         <h4 class="media-card-title">${escapeHtml(comp.title)}</h4>
                         <p class="media-card-desc">${escapeHtml(comp.description)}</p>
-                        <button class="media-card-btn watch-btn">
-                            <i class="fa-solid fa-play"></i> Watch Explainer
-                        </button>
+                        <div class="media-card-actions">
+                            <button class="media-card-btn watch-btn"><i class="fa-solid fa-play"></i> Watch Explainer</button>
+                            <button class="media-card-btn ghost locate-btn"><i class="fa-solid fa-location-dot"></i> Locate on map</button>
+                        </div>
                     </div>
                 </article>
             `;
         });
         grid.innerHTML = html;
 
-        // Attach click listeners to cards
+        // Watch -> open video modal
         $$(".watch-btn").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const card = e.target.closest(".media-card");
-                const videoId = card.dataset.video;
-                const title = card.dataset.title;
-                openVideoModal(videoId, title);
+                openVideoModal(card.dataset.video, card.dataset.title);
+            });
+        });
+
+        // Locate on map -> jump to Map tab filtered to this component
+        $$(".locate-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const card = e.target.closest(".media-card");
+                const keyword = card.dataset.keyword || "";
+                switchView("map");
+                const typeSel = $("#mapTypeFilter");
+                if (typeSel) typeSel.value = "All";
+                const search = $("#mapSearchInput");
+                if (search) {
+                    search.value = keyword;
+                    search.dispatchEvent(new Event("input"));
+                }
+                setTimeout(() => {
+                    if (state.map) {
+                        state.map.invalidateSize();
+                        fitMapToAssets();
+                    }
+                }, 160);
             });
         });
     }

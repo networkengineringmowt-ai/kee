@@ -62,6 +62,14 @@
                                 <p class="nexus-eyebrow">GEOSPATIAL DEPLOYMENT CONSOLE</p>
                                 <h3 id="mapTitle" class="nexus-map-title">ITS Assets Along the Road Network</h3>
                             </div>
+                            <div class="map-header-actions">
+                                <button class="ghost-btn" type="button" id="mapFitBtn" title="Zoom to full project extent">
+                                    <i class="fa-solid fa-expand"></i><span>Project extent</span>
+                                </button>
+                                <button class="ghost-btn" type="button" id="mapTourBtn" title="Auto-tour the assets">
+                                    <i class="fa-solid fa-play"></i><span>Tour</span>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="metric-strip" id="mapMetricStrip">
@@ -110,6 +118,20 @@
                         <div class="map-canvas-wrap">
                             <div id="unifiedMap" class="unified-map" role="application" aria-label="KEE ITS geospatial map"></div>
                             <div class="map-legend" id="mapLegend"></div>
+                            <aside class="map-detail-overlay" id="mapDetailOverlay">
+                                <div class="overlay-head">
+                                    <div>
+                                        <p class="nexus-eyebrow">Asset focus</p>
+                                        <h4 id="selectedAssetTitle">No asset selected</h4>
+                                    </div>
+                                    <span class="pill" id="selectedAssetStatus">Ready</span>
+                                </div>
+                                <div id="mapDetailPanel" class="asset-detail empty-state">
+                                    <i class="fa-solid fa-location-crosshairs"></i>
+                                    <h4>No asset selected</h4>
+                                    <p>Click any installation point on the map, or use the filters and component chips above.</p>
+                                </div>
+                            </aside>
                         </div>
                     </section>
 
