@@ -60,7 +60,7 @@ if (roadNet && roadNet.features) {
             const p = f.properties;
             if (p.is_mainline) return { color: '#38bdf8', weight: 5, opacity: 1.0 }; // Highlighted Scope
             if (p.is_scope) {
-                const n = p.name.toLowerCase();
+                const n = (p.name || '').toLowerCase();
                 if (n.includes('interchange') || n.includes('slip')) return { color: '#f59e0b', weight: 2, opacity: 0.8, dashArray: '6 4' };
                 if (n.includes('bypass')) return { color: '#818cf8', weight: 3, opacity: 0.7 };
                 return { color: '#94a3b8', weight: 3, opacity: 0.6 };
@@ -69,7 +69,8 @@ if (roadNet && roadNet.features) {
             return { color: '#334155', weight: 1, opacity: 0.15 };
         },
         onEachFeature: (f, layer) => {
-            layer.bindTooltip(f.properties.name, { sticky: true, className: '' });
+            const name = f.properties.name || 'Unknown Road';
+            layer.bindTooltip(name, { sticky: true, className: '' });
         }
     }).addTo(map);
 }
