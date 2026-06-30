@@ -39,10 +39,6 @@
                     <i class="fa-solid fa-map-location-dot"></i>
                     <span>Geospatial Map</span>
                 </li>
-                <li class="nav-item" data-view="table">
-                    <i class="fa-solid fa-table-list"></i>
-                    <span>Installation Data</span>
-                </li>
                 <li class="nav-item" data-view="specs">
                     <i class="fa-solid fa-book-open-reader"></i>
                     <span>Tech Specs & Ops</span>
@@ -148,39 +144,6 @@
                 </div>
             </section>
 
-            <!-- ═══ Table View ═══ -->
-            <section id="table-view" class="view-section">
-                <header class="view-header">
-                    <div class="header-titles">
-                        <h1>Installation Schedule & Data</h1>
-                        <p class="subtitle">Complete tabular view of all ITS assets across the network.</p>
-                    </div>
-                </header>
-                
-                <div class="glass-panel" style="margin: 1.5rem; height: calc(100vh - 180px); display: flex; flex-direction: column;">
-                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;">Assets Directory</h3>
-                        <span id="mapResultCount" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;"></span>
-                    </div>
-                    <div class="table-wrap" style="flex: 1; overflow: auto; padding: 0;">
-                        <table style="width: 100%; border-collapse: collapse; white-space: nowrap;">
-                            <thead>
-                                <tr style="background: rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 10; text-align: left;">
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">ID</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Corridor</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Asset</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Site</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Purpose</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Status</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Phase</th>
-                                </tr>
-                            </thead>
-                            <tbody id="mapAssetTable"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
             <!-- ═══ Specs View ═══ -->
             <section id="specs-view" class="view-section">
                 <header class="view-header">
@@ -194,18 +157,49 @@
                     </div>
                 </header>
                 
-                <div class="specs-layout">
-                    <aside class="specs-toc glass-panel">
-                        <h3>Documents</h3>
-                        <div id="specsTocContainer" class="toc-container"></div>
-                    </aside>
-                    <div class="specs-content-area glass-panel">
-                        <div id="specsBreadcrumb" class="breadcrumb">Select a document section</div>
-                        <div id="specsContent" class="reader-content">
-                            <div class="empty-state">
-                                <div class="empty-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
-                                <h3>Document Reader</h3>
-                                <p>Select a section from the table of contents to read detailed specifications and manuals.</p>
+                <div class="specs-layout" style="flex-direction: column;">
+                    
+                    <!-- Top Half: Master Procurement Table -->
+                    <div class="glass-panel" style="flex: 1; min-height: 400px; display: flex; flex-direction: column; margin-bottom: 1.5rem;">
+                        <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+                            <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-list-check"></i> Master Procurement & Components Table</h3>
+                            <div class="search-box">
+                                <i class="fa-solid fa-search"></i>
+                                <input type="text" id="procurementSearch" placeholder="Filter components...">
+                            </div>
+                        </div>
+                        <div class="table-wrap" style="flex: 1; overflow: auto; padding: 0;">
+                            <table style="width: 100%; border-collapse: collapse; white-space: nowrap;">
+                                <thead>
+                                    <tr style="background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 10; text-align: left;">
+                                        <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Component / Item</th>
+                                        <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Category</th>
+                                        <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; text-align: right;">Total Qty</th>
+                                        <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Technical Spec Ref</th>
+                                        <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; text-align: center;">Cross-Links</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="procurementTableBody">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Half: Document Reader -->
+                    <div style="display: flex; gap: 1.5rem; height: 400px;">
+                        <aside class="specs-toc glass-panel" style="flex: 0 0 350px;">
+                            <h3 style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0;"><i class="fa-solid fa-book-journal-whills"></i> Document Reader</h3>
+                            <div id="specsTocContainer" class="toc-container" style="height: calc(100% - 50px);"></div>
+                        </aside>
+                        <div class="specs-content-area glass-panel" style="flex: 1;">
+                            <div id="specsBreadcrumb" class="breadcrumb">Select a document section</div>
+                            <div id="specsContent" class="reader-content">
+                                <div class="empty-state">
+                                    <div class="empty-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+                                    <h3>Document Reader</h3>
+                                    <p>Select a section from the table of contents to read detailed specifications and manuals.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

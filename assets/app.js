@@ -182,21 +182,6 @@ function renderSummary() {
     ].map(m => `<div class="summary-stat"><div class="num">${m[1]}</div><div class="lbl">${m[0]}</div><div class="sub">${m[2]}</div></div>`).join('');
 }
 
-function renderTable() {
-    const rows = filtered();
-    document.getElementById('mapResultCount').textContent = `${rows.length} shown`;
-    document.getElementById('mapAssetTable').innerHTML = rows.map(item => {
-        const t = typeById[item.type];
-        return `<tr data-id="${item.id}">
-            <td><strong>${item.id}</strong></td><td>${item.corridor}</td><td>${t.label}</td>
-            <td>${item.site}</td><td>${item.purpose}</td>
-            <td><span class="status-pill ${statusClass(item.status)}">${item.status}</span></td>
-            <td><span class="phase-pill">${item.phase}</span></td></tr>`;
-    }).join('');
-    document.querySelectorAll('#mapAssetTable tr').forEach(row => {
-        row.addEventListener('click', () => selectInstallation(row.dataset.id, true));
-    });
-}
 
 function renderDetail(item) {
     const panel = document.getElementById('mapDetailPanel');
@@ -241,7 +226,7 @@ function renderTitle() {
 
 function render() {
     renderCorridorFilter(); renderTypeFilter(); renderSummary(); renderTitle();
-    drawCorridors(); drawMarkers(); renderTable();
+    drawCorridors(); drawMarkers();
     renderDetail(geoData.installations.find(i => i.id === state.selectedId));
 }
 
@@ -437,6 +422,66 @@ function renderDictionary(query = '') {
         more.style.cssText = 'grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-muted)';
         more.innerHTML = `Showing 100 of ${filtered.length} components. Use search to find specific items.`;
         grid.appendChild(more);
+renderBOQ();
+
+// ═══ Data Dictionary ═══
+function renderDictionary(query = '') {
+    const grid = document.getElementById('dictionaryGrid');
+    if (!grid || !window.DICTIONARY_DATA) return;
+    
+    grid.innerHTML = '';
+    const q = query.toLowerCase();
+    
+    // Filter items (limit to 100 for performance if no query)
+    const filtered = window.DICTIONARY_DATA.filter(item => {
+        if (!q) return true;
+        return item.name.toLowerCase().includes(q) || 
+               item.category.toLowerCase().includes(q) || 
+               item.description.toLowerCase().includes(q);
+    });
+    
+    const displayItems = q ? filtered : filtered.slice(0, 100);
+    
+    displayItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'dict-card';
+        
+        let mediaHtml = '';
+        if (item.video) {
+            mediaHtml = `
+                <div class="dict-media">
+                    <span class="media-badge"><i class="fa-brands fa-youtube"></i> Video Demo</span>
+                    <iframe src="${item.video}?modestbranding=1&rel=0" allowfullscreen></iframe>
+                </div>`;
+        } else if (item.image) {
+            mediaHtml = `
+                <div class="dict-media">
+                    <img src="${item.image}" alt="${item.name}" loading="lazy">
+                </div>`;
+        }
+        
+        card.innerHTML = `
+            ${mediaHtml}
+            <div class="dict-content">
+                <div class="dict-cat">${item.category}</div>
+                <div class="dict-title">${item.name}</div>
+                <div class="dict-desc">${item.description}</div>
+                <div class="dict-footer">
+                    <span><i class="fa-solid fa-server"></i> ITS Network Component</span>
+                    <span class="dict-id">${item.id}</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div style="color:var(--text-muted);grid-column:1/-1;text-align:center;padding:3rem;">No components found matching your search.</div>';
+    } else if (!q && filtered.length > 100) {
+        const more = document.createElement('div');
+        more.style.cssText = 'grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-muted)';
+        more.innerHTML = `Showing 100 of ${filtered.length} components. Use search to find specific items.`;
+        grid.appendChild(more);
     }
 }
 
@@ -445,3 +490,122 @@ const dictSearch = document.getElementById('dictSearch');
 if (dictSearch) {
     dictSearch.addEventListener('input', e => renderDictionary(e.target.value));
 }
+
+// ═══ Unified Cross-Linking Engine ═══
+window.navigateToTab = function(tabId, query = '') {
+    // 1. Switch the active view
+    document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+    
+    const targetSection = document.getElementById(`${tabId}-view`);
+    const targetNav = document.querySelector(`[data-view="${tabId}"]`);
+    
+    if (targetSection) targetSection.classList.add('active');
+    if (targetNav) targetNav.classList.add('active');
+    
+    // 2. Route the query to the appropriate engine
+    if (query) {
+        if (tabId === 'map') {
+            const searchInput = document.getElementById('mapSearchInput');
+            if (searchInput) {
+                searchInput.value = query;
+                searchInput.dispatchEvent(new Event('input'));
+            }
+        } else if (tabId === 'dictionary') {
+            const dictSearchBox = document.getElementById('dictSearch');
+            if (dictSearchBox) {
+                dictSearchBox.value = query;
+                renderDictionary(query);
+            }
+        } else if (tabId === 'boq') {
+            const boqSearch = document.getElementById('boqSearch');
+            if (boqSearch) {
+                boqSearch.value = query;
+                // Add boq search logic if needed
+            }
+        }
+    }
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// ═══ Master Procurement Table ═══
+function renderProcurementTable(query = '') {
+    const tbody = document.getElementById('procurementTableBody');
+    if (!tbody || !window.BOQ_DATA) return;
+    
+    tbody.innerHTML = '';
+    const q = query.toLowerCase();
+    
+    // Filter BOQ data
+    const items = window.BOQ_DATA.filter(row => {
+        if (row.is_header) return false; // Only show actual components, not headers
+        if (!row.component) return false;
+        if (!q) return true;
+        return row.component.toLowerCase().includes(q) || 
+               (row.spec && row.spec.toLowerCase().includes(q)) || 
+               (row.site && row.site.toLowerCase().includes(q));
+    });
+    
+    items.forEach(row => {
+        // Try to find matching dictionary item for category
+        let dictItem = null;
+        if (window.DICTIONARY_DATA) {
+            dictItem = window.DICTIONARY_DATA.find(d => 
+                (d.name && d.name.toLowerCase().includes(row.component.toLowerCase())) || 
+                (row.component && row.component.toLowerCase().includes(d.name ? d.name.toLowerCase() : ''))
+            );
+        }
+        const category = dictItem ? dictItem.category : 'Field Equipment';
+        
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        
+        // Find if spec doc exists
+        let hasSpecDoc = false;
+        if (window.DOCS_CONTENT) {
+            for (let docKey in window.DOCS_CONTENT) {
+                const found = window.DOCS_CONTENT[docKey].find(s => s.title && (s.title.toLowerCase().includes(row.component.toLowerCase()) || row.component.toLowerCase().includes(s.title.toLowerCase())));
+                if (found) { hasSpecDoc = true; break; }
+            }
+        }
+        
+        const safeComponent = row.component.replace(/'/g, "\\'");
+        
+        tr.innerHTML = `
+            <td style="padding: 1rem 1.5rem;">
+                <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-h1); margin-bottom: 0.2rem;">${row.component}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> ${row.site || 'Various Locations'}</div>
+            </td>
+            <td style="padding: 1rem 1.5rem;">
+                <span class="status-pill existing" style="background: rgba(56,189,248,0.1); color: #38bdf8; border: 1px solid rgba(56,189,248,0.2);">${category}</span>
+            </td>
+            <td style="padding: 1rem 1.5rem; text-align: right; font-weight: 600; font-size: 0.95rem; color: #fff;">
+                ${row.qty || '-'}
+                <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal; margin-top: 2px;">$${row.unit_cost_usd || '0'} ea</div>
+            </td>
+            <td style="padding: 1rem 1.5rem; font-size: 0.8rem; color: #94a3b8; max-width: 300px; white-space: normal; line-height: 1.4;">
+                ${row.spec || 'Standard ITS Specification'}
+                ${hasSpecDoc ? `<div style="margin-top: 5px; color: var(--primary); font-size: 0.75rem;"><i class="fa-solid fa-file-contract"></i> Full spec found in manuals</div>` : ''}
+            </td>
+            <td style="padding: 1rem 1.5rem; text-align: center;">
+                <div style="display: flex; gap: 8px; justify-content: center;">
+                    <button onclick="navigateToTab('map', '${safeComponent}')" title="View on Map" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 4px; padding: 6px 10px; cursor: pointer; transition: 0.2s;">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </button>
+                    <button onclick="navigateToTab('dictionary', '${safeComponent}')" title="View Data Dictionary" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 4px; padding: 6px 10px; cursor: pointer; transition: 0.2s;">
+                        <i class="fa-solid fa-book-atlas"></i>
+                    </button>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Hook up search
+const procSearch = document.getElementById('procurementSearch');
+if (procSearch) procSearch.addEventListener('input', e => renderProcurementTable(e.target.value));
+
+renderProcurementTable();
