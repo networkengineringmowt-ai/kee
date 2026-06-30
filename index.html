@@ -148,7 +148,18 @@
                                     <input id="mapSearchInput" type="search" placeholder="Site, asset, purpose or ID" class="glass-input">
                                 </div>
                                 
+                                
                                 <div class="summary-grid" id="mapSummaryGrid"></div>
+                                
+                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                                    <h4 style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-bar"></i> Geographical Distribution</h4>
+                                    <div style="height: 150px; position: relative;"><canvas id="geoCorridorChart"></canvas></div>
+                                </div>
+                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                                    <h4 style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-pie"></i> Categorical Status</h4>
+                                    <div style="height: 150px; position: relative;"><canvas id="statusPieChart"></canvas></div>
+                                </div>
+
                                 
                                 <div class="export-actions mt-3">
                                     <button id="exportGeojson" class="btn-export"><i class="fa-solid fa-download"></i> GeoJSON</button>
