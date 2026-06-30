@@ -614,6 +614,9 @@
         }
     }
 
+    // Frame the project scope from the ITS assets plus the declared corridor
+    // centrelines. The raw road_network geometry is intentionally excluded: those
+    // national road numbers run far beyond the project and would over-zoom the map.
     function computeProjectBounds() {
         const pts = [];
         state.assets.forEach((asset) => {
@@ -624,28 +627,7 @@
             const lon = Number(point[1]);
             if (Number.isFinite(lat) && Number.isFinite(lon)) pts.push([lat, lon]);
         })));
-        if (roadNetworkData && Array.isArray(roadNetworkData.features)) {
-            roadNetworkData.features.forEach((feature) => {
-                const roadNo = String(feature.properties?.Road_No_1 || "");
-                if (roadNo.startsWith("M20") || roadNo.startsWith("M3") || roadNo.startsWith("A003N2")) {
-                    collectGeoCoords(feature.geometry, pts);
-                }
-            });
-        }
         return pts.length ? L.latLngBounds(pts) : null;
-    }
-
-    function collectGeoCoords(geometry, out) {
-        if (!geometry || !geometry.coordinates) return;
-        const walk = (node) => {
-            if (!Array.isArray(node)) return;
-            if (typeof node[0] === "number" && typeof node[1] === "number") {
-                out.push([node[1], node[0]]); // GeoJSON [lon, lat] -> Leaflet [lat, lon]
-                return;
-            }
-            node.forEach(walk);
-        };
-        walk(geometry.coordinates);
     }
 
     function toggleMapTour() {
