@@ -50,17 +50,23 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/Worl
 
 // Road network layer
 if (roadNet && roadNet.features) {
-    // Glow
-    L.geoJSON(roadNet.features, { style: { color: '#38bdf8', weight: 12, opacity: 0.08 } }).addTo(map);
+    // Glow only for scope
+    const scopeFeatures = roadNet.features.filter(f => f.properties.is_scope);
+    L.geoJSON(scopeFeatures, { style: { color: '#38bdf8', weight: 12, opacity: 0.08 } }).addTo(map);
+    
     // Core
     L.geoJSON(roadNet.features, {
         style: f => {
-            const n = f.properties.name.toLowerCase();
-            if (n.includes('expressway')) return { color: '#38bdf8', weight: 4, opacity: 0.9 };
-            if (n.includes('munyonyo')) return { color: '#a78bfa', weight: 3, opacity: 0.8 };
-            if (n.includes('bypass')) return { color: '#818cf8', weight: 3, opacity: 0.7 };
-            if (n.includes('interchange') || n.includes('slip')) return { color: '#f59e0b', weight: 2, opacity: 0.6, dashArray: '6 4' };
-            return { color: '#64748b', weight: 2, opacity: 0.5 };
+            const p = f.properties;
+            if (p.is_mainline) return { color: '#38bdf8', weight: 5, opacity: 1.0 }; // Highlighted Scope
+            if (p.is_scope) {
+                const n = p.name.toLowerCase();
+                if (n.includes('interchange') || n.includes('slip')) return { color: '#f59e0b', weight: 2, opacity: 0.8, dashArray: '6 4' };
+                if (n.includes('bypass')) return { color: '#818cf8', weight: 3, opacity: 0.7 };
+                return { color: '#94a3b8', weight: 3, opacity: 0.6 };
+            }
+            // Out of scope background roads
+            return { color: '#334155', weight: 1, opacity: 0.15 };
         },
         onEachFeature: (f, layer) => {
             layer.bindTooltip(f.properties.name, { sticky: true, className: '' });
