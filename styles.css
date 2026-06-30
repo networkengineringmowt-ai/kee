@@ -1,0 +1,407 @@
+const data = window.ITS_GEOSPATIAL_DATA;
+
+const state = {
+  corridor: "All",
+  type: "All",
+  status: "All",
+  query: "",
+  selectedId: null,
+};
+
+const typeById = Object.fromEntries(data.assetTypes.map((type) => [type.id, type]));
+const corridorById = Object.fromEntries(data.corridors.map((corridor) => [corridor.id, corridor]));
+const routeLayers = new Map();
+const markerLayers = new Map();
+
+const map = L.map("map", {
+  zoomControl: false,
+  preferCanvas: true,
+}).setView([0.215, 32.545], 11);
+
+L.control.zoom({ position: "bottomright" }).addTo(map);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+const corridorGroup = L.layerGroup().addTo(map);
+const markerGroup = L.layerGroup().addTo(map);
+const mapRoot = document.getElementById("map");
+const vectorOverlay = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+vectorOverlay.classList.add("map-vector-overlay");
+const pointLayer = document.createElement("div");
+pointLayer.className = "map-point-layer";
+mapRoot.append(vectorOverlay, pointLayer);
+
+function statusClass(status) {
+  if (status === "Design") return "design";
+  if (status === "Planned") return "planned";
+  if (status === "Survey required") return "survey";
+  if (status === "Existing interface") return "existing";
+  return "";
+}
+
+function installationMatches(item) {
+  const corridorMatch = state.corridor === "All" || item.corridor === state.corridor;
+  const typeMatch = state.type === "All" || item.type === state.type;
+  const statusMatch = state.status === "All" || item.status === state.status;
+  const haystack = `${item.id} ${item.site} ${item.type} ${item.purpose} ${item.status} ${item.phase} ${item.corridor}`.toLowerCase();
+  const searchMatch = haystack.includes(state.query.toLowerCase());
+  return corridorMatch && typeMatch && statusMatch && searchMatch;
+}
+
+function filteredInstallations() {
+  return data.installations.filter(installationMatches);
+}
+
+function corridorVisible(corridorId) {
+  return state.corridor === "All" || state.corridor === corridorId;
+}
+
+function makeIcon(item, selected = false) {
+  const type = typeById[item.type];
+  return L.divIcon({
+    className: "",
+    html: `<div class="asset-icon ${selected ? "selected" : ""}" style="background:${type.color}">${type.short}</div>`,
+    iconSize: selected ? [42, 42] : [34, 34],
+    iconAnchor: selected ? [21, 21] : [17, 17],
+    popupAnchor: [0, selected ? -22 : -18],
+  });
+}
+
+function popupHtml(item) {
+  const corridor = corridorById[item.corridor];
+  const type = typeById[item.type];
+  return `
+    <div class="popup-title">${item.id} - ${item.site}</div>
+    <div class="popup-meta">${corridor.name} - ${type.label}</div>
+    <div class="popup-purpose">${item.purpose}</div>
+  `;
+}
+
+function drawCorridors() {
+  corridorGroup.clearLayers();
+  routeLayers.clear();
+  data.corridors.forEach((corridor) => {
+    corridor.paths.forEach((path) => {
+      const visible = corridorVisible(corridor.id);
+      const layer = L.polyline(path.coordinates, {
+        color: corridor.color,
+        weight: visible ? 7 : 4,
+        opacity: visible ? 0.92 : 0.18,
+        lineCap: "round",
+        lineJoin: "round",
+      }).bindTooltip(`${corridor.name} - ${path.name}`, { sticky: true });
+      routeLayers.set(path.id, layer);
+      layer.addTo(corridorGroup);
+    });
+  });
+}
+
+function drawMarkers() {
+  markerGroup.clearLayers();
+  markerLayers.clear();
+  const rows = filteredInstallations();
+  rows.forEach((item) => {
+    const marker = L.marker([item.lat, item.lon], {
+      icon: makeIcon(item, item.id === state.selectedId),
+      riseOnHover: true,
+    });
+    marker.bindPopup(popupHtml(item));
+    marker.on("click", () => selectInstallation(item.id, true));
+    marker.addTo(markerGroup);
+    markerLayers.set(item.id, marker);
+  });
+  drawProjectedOverlay();
+}
+
+function drawProjectedOverlay() {
+  const size = map.getSize();
+  vectorOverlay.setAttribute("viewBox", `0 0 ${size.x} ${size.y}`);
+  vectorOverlay.setAttribute("width", size.x);
+  vectorOverlay.setAttribute("height", size.y);
+  vectorOverlay.innerHTML = "";
+  pointLayer.innerHTML = "";
+
+  data.corridors.forEach((corridor) => {
+    corridor.paths.forEach((path) => {
+      const projected = path.coordinates.map((point) => map.latLngToContainerPoint(point));
+      const d = projected.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" ");
+      const route = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      route.setAttribute("d", d);
+      route.setAttribute("stroke", corridor.color);
+      route.setAttribute("stroke-width", corridorVisible(corridor.id) ? "9" : "5");
+      route.setAttribute("opacity", corridorVisible(corridor.id) ? "0.96" : "0.18");
+      vectorOverlay.append(route);
+    });
+  });
+
+  filteredInstallations().forEach((item) => {
+    const type = typeById[item.type];
+    const point = map.latLngToContainerPoint([item.lat, item.lon]);
+    const button = document.createElement("button");
+    button.className = `map-point ${item.id === state.selectedId ? "selected" : ""}`;
+    button.style.left = `${point.x}px`;
+    button.style.top = `${point.y}px`;
+    button.style.background = type.color;
+    button.textContent = type.short;
+    button.title = `${item.id} - ${item.site}`;
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      selectInstallation(item.id, false);
+      const marker = markerLayers.get(item.id);
+      if (marker) marker.openPopup();
+    });
+    pointLayer.append(button);
+  });
+}
+
+function fitCurrentBounds() {
+  const bounds = [];
+  data.corridors.forEach((corridor) => {
+    if (!corridorVisible(corridor.id)) return;
+    corridor.paths.forEach((path) => path.coordinates.forEach((point) => bounds.push(point)));
+  });
+  const rows = filteredInstallations();
+  rows.forEach((item) => bounds.push([item.lat, item.lon]));
+  if (bounds.length) {
+    map.fitBounds(bounds, {
+      paddingTopLeft: [24, 98],
+      paddingBottomRight: [24, 240],
+      maxZoom: state.corridor === "All" ? 11 : 13,
+    });
+  }
+}
+
+function renderCorridorFilter() {
+  const wrapper = document.getElementById("corridorFilter");
+  wrapper.innerHTML = ["All", ...data.corridors.map((corridor) => corridor.id)]
+    .map((id) => `<button class="${state.corridor === id ? "active" : ""}" data-corridor="${id}">${id}</button>`)
+    .join("");
+  wrapper.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.corridor = button.dataset.corridor;
+      state.selectedId = null;
+      render();
+      fitCurrentBounds();
+    });
+  });
+}
+
+function renderTypeFilter() {
+  const wrapper = document.getElementById("typeFilter");
+  wrapper.innerHTML = [`<button class="${state.type === "All" ? "active" : ""}" data-type="All">All</button>`]
+    .concat(data.assetTypes.map((type) => `<button class="${state.type === type.id ? "active" : ""}" data-type="${type.id}">${type.short}</button>`))
+    .join("");
+  wrapper.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.type = button.dataset.type;
+      state.selectedId = null;
+      render();
+    });
+  });
+}
+
+function renderLegend() {
+  document.getElementById("legend").innerHTML = data.assetTypes
+    .slice(0, 6)
+    .map((type) => `<span class="legend-item"><span class="legend-dot" style="background:${type.color}"></span>${type.short}</span>`)
+    .join("");
+}
+
+function renderSummary() {
+  const rows = filteredInstallations();
+  const critical = rows.filter((item) => item.priority === "Critical").length;
+  const survey = rows.filter((item) => item.status === "Survey required").length;
+  const planned = rows.filter((item) => item.status === "Planned" || item.status === "Design").length;
+  const corridorsVisible = state.corridor === "All" ? 3 : 1;
+  document.getElementById("summaryGrid").innerHTML = [
+    ["Assets", rows.length, `${critical} critical`],
+    ["Corridors", corridorsVisible, state.corridor === "All" ? "network view" : corridorById[state.corridor].status],
+    ["Survey", survey, "coordinate lock pending"],
+    ["Design/Planned", planned, "implementation queue"],
+  ]
+    .map((metric) => `<article class="metric"><span>${metric[0]}</span><strong>${metric[1]}</strong><em>${metric[2]}</em></article>`)
+    .join("");
+}
+
+function renderTable() {
+  const rows = filteredInstallations();
+  document.getElementById("resultCount").textContent = `${rows.length} shown`;
+  document.getElementById("assetTable").innerHTML = rows
+    .map((item) => {
+      const type = typeById[item.type];
+      return `
+        <tr data-id="${item.id}">
+          <td><strong>${item.id}</strong></td>
+          <td>${item.corridor}</td>
+          <td>${type.label}</td>
+          <td>${item.site}</td>
+          <td>${item.purpose}</td>
+          <td><span class="status-pill ${statusClass(item.status)}">${item.status}</span></td>
+          <td><span class="phase-pill">${item.phase}</span></td>
+        </tr>
+      `;
+    })
+    .join("");
+  document.querySelectorAll("#assetTable tr").forEach((row) => {
+    row.addEventListener("click", () => selectInstallation(row.dataset.id, true));
+  });
+}
+
+function renderDetail(item) {
+  const panel = document.getElementById("detailPanel");
+  if (!item) {
+    panel.innerHTML = `
+      <div class="empty-detail">
+        <span>Selected Site</span>
+        <strong>Choose an installation point</strong>
+      </div>
+    `;
+    return;
+  }
+  const type = typeById[item.type];
+  const corridor = corridorById[item.corridor];
+  panel.innerHTML = `
+    <article class="detail-card">
+      <div class="detail-top">
+        <div class="type">${type.label}</div>
+        <h3>${item.site}</h3>
+        <p>${item.id} - ${corridor.name}</p>
+      </div>
+      <div class="detail-grid">
+        <div class="kv"><span>Status</span><strong><span class="status-pill ${statusClass(item.status)}">${item.status}</span></strong></div>
+        <div class="kv"><span>Phase</span><strong>${item.phase}</strong></div>
+        <div class="kv"><span>Priority</span><strong><span class="priority-pill">${item.priority}</span></strong></div>
+        <div class="kv"><span>Chainage</span><strong>${Number.isFinite(item.km) ? `${item.km} km` : "TBC"}</strong></div>
+        <div class="kv"><span>Power</span><strong>${item.power}</strong></div>
+        <div class="kv"><span>Comms</span><strong>${item.comms}</strong></div>
+      </div>
+      <div class="detail-note"><span>Purpose</span>${item.purpose}</div>
+      <div class="detail-note"><span>Dependency</span>${item.dependency}</div>
+      <div class="detail-note"><span>Coordinates</span>${item.lat.toFixed(6)}, ${item.lon.toFixed(6)}</div>
+    </article>
+  `;
+}
+
+function selectInstallation(id, pan = false) {
+  state.selectedId = id;
+  drawMarkers();
+  drawProjectedOverlay();
+  const item = data.installations.find((installation) => installation.id === id);
+  renderDetail(item);
+  if (item && pan) {
+    map.setView([item.lat, item.lon], Math.max(map.getZoom(), 14), { animate: true });
+    const marker = markerLayers.get(id);
+    if (marker) marker.openPopup();
+  }
+}
+
+function toGeoJson(rows) {
+  return {
+    type: "FeatureCollection",
+    name: "ITS installation plan",
+    features: rows.map((item) => ({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [item.lon, item.lat] },
+      properties: {
+        id: item.id,
+        corridor: item.corridor,
+        type: item.type,
+        site: item.site,
+        km: item.km,
+        status: item.status,
+        phase: item.phase,
+        priority: item.priority,
+        purpose: item.purpose,
+        power: item.power,
+        comms: item.comms,
+        dependency: item.dependency,
+      },
+    })),
+  };
+}
+
+function downloadFile(name, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = name;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportGeoJson() {
+  downloadFile("its-installation-plan.geojson", JSON.stringify(toGeoJson(filteredInstallations()), null, 2), "application/geo+json");
+}
+
+function csvEscape(value) {
+  const text = String(value ?? "");
+  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+}
+
+function exportCsv() {
+  const headers = ["id", "corridor", "type", "site", "km", "lat", "lon", "status", "phase", "priority", "purpose", "power", "comms", "dependency"];
+  const rows = filteredInstallations().map((item) => headers.map((key) => csvEscape(item[key])).join(","));
+  downloadFile("its-installation-plan.csv", [headers.join(","), ...rows].join("\n"), "text/csv");
+}
+
+function renderTitle() {
+  const title = document.getElementById("mapTitle");
+  if (state.corridor === "All") {
+    title.textContent = "ITS assets along the road network";
+  } else {
+    const corridor = corridorById[state.corridor];
+    title.textContent = `${corridor.name} - ${corridor.status}`;
+  }
+}
+
+function render() {
+  renderCorridorFilter();
+  renderTypeFilter();
+  renderSummary();
+  renderTitle();
+  drawCorridors();
+  drawMarkers();
+  drawProjectedOverlay();
+  renderTable();
+  renderDetail(data.installations.find((item) => item.id === state.selectedId));
+}
+
+document.getElementById("statusFilter").addEventListener("change", (event) => {
+  state.status = event.target.value;
+  state.selectedId = null;
+  render();
+});
+
+document.getElementById("searchInput").addEventListener("input", (event) => {
+  state.query = event.target.value.trim();
+  state.selectedId = null;
+  render();
+});
+
+document.getElementById("exportGeojson").addEventListener("click", exportGeoJson);
+document.getElementById("exportCsv").addEventListener("click", exportCsv);
+
+renderLegend();
+render();
+fitCurrentBounds();
+drawProjectedOverlay();
+
+setTimeout(() => {
+  map.invalidateSize();
+  fitCurrentBounds();
+  drawProjectedOverlay();
+}, 250);
+
+setTimeout(() => {
+  map.invalidateSize();
+  fitCurrentBounds();
+  drawProjectedOverlay();
+}, 1500);
+
+map.on("move zoom resize moveend zoomend", drawProjectedOverlay);
