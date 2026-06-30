@@ -1,4 +1,4 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    KEE Nexus v2.0 â€” Unified App Logic for GitHub Pages
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
@@ -344,27 +344,27 @@ function renderBOQ() {
             tr.style.background = 'rgba(56, 189, 248, 0.05)';
         }
         
-        const idCol = row.is_header ? <strong style="color:var(--primary); font-size:0.9rem;">+ "$" +{row.level_id}</strong> : <span style="padding-left:1.5rem; font-size:0.75rem; color:var(--text-muted)">+ "$" +{row.level_id || '-'}</span>;
-        const costCol = row.unit_cost_usd ? $+ "$" +{parseFloat(strToNum(row.unit_cost_usd)).toLocaleString()} : <span style="color:var(--text-muted)">-</span>;
-        const totalCol = row.total_cost_usd ? <strong style="color:#e2e8f0">$+ "$" +{parseFloat(strToNum(row.total_cost_usd)).toLocaleString()}</strong> : <span style="color:var(--text-muted)">-</span>;
+        const idCol = row.is_header ? `<strong style="color:var(--primary); font-size:0.9rem;">${row.level_id}</strong>` : `<span style="padding-left:1.5rem; font-size:0.75rem; color:var(--text-muted)">${row.level_id || '-'}</span>`;
+        const costCol = row.unit_cost_usd ? `$${parseFloat(strToNum(row.unit_cost_usd)).toLocaleString()}` : `<span style="color:var(--text-muted)">-</span>`;
+        const totalCol = row.total_cost_usd ? `<strong style="color:#e2e8f0">$${parseFloat(strToNum(row.total_cost_usd)).toLocaleString()}</strong>` : `<span style="color:var(--text-muted)">-</span>`;
         
-        tr.innerHTML = 
-            <td style="padding: 0.8rem 1.5rem; font-family: monospace;">+ "$" +{idCol}</td>
+        tr.innerHTML = `
+            <td style="padding: 0.8rem 1.5rem; font-family: monospace;">${idCol}</td>
             <td style="padding: 0.8rem 1.5rem;">
-                <div style="font-weight: + "$" +{row.is_header ? '700' : '500'}; font-size: + "$" +{row.is_header ? '0.9rem' : '0.85rem'}; color: + "$" +{row.is_header ? 'var(--text-h1)' : '#cbd5e1'}; margin-bottom: 0.2rem;">+ "$" +{row.component || '-'}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> + "$" +{row.site}</div>
+                <div style="font-weight: ${row.is_header ? '700' : '500'}; font-size: ${row.is_header ? '0.9rem' : '0.85rem'}; color: ${row.is_header ? 'var(--text-h1)' : '#cbd5e1'}; margin-bottom: 0.2rem;">${row.component || '-'}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> ${row.site}</div>
             </td>
-            <td style="padding: 0.8rem 1.5rem; font-size: 0.8rem; color: #94a3b8; max-width: 300px; line-height: 1.4;">+ "$" +{row.spec || '-'}</td>
-            <td style="padding: 0.8rem 1.5rem; text-align: right; font-weight: 600; font-size: 0.85rem;">+ "$" +{row.qty || '-'}</td>
+            <td style="padding: 0.8rem 1.5rem; font-size: 0.8rem; color: #94a3b8; max-width: 300px; line-height: 1.4;">${row.spec || '-'}</td>
+            <td style="padding: 0.8rem 1.5rem; text-align: right; font-weight: 600; font-size: 0.85rem;">${row.qty || '-'}</td>
             <td style="padding: 0.8rem 1.5rem; text-align: right; font-family: monospace; font-size: 0.75rem; color: var(--text-muted);">
-                + "$" +{row.x_lon.toFixed(5)}<br>+ "$" +{row.y_lat.toFixed(5)}
+                ${row.x_lon.toFixed(5)}<br>${row.y_lat.toFixed(5)}
             </td>
-            <td style="padding: 0.8rem 1.5rem; text-align: right; font-size:0.85rem; color: #94a3b8;">+ "$" +{costCol}</td>
-            <td style="padding: 0.8rem 1.5rem; text-align: right; font-size:0.85rem;">+ "$" +{totalCol}</td>
-        ;
+            <td style="padding: 0.8rem 1.5rem; text-align: right; font-size:0.85rem; color: #94a3b8;">${costCol}</td>
+            <td style="padding: 0.8rem 1.5rem; text-align: right; font-size:0.85rem;">${totalCol}</td>
+        `;
         tbody.appendChild(tr);
     });
     
-    totalEl.textContent = $+ "$" +{grandTotal.toLocaleString()} Master Budget;
+    totalEl.textContent = `$${grandTotal.toLocaleString()} Master Budget`;
 }
 renderBOQ();
