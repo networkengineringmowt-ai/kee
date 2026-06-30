@@ -6,6 +6,43 @@ const geoData = window.ITS_GEOSPATIAL_DATA;
 const roadNet = window.ROAD_NETWORK || null;
 const docsContent = window.DOCS_CONTENT || {};
 
+
+// ═══ V3.0 Boot Sequence ═══
+(function runBootSequence() {
+    const overlay = document.getElementById('bootSequence');
+    const consoleEl = document.getElementById('bootConsole');
+    const progress = document.getElementById('bootProgress');
+    if (!overlay) return;
+
+    const messages = [
+        "Establishing secure connection to Data Center...",
+        "Authenticating Ministry of Works & Transport credentials... [OK]",
+        "Loading ITS Geospatial Matrix...",
+        "Parsing Bill of Quantities...",
+        "Initializing Neural Data Dictionary...",
+        "System Online."
+    ];
+
+    let step = 0;
+    const interval = setInterval(() => {
+        if (step < messages.length) {
+            const line = document.createElement('div');
+            line.className = 'boot-line';
+            line.textContent = `> ${messages[step]}`;
+            consoleEl.appendChild(line);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+            progress.style.width = `${((step + 1) / messages.length) * 100}%`;
+            step++;
+        } else {
+            clearInterval(interval);
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+            }, 500);
+        }
+    }, 400);
+})();
+
 const state = { corridor: "All", type: "All", status: "All", query: "", selectedId: null };
 
 const typeById = Object.fromEntries(geoData.assetTypes.map(t => [t.id, t]));
@@ -78,6 +115,20 @@ if (roadNet && roadNet.features) {
 const corridorGroup = L.layerGroup().addTo(map);
 const markerGroup = L.layerGroup().addTo(map);
 
+
+function animateValue(obj, start, end, duration, formatStr = false) {
+    if (!obj) return;
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const current = Math.floor(progress * (end - start) + start);
+        obj.innerHTML = formatStr ? `$${current.toLocaleString()} Master Budget` : current.toLocaleString();
+        if (progress < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+}
+
 function statusClass(s) {
     if (s === 'Design') return 'design';
     if (s === 'Planned') return 'planned';
@@ -102,7 +153,7 @@ function makeIcon(item, sel = false) {
     const t = typeById[item.type];
     return L.divIcon({
         className: '',
-        html: `<div class="asset-icon ${sel ? 'selected' : ''}" style="background:${t.color}">${t.short}</div>`,
+        html: `<div class="asset-icon ${sel ? 'selected' : ''}" style="background:${t.color}">${t.short}</div><div class="radar-pulse ${item.priority === 'Critical' ? 'critical' : ''}"></div>`,
         iconSize: sel ? [38, 38] : [30, 30],
         iconAnchor: sel ? [19, 19] : [15, 15],
         popupAnchor: [0, sel ? -20 : -16],
@@ -350,6 +401,8 @@ function renderBOQ() {
         if (row.is_header && !isNaN(amt)) grandTotal += amt;
         
         const tr = document.createElement('tr');
+        tr.className = 'stagger-row';
+        tr.style.animationDelay = `${(tbody.children.length % 20) * 0.05}s`;
         tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
         if (row.is_header) {
             tr.style.background = 'rgba(56, 189, 248, 0.05)';
@@ -379,7 +432,90 @@ function renderBOQ() {
         tbody.appendChild(tr);
     });
     
+    
     totalEl.textContent = `$${grandTotal.toLocaleString()} Master Budget`;
+    animateValue(totalEl, 0, grandTotal, 1500, true);
+
+    // V3.0 Chart.js Analytics
+    setTimeout(() => {
+        const categories = {};
+        const quantities = {};
+        window.BOQ_DATA.forEach(row => {
+            if (!row.is_header && row.unit_cost_usd) {
+                // Group by spec category (rough heuristic) or just general category
+                let cat = "Other";
+                if (row.component.includes("CCTV") || row.component.includes("Camera")) cat = "Surveillance";
+                else if (row.component.includes("Cable") || row.component.includes("Fiber")) cat = "Fiber & Comms";
+                else if (row.component.includes("Gantry") || row.component.includes("VMS") || row.component.includes("Sign")) cat = "Signage & Gantries";
+                else if (row.component.includes("Server") || row.component.includes("Software") || row.component.includes("Center")) cat = "Control Center";
+                else if (row.component.includes("Civil") || row.component.includes("Trench")) cat = "Civil Works";
+                else if (row.component.includes("Cabinet") || row.component.includes("Power")) cat = "Power & Cabinets";
+                
+                const amt = parseFloat(String(row.total_cost_usd).replace(/[^0-9.-]+/g,"")) || 0;
+                categories[cat] = (categories[cat] || 0) + amt;
+                quantities[cat] = (quantities[cat] || 0) + (parseFloat(row.qty) || 1);
+            }
+        });
+
+        const ctxD = document.getElementById('boqDoughnutChart');
+        const ctxB = document.getElementById('boqBarChart');
+        
+        if (ctxD && window.Chart && !window._boqChartD) {
+            window._boqChartD = new Chart(ctxD, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(categories),
+                    datasets: [{
+                        data: Object.values(categories),
+                        backgroundColor: ['#38bdf8', '#fb923c', '#818cf8', '#34d399', '#f87171', '#c084fc', '#94a3b8'],
+                        borderWidth: 0, hoverOffset: 4
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { family: 'Inter' } } },
+                        title: { display: true, text: 'Budget Distribution ($)', color: '#fff', font: { size: 14 } }
+                    }
+                }
+            });
+        } else if (window._boqChartD) {
+            window._boqChartD.data.labels = Object.keys(categories);
+            window._boqChartD.data.datasets[0].data = Object.values(categories);
+            window._boqChartD.update();
+        }
+
+        if (ctxB && window.Chart && !window._boqChartB) {
+            window._boqChartB = new Chart(ctxB, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(quantities),
+                    datasets: [{
+                        label: 'Component Quantity',
+                        data: Object.values(quantities),
+                        backgroundColor: '#38bdf8',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Asset Quantity Distribution', color: '#fff', font: { size: 14 } }
+                    }
+                }
+            });
+        } else if (window._boqChartB) {
+            window._boqChartB.data.labels = Object.keys(quantities);
+            window._boqChartB.data.datasets[0].data = Object.values(quantities);
+            window._boqChartB.update();
+        }
+    }, 100);
+
 }
 renderBOQ();
 
@@ -403,7 +539,8 @@ function renderDictionary(query = '') {
     
     displayItems.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'dict-card';
+        card.className = 'dict-card stagger-row';
+        card.style.animationDelay = `${(i % 12) * 0.05}s`;
         
         let mediaHtml = '';
         if (item.video) {
@@ -463,7 +600,8 @@ function renderDictionary(query = '') {
     
     displayItems.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'dict-card';
+        card.className = 'dict-card stagger-row';
+        card.style.animationDelay = `${(i % 12) * 0.05}s`;
         
         let mediaHtml = '';
         if (item.video) {
@@ -587,6 +725,8 @@ function renderProcurementTable(query = '') {
         const category = dictItem ? dictItem.category : 'Field Equipment';
         
         const tr = document.createElement('tr');
+        tr.className = 'stagger-row';
+        tr.style.animationDelay = `${(tbody.children.length % 20) * 0.05}s`;
         tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
         
         // Find if spec doc exists

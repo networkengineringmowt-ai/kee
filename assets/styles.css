@@ -418,3 +418,104 @@ tbody tr:hover td { background: rgba(56,189,248,0.05); }
     padding: 4px 8px;
     border-radius: 4px;
 }
+
+
+/* V3.0 Upgrades */
+
+/* Boot Sequence */
+.boot-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #020617;
+    display: flex; justify-content: center; align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+.boot-content {
+    width: 100%; max-width: 500px; padding: 2rem;
+    text-align: center; font-family: 'Inter', monospace;
+}
+.boot-logo {
+    font-size: 4rem; color: #38bdf8; margin-bottom: 1rem;
+    animation: pulseGlow 2s infinite alternate;
+}
+.boot-title {
+    font-family: 'Outfit'; font-size: 2.5rem; font-weight: 700; color: #f8fafc;
+    letter-spacing: 2px; margin-bottom: 2rem;
+}
+.boot-console {
+    background: rgba(0,0,0,0.5); border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 8px; padding: 1rem; text-align: left;
+    height: 120px; overflow-y: hidden; font-size: 0.85rem; color: #34d399;
+    margin-bottom: 2rem; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+.boot-line {
+    margin-bottom: 0.4rem; opacity: 0; animation: fadeInConsole 0.3s forwards;
+}
+.boot-progress-bar {
+    width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;
+}
+.boot-progress-fill {
+    width: 0%; height: 100%; background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+    transition: width 0.2s ease-out;
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 10px rgba(56,189,248,0.2); transform: scale(1); }
+    to { text-shadow: 0 0 30px rgba(56,189,248,0.8); transform: scale(1.05); }
+}
+@keyframes fadeInConsole { to { opacity: 1; } }
+
+/* Advanced Glassmorphism */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.glass-panel:hover {
+    box-shadow: 0 8px 32px 0 rgba(56,189,248,0.1) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Staggered Row Animation */
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.stagger-row {
+    opacity: 0;
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Search Highlighting */
+mark.search-highlight {
+    background-color: rgba(56, 189, 248, 0.3);
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    padding: 0 2px;
+}
+
+/* Radar Pulse Marker */
+.radar-pulse {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300%; height: 300%;
+    background: radial-gradient(circle, rgba(56,189,248,0.4) 0%, rgba(56,189,248,0) 70%);
+    border-radius: 50%;
+    animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+.radar-pulse.critical {
+    background: radial-gradient(circle, rgba(239,68,68,0.5) 0%, rgba(239,68,68,0) 70%);
+    animation: pulseRing 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulseRing {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}

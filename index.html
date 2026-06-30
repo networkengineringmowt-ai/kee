@@ -21,8 +21,24 @@
     
     <!-- Data -->
     <script src="data/dictionary-data.js"></script>
-</head>
+
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
 <body>
+
+    <!-- System Boot Sequence -->
+    <div id="bootSequence" class="boot-overlay">
+        <div class="boot-content">
+            <div class="boot-logo"><i class="fa-solid fa-satellite-dish"></i></div>
+            <h1 class="boot-title">KEE NEXUS V3.0</h1>
+            <div class="boot-console" id="bootConsole">
+                <div class="boot-line">Initiating secure connection...</div>
+            </div>
+            <div class="boot-progress-bar"><div class="boot-progress-fill" id="bootProgress"></div></div>
+        </div>
+    </div>
+
     <div class="app-container">
         <!-- Top Navigation -->
         <nav class="top-nav">
@@ -190,6 +206,22 @@
                     </div>
                 </div>
                 
+                
+                <!-- Analytics Dashboard -->
+                <div class="glass-panel" style="margin: 1.5rem; display: flex; flex-direction: column;">
+                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-chart-pie"></i> Financial & Component Analytics</h3>
+                    </div>
+                    <div style="display: flex; gap: 2rem; padding: 1.5rem; justify-content: space-around; flex-wrap: wrap;">
+                        <div style="width: 300px; height: 300px; position: relative;">
+                            <canvas id="boqDoughnutChart"></canvas>
+                        </div>
+                        <div style="flex: 1; min-width: 400px; height: 300px; position: relative;">
+                            <canvas id="boqBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="glass-panel" style="margin: 1.5rem; display: flex; flex-direction: column;">
                     <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
                         <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-file-invoice-dollar"></i> Detailed Financial BOQ</h3>
