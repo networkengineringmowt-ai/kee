@@ -3,304 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEE ETCS & ITS Interactive Scope</title>
-    <meta name="description" content="Kampala-Entebbe Expressway ITS Geospatial Installation Plan, Technical Specifications, Operations Manual, and Data Analytics Dashboard">
-    
-    <!-- Fonts & Icons -->
+    <meta name="theme-color" content="#111111">
+    <title>KEE ITS Command Center</title>
+    <link rel="icon" href="data:,">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQkEtB4G3q9LSjEkXx2UuTdp2g1l6u8=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/styles.css">
-    
-    <!-- Data -->
-    <script src="data/dictionary-data.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 
-    <!-- Chart.js for Analytics -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
+    <link rel="stylesheet" href="app.css">
+</head>
 <body>
-
-    <!-- System Boot Sequence -->
-    <div id="bootSequence" class="boot-overlay">
-        <div class="boot-content">
-            <div class="boot-logo"><i class="fa-solid fa-satellite-dish"></i></div>
-            <h1 class="boot-title">KEE ETCS & ITS Interactive Scope</h1>
-            <div class="boot-console" id="bootConsole">
-                <div class="boot-line">Initiating secure connection...</div>
-            </div>
-            <div class="boot-progress-bar"><div class="boot-progress-fill" id="bootProgress"></div></div>
-        </div>
-    </div>
-
-    <div class="app-container">
-        <!-- Top Navigation -->
-        <nav class="top-nav">
-            <div class="top-nav-left">
-                <div class="logo-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-                <div class="brand">
-                    <h2>KEE Nexus</h2>
-                    <span class="version">v2.0 Premium</span>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="brand-block">
+                <div class="brand-mark"><i class="fa-solid fa-satellite-dish"></i></div>
+                <div>
+                    <h1>KEE Nexus</h1>
+                    <p class="nexus-version">V2.0 PREMIUM</p>
                 </div>
             </div>
-            
-            <ul class="nav-links">
-                <li class="nav-item active" data-view="map">
-                    <i class="fa-solid fa-map-location-dot"></i>
+
+            <nav class="nav-links">
+                <button class="nav-item active" type="button" data-view="map">
+                    <i class="fa-solid fa-map"></i>
                     <span>Geospatial Map</span>
-                </li>
-                <li class="nav-item" data-view="boq">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <span>Bill of Quantities</span>
-                </li>
-                <li class="nav-item" data-view="specs">
-                    <i class="fa-solid fa-book-open-reader"></i>
+                </button>
+                <button class="nav-item" type="button" data-view="specs">
+                    <i class="fa-solid fa-book-open"></i>
                     <span>Tech Specs & Ops</span>
-                </li>
-                <li class="nav-item" data-view="dictionary">
-                    <i class="fa-solid fa-book-atlas"></i>
+                </button>
+                <button class="nav-item" type="button" data-view="explorer">
+                    <i class="fa-solid fa-book-journal-whills"></i>
                     <span>Data Dictionary</span>
-                </li>
-            </ul>
-            
-            <div class="top-nav-right">
-                <div class="status-indicator">
-                    <span class="pulse"></span> System Online
-                </div>
-                <div class="credit">Ministry of Works & Transport</div>
-            </div>
-        </nav>
+                </button>
+            </nav>
 
-        <!-- Main Content -->
+            <div class="topbar-actions">
+                <div class="status-block">
+                    <div class="system-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">System Online</span>
+                    </div>
+                    <p class="agency-text">Ministry of Works & Transport</p>
+                </div>
+            </div>
+        </header>
+
         <main class="main-content">
 
-            <!-- ═══ Data Dictionary View ═══ -->
-            <section id="dictionary-view" class="view-section">
-                <header class="section-header">
-                    <div class="header-titles">
-                        <span class="eyebrow">ITS Encyclopedia</span>
-                        <h1>Data Dictionary (1000+ Components)</h1>
-                    </div>
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <i class="fa-solid fa-search"></i>
-                            <input type="text" id="dictSearch" placeholder="Search components, specs, categories...">
+            <section id="map-view" class="view-section active" aria-labelledby="mapTitle">
+                <div class="workspace-grid map-workspace">
+                    <section class="map-stage panel">
+                        <div class="map-header">
+                            <div>
+                                <p class="nexus-eyebrow">GEOSPATIAL DEPLOYMENT CONSOLE</p>
+                                <h3 id="mapTitle" class="nexus-map-title">ITS Assets Along the Road Network</h3>
+                            </div>
                         </div>
-                    </div>
-                </header>
-                <div class="dictionary-grid-wrapper">
-                    <div class="dictionary-grid" id="dictionaryGrid">
-                        <!-- Cards will be dynamically populated here -->
-                    </div>
+
+                        <div class="metric-strip" id="mapMetricStrip">
+                            <article class="metric-card">
+                                <span>Total assets</span>
+                                <strong id="metricTotalAssets">0</strong>
+                            </article>
+                            <article class="metric-card">
+                                <span>Critical assets</span>
+                                <strong id="metricCriticalAssets">0</strong>
+                            </article>
+                            <article class="metric-card">
+                                <span>Corridors</span>
+                                <strong id="metricCorridors">0</strong>
+                            </article>
+                            <article class="metric-card">
+                                <span>Max chainage</span>
+                                <strong id="metricMaxKm">0 km</strong>
+                            </article>
+                        </div>
+
+                        <div class="control-deck">
+                            <label class="search-field">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="mapSearchInput" placeholder="Search asset, site, purpose">
+                            </label>
+                            <select id="mapCorridorFilter" class="control-select" aria-label="Filter by corridor">
+                                <option value="All">All corridors</option>
+                            </select>
+                            <select id="mapTypeFilter" class="control-select" aria-label="Filter by component">
+                                <option value="All">All components</option>
+                            </select>
+                            <select id="mapStatusFilter" class="control-select" aria-label="Filter by status">
+                                <option value="All">All statuses</option>
+                            </select>
+                            <select id="mapPriorityFilter" class="control-select" aria-label="Filter by priority">
+                                <option value="All">All priorities</option>
+                            </select>
+                            <button class="icon-button" type="button" id="mapResetBtn" title="Reset filters">
+                                <i class="fa-solid fa-rotate-left"></i>
+                            </button>
+                        </div>
+
+                        <div class="component-rail" id="componentChips" aria-label="Component quick filters"></div>
+
+                        <div class="map-canvas-wrap">
+                            <div id="unifiedMap" class="unified-map" role="application" aria-label="KEE ITS geospatial map"></div>
+                            <div class="map-legend" id="mapLegend"></div>
+                        </div>
+                    </section>
+
+
                 </div>
             </section>
 
-            <!-- ═══ Map View ═══ -->
-            <section id="map-view" class="view-section active">
-                <div class="map-layout">
-                    <div class="map-container-wrapper">
-                        <header class="overlay-header">
-                            <div class="header-titles">
-                                <span class="eyebrow">Geospatial Deployment Console</span>
-                                <h1 id="mapTitle">ITS Assets Along the Road Network</h1>
-                            </div>
-                            <div class="map-controls">
-                                <div class="legend" id="legend"></div>
-                            </div>
-                        </header>
-                        <div id="unifiedMap" class="unified-map"></div>
+            <section id="specs-view" class="view-section" aria-labelledby="specTitle">
+                <div class="view-header">
+                    <div>
+                        <p class="eyebrow">Contract intelligence</p>
+                        <h3 id="specTitle">Technical specification and operations reader</h3>
                     </div>
-                    
-                    <aside class="map-side-panel">
-                        <div class="glass-panel side-panel-inner">
-                            <div id="mapFiltersPane">
-                                <h3><i class="fa-solid fa-sliders"></i> Filters & Summary</h3>
-                                
-                                <div class="filter-group">
-                                    <label class="filter-label">Corridor</label>
-                                    <div class="segmented" id="corridorFilter"></div>
-                                </div>
-                                
-                                <div class="filter-group">
-                                    <label class="filter-label">Asset Type</label>
-                                    <div class="chip-grid" id="typeFilter"></div>
-                                </div>
-                                
-                                <div class="filter-group">
-                                    <label class="filter-label">Status</label>
-                                    <select id="mapStatusFilter" class="glass-select">
-                                        <option value="All">All statuses</option>
-                                        <option value="Existing interface">Existing interface</option>
-                                        <option value="Design">Design</option>
-                                        <option value="Planned">Planned</option>
-                                        <option value="Survey required">Survey required</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="filter-group">
-                                    <label class="filter-label">Search</label>
-                                    <input id="mapSearchInput" type="search" placeholder="Site, asset, purpose or ID" class="glass-input">
-                                </div>
-                                
-                                
-                                <div class="summary-grid" id="mapSummaryGrid"></div>
-                                
-                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                                    <h4 style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-bar"></i> Geographical Distribution</h4>
-                                    <div style="height: 150px; position: relative;"><canvas id="geoCorridorChart"></canvas></div>
-                                </div>
-                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                                    <h4 style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-pie"></i> Categorical Status</h4>
-                                    <div style="height: 150px; position: relative;"><canvas id="statusPieChart"></canvas></div>
-                                </div>
-
-                                
-                                <div class="export-actions mt-3">
-                                    <button id="exportGeojson" class="btn-export"><i class="fa-solid fa-download"></i> GeoJSON</button>
-                                    <button id="exportCsv" class="btn-export"><i class="fa-solid fa-file-csv"></i> CSV</button>
-                                </div>
-                            </div>
-
-                            <div id="mapDetailsPane" style="display: none;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                                    <h3 style="margin: 0;"><i class="fa-solid fa-crosshairs"></i> Selected Site</h3>
-                                    <button onclick="clearMapSelection()" style="background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                                </div>
-                                <div id="mapDetailPanel" class="detail-panel empty-detail">
-                                    <i class="fa-solid fa-hand-pointer"></i>
-                                    <p>Click a marker on the map</p>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-            </section>
-
-            <!-- ═══ BOQ View ═══ -->
-            <section id="boq-view" class="view-section">
-                <header class="view-header">
-                    <div class="header-titles">
-                        <h1>Bill of Quantities & Procurement</h1>
-                        <p class="subtitle">Master schedule of all components to be procured and installed.</p>
+                    <div class="spec-sub-tabs">
+                        <button class="spec-sub-tab active" data-target="specs-reader">Specification Library</button>
+                        <button class="spec-sub-tab" data-target="specs-boq">Priced Bill of Quantities</button>
                     </div>
-                </header>
-                
-                <div class="glass-panel" style="margin: 1.5rem; height: calc(100vh - 180px); display: flex; flex-direction: column; overflow: hidden; min-width: 0;">
-                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-list-check"></i> Master Procurement & Components Table</h3>
-                        <div class="search-box">
-                            <i class="fa-solid fa-search"></i>
-                            <input type="text" id="procurementSearch" placeholder="Filter components...">
-                        </div>
-                    </div>
-                    <div class="table-wrap" style="flex: 1; overflow: auto; padding: 0;">
-                        <table style="width: 100%; border-collapse: collapse; white-space: nowrap;">
-                            <thead>
-                                <tr style="background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 10; text-align: left;">
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Component / Item</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Category</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; text-align: right;">Total Qty</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Technical Spec Ref</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; text-align: center;">Cross-Links</th>
-                                </tr>
-                            </thead>
-                            <tbody id="procurementTableBody">
-                                <!-- Populated by JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                
-                <!-- Analytics Dashboard -->
-                <div class="glass-panel" style="margin: 1.5rem; display: flex; flex-direction: column;">
-                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-chart-pie"></i> Financial & Component Analytics</h3>
-                    </div>
-                    <div style="display: flex; gap: 2rem; padding: 1.5rem; justify-content: space-around; flex-wrap: wrap;">
-                        <div style="width: 300px; height: 300px; position: relative;">
-                            <canvas id="boqDoughnutChart"></canvas>
-                        </div>
-                        <div style="flex: 1; min-width: 400px; height: 300px; position: relative;">
-                            <canvas id="boqBarChart"></canvas>
-                        </div>
-                    </div>
+                    <label class="search-field view-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="specsSearchInput" placeholder="Search ANPR, VMS, HCI, testing">
+                    </label>
                 </div>
 
-                <div class="glass-panel" style="margin: 1.5rem; display: flex; flex-direction: column;">
-                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-file-invoice-dollar"></i> Detailed Financial BOQ</h3>
-                        <span id="boqTotalSum" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600;">$0</span>
-                    </div>
-                    <div class="table-wrap" style="flex: 1; overflow: auto; padding: 0; max-height: 500px;">
-                        <table style="width: 100%; border-collapse: collapse; white-space: nowrap;">
-                            <thead>
-                                <tr style="background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 10; text-align: left;">
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">BOQ ID</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Component</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Technical Specification</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">Qty</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">X (Lon) / Y (Lat)</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">Unit Cost (USD)</th>
-                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; text-align: right;">Amount (USD)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="boqTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
+                <div class="topic-rail" id="specTopicChips"></div>
 
-            <!-- ═══ Specs View ═══ -->
-            <section id="specs-view" class="view-section">
-                <header class="view-header">
-                    <div class="header-titles">
-                        <h1>Technical Specifications & Operations Manual</h1>
-                        <p class="subtitle">Deep dive into ITS requirements, procedures, and component details.</p>
-                    </div>
-                    <div class="search-container">
-                        <i class="fa-solid fa-search search-icon"></i>
-                        <input type="text" id="specsSearchInput" placeholder="Search components, procedures...">
-                    </div>
-                </header>
-                
-                <div class="specs-layout" style="height: calc(100vh - 180px); margin: 1.5rem;">
-                    <!-- Bottom Half: Document Reader -->
-                    <div style="display: flex; gap: 1.5rem; height: 400px;">
-                        <aside class="specs-toc glass-panel" style="flex: 0 0 350px;">
-                            <h3 style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0;"><i class="fa-solid fa-book-journal-whills"></i> Document Reader</h3>
-                            <div id="specsTocContainer" class="toc-container" style="height: calc(100% - 50px);"></div>
+                <div id="specs-reader" class="specs-content-pane active">
+                    <div class="workspace-grid reader-grid">
+                        <aside class="panel spec-nav">
+                            <div class="panel-heading compact">
+                                <h3>Document sections</h3>
+                                <span class="pill" id="specSectionCount">0</span>
+                            </div>
+                            <div id="specsTocContainer" class="toc-container"></div>
                         </aside>
-                        <div class="specs-content-area glass-panel" style="flex: 1;">
-                            <div id="specsBreadcrumb" class="breadcrumb">Select a document section</div>
+
+                        <article class="panel reader-panel">
+                            <div class="breadcrumb" id="specsBreadcrumb">Specification library</div>
                             <div id="specsContent" class="reader-content">
                                 <div class="empty-state">
-                                    <div class="empty-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
-                                    <h3>Document Reader</h3>
-                                    <p>Select a section from the table of contents to read detailed specifications and manuals.</p>
+                                    <i class="fa-solid fa-book-open"></i>
+                                    <h4>Specification ready</h4>
+                                    <p>Select a section from the document index.</p>
                                 </div>
                             </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div id="specs-boq" class="specs-content-pane">
+                    <div class="panel boq-panel">
+                        <div class="panel-heading compact">
+                            <h3>Fully Priced Bill of Quantities (Target: 7 Billion UGX)</h3>
+                        </div>
+                        <div class="table-wrap boq-table-wrap">
+                            <table class="dense-table boq-table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Unit</th>
+                                        <th>Quantity</th>
+                                        <th class="num-col">Rate (USD)</th>
+                                        <th class="num-col">Amount (USD)</th>
+                                        <th class="num-col highlight-col">Rate (UGX)</th>
+                                        <th class="num-col highlight-col">Amount (UGX)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="boqTableBody"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <section id="explorer-view" class="view-section" aria-labelledby="docsTitle">
+                <div class="view-header">
+                    <div>
+                        <p class="eyebrow">Procurement Library</p>
+                        <h3 id="docsTitle">Component Media Dictionary</h3>
+                    </div>
+                    <label class="search-field view-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="mediaSearchInput" placeholder="Search ANPR, VMS, Tolls...">
+                    </label>
+                </div>
+
+                <div class="media-grid" id="mediaGrid"></div>
+            </section>
+
+            <section id="global-view" class="view-section" aria-labelledby="globalTitle">
+                <div class="view-header">
+                    <div>
+                        <p class="eyebrow">Portfolio view</p>
+                        <h3 id="globalTitle">Cost, documents and deployment intelligence</h3>
+                    </div>
+                </div>
+
+                <div id="globalSummaryGrid" class="global-summary-grid"></div>
+
+                <div class="workspace-grid analytics-grid">
+                    <section class="panel chart-panel">
+                        <div class="panel-heading compact">
+                            <h3>Highest value documents</h3>
+                        </div>
+                        <div class="chart-wrapper"><canvas id="globalValueChart"></canvas></div>
+                    </section>
+                    <section class="panel chart-panel">
+                        <div class="panel-heading compact">
+                            <h3>Documents by item count</h3>
+                        </div>
+                        <div class="chart-wrapper"><canvas id="globalItemChart"></canvas></div>
+                    </section>
+                </div>
+            </section>
+
+            <section id="analytics-view" class="view-section" aria-labelledby="analyticsTitle">
+                <div class="view-header">
+                    <div>
+                        <p class="eyebrow">Extracted tables</p>
+                        <h3 id="analyticsTitle">Interactive workbook analytics</h3>
+                    </div>
+                    <select id="fileSelect" class="control-select wide-select" aria-label="Select data source">
+                        <option value="">Select data source</option>
+                    </select>
+                </div>
+
+                <div class="analytics-surface">
+                    <div id="loader" class="loader-overlay">
+                        <div class="spinner"></div>
+                        <span>Loading data</span>
+                    </div>
+
+                    <div id="initialState" class="panel empty-state tall">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <h4>No workbook selected</h4>
+                        <p>Select a data source from the menu.</p>
+                    </div>
+
+                    <div id="dashboardContent" class="dashboard-content">
+                        <div class="sheet-tabs" id="sheetTabs"></div>
+                        <div class="workspace-grid workbook-grid">
+                            <section class="panel table-panel">
+                                <div class="panel-heading compact">
+                                    <h3 id="tableTitle">Extracted data</h3>
+                                </div>
+                                <div class="table-container" id="tableContainer"></div>
+                            </section>
+                            <section class="panel chart-panel" id="chartsSection">
+                                <div class="panel-heading compact">
+                                    <h3>Visual insights</h3>
+                                </div>
+                                <div class="charts-container" id="chartsContainer"></div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
-    <!-- Data -->
-    <script src="data/road-network.js"></script>
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 id="videoModalTitle">Video Explainer</h3>
+                <button class="icon-button" id="closeVideoBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="video-container" id="videoContainer"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="road_network.js"></script>
     <script src="data/its-data.js"></script>
-    <script src="data/boq-data.js"></script>
-    <script src="data/docs-content.js"></script>
-    
-    <!-- App Logic -->
-    <script src="assets/app.js"></script>
+    <script src="data/boq_data.js"></script>
+    <script src="data/media_dictionary.js"></script>
+    <script src="docs_content.js"></script>
+    <script src="file_metadata.js"></script>
+    <script src="data_store.js"></script>
+    <script src="master_data.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

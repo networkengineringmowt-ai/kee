@@ -1,21 +1,191 @@
 window.ITS_GEOSPATIAL_DATA = {
   "corridors": [
     {
-      "id": "M20",
+      "id": "KEE",
       "name": "Kampala-Entebbe Expressway",
-      "color": "#38bdf8",
-      "status": "Operational",
-      "paths": []
+      "status": "Toll road pilot",
+      "lengthKm": 51.4,
+      "color": "#0f766e",
+      "note": "ETCS, CCH, payment, MVRS, RFID, ANPR, AVC, WIM and plaza queue integration.",
+      "paths": [
+        {
+          "id": "KEE-MAIN",
+          "name": "KEE main alignment",
+          "coordinates": [
+            [
+              0.314,
+              32.516
+            ],
+            [
+              0.292,
+              32.522
+            ],
+            [
+              0.252,
+              32.526
+            ],
+            [
+              0.226,
+              32.527
+            ],
+            [
+              0.198,
+              32.526
+            ],
+            [
+              0.166,
+              32.514
+            ],
+            [
+              0.126,
+              32.5
+            ],
+            [
+              0.096,
+              32.4885
+            ],
+            [
+              0.066,
+              32.472
+            ],
+            [
+              0.046,
+              32.444
+            ]
+          ]
+        },
+        {
+          "id": "KEE-SPUR",
+          "name": "Munyonyo spur",
+          "coordinates": [
+            [
+              0.247,
+              32.626
+            ],
+            [
+              0.239,
+              32.598
+            ],
+            [
+              0.232,
+              32.562
+            ],
+            [
+              0.226,
+              32.527
+            ]
+          ]
+        }
+      ]
     },
     {
-      "id": "A003",
-      "name": "Entebbe Airport Link",
-      "color": "#818cf8",
-      "status": "Operational",
-      "paths": []
+      "id": "KNBP",
+      "name": "Kampala Northern Bypass",
+      "status": "Urban bypass reliability",
+      "lengthKm": 22.5,
+      "color": "#2563eb",
+      "note": "Incident detection, congestion management, VMS, enforcement support and flood/weather monitoring.",
+      "paths": [
+        {
+          "id": "KNBP-MAIN",
+          "name": "Northern Bypass",
+          "coordinates": [
+            [
+              0.342,
+              32.507
+            ],
+            [
+              0.3462,
+              32.5466
+            ],
+            [
+              0.3528,
+              32.5728
+            ],
+            [
+              0.3602,
+              32.6018
+            ],
+            [
+              0.3643,
+              32.6334
+            ],
+            [
+              0.362,
+              32.662
+            ],
+            [
+              0.355,
+              32.692
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDC",
+      "name": "Entebbe Dual Carriageway",
+      "status": "Survey required",
+      "lengthKm": null,
+      "color": "#e4572e",
+      "note": "Survey-led extension corridor using the same ITS standards and central platform.",
+      "paths": [
+        {
+          "id": "EDC-MAIN",
+          "name": "Entebbe Road / Dual Carriageway",
+          "coordinates": [
+            [
+              0.313,
+              32.582
+            ],
+            [
+              0.293,
+              32.5728
+            ],
+            [
+              0.2524,
+              32.5621
+            ],
+            [
+              0.22,
+              32.542
+            ],
+            [
+              0.1882,
+              32.522
+            ],
+            [
+              0.158,
+              32.512
+            ],
+            [
+              0.126,
+              32.501
+            ],
+            [
+              0.096,
+              32.489
+            ],
+            [
+              0.07,
+              32.47
+            ],
+            [
+              0.05,
+              32.455
+            ]
+          ]
+        }
+      ]
     }
   ],
   "assetTypes": [
+    {
+      "id": "TOC",
+      "label": "Traffic Operations Centre",
+      "short": "TOC",
+      "color": "#111827"
+    },
     {
       "id": "Toll",
       "short": "TP",
@@ -29,28 +199,664 @@ window.ITS_GEOSPATIAL_DATA = {
       "color": "#3b82f6"
     },
     {
+      "id": "ANPR",
+      "label": "ANPR / AVI",
+      "short": "ANP",
+      "color": "#1d4ed8"
+    },
+    {
       "id": "VMS",
       "short": "VMS",
       "label": "Variable Message Sign",
       "color": "#f59e0b"
     },
     {
-      "id": "ATC",
-      "short": "ATC",
-      "label": "Traffic Counter",
-      "color": "#8b5cf6"
+      "id": "RWIS",
+      "label": "Weather / Flood sensor",
+      "short": "ENV",
+      "color": "#0891b2"
+    },
+    {
+      "id": "WIM",
+      "label": "WIM / freight",
+      "short": "WIM",
+      "color": "#be123c"
+    },
+    {
+      "id": "Cabinet",
+      "label": "Cabinet / network",
+      "short": "CAB",
+      "color": "#475569"
     },
     {
       "id": "Comms",
       "short": "FOC",
       "label": "Fiber Node",
       "color": "#ec4899"
+    },
+    {
+      "id": "ATC",
+      "short": "ATC",
+      "label": "Traffic Counter",
+      "color": "#8b5cf6"
     }
   ],
   "installations": [
     {
+      "id": "TOC-001",
+      "corridor": "KEE",
+      "type": "TOC",
+      "site": "Busega operations node",
+      "km": 0,
+      "lat": 0.314,
+      "lon": 32.516,
+      "status": "Design",
+      "phase": "0-1",
+      "priority": "Critical",
+      "purpose": "Central operator workstations, video wall, incident workbench and corridor command handoff.",
+      "power": "Utility + UPS + generator interface",
+      "comms": "Primary fibre, LTE backup",
+      "dependency": "TOC room readiness, authority network segmentation, operator staffing",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "TOL-KEE-001",
+      "corridor": "KEE",
+      "type": "Toll",
+      "site": "Busega toll interface",
+      "km": 1.2,
+      "lat": 0.303,
+      "lon": 32.519,
+      "status": "Existing interface",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "Lane controller, plaza server, ANPR, AVC, RFID and image evidence integration.",
+      "power": "Plaza power + UPS",
+      "comms": "Plaza LAN, fibre to TOC",
+      "dependency": "ETCS interface control document and toll operator access",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "TOL-KEE-002",
+      "corridor": "KEE",
+      "type": "Toll",
+      "site": "Kajjansi toll interface",
+      "km": 21.5,
+      "lat": 0.211,
+      "lon": 32.529,
+      "status": "Existing interface",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "Hybrid ETC transaction capture, queue monitoring and payment/CCH reconciliation evidence.",
+      "power": "Plaza power + UPS",
+      "comms": "Plaza LAN, fibre to TOC",
+      "dependency": "Payment gateway, CCH and MVRS sandbox tests",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "TOL-KEE-003",
+      "corridor": "KEE",
+      "type": "Toll",
+      "site": "Mpala / Abayita toll interface",
+      "km": 41.2,
+      "lat": 0.096,
+      "lon": 32.489,
+      "status": "Existing interface",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "RFID and ANPR passage evidence, AVC verification and offline transaction queueing.",
+      "power": "Plaza power + UPS",
+      "comms": "Plaza LAN, fibre to TOC",
+      "dependency": "Offline queue replay and reconciliation test",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "WIM-KEE-001",
+      "corridor": "KEE",
+      "type": "WIM",
+      "site": "KEE freight screening point",
+      "km": 18.4,
+      "lat": 0.226,
+      "lon": 32.527,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Overload pre-screening with ANPR, vehicle class and evidence package.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre preferred, LTE backup",
+      "dependency": "Civil slab, sensor calibration and enforcement workflow approval",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ANP-KEE-001",
+      "corridor": "KEE",
+      "type": "ANPR",
+      "site": "Busega gateway",
+      "km": 0.8,
+      "lat": 0.308,
+      "lon": 32.518,
+      "status": "Design",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "Entry/exit vehicle identity and exception-list screening.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre",
+      "dependency": "MVRS API gateway and plate capture acceptance test",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ANP-KEE-002",
+      "corridor": "KEE",
+      "type": "ANPR",
+      "site": "Kajjansi ramp cluster",
+      "km": 21.8,
+      "lat": 0.207,
+      "lon": 32.529,
+      "status": "Design",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "Vehicle passage correlation with RFID, AVC and plaza images.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre",
+      "dependency": "Lane geometry verification",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ANP-KEE-003",
+      "corridor": "KEE",
+      "type": "ANPR",
+      "site": "Entebbe airport approach",
+      "km": 50.7,
+      "lat": 0.046,
+      "lon": 32.444,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Terminal corridor identity evidence and abnormal traffic monitoring.",
+      "power": "Utility + UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "Airport approach stakeholder approval",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KEE-001",
+      "corridor": "KEE",
+      "type": "CCTV",
+      "site": "Busega interchange",
+      "km": 0.3,
+      "lat": 0.314,
+      "lon": 32.516,
+      "status": "Design",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "Interchange incident verification and queue build-up monitoring.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre",
+      "dependency": "Pole location and sightline survey",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KEE-002",
+      "corridor": "KEE",
+      "type": "CCTV",
+      "site": "Lweza / spur split",
+      "km": 14.6,
+      "lat": 0.252,
+      "lon": 32.526,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Stopped vehicle, wrong-way and debris detection at diverge/merge zone.",
+      "power": "Solar assist + UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "Mounting approval",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KEE-003",
+      "corridor": "KEE",
+      "type": "CCTV",
+      "site": "Kajjansi interchange",
+      "km": 21,
+      "lat": 0.226,
+      "lon": 32.527,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Incident detection, queue monitoring and VMS trigger evidence.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre",
+      "dependency": "Traffic management during installation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KEE-004",
+      "corridor": "KEE",
+      "type": "CCTV",
+      "site": "Abayita Ababiri junction",
+      "km": 40.8,
+      "lat": 0.096,
+      "lon": 32.4885,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Junction incident verification and airport-bound traffic monitoring.",
+      "power": "Utility + UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "Final pole coordinates",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "VMS-KEE-001",
+      "corridor": "KEE",
+      "type": "VMS",
+      "site": "Busega advance warning",
+      "km": 2.2,
+      "lat": 0.292,
+      "lon": 32.522,
+      "status": "Design",
+      "phase": "4",
+      "priority": "Critical",
+      "purpose": "Toll plaza queue, incident, closure and weather advisory messages.",
+      "power": "Utility + UPS",
+      "comms": "Fibre",
+      "dependency": "Message governance and sign gantry design",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "VMS-KEE-002",
+      "corridor": "KEE",
+      "type": "VMS",
+      "site": "Kajjansi southbound",
+      "km": 23,
+      "lat": 0.198,
+      "lon": 32.526,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Dynamic route guidance and plaza queue warning.",
+      "power": "Utility + UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "VMS foundation and visibility survey",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ENV-KEE-001",
+      "corridor": "KEE",
+      "type": "RWIS",
+      "site": "Low-lying flood watch",
+      "km": 28.5,
+      "lat": 0.166,
+      "lon": 32.514,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Rainfall, visibility and water-level alerting for TOC/VMS workflows.",
+      "power": "Solar + battery",
+      "comms": "LTE/fibre if available",
+      "dependency": "Hydrology and drainage hot-spot confirmation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAB-KEE-001",
+      "corridor": "KEE",
+      "type": "Cabinet",
+      "site": "Kajjansi field cabinet",
+      "km": 21,
+      "lat": 0.214,
+      "lon": 32.531,
+      "status": "Design",
+      "phase": "3",
+      "priority": "Critical",
+      "purpose": "Edge controller, PoE switch, UPS, surge protection and local device aggregation.",
+      "power": "Utility + UPS",
+      "comms": "Fibre + LTE",
+      "dependency": "Cabinet foundation and grounding",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "COM-KEE-001",
+      "corridor": "KEE",
+      "type": "Comms",
+      "site": "Munyonyo spur fibre node",
+      "km": 0,
+      "lat": 0.239,
+      "lon": 32.598,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Spur camera/VMS aggregation and redundant network path.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre ring segment",
+      "dependency": "Fibre route verification",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KNBP-001",
+      "corridor": "KNBP",
+      "type": "CCTV",
+      "site": "Busega / Northern Bypass tie-in",
+      "km": 0,
+      "lat": 0.342,
+      "lon": 32.507,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Urban bypass entry incident and congestion verification.",
+      "power": "Utility + UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "Joint corridor pole schedule",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KNBP-002",
+      "corridor": "KNBP",
+      "type": "CCTV",
+      "site": "Hoima Road interchange",
+      "km": 5.4,
+      "lat": 0.3462,
+      "lon": 32.5466,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Ramp queue, stopped vehicle and wrong-way detection.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "Interchange sightline survey",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KNBP-003",
+      "corridor": "KNBP",
+      "type": "CCTV",
+      "site": "Gayaza Road interchange",
+      "km": 10.2,
+      "lat": 0.3528,
+      "lon": 32.5728,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Incident verification and congestion trend monitoring.",
+      "power": "Cabinet UPS",
+      "comms": "Fibre",
+      "dependency": "Civil access and power tie-in",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-KNBP-004",
+      "corridor": "KNBP",
+      "type": "CCTV",
+      "site": "Ntinda / Kisaasi section",
+      "km": 14.6,
+      "lat": 0.3602,
+      "lon": 32.6018,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Queue and incident hot spot confirmation.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Final hot-spot ranking",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "VMS-KNBP-001",
+      "corridor": "KNBP",
+      "type": "VMS",
+      "site": "Western advance VMS",
+      "km": 2.5,
+      "lat": 0.346,
+      "lon": 32.535,
+      "status": "Planned",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Bypass congestion and route guidance messages before decision points.",
+      "power": "Utility + UPS",
+      "comms": "Fibre/LTE",
+      "dependency": "Message approval workflow",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "VMS-KNBP-002",
+      "corridor": "KNBP",
+      "type": "VMS",
+      "site": "Eastern advance VMS",
+      "km": 21,
+      "lat": 0.355,
+      "lon": 32.692,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Route guidance and closure warning for eastbound approaches.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Final sign location",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ENV-KNBP-001",
+      "corridor": "KNBP",
+      "type": "RWIS",
+      "site": "Drainage/flood watch section",
+      "km": 8.2,
+      "lat": 0.3495,
+      "lon": 32.5625,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "Medium",
+      "purpose": "Rainfall and surface water monitoring for incident trigger thresholds.",
+      "power": "Solar + battery",
+      "comms": "LTE",
+      "dependency": "Drainage maintenance hot-spot confirmation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAB-KNBP-001",
+      "corridor": "KNBP",
+      "type": "Cabinet",
+      "site": "Central bypass cabinet",
+      "km": 12,
+      "lat": 0.356,
+      "lon": 32.586,
+      "status": "Design",
+      "phase": "4",
+      "priority": "High",
+      "purpose": "Network aggregation for central KNBP cameras and sensors.",
+      "power": "Utility + UPS",
+      "comms": "Fibre + LTE",
+      "dependency": "Fibre route and cabinet foundation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ANP-KNBP-001",
+      "corridor": "KNBP",
+      "type": "ANPR",
+      "site": "Western enforcement screenline",
+      "km": 3.5,
+      "lat": 0.346,
+      "lon": 32.546,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "Medium",
+      "purpose": "Vehicle evidence support for enforcement and incident investigations.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Enforcement data-sharing decision",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-EDC-001",
+      "corridor": "EDC",
+      "type": "CCTV",
+      "site": "Kampala Road dual section",
+      "km": 0,
+      "lat": 0.313,
+      "lon": 32.582,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Urban approach congestion and incident verification.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "EDC corridor limit confirmation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-EDC-002",
+      "corridor": "EDC",
+      "type": "CCTV",
+      "site": "Zana / Namasuba section",
+      "km": 7.5,
+      "lat": 0.2524,
+      "lon": 32.5621,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "High-volume urban traffic monitoring and incident verification.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Pole and utility survey",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAM-EDC-003",
+      "corridor": "EDC",
+      "type": "CCTV",
+      "site": "Kajjansi town section",
+      "km": 13.4,
+      "lat": 0.22,
+      "lon": 32.542,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Intersection queue and incident monitoring.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Junction inventory",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ANP-EDC-001",
+      "corridor": "EDC",
+      "type": "ANPR",
+      "site": "EDC northern screenline",
+      "km": 3,
+      "lat": 0.293,
+      "lon": 32.5728,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "Medium",
+      "purpose": "Planning allowance for vehicle identity and enforcement evidence.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Policy decision on ANPR coverage",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ANP-EDC-002",
+      "corridor": "EDC",
+      "type": "ANPR",
+      "site": "EDC southern screenline",
+      "km": 31,
+      "lat": 0.07,
+      "lon": 32.47,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "Medium",
+      "purpose": "Vehicle identity evidence near Entebbe approach.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Final screenline approval",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "VMS-EDC-001",
+      "corridor": "EDC",
+      "type": "VMS",
+      "site": "Kampala outbound advisory",
+      "km": 1.5,
+      "lat": 0.303,
+      "lon": 32.578,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Travel advisory and incident warning for airport-bound traffic.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Sign visibility and gantry design",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "VMS-EDC-002",
+      "corridor": "EDC",
+      "type": "VMS",
+      "site": "Entebbe inbound advisory",
+      "km": 33,
+      "lat": 0.05,
+      "lon": 32.455,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Airport approach travel and safety messages.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Stakeholder approval and visual impact check",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "ENV-EDC-001",
+      "corridor": "EDC",
+      "type": "RWIS",
+      "site": "EDC drainage watch",
+      "km": 20,
+      "lat": 0.158,
+      "lon": 32.512,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "Medium",
+      "purpose": "Rainfall and flooding alerts for low-lying sections.",
+      "power": "Solar + battery",
+      "comms": "LTE",
+      "dependency": "Drainage and flood-prone point confirmation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "CAB-EDC-001",
+      "corridor": "EDC",
+      "type": "Cabinet",
+      "site": "EDC central cabinet",
+      "km": 18,
+      "lat": 0.1882,
+      "lon": 32.522,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Field-device aggregation, UPS, edge controller and LTE/fibre termination.",
+      "power": "Survey",
+      "comms": "Survey",
+      "dependency": "Fibre/power availability confirmation",
+      "source": "full-corridor-plan"
+    },
+    {
+      "id": "COM-EDC-001",
+      "corridor": "EDC",
+      "type": "Comms",
+      "site": "EDC fibre/LTE tie-in",
+      "km": 13.5,
+      "lat": 0.22,
+      "lon": 32.542,
+      "status": "Survey required",
+      "phase": "2",
+      "priority": "High",
+      "purpose": "Backhaul planning node for Entebbe Dual corridor devices.",
+      "power": "Survey",
+      "comms": "Fibre/LTE planning",
+      "dependency": "Telecom and utility coordination",
+      "source": "full-corridor-plan"
+    },
+    {
       "id": "ITS-Toll-001",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Busega Toll Plaza",
       "lat": 0.23610094334230128,
@@ -62,27 +868,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-002",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
       "lat": 0.20917535902232565,
       "lon": 32.58671885174494,
-      "km": 12.0,
+      "km": 12,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
       "purpose": "Mainline tolling at Kajjansi",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-003",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
       "lat": 0.2107701995962067,
@@ -94,27 +902,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Mpala",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-004",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Busega Approach VMS",
       "lat": 0.23686372004172374,
       "lon": 32.611917340650436,
-      "km": 2.0,
+      "km": 2,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Busega Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-005",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
       "lat": 0.20792073984143253,
@@ -126,27 +936,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Advisory messages before Kajjansi Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-006",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Mpala Approach VMS",
       "lat": 0.20917215352050073,
       "lon": 32.54554408048204,
-      "km": 22.0,
+      "km": 22,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Mpala Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-007",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
       "lat": 0.23610094334230128,
@@ -158,27 +970,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-008",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
       "lat": 0.22596123263551057,
       "lon": 32.60582204974343,
-      "km": 5.0,
+      "km": 5,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-009",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
       "lat": 0.21520065549984607,
@@ -190,11 +1004,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-010",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
       "lat": 0.21520065549984607,
@@ -206,27 +1021,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-011",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
       "lat": 0.2068066935810798,
       "lon": 32.597004261187166,
-      "km": 10.0,
+      "km": 10,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-012",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
       "lat": 0.20917535902232565,
@@ -238,43 +1055,46 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-013",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
       "lat": 0.21050584128351593,
       "lon": 32.57596430313595,
-      "km": 15.0,
+      "km": 15,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-014",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
       "lat": 0.21050584128351593,
       "lon": 32.57596430313595,
-      "km": 15.0,
+      "km": 15,
       "status": "Design",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-015",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
       "lat": 0.20973413474632113,
@@ -286,27 +1106,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-016",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
       "lat": 0.20868516744469373,
       "lon": 32.55393426666292,
-      "km": 20.0,
+      "km": 20,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-017",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
       "lat": 0.2107701995962067,
@@ -318,11 +1140,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-018",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
       "lat": 0.2107701995962067,
@@ -334,11 +1157,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-019",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 4 Monitoring",
       "lat": 0.33350219182305657,
@@ -350,11 +1174,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 4",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-020",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 3 Monitoring",
       "lat": 0.33415950527928107,
@@ -366,11 +1191,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-021",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Busega Toll Plaza",
       "lat": 0.3646783697284946,
@@ -382,27 +1208,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-022",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
       "lat": 0.35259080301475487,
       "lon": 32.5892325838658,
-      "km": 12.0,
+      "km": 12,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
       "purpose": "Mainline tolling at Kajjansi",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-023",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
       "lat": 0.33132988095447974,
@@ -414,27 +1242,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Mpala",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-024",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Busega Approach VMS",
       "lat": 0.3621369721104851,
       "lon": 32.64959623131977,
-      "km": 2.0,
+      "km": 2,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Busega Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-025",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
       "lat": 0.3556631631536289,
@@ -446,27 +1276,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Advisory messages before Kajjansi Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-026",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Mpala Approach VMS",
       "lat": 0.33434484102256123,
       "lon": 32.52876116112466,
-      "km": 22.0,
+      "km": 22,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Mpala Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-027",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
       "lat": 0.3646783697284946,
@@ -478,27 +1310,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-028",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
       "lat": 0.3644108943662679,
       "lon": 32.633223087328474,
-      "km": 5.0,
+      "km": 5,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-029",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
       "lat": 0.36881445109852407,
@@ -510,11 +1344,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-030",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
       "lat": 0.36881445109852407,
@@ -526,27 +1361,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-031",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
       "lat": 0.36200442550665934,
       "lon": 32.60287388210163,
-      "km": 10.0,
+      "km": 10,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-032",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
       "lat": 0.35259080301475487,
@@ -558,43 +1395,46 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-033",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
       "lat": 0.3527045744414202,
       "lon": 32.57336087957072,
-      "km": 15.0,
+      "km": 15,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-034",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
       "lat": 0.3527045744414202,
       "lon": 32.57336087957072,
-      "km": 15.0,
+      "km": 15,
       "status": "Design",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-035",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
       "lat": 0.3475218681144204,
@@ -606,27 +1446,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-036",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
       "lat": 0.34397211611135137,
       "lon": 32.53915051462635,
-      "km": 20.0,
+      "km": 20,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-037",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
       "lat": 0.33132988095447974,
@@ -638,11 +1480,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-038",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
       "lat": 0.33132988095447974,
@@ -654,11 +1497,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-039",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 4 Monitoring",
       "lat": 0.34475035467318155,
@@ -670,11 +1514,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namungoona Interchange Slip 4",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-040",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Bwaise Interchange Slip 3 Monitoring",
       "lat": 0.3495819385715329,
@@ -686,11 +1531,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Bwaise Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-041",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 9 Monitoring",
       "lat": 0.35057361547613464,
@@ -702,11 +1548,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 9",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-042",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 4 Monitoring",
       "lat": 0.3544159017922394,
@@ -718,11 +1565,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 4",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-043",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 5 Monitoring",
       "lat": 0.3522502207048259,
@@ -734,11 +1582,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 5",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-044",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 10 Monitoring",
       "lat": 0.35265904589656877,
@@ -750,11 +1599,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 10",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-045",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 8 Monitoring",
       "lat": 0.35192859755894385,
@@ -766,11 +1616,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 8",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-046",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 7 Monitoring",
       "lat": 0.3645146224791782,
@@ -782,11 +1633,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 7",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-047",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 2 Monitoring",
       "lat": 0.366150164422511,
@@ -798,11 +1650,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-048",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 6 Monitoring",
       "lat": 0.36416304866815474,
@@ -814,11 +1667,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 6",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-049",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 3 Monitoring",
       "lat": 0.3657448840980246,
@@ -830,11 +1684,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-050",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 1 Monitoring",
       "lat": 0.3649287500091243,
@@ -846,11 +1701,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-051",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 10 Monitoring",
       "lat": 0.3655826499308243,
@@ -862,11 +1718,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 10",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-052",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 6 Monitoring",
       "lat": 0.3615532468829734,
@@ -878,11 +1735,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 6",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-053",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 3 Monitoring",
       "lat": 0.36361546106264153,
@@ -894,11 +1752,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-054",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 4 Monitoring",
       "lat": 0.36396736862378093,
@@ -910,11 +1769,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 4",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-055",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 5 Monitoring",
       "lat": 0.36353745022146744,
@@ -926,11 +1786,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 5",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-056",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 2 Monitoring",
       "lat": 0.3501586639540418,
@@ -942,11 +1803,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namboole Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-057",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 3 Monitoring",
       "lat": 0.349860904000988,
@@ -958,11 +1820,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namboole Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-058",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Busega Toll Plaza",
       "lat": 0.3314575414694892,
@@ -974,27 +1837,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-059",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
       "lat": 0.3526790600915879,
       "lon": 32.589210359415645,
-      "km": 12.0,
+      "km": 12,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
       "purpose": "Mainline tolling at Kajjansi",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-060",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
       "lat": 0.36473469148479004,
@@ -1006,27 +1871,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Mpala",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-061",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Busega Approach VMS",
       "lat": 0.3284028819833691,
       "lon": 32.52476387265726,
-      "km": 2.0,
+      "km": 2,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Busega Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-062",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
       "lat": 0.3499690011222568,
@@ -1038,27 +1905,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Advisory messages before Kajjansi Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-063",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Mpala Approach VMS",
       "lat": 0.3665183014278197,
       "lon": 32.644257810646934,
-      "km": 22.0,
+      "km": 22,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Mpala Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-064",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
       "lat": 0.3314575414694892,
@@ -1070,27 +1939,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-065",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
       "lat": 0.34411871422731627,
       "lon": 32.53906429464574,
-      "km": 5.0,
+      "km": 5,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-066",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
       "lat": 0.34767735353664847,
@@ -1102,11 +1973,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-067",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
       "lat": 0.34767735353664847,
@@ -1118,27 +1990,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-068",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
       "lat": 0.35286799057112234,
       "lon": 32.573320847579744,
-      "km": 10.0,
+      "km": 10,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-069",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
       "lat": 0.3526790600915879,
@@ -1150,43 +2024,46 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-070",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
       "lat": 0.36214887576980165,
       "lon": 32.60281143246702,
-      "km": 15.0,
+      "km": 15,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-071",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
       "lat": 0.36214887576980165,
       "lon": 32.60281143246702,
-      "km": 15.0,
+      "km": 15,
       "status": "Design",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-072",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
       "lat": 0.3689069080375551,
@@ -1198,27 +2075,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-073",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
       "lat": 0.3644941885922282,
       "lon": 32.633322395439606,
-      "km": 20.0,
+      "km": 20,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-074",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
       "lat": 0.36473469148479004,
@@ -1230,11 +2109,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-075",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
       "lat": 0.36473469148479004,
@@ -1246,11 +2126,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-076",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Busega Toll Plaza",
       "lat": 0.12410357158750256,
@@ -1262,27 +2143,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-077",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
       "lat": 0.2102961990149038,
       "lon": 32.53002701696637,
-      "km": 12.0,
+      "km": 12,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
       "purpose": "Mainline tolling at Kajjansi",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-078",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
       "lat": 0.29518629875628377,
@@ -1294,27 +2177,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Mpala",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-079",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Busega Approach VMS",
       "lat": 0.11959753293084663,
       "lon": 32.511565254246484,
-      "km": 2.0,
+      "km": 2,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Busega Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-080",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
       "lat": 0.20605890323591505,
@@ -1326,27 +2211,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Advisory messages before Kajjansi Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-081",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Mpala Approach VMS",
       "lat": 0.29073714676030915,
       "lon": 32.51150459084902,
-      "km": 22.0,
+      "km": 22,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Mpala Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-082",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
       "lat": 0.12410357158750256,
@@ -1358,27 +2245,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-083",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
       "lat": 0.14656220972409897,
       "lon": 32.51051987481349,
-      "km": 5.0,
+      "km": 5,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-084",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
       "lat": 0.16874082071780683,
@@ -1390,11 +2279,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-085",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
       "lat": 0.16874082071780683,
@@ -1406,27 +2296,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-086",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
       "lat": 0.18844830687753283,
       "lon": 32.52492802777132,
-      "km": 10.0,
+      "km": 10,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-087",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
       "lat": 0.2102961990149038,
@@ -1438,43 +2330,46 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-088",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
       "lat": 0.23084411786328063,
       "lon": 32.52396086604408,
-      "km": 15.0,
+      "km": 15,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-089",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
       "lat": 0.23084411786328063,
       "lon": 32.52396086604408,
-      "km": 15.0,
+      "km": 15,
       "status": "Design",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-090",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
       "lat": 0.25318478087826146,
@@ -1486,27 +2381,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-091",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
       "lat": 0.2748802199239951,
       "lon": 32.51834691752366,
-      "km": 20.0,
+      "km": 20,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-092",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
       "lat": 0.29518629875628377,
@@ -1518,11 +2415,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-093",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
       "lat": 0.29518629875628377,
@@ -1534,11 +2432,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-094",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Busega Toll Plaza",
       "lat": 0.2108723022407088,
@@ -1550,27 +2449,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-095",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
       "lat": 0.20928796294889052,
       "lon": 32.58680612991699,
-      "km": 12.0,
+      "km": 12,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
       "purpose": "Mainline tolling at Kajjansi",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-096",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
       "lat": 0.23619415545882327,
@@ -1582,27 +2483,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Mpala",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-097",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Busega Approach VMS",
       "lat": 0.2122323249354681,
       "lon": 32.54231087407612,
-      "km": 2.0,
+      "km": 2,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Busega Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-098",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
       "lat": 0.21033065082035604,
@@ -1614,27 +2517,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Advisory messages before Kajjansi Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-099",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Mpala Approach VMS",
       "lat": 0.23456559473455835,
       "lon": 32.608342231687075,
-      "km": 22.0,
+      "km": 22,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Mpala Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-100",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
       "lat": 0.2108723022407088,
@@ -1646,27 +2551,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-101",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
       "lat": 0.2087904193718798,
       "lon": 32.55398543914599,
-      "km": 5.0,
+      "km": 5,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-102",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
       "lat": 0.20982276138502506,
@@ -1678,11 +2585,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-103",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
       "lat": 0.20982276138502506,
@@ -1694,27 +2602,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-104",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
       "lat": 0.21051818314379436,
       "lon": 32.57602073246204,
-      "km": 10.0,
+      "km": 10,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-105",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
       "lat": 0.20928796294889052,
@@ -1726,43 +2636,46 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-106",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
       "lat": 0.20690775599323702,
       "lon": 32.597046512162215,
-      "km": 15.0,
+      "km": 15,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-107",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
       "lat": 0.20690775599323702,
       "lon": 32.597046512162215,
-      "km": 15.0,
+      "km": 15,
       "status": "Design",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-108",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
       "lat": 0.21531827224151012,
@@ -1774,27 +2687,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-109",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
       "lat": 0.2260972131886198,
       "lon": 32.60574022446766,
-      "km": 20.0,
+      "km": 20,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-110",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
       "lat": 0.23619415545882327,
@@ -1806,11 +2721,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-111",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
       "lat": 0.23619415545882327,
@@ -1822,11 +2738,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-112",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Busega Toll Plaza",
       "lat": 0.2952661735420731,
@@ -1838,27 +2755,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-113",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
       "lat": 0.2108671963654355,
       "lon": 32.53032964137609,
-      "km": 12.0,
+      "km": 12,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
       "purpose": "Mainline tolling at Kajjansi",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-Toll-114",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
       "lat": 0.12524586421235415,
@@ -1870,27 +2789,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline tolling at Mpala",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-115",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Busega Approach VMS",
       "lat": 0.2997367466064631,
       "lon": 32.51257158060193,
-      "km": 2.0,
+      "km": 2,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Busega Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-116",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
       "lat": 0.2152271381311742,
@@ -1902,27 +2823,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Advisory messages before Kajjansi Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-VMS-117",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "VMS",
       "site": "Mpala Approach VMS",
       "lat": 0.12972555631516125,
       "lon": 32.51120082046716,
-      "km": 22.0,
+      "km": 22,
       "status": "Planned",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Advisory messages before Mpala Plaza",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-118",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
       "lat": 0.2952661735420731,
@@ -1934,27 +2857,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-119",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
       "lat": 0.2750485095124156,
       "lon": 32.51825984607246,
-      "km": 5.0,
+      "km": 5,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-120",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
       "lat": 0.25353147515625163,
@@ -1966,11 +2891,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-121",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
       "lat": 0.25353147515625163,
@@ -1982,27 +2908,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-122",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
       "lat": 0.23129895824922064,
       "lon": 32.52386628737126,
-      "km": 10.0,
+      "km": 10,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-123",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
       "lat": 0.2108671963654355,
@@ -2014,43 +2942,46 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-124",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
       "lat": 0.18916581738977442,
       "lon": 32.52520650982399,
-      "km": 15.0,
+      "km": 15,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-125",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
       "lat": 0.18916581738977442,
       "lon": 32.52520650982399,
-      "km": 15.0,
+      "km": 15,
       "status": "Design",
       "phase": "Phase 1",
       "priority": "High",
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-126",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
       "lat": 0.16959214411651408,
@@ -2062,27 +2993,29 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-127",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
       "lat": 0.14756871278013292,
       "lon": 32.510678173757135,
-      "km": 20.0,
+      "km": 20,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-128",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
       "lat": 0.12524586421235415,
@@ -2094,11 +3027,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-ATC-129",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
       "lat": 0.12524586421235415,
@@ -2110,11 +3044,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Vehicle classification and volume counting",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-130",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 11 Monitoring",
       "lat": 0.36354669808247425,
@@ -2126,11 +3061,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 11",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-131",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kalerwe Interchange Slip 1 Monitoring",
       "lat": 0.3529964472537025,
@@ -2142,11 +3078,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kalerwe Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-132",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kalerwe Interchange Slip 2 Monitoring",
       "lat": 0.3525319694780548,
@@ -2158,11 +3095,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kalerwe Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-133",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 1 Monitoring",
       "lat": 0.3323553620783899,
@@ -2174,11 +3112,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-134",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 3 Monitoring",
       "lat": 0.3443010948285772,
@@ -2190,11 +3129,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namungoona Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-135",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 1 Monitoring",
       "lat": 0.34610234531632417,
@@ -2206,11 +3146,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namungoona Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-136",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Bwaise Interchange Slip 2 Monitoring",
       "lat": 0.3491298309537697,
@@ -2222,11 +3163,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Bwaise Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-137",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kalerwe Interchange Slip 3 Monitoring",
       "lat": 0.35151086931963027,
@@ -2238,11 +3180,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kalerwe Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-138",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 3 Monitoring",
       "lat": 0.3544653885645415,
@@ -2254,11 +3197,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-139",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 2 Monitoring",
       "lat": 0.3527197375335821,
@@ -2270,11 +3214,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-140",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 7 Monitoring",
       "lat": 0.35056362519432577,
@@ -2286,11 +3231,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 7",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-141",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 6 Monitoring",
       "lat": 0.35213380341836437,
@@ -2302,11 +3248,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 6",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-142",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 1 Monitoring",
       "lat": 0.3524035066632241,
@@ -2318,11 +3265,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kyebando Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-143",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 5 Monitoring",
       "lat": 0.36419627503638435,
@@ -2334,11 +3282,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 5",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-144",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 4 Monitoring",
       "lat": 0.36422994747044324,
@@ -2350,11 +3299,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 4",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-145",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 8 Monitoring",
       "lat": 0.3660756123219199,
@@ -2366,11 +3316,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Kisaasi Interchange Slip 8",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-146",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 9 Monitoring",
       "lat": 0.36339001859634645,
@@ -2382,11 +3333,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 9",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-147",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 8 Monitoring",
       "lat": 0.3632968833363348,
@@ -2398,11 +3350,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 8",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-148",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 7 Monitoring",
       "lat": 0.36182330242630306,
@@ -2414,11 +3367,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 7",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-149",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 2 Monitoring",
       "lat": 0.36539505520797955,
@@ -2430,11 +3384,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-150",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 1 Monitoring",
       "lat": 0.363345873754736,
@@ -2446,11 +3401,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Naalya Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-151",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 4 Monitoring",
       "lat": 0.3476452809672618,
@@ -2462,11 +3418,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namboole Interchange Slip 4",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-152",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 5 Monitoring",
       "lat": 0.3479396747553646,
@@ -2478,11 +3435,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namboole Interchange Slip 5",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-153",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 1 Monitoring",
       "lat": 0.34812118969467926,
@@ -2494,11 +3452,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namboole Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-154",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 2 Monitoring",
       "lat": 0.33248114533691375,
@@ -2510,11 +3469,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-155",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 5 Monitoring",
       "lat": 0.3317029867884569,
@@ -2526,11 +3486,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 5",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-156",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 8 Monitoring",
       "lat": 0.33029704193107084,
@@ -2542,11 +3503,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 8",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-157",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 9 Monitoring",
       "lat": 0.3323622463836745,
@@ -2558,11 +3520,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 9",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-158",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 6 Monitoring",
       "lat": 0.33162114279462435,
@@ -2574,11 +3537,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 6",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-159",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 7 Monitoring",
       "lat": 0.3303785917233503,
@@ -2590,11 +3554,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Masanafu Interchange Slip 7",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-160",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Busega Interchange Slip 3 Monitoring",
       "lat": 0.3129436273929379,
@@ -2606,11 +3571,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Busega Interchange Slip 3",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-161",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Bwaise Interchange Slip 1 Monitoring",
       "lat": 0.3516884489879284,
@@ -2622,11 +3588,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Bwaise Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-162",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 2 Monitoring",
       "lat": 0.345631133775608,
@@ -2638,11 +3605,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Namungoona Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-163",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Busega Interchange Slip 1 Monitoring",
       "lat": 0.3093472943444417,
@@ -2654,11 +3622,12 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Busega Interchange Slip 1",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     },
     {
       "id": "ITS-CCTV-164",
-      "corridor": "M20",
+      "corridor": "KEE",
       "type": "CCTV",
       "site": "Busega Interchange Slip 2 Monitoring",
       "lat": 0.3137529447134953,
@@ -2670,7 +3639,8 @@ window.ITS_GEOSPATIAL_DATA = {
       "purpose": "Interchange monitoring for Busega Interchange Slip 2",
       "power": "Solar/Mains",
       "comms": "FOC Core",
-      "dependency": "None"
+      "dependency": "None",
+      "source": "dense-kee-register"
     }
   ]
 };
