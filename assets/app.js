@@ -355,6 +355,9 @@ function renderBOQ() {
         const costCol = row.unit_cost_usd ? `$${parseFloat(strToNum(row.unit_cost_usd)).toLocaleString()}` : `<span style="color:var(--text-muted)">-</span>`;
         const totalCol = row.total_cost_usd ? `<strong style="color:#e2e8f0">$${parseFloat(strToNum(row.total_cost_usd)).toLocaleString()}</strong>` : `<span style="color:var(--text-muted)">-</span>`;
         
+        const x_lon = row.x_lon !== undefined ? row.x_lon.toFixed(5) : '-';
+        const y_lat = row.y_lat !== undefined ? row.y_lat.toFixed(5) : '-';
+        
         tr.innerHTML = `
             <td style="padding: 0.8rem 1.5rem; font-family: monospace;">${idCol}</td>
             <td style="padding: 0.8rem 1.5rem;">
@@ -364,7 +367,7 @@ function renderBOQ() {
             <td style="padding: 0.8rem 1.5rem; font-size: 0.8rem; color: #94a3b8; max-width: 300px; line-height: 1.4;">${row.spec || '-'}</td>
             <td style="padding: 0.8rem 1.5rem; text-align: right; font-weight: 600; font-size: 0.85rem;">${row.qty || '-'}</td>
             <td style="padding: 0.8rem 1.5rem; text-align: right; font-family: monospace; font-size: 0.75rem; color: var(--text-muted);">
-                ${row.x_lon.toFixed(5)}<br>${row.y_lat.toFixed(5)}
+                ${x_lon}<br>${y_lat}
             </td>
             <td style="padding: 0.8rem 1.5rem; text-align: right; font-size:0.85rem; color: #94a3b8;">${costCol}</td>
             <td style="padding: 0.8rem 1.5rem; text-align: right; font-size:0.85rem;">${totalCol}</td>
