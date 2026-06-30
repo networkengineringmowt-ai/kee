@@ -6,10 +6,10 @@ window.BOQ_DATA = [
     "x_lon": 32.5029,
     "y_lat": 0.31682,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -20,9 +20,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -33,9 +33,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -46,9 +46,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -59,9 +59,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -72,9 +72,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -85,9 +85,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -98,9 +98,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -111,9 +111,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -124,9 +124,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -137,9 +137,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -150,9 +150,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -163,9 +163,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -176,9 +176,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -189,9 +189,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -202,9 +202,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -215,9 +215,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -228,9 +228,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -241,9 +241,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -254,9 +254,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -267,9 +267,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -280,9 +280,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -293,9 +293,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -306,9 +306,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -319,9 +319,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -332,9 +332,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -345,9 +345,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -358,9 +358,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -371,9 +371,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -384,9 +384,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -397,9 +397,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -410,9 +410,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -423,9 +423,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -436,9 +436,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -449,9 +449,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -462,9 +462,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -474,10 +474,10 @@ window.BOQ_DATA = [
     "x_lon": 32.5029,
     "y_lat": 0.31682,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -488,9 +488,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -501,9 +501,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -514,9 +514,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -527,9 +527,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -540,9 +540,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -553,9 +553,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -566,9 +566,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -579,9 +579,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -592,9 +592,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -605,9 +605,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -618,9 +618,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -631,9 +631,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -644,9 +644,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -657,9 +657,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -670,9 +670,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -683,9 +683,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -696,9 +696,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -709,9 +709,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -722,9 +722,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -735,9 +735,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -748,9 +748,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -761,9 +761,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -774,9 +774,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -787,9 +787,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -800,9 +800,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -813,9 +813,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -826,9 +826,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -839,9 +839,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -852,9 +852,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -865,9 +865,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -878,9 +878,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -891,9 +891,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -904,9 +904,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -917,9 +917,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -930,9 +930,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -942,10 +942,10 @@ window.BOQ_DATA = [
     "x_lon": 32.5029,
     "y_lat": 0.31682,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -956,9 +956,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -969,9 +969,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -982,9 +982,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -995,9 +995,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -1008,9 +1008,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1021,9 +1021,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1034,9 +1034,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1047,9 +1047,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1060,9 +1060,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -1073,9 +1073,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1086,9 +1086,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1099,9 +1099,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1112,9 +1112,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -1125,9 +1125,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1138,9 +1138,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1151,9 +1151,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1164,9 +1164,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1177,9 +1177,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1190,9 +1190,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1203,9 +1203,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -1216,9 +1216,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1229,9 +1229,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1242,9 +1242,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1255,9 +1255,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1268,9 +1268,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1281,9 +1281,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1294,9 +1294,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1307,9 +1307,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1320,9 +1320,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1333,9 +1333,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1346,9 +1346,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1359,9 +1359,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1372,9 +1372,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -1385,9 +1385,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -1398,9 +1398,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -1410,10 +1410,10 @@ window.BOQ_DATA = [
     "x_lon": 32.5029,
     "y_lat": 0.31682,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -1424,9 +1424,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1437,9 +1437,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1450,9 +1450,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -1463,9 +1463,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -1476,9 +1476,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1489,9 +1489,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1502,9 +1502,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1515,9 +1515,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1528,9 +1528,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -1541,9 +1541,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1554,9 +1554,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1567,9 +1567,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1580,9 +1580,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -1593,9 +1593,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1606,9 +1606,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1619,9 +1619,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1632,9 +1632,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1645,9 +1645,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1658,9 +1658,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1671,9 +1671,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -1684,9 +1684,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1697,9 +1697,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1710,9 +1710,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1723,9 +1723,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1736,9 +1736,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1749,9 +1749,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1762,9 +1762,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -1775,9 +1775,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1788,9 +1788,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1801,9 +1801,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1814,9 +1814,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1827,9 +1827,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -1840,9 +1840,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -1853,9 +1853,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -1866,9 +1866,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -1878,10 +1878,10 @@ window.BOQ_DATA = [
     "x_lon": 32.5029,
     "y_lat": 0.31682,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -1892,9 +1892,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1905,9 +1905,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1918,9 +1918,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -1931,9 +1931,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -1944,9 +1944,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1957,9 +1957,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1970,9 +1970,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -1983,9 +1983,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -1996,9 +1996,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2009,9 +2009,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2022,9 +2022,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2035,9 +2035,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2048,9 +2048,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2061,9 +2061,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2074,9 +2074,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2087,9 +2087,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2100,9 +2100,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2113,9 +2113,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2126,9 +2126,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2139,9 +2139,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2152,9 +2152,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2165,9 +2165,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2178,9 +2178,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2191,9 +2191,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2204,9 +2204,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2217,9 +2217,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2230,9 +2230,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2243,9 +2243,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2256,9 +2256,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2269,9 +2269,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2282,9 +2282,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2295,9 +2295,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2308,9 +2308,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -2321,9 +2321,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -2334,9 +2334,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -2346,10 +2346,10 @@ window.BOQ_DATA = [
     "x_lon": 32.5029,
     "y_lat": 0.31682,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -2360,9 +2360,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2373,9 +2373,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2386,9 +2386,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -2399,9 +2399,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -2412,9 +2412,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2425,9 +2425,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2438,9 +2438,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2451,9 +2451,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2464,9 +2464,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2477,9 +2477,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2490,9 +2490,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2503,9 +2503,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2516,9 +2516,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2529,9 +2529,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2542,9 +2542,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2555,9 +2555,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2568,9 +2568,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2581,9 +2581,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2594,9 +2594,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2607,9 +2607,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2620,9 +2620,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2633,9 +2633,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2646,9 +2646,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2659,9 +2659,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2672,9 +2672,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2685,9 +2685,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2698,9 +2698,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -2711,9 +2711,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2724,9 +2724,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2737,9 +2737,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2750,9 +2750,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2763,9 +2763,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2776,9 +2776,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -2789,9 +2789,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -2802,9 +2802,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -2814,10 +2814,10 @@ window.BOQ_DATA = [
     "x_lon": 32.55395,
     "y_lat": 0.21852,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -2828,9 +2828,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2841,9 +2841,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2854,9 +2854,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -2867,9 +2867,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -2880,9 +2880,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2893,9 +2893,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2906,9 +2906,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -2919,9 +2919,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -2932,9 +2932,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2945,9 +2945,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2958,9 +2958,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2971,9 +2971,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -2984,9 +2984,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -2997,9 +2997,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3010,9 +3010,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3023,9 +3023,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3036,9 +3036,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3049,9 +3049,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3062,9 +3062,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3075,9 +3075,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -3088,9 +3088,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3101,9 +3101,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3114,9 +3114,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3127,9 +3127,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3140,9 +3140,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3153,9 +3153,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3166,9 +3166,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3179,9 +3179,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3192,9 +3192,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3205,9 +3205,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3218,9 +3218,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3231,9 +3231,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3244,9 +3244,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -3257,9 +3257,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -3270,9 +3270,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -3282,10 +3282,10 @@ window.BOQ_DATA = [
     "x_lon": 32.55395,
     "y_lat": 0.21852,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -3296,9 +3296,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3309,9 +3309,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3322,9 +3322,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -3335,9 +3335,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -3348,9 +3348,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3361,9 +3361,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3374,9 +3374,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3387,9 +3387,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3400,9 +3400,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -3413,9 +3413,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3426,9 +3426,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3439,9 +3439,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3452,9 +3452,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -3465,9 +3465,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3478,9 +3478,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3491,9 +3491,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3504,9 +3504,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3517,9 +3517,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3530,9 +3530,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3543,9 +3543,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -3556,9 +3556,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3569,9 +3569,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3582,9 +3582,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3595,9 +3595,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3608,9 +3608,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3621,9 +3621,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3634,9 +3634,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3647,9 +3647,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3660,9 +3660,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3673,9 +3673,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3686,9 +3686,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3699,9 +3699,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3712,9 +3712,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -3725,9 +3725,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -3738,9 +3738,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -3750,10 +3750,10 @@ window.BOQ_DATA = [
     "x_lon": 32.55395,
     "y_lat": 0.21852,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -3764,9 +3764,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3777,9 +3777,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3790,9 +3790,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -3803,9 +3803,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -3816,9 +3816,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3829,9 +3829,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3842,9 +3842,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -3855,9 +3855,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3868,9 +3868,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -3881,9 +3881,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3894,9 +3894,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3907,9 +3907,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3920,9 +3920,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -3933,9 +3933,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -3946,9 +3946,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3959,9 +3959,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3972,9 +3972,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -3985,9 +3985,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -3998,9 +3998,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4011,9 +4011,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4024,9 +4024,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4037,9 +4037,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4050,9 +4050,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4063,9 +4063,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4076,9 +4076,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4089,9 +4089,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4102,9 +4102,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4115,9 +4115,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4128,9 +4128,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4141,9 +4141,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4154,9 +4154,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4167,9 +4167,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4180,9 +4180,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -4193,9 +4193,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -4206,9 +4206,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -4218,10 +4218,10 @@ window.BOQ_DATA = [
     "x_lon": 32.55395,
     "y_lat": 0.21852,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -4232,9 +4232,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4245,9 +4245,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4258,9 +4258,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -4271,9 +4271,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -4284,9 +4284,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4297,9 +4297,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4310,9 +4310,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4323,9 +4323,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4336,9 +4336,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4349,9 +4349,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4362,9 +4362,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4375,9 +4375,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4388,9 +4388,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4401,9 +4401,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4414,9 +4414,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4427,9 +4427,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4440,9 +4440,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4453,9 +4453,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4466,9 +4466,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4479,9 +4479,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4492,9 +4492,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4505,9 +4505,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4518,9 +4518,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4531,9 +4531,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4544,9 +4544,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4557,9 +4557,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4570,9 +4570,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4583,9 +4583,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4596,9 +4596,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4609,9 +4609,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4622,9 +4622,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4635,9 +4635,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4648,9 +4648,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -4661,9 +4661,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -4674,9 +4674,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -4686,10 +4686,10 @@ window.BOQ_DATA = [
     "x_lon": 32.55395,
     "y_lat": 0.21852,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -4700,9 +4700,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4713,9 +4713,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4726,9 +4726,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -4739,9 +4739,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -4752,9 +4752,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4765,9 +4765,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4778,9 +4778,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -4791,9 +4791,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4804,9 +4804,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4817,9 +4817,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4830,9 +4830,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4843,9 +4843,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4856,9 +4856,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4869,9 +4869,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4882,9 +4882,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4895,9 +4895,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4908,9 +4908,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4921,9 +4921,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -4934,9 +4934,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4947,9 +4947,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -4960,9 +4960,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -4973,9 +4973,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4986,9 +4986,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -4999,9 +4999,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5012,9 +5012,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5025,9 +5025,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5038,9 +5038,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5051,9 +5051,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5064,9 +5064,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5077,9 +5077,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5090,9 +5090,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5103,9 +5103,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5116,9 +5116,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -5129,9 +5129,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -5142,9 +5142,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -5154,10 +5154,10 @@ window.BOQ_DATA = [
     "x_lon": 32.55395,
     "y_lat": 0.21852,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -5168,9 +5168,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5181,9 +5181,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5194,9 +5194,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -5207,9 +5207,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -5220,9 +5220,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5233,9 +5233,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5246,9 +5246,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5259,9 +5259,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5272,9 +5272,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -5285,9 +5285,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5298,9 +5298,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5311,9 +5311,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5324,9 +5324,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -5337,9 +5337,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5350,9 +5350,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5363,9 +5363,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5376,9 +5376,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5389,9 +5389,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5402,9 +5402,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5415,9 +5415,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -5428,9 +5428,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5441,9 +5441,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5454,9 +5454,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5467,9 +5467,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5480,9 +5480,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5493,9 +5493,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5506,9 +5506,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5519,9 +5519,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5532,9 +5532,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5545,9 +5545,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5558,9 +5558,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5571,9 +5571,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5584,9 +5584,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -5597,9 +5597,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -5610,9 +5610,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -5622,10 +5622,10 @@ window.BOQ_DATA = [
     "x_lon": 32.48202,
     "y_lat": 0.08866,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -5636,9 +5636,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5649,9 +5649,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5662,9 +5662,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -5675,9 +5675,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -5688,9 +5688,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5701,9 +5701,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5714,9 +5714,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5727,9 +5727,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5740,9 +5740,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -5753,9 +5753,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5766,9 +5766,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5779,9 +5779,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5792,9 +5792,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -5805,9 +5805,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5818,9 +5818,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5831,9 +5831,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5844,9 +5844,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5857,9 +5857,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -5870,9 +5870,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5883,9 +5883,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -5896,9 +5896,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5909,9 +5909,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5922,9 +5922,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5935,9 +5935,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -5948,9 +5948,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -5961,9 +5961,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5974,9 +5974,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -5987,9 +5987,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6000,9 +6000,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6013,9 +6013,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6026,9 +6026,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6039,9 +6039,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6052,9 +6052,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -6065,9 +6065,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -6078,9 +6078,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -6090,10 +6090,10 @@ window.BOQ_DATA = [
     "x_lon": 32.48202,
     "y_lat": 0.08866,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -6104,9 +6104,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6117,9 +6117,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6130,9 +6130,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -6143,9 +6143,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -6156,9 +6156,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6169,9 +6169,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6182,9 +6182,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6195,9 +6195,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6208,9 +6208,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -6221,9 +6221,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6234,9 +6234,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6247,9 +6247,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6260,9 +6260,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -6273,9 +6273,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6286,9 +6286,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6299,9 +6299,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6312,9 +6312,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6325,9 +6325,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6338,9 +6338,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6351,9 +6351,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -6364,9 +6364,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6377,9 +6377,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6390,9 +6390,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6403,9 +6403,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6416,9 +6416,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6429,9 +6429,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6442,9 +6442,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6455,9 +6455,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6468,9 +6468,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6481,9 +6481,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6494,9 +6494,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6507,9 +6507,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6520,9 +6520,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -6533,9 +6533,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -6546,9 +6546,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -6558,10 +6558,10 @@ window.BOQ_DATA = [
     "x_lon": 32.48202,
     "y_lat": 0.08866,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -6572,9 +6572,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6585,9 +6585,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6598,9 +6598,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -6611,9 +6611,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -6624,9 +6624,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6637,9 +6637,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6650,9 +6650,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6663,9 +6663,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6676,9 +6676,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -6689,9 +6689,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6702,9 +6702,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6715,9 +6715,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6728,9 +6728,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -6741,9 +6741,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6754,9 +6754,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6767,9 +6767,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6780,9 +6780,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6793,9 +6793,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6806,9 +6806,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6819,9 +6819,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -6832,9 +6832,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6845,9 +6845,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6858,9 +6858,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6871,9 +6871,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -6884,9 +6884,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6897,9 +6897,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6910,9 +6910,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -6923,9 +6923,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6936,9 +6936,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -6949,9 +6949,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6962,9 +6962,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6975,9 +6975,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -6988,9 +6988,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -7001,9 +7001,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -7014,9 +7014,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -7026,10 +7026,10 @@ window.BOQ_DATA = [
     "x_lon": 32.48202,
     "y_lat": 0.08866,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -7040,9 +7040,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7053,9 +7053,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7066,9 +7066,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -7079,9 +7079,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -7092,9 +7092,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7105,9 +7105,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7118,9 +7118,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7131,9 +7131,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7144,9 +7144,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -7157,9 +7157,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7170,9 +7170,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7183,9 +7183,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7196,9 +7196,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -7209,9 +7209,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7222,9 +7222,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7235,9 +7235,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7248,9 +7248,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7261,9 +7261,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7274,9 +7274,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7287,9 +7287,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -7300,9 +7300,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7313,9 +7313,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7326,9 +7326,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7339,9 +7339,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7352,9 +7352,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7365,9 +7365,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7378,9 +7378,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7391,9 +7391,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7404,9 +7404,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7417,9 +7417,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7430,9 +7430,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7443,9 +7443,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7456,9 +7456,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -7469,9 +7469,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -7482,9 +7482,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -7494,10 +7494,10 @@ window.BOQ_DATA = [
     "x_lon": 32.48202,
     "y_lat": 0.08866,
     "component": "Mixed Lane System",
-    "spec": "Complete Lane Integration",
+    "spec": "Complete Lane Integration (Tecsidel)",
     "qty": "1",
-    "unit_cost_usd": 4801324,
-    "total_cost_usd": 4801324,
+    "unit_cost_usd": "48013.24",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -7508,9 +7508,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Technical Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7521,9 +7521,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Outddor Technical Booth",
     "spec": "SCHNEIDER CABINET PL 1000x750x300",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7534,9 +7534,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Controller",
     "spec": "ARK 3520Pi5",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -7547,9 +7547,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "PLC",
     "spec": "SCHEIDER MODICON M221",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "2075.5",
+    "total_cost_usd": "2075.5",
     "is_header": false
   },
   {
@@ -7560,9 +7560,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Router",
     "spec": "KORENIX JETBOX 5630Gf-w",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7573,9 +7573,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "UPS",
     "spec": "APC BR1500GI 120V o 230V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7586,9 +7586,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Switch",
     "spec": "Planet IGS-412-16T2S-U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7599,9 +7599,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Booth Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7612,9 +7612,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Touch Screen",
     "spec": "ELO 1717L 17''",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -7625,9 +7625,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "IP Phone",
     "spec": "GRANDSTREAM GXP-1625",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7638,9 +7638,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Printer",
     "spec": "EPSON TM-T88VII",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7651,9 +7651,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cash Box",
     "spec": "PROTELSA 41x41",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7664,9 +7664,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Barcode reader",
     "spec": "HONEYWELL VOYAGER 1400g",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "415.1",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -7677,9 +7677,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Dome camera + midspan",
     "spec": "AXIS M3085-V",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7690,9 +7690,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Lane Equipment",
     "spec": "",
-    "qty": "",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7703,9 +7703,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Beacon",
     "spec": "LA SEMAFORICA Amber traffic light",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7716,9 +7716,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Arrow/Cross sign +Payment",
     "spec": "DMV TRS-2xRTNMP1V4-40x40-Y +PT100-CA",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7729,9 +7729,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fare Display",
     "spec": "DMV RTNM PS1MDV1-3X8X64-Y",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7742,9 +7742,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Scanner Laser",
     "spec": "SICK LITE LMS511-11100 VERSION LITE OUTDOOR",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7755,9 +7755,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Magnetic Loop",
     "spec": "NORTECH PD 134D",
-    "qty": "3",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "3.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "415.1",
     "is_header": false
   },
   {
@@ -7768,9 +7768,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Photocells",
     "spec": "Axle Counting and Double Wheel (redundant). BANNER T30",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7781,9 +7781,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Antenna for TAG reading",
     "spec": "KATHREIN WRA 3070",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7794,9 +7794,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "RFID Reader",
     "spec": "KATHREIN RRU 4500",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7807,9 +7807,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Entry barrier",
     "spec": "ELKA Barrier EH 35",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "691.83",
+    "total_cost_usd": "691.83",
     "is_header": false
   },
   {
@@ -7820,9 +7820,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Traffic Light",
     "spec": "LBA63 Barrier-fiberglass boom with rear degondage",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7833,9 +7833,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "OCR camera",
     "spec": "LA SEMAFORICA  GALILEO-Traffic light red/green 200mm",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7846,9 +7846,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "VES camera",
     "spec": "TATTILE BASIC SHORT RANGE",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1383.67",
+    "total_cost_usd": "1383.67",
     "is_header": false
   },
   {
@@ -7859,9 +7859,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Violation Alarm",
     "spec": "AXIS P135-E",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7872,9 +7872,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Paste para Display/Semaforo/Alarma",
     "spec": "NEXUS 105",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "1106.93",
+    "total_cost_usd": "1106.93",
     "is_header": false
   },
   {
@@ -7885,9 +7885,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via 1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7898,9 +7898,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara de via .1",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7911,9 +7911,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Poste para Camara OCR",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "138.37",
     "is_header": false
   },
   {
@@ -7924,9 +7924,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Variable Message Sign",
     "spec": "DMV TRS-RTNMFC-PIV4-64X64+CLINEP1V4-3X12-Ch 16x11-YETH-2LS-EDLBED-DOD",
-    "qty": "40",
-    "unit_cost_usd": "2428125",
-    "total_cost_usd": "",
+    "qty": "40.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "5534.67",
     "is_header": false
   },
   {
@@ -7937,9 +7937,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Fotovoltaic Kit",
     "spec": "",
-    "qty": "88",
-    "unit_cost_usd": "476268",
-    "total_cost_usd": "",
+    "qty": "88.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "12176.27",
     "is_header": false
   },
   {
@@ -7950,9 +7950,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Cross/Arrow Sign",
     "spec": "DMV TRS-SD-CA80-ETH-LBED",
-    "qty": "48",
-    "unit_cost_usd": "146250",
-    "total_cost_usd": "",
+    "qty": "48.0",
+    "unit_cost_usd": "138.37",
+    "total_cost_usd": "6641.6",
     "is_header": false
   },
   {
@@ -7964,8 +7964,8 @@ window.BOQ_DATA = [
     "component": "Main Plaza System",
     "spec": "Complete Plaza Server Integration",
     "qty": "1",
-    "unit_cost_usd": 3334292,
-    "total_cost_usd": 3334292,
+    "unit_cost_usd": "33342.92",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -7976,9 +7976,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Plaza Server",
     "spec": "PowerEdge R450 2",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "12198.63",
+    "total_cost_usd": "12198.63",
     "is_header": false
   },
   {
@@ -7989,9 +7989,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Video Server",
     "spec": "PowerEdge R450 2",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "12198.63",
+    "total_cost_usd": "12198.63",
     "is_header": false
   },
   {
@@ -8002,9 +8002,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Switch",
     "spec": "CISCO CBS350-24P-4G-EU",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4066.21",
+    "total_cost_usd": "4066.21",
     "is_header": false
   },
   {
@@ -8015,9 +8015,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "Rack",
     "spec": "Dell NetShelter SX Deep Enclosure 42U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "813.24",
+    "total_cost_usd": "813.24",
     "is_header": false
   },
   {
@@ -8028,9 +8028,9 @@ window.BOQ_DATA = [
     "y_lat": 0.31682,
     "component": "UPS",
     "spec": "Salicru SAI SLC-10000-Twin RT2 10KVA Online (enrackable)",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4066.21",
+    "total_cost_usd": "4066.21",
     "is_header": false
   },
   {
@@ -8042,8 +8042,8 @@ window.BOQ_DATA = [
     "component": "Main Plaza System",
     "spec": "Complete Plaza Server Integration",
     "qty": "1",
-    "unit_cost_usd": 3334292,
-    "total_cost_usd": 3334292,
+    "unit_cost_usd": "33342.92",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -8054,9 +8054,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Plaza Server",
     "spec": "PowerEdge R450 2",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "12198.63",
+    "total_cost_usd": "12198.63",
     "is_header": false
   },
   {
@@ -8067,9 +8067,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Video Server",
     "spec": "PowerEdge R450 2",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "12198.63",
+    "total_cost_usd": "12198.63",
     "is_header": false
   },
   {
@@ -8080,9 +8080,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "CISCO CBS350-24P-4G-EU",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4066.21",
+    "total_cost_usd": "4066.21",
     "is_header": false
   },
   {
@@ -8093,9 +8093,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Rack",
     "spec": "Dell NetShelter SX Deep Enclosure 42U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "813.24",
+    "total_cost_usd": "813.24",
     "is_header": false
   },
   {
@@ -8106,9 +8106,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "Salicru SAI SLC-10000-Twin RT2 10KVA Online (enrackable)",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4066.21",
+    "total_cost_usd": "4066.21",
     "is_header": false
   },
   {
@@ -8120,8 +8120,8 @@ window.BOQ_DATA = [
     "component": "Main Plaza System",
     "spec": "Complete Plaza Server Integration",
     "qty": "1",
-    "unit_cost_usd": 3334292,
-    "total_cost_usd": 3334292,
+    "unit_cost_usd": "33342.92",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -8132,9 +8132,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Plaza Server",
     "spec": "PowerEdge R450 2",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "12198.63",
+    "total_cost_usd": "12198.63",
     "is_header": false
   },
   {
@@ -8145,9 +8145,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Video Server",
     "spec": "PowerEdge R450 2",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "12198.63",
+    "total_cost_usd": "12198.63",
     "is_header": false
   },
   {
@@ -8158,9 +8158,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Switch",
     "spec": "CISCO CBS350-24P-4G-EU",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4066.21",
+    "total_cost_usd": "4066.21",
     "is_header": false
   },
   {
@@ -8171,9 +8171,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "Rack",
     "spec": "Dell NetShelter SX Deep Enclosure 42U",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "813.24",
+    "total_cost_usd": "813.24",
     "is_header": false
   },
   {
@@ -8184,9 +8184,9 @@ window.BOQ_DATA = [
     "y_lat": 0.08866,
     "component": "UPS",
     "spec": "Salicru SAI SLC-10000-Twin RT2 10KVA Online (enrackable)",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4066.21",
+    "total_cost_usd": "4066.21",
     "is_header": false
   },
   {
@@ -8198,8 +8198,8 @@ window.BOQ_DATA = [
     "component": "Backoffice System",
     "spec": "Complete TCC Integration",
     "qty": "1",
-    "unit_cost_usd": 3863015,
-    "total_cost_usd": 3863015,
+    "unit_cost_usd": "38630.15",
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -8210,9 +8210,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Back Office Server",
     "spec": "",
-    "qty": "2",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "2.0",
+    "unit_cost_usd": "13796.48",
+    "total_cost_usd": "27592.96",
     "is_header": false
   },
   {
@@ -8223,9 +8223,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Switch",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4598.83",
+    "total_cost_usd": "4598.83",
     "is_header": false
   },
   {
@@ -8236,9 +8236,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Rack",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "919.77",
+    "total_cost_usd": "919.77",
     "is_header": false
   },
   {
@@ -8249,9 +8249,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "UPS",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "4598.83",
+    "total_cost_usd": "4598.83",
     "is_header": false
   },
   {
@@ -8262,9 +8262,9 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "SQL License",
     "spec": "",
-    "qty": "1",
-    "unit_cost_usd": "",
-    "total_cost_usd": "",
+    "qty": "1.0",
+    "unit_cost_usd": "919.77",
+    "total_cost_usd": "919.77",
     "is_header": false
   },
   {
@@ -8273,11 +8273,11 @@ window.BOQ_DATA = [
     "site": "System-Wide / HQ",
     "x_lon": 32.55395,
     "y_lat": 0.21852,
-    "component": "Software Licenses & Global Maintenance",
+    "component": "Tolling Licenses & Global Maintenance",
     "spec": "Network-wide Services",
     "qty": "1",
     "unit_cost_usd": "",
-    "total_cost_usd": 78691176,
+    "total_cost_usd": "",
     "is_header": true
   },
   {
@@ -8288,9 +8288,919 @@ window.BOQ_DATA = [
     "y_lat": 0.21852,
     "component": "Mixed Lane licence",
     "spec": "",
+    "qty": "1.0",
+    "unit_cost_usd": "60937.5",
+    "total_cost_usd": "60937.5",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0639",
+    "level_id": "ATC-Global",
+    "site": "System-Wide / ATC",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "MIKROS Independent Traffic Monitoring",
+    "spec": "ATC & WIM Master Quote",
     "qty": "1",
-    "unit_cost_usd": "6093750",
-    "total_cost_usd": "6093750",
+    "unit_cost_usd": "",
+    "total_cost_usd": "",
+    "is_header": true
+  },
+  {
+    "id": "BOQ-0640",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Supply Loggers, install and Commission of sites",
+    "spec": "Single Toll Audit System",
+    "qty": "1.0",
+    "unit_cost_usd": "35008.0",
+    "total_cost_usd": "35008.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0641",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Supply Loggers, install and Commission of sites",
+    "spec": "Single Toll Audit System",
+    "qty": "1.0",
+    "unit_cost_usd": "35008.0",
+    "total_cost_usd": "35008.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0642",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Supply Loggers, install and Commission of sites",
+    "spec": "Single Toll Audit System",
+    "qty": "1.0",
+    "unit_cost_usd": "35008.0",
+    "total_cost_usd": "35008.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0643",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Monthly site visits and general operational matters",
+    "spec": "Single Toll Audit System",
+    "qty": "12.0",
+    "unit_cost_usd": "2181.0",
+    "total_cost_usd": "26172.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0644",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Monthly site visits and general operational matters",
+    "spec": "Single Toll Audit System",
+    "qty": "12.0",
+    "unit_cost_usd": "2181.0",
+    "total_cost_usd": "26172.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0645",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Monthly site visits and general operational matters",
+    "spec": "Single Toll Audit System",
+    "qty": "12.0",
+    "unit_cost_usd": "2181.0",
+    "total_cost_usd": "26172.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0646",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Training of Local Partner for processing and validating of data",
+    "spec": "Single Toll Audit System",
+    "qty": "Lump sum",
+    "unit_cost_usd": "12034",
+    "total_cost_usd": "12034",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0647",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Quality Assurance checks. To be done twice per year for single sites.",
+    "spec": "Single Toll Audit System",
+    "qty": "2.0",
+    "unit_cost_usd": "18051.0",
+    "total_cost_usd": "36102.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0648",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Quality Assurance checks. To be done twice per year for single sites.",
+    "spec": "Single Toll Audit System",
+    "qty": "2.0",
+    "unit_cost_usd": "18051.0",
+    "total_cost_usd": "36102.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0649",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Quality Assurance checks. To be done twice per year for single sites.",
+    "spec": "Single Toll Audit System",
+    "qty": "2.0",
+    "unit_cost_usd": "18051.0",
+    "total_cost_usd": "36102.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0650",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Sub-Total",
+    "spec": "Single Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "303899",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0651",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD Price Contigencies (10%)",
+    "spec": "Single Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "30390",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0652",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD With Holding Tax (15%)",
+    "spec": "Single Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "50143",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0653",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD VAT (18%)",
+    "spec": "Single Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "69198",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0654",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "GRAND TOTAL",
+    "spec": "Single Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "453629",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0655",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Supply Loggers, install and Commission of sites",
+    "spec": "Dual Toll Audit System",
+    "qty": "2.0",
+    "unit_cost_usd": "35008.0",
+    "total_cost_usd": "70016.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0656",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Supply Loggers, install and Commission of sites",
+    "spec": "Dual Toll Audit System",
+    "qty": "2.0",
+    "unit_cost_usd": "35008.0",
+    "total_cost_usd": "70016.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0657",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Supply Loggers, install and Commission of sites",
+    "spec": "Dual Toll Audit System",
+    "qty": "2.0",
+    "unit_cost_usd": "35008.0",
+    "total_cost_usd": "70016.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0658",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Monthly site visits and general operational matters",
+    "spec": "Dual Toll Audit System",
+    "qty": "12.0",
+    "unit_cost_usd": "4363.0",
+    "total_cost_usd": "52356.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0659",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Monthly site visits and general operational matters",
+    "spec": "Dual Toll Audit System",
+    "qty": "12.0",
+    "unit_cost_usd": "4363.0",
+    "total_cost_usd": "52356.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0660",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Monthly site visits and general operational matters",
+    "spec": "Dual Toll Audit System",
+    "qty": "12.0",
+    "unit_cost_usd": "4363.0",
+    "total_cost_usd": "52356.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0661",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Training of Local Partner for processing and validating of data",
+    "spec": "Dual Toll Audit System",
+    "qty": "Lump sum",
+    "unit_cost_usd": "12034",
+    "total_cost_usd": "12034",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0662",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Quality Assurance checks. To be done twice per year for single sites.",
+    "spec": "Dual Toll Audit System",
+    "qty": "1.0",
+    "unit_cost_usd": "18051.0",
+    "total_cost_usd": "18051.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0663",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Quality Assurance checks. To be done twice per year for single sites.",
+    "spec": "Dual Toll Audit System",
+    "qty": "1.0",
+    "unit_cost_usd": "18051.0",
+    "total_cost_usd": "18051.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0664",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Quality Assurance checks. To be done twice per year for single sites.",
+    "spec": "Dual Toll Audit System",
+    "qty": "1.0",
+    "unit_cost_usd": "18051.0",
+    "total_cost_usd": "18051.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0665",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Sub-Total",
+    "spec": "Dual Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "433300",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0666",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD Price Contigencies (10%)",
+    "spec": "Dual Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "43330",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0667",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD With Holding Tax (15%)",
+    "spec": "Dual Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "71495",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0668",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD VAT (18%)",
+    "spec": "Dual Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "98662",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0669",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "GRAND TOTAL",
+    "spec": "Dual Toll Audit System",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "646787",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0670",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Installation of Single Sensors per lane",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "1.0",
+    "unit_cost_usd": "24487.0",
+    "total_cost_usd": "24487.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0671",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Installation of Single Sensors per lane",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "1.0",
+    "unit_cost_usd": "24487.0",
+    "total_cost_usd": "24487.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0672",
+    "level_id": "MIKROS-Sing",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Installation of Single Sensors per lane",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "1.0",
+    "unit_cost_usd": "24487.0",
+    "total_cost_usd": "24487.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0673",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Sub-Total",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "73460",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0674",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD Price Contigencies (10%)",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "7346",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0675",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD With Holding Tax (15%)",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "12121",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0676",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD VAT (18%)",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "16727",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0677",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "GRAND TOTAL",
+    "spec": "Single Sensor in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "109653",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0678",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Installation of Dual Sensors per lane",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "2.0",
+    "unit_cost_usd": "21490.0",
+    "total_cost_usd": "42980.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0679",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Installation of Dual Sensors per lane",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "2.0",
+    "unit_cost_usd": "21490.0",
+    "total_cost_usd": "42980.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0680",
+    "level_id": "MIKROS-Dual",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Installation of Dual Sensors per lane",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "2.0",
+    "unit_cost_usd": "21490.0",
+    "total_cost_usd": "42980.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0681",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Sub-Total",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "128939",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0682",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD Price Contigencies (10%)",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "12894",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0683",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD With Holding Tax (15%)",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "21275",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0684",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD VAT (18%)",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "29359",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0685",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "GRAND TOTAL",
+    "spec": "Dual Sensors in slow lane only",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "192467",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0686",
+    "level_id": "MIKROS-PHAS",
+    "site": "ATC M20 Near Mpala",
+    "x_lon": 32.4862,
+    "y_lat": 0.1065,
+    "component": "Installation of ANPR Camera's",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "1.0",
+    "unit_cost_usd": "15725.0",
+    "total_cost_usd": "15725.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0687",
+    "level_id": "MIKROS-PHAS",
+    "site": "ATC M20 Near Kajjansi",
+    "x_lon": 32.5532,
+    "y_lat": 0.2223,
+    "component": "Installation of ANPR Camera's",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "1.0",
+    "unit_cost_usd": "15725.0",
+    "total_cost_usd": "15725.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0688",
+    "level_id": "MIKROS-PHAS",
+    "site": "ATC M3 Munyonyo Spur",
+    "x_lon": 32.5938,
+    "y_lat": 0.2526,
+    "component": "Installation of ANPR Camera's",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "1.0",
+    "unit_cost_usd": "15725.0",
+    "total_cost_usd": "15725.0",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0689",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Sub-Total",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "47174",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0690",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD Price Contigencies (10%)",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "4717",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0691",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD With Holding Tax(15%)",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "7784",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0692",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "ADD VAT (18%)",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "10742",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0693",
+    "level_id": "MIKROS",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "GRAND TOTAL",
+    "spec": "PHASE 3: ANPR integrated into Toll and WIM system",
+    "qty": "",
+    "unit_cost_usd": "",
+    "total_cost_usd": "70417",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0694",
+    "level_id": "TV-Option1",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Traffic Vision TMC Software (Option 1)",
+    "spec": "CCTV/VMS Integration",
+    "qty": "1",
+    "unit_cost_usd": "",
+    "total_cost_usd": "",
+    "is_header": true
+  },
+  {
+    "id": "BOQ-0695",
+    "level_id": "TV-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Traffic Vision TMC 3.x Software Subscription Pricing per stream per year at 240p-15fps.",
+    "spec": "TMC-SUB-500-01",
+    "qty": "457",
+    "unit_cost_usd": "700",
+    "total_cost_usd": "319900",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0696",
+    "level_id": "TV-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Advanced Configuration",
+    "spec": "ADV-CON-01-01",
+    "qty": "1",
+    "unit_cost_usd": "5000",
+    "total_cost_usd": "5000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0697",
+    "level_id": "TV-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Remote Training",
+    "spec": "REM-TRN-01-01",
+    "qty": "1",
+    "unit_cost_usd": "2500",
+    "total_cost_usd": "2500",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0698",
+    "level_id": "TV-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Advanced Remote Traffic Vision TMC Yearly Camera Stream Review & Configuration (yearly per camera stream and calibration review) Years 2 and beyond",
+    "spec": "REM-CAM-01-01",
+    "qty": "457",
+    "unit_cost_usd": "50",
+    "total_cost_usd": "22850",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0699",
+    "level_id": "TV-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "One Time Engineering changes for custom functionality predictive analytics support others",
+    "spec": "OTE",
+    "qty": "1",
+    "unit_cost_usd": "30000",
+    "total_cost_usd": "30000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0700",
+    "level_id": "EDMP-Budget",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "HDM4 Calibration & Data Collection",
+    "spec": "Project Management",
+    "qty": "1",
+    "unit_cost_usd": "",
+    "total_cost_usd": "",
+    "is_header": true
+  },
+  {
+    "id": "BOQ-0701",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Team Leader (HDM 4 Expert/Highway Engineer)",
+    "spec": "International Staff",
+    "qty": "12.0",
+    "unit_cost_usd": "7000",
+    "total_cost_usd": "84000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0702",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Transport Economist",
+    "spec": "International Staff",
+    "qty": "3.0",
+    "unit_cost_usd": "6000",
+    "total_cost_usd": "18000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0703",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Road Maintenance Management Specialist",
+    "spec": "International Staff",
+    "qty": "3.0",
+    "unit_cost_usd": "6000",
+    "total_cost_usd": "18000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0704",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Traffic/Road Safety Expert",
+    "spec": "International Staff",
+    "qty": "2.0",
+    "unit_cost_usd": "4000",
+    "total_cost_usd": "8000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0705",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Environmental Management Specialist",
+    "spec": "International Staff",
+    "qty": "2.0",
+    "unit_cost_usd": "4000",
+    "total_cost_usd": "8000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0706",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Vehicle and Office related expenses",
+    "spec": "International Staff",
+    "qty": "",
+    "unit_cost_usd": "1",
+    "total_cost_usd": "6000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0707",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "Training of UNRA staff in HDM4 for 02 weeks",
+    "spec": "International Staff",
+    "qty": "",
+    "unit_cost_usd": "1",
+    "total_cost_usd": "23000",
+    "is_header": false
+  },
+  {
+    "id": "BOQ-0708",
+    "level_id": "EDMP-01",
+    "site": "KEE Control Centre (Kajjansi)",
+    "x_lon": 32.55395,
+    "y_lat": 0.21852,
+    "component": "GRAND TOTAL",
+    "spec": "International Staff",
+    "qty": "",
+    "unit_cost_usd": "USD",
+    "total_cost_usd": "268686",
     "is_header": false
   }
 ];
