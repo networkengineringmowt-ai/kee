@@ -37,10 +37,15 @@ navItems.forEach(item => {
 const map = L.map('unifiedMap', { zoomControl: false, preferCanvas: true }).setView([0.215, 32.545], 11);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-// Dark tiles
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 20
+// Imagery Hybrid
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri', maxZoom: 20
+}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 20
+}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 20
 }).addTo(map);
 
 // Road network layer
