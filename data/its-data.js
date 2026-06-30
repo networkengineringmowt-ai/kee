@@ -8,13 +8,6 @@ window.ITS_GEOSPATIAL_DATA = {
       "paths": []
     },
     {
-      "id": "M3",
-      "name": "Munyonyo Spur",
-      "color": "#a78bfa",
-      "status": "Operational",
-      "paths": []
-    },
-    {
       "id": "A003",
       "name": "Entebbe Airport Link",
       "color": "#818cf8",
@@ -57,86 +50,294 @@ window.ITS_GEOSPATIAL_DATA = {
   "installations": [
     {
       "id": "ITS-Toll-001",
-      "corridor": "M3",
+      "corridor": "M20",
       "type": "Toll",
-      "site": "Munyonyo Toll Plaza",
-      "lat": 0.20868516744469373,
-      "lon": 32.55393426666292,
-      "km": 10.0,
+      "site": "Busega Toll Plaza",
+      "lat": 0.23610094334230128,
+      "lon": 32.60983798655572,
+      "km": 2.5,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
-      "purpose": "Munyonyo spur tolling",
+      "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-002",
-      "corridor": "M3",
+      "id": "ITS-Toll-002",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Kajjansi Toll Plaza",
+      "lat": 0.20917535902232565,
+      "lon": 32.58671885174494,
+      "km": 12.0,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Kajjansi",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-Toll-003",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Mpala Toll Plaza",
+      "lat": 0.2107701995962067,
+      "lon": 32.54400094489481,
+      "km": 22.5,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Mpala",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-004",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Busega Approach VMS",
+      "lat": 0.23686372004172374,
+      "lon": 32.611917340650436,
+      "km": 2.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Busega Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-005",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Kajjansi Approach VMS",
+      "lat": 0.20792073984143253,
+      "lon": 32.58855238511357,
+      "km": 11.5,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Kajjansi Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-006",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Mpala Approach VMS",
+      "lat": 0.20917215352050073,
+      "lon": 32.54554408048204,
+      "km": 22.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Mpala Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-007",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 1",
+      "site": "M20 Mainline Cam 1",
+      "lat": 0.23610094334230128,
+      "lon": 32.60983798655572,
+      "km": 2.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-008",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 2",
       "lat": 0.22596123263551057,
       "lon": 32.60582204974343,
-      "km": 2.4,
+      "km": 5.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-003",
-      "corridor": "M3",
+      "id": "ITS-CCTV-009",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 2",
+      "site": "M20 Mainline Cam 3",
+      "lat": 0.21520065549984607,
+      "lon": 32.60320312177839,
+      "km": 7.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-010",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 1",
+      "lat": 0.21520065549984607,
+      "lon": 32.60320312177839,
+      "km": 7.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-011",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 4",
       "lat": 0.2068066935810798,
       "lon": 32.597004261187166,
-      "km": 4.8,
+      "km": 10.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-004",
-      "corridor": "M3",
+      "id": "ITS-CCTV-012",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 3",
+      "site": "M20 Mainline Cam 5",
+      "lat": 0.20917535902232565,
+      "lon": 32.58671885174494,
+      "km": 12.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-013",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 6",
       "lat": 0.21050584128351593,
       "lon": 32.57596430313595,
-      "km": 7.2,
+      "km": 15.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-005",
-      "corridor": "M3",
+      "id": "ITS-ATC-014",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 2",
+      "lat": 0.21050584128351593,
+      "lon": 32.57596430313595,
+      "km": 15.0,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-015",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 4",
+      "site": "M20 Mainline Cam 7",
+      "lat": 0.20973413474632113,
+      "lon": 32.56491650567019,
+      "km": 17.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-016",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 8",
       "lat": 0.20868516744469373,
       "lon": 32.55393426666292,
-      "km": 9.6,
+      "km": 20.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-006",
+      "id": "ITS-CCTV-017",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 9",
+      "lat": 0.2107701995962067,
+      "lon": 32.54400094489481,
+      "km": 22.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-018",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 3",
+      "lat": 0.2107701995962067,
+      "lon": 32.54400094489481,
+      "km": 22.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-019",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 4 Monitoring",
@@ -152,7 +353,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-007",
+      "id": "ITS-CCTV-020",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 3 Monitoring",
@@ -168,7 +369,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-008",
+      "id": "ITS-Toll-021",
       "corridor": "M20",
       "type": "Toll",
       "site": "Busega Toll Plaza",
@@ -184,7 +385,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-009",
+      "id": "ITS-Toll-022",
       "corridor": "M20",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
@@ -200,7 +401,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-010",
+      "id": "ITS-Toll-023",
       "corridor": "M20",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
@@ -216,7 +417,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-VMS-011",
+      "id": "ITS-VMS-024",
       "corridor": "M20",
       "type": "VMS",
       "site": "Busega Approach VMS",
@@ -232,7 +433,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-VMS-012",
+      "id": "ITS-VMS-025",
       "corridor": "M20",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
@@ -248,7 +449,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-VMS-013",
+      "id": "ITS-VMS-026",
       "corridor": "M20",
       "type": "VMS",
       "site": "Mpala Approach VMS",
@@ -264,7 +465,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-014",
+      "id": "ITS-CCTV-027",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
@@ -280,7 +481,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-015",
+      "id": "ITS-CCTV-028",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
@@ -296,7 +497,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-016",
+      "id": "ITS-CCTV-029",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
@@ -312,7 +513,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-ATC-017",
+      "id": "ITS-ATC-030",
       "corridor": "M20",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
@@ -328,7 +529,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-018",
+      "id": "ITS-CCTV-031",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
@@ -344,7 +545,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-019",
+      "id": "ITS-CCTV-032",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
@@ -360,7 +561,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-020",
+      "id": "ITS-CCTV-033",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
@@ -376,7 +577,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-ATC-021",
+      "id": "ITS-ATC-034",
       "corridor": "M20",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
@@ -392,7 +593,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-022",
+      "id": "ITS-CCTV-035",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
@@ -408,7 +609,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-023",
+      "id": "ITS-CCTV-036",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
@@ -424,7 +625,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-024",
+      "id": "ITS-CCTV-037",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
@@ -440,7 +641,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-ATC-025",
+      "id": "ITS-ATC-038",
       "corridor": "M20",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
@@ -456,7 +657,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-026",
+      "id": "ITS-CCTV-039",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 4 Monitoring",
@@ -472,7 +673,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-027",
+      "id": "ITS-CCTV-040",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Bwaise Interchange Slip 3 Monitoring",
@@ -488,7 +689,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-028",
+      "id": "ITS-CCTV-041",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 9 Monitoring",
@@ -504,7 +705,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-029",
+      "id": "ITS-CCTV-042",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 4 Monitoring",
@@ -520,7 +721,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-030",
+      "id": "ITS-CCTV-043",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 5 Monitoring",
@@ -536,7 +737,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-031",
+      "id": "ITS-CCTV-044",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 10 Monitoring",
@@ -552,7 +753,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-032",
+      "id": "ITS-CCTV-045",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 8 Monitoring",
@@ -568,7 +769,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-033",
+      "id": "ITS-CCTV-046",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 7 Monitoring",
@@ -584,7 +785,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-034",
+      "id": "ITS-CCTV-047",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 2 Monitoring",
@@ -600,7 +801,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-035",
+      "id": "ITS-CCTV-048",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 6 Monitoring",
@@ -616,7 +817,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-036",
+      "id": "ITS-CCTV-049",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 3 Monitoring",
@@ -632,7 +833,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-037",
+      "id": "ITS-CCTV-050",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 1 Monitoring",
@@ -648,7 +849,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-038",
+      "id": "ITS-CCTV-051",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 10 Monitoring",
@@ -664,7 +865,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-039",
+      "id": "ITS-CCTV-052",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 6 Monitoring",
@@ -680,7 +881,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-040",
+      "id": "ITS-CCTV-053",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 3 Monitoring",
@@ -696,7 +897,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-041",
+      "id": "ITS-CCTV-054",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 4 Monitoring",
@@ -712,7 +913,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-042",
+      "id": "ITS-CCTV-055",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 5 Monitoring",
@@ -728,7 +929,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-043",
+      "id": "ITS-CCTV-056",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 2 Monitoring",
@@ -744,7 +945,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-044",
+      "id": "ITS-CCTV-057",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 3 Monitoring",
@@ -760,7 +961,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-045",
+      "id": "ITS-Toll-058",
       "corridor": "M20",
       "type": "Toll",
       "site": "Busega Toll Plaza",
@@ -776,7 +977,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-046",
+      "id": "ITS-Toll-059",
       "corridor": "M20",
       "type": "Toll",
       "site": "Kajjansi Toll Plaza",
@@ -792,7 +993,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-047",
+      "id": "ITS-Toll-060",
       "corridor": "M20",
       "type": "Toll",
       "site": "Mpala Toll Plaza",
@@ -808,7 +1009,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-VMS-048",
+      "id": "ITS-VMS-061",
       "corridor": "M20",
       "type": "VMS",
       "site": "Busega Approach VMS",
@@ -824,7 +1025,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-VMS-049",
+      "id": "ITS-VMS-062",
       "corridor": "M20",
       "type": "VMS",
       "site": "Kajjansi Approach VMS",
@@ -840,7 +1041,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-VMS-050",
+      "id": "ITS-VMS-063",
       "corridor": "M20",
       "type": "VMS",
       "site": "Mpala Approach VMS",
@@ -856,7 +1057,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-051",
+      "id": "ITS-CCTV-064",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 1",
@@ -872,7 +1073,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-052",
+      "id": "ITS-CCTV-065",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 2",
@@ -888,7 +1089,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-053",
+      "id": "ITS-CCTV-066",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 3",
@@ -904,7 +1105,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-ATC-054",
+      "id": "ITS-ATC-067",
       "corridor": "M20",
       "type": "ATC",
       "site": "M20 Traffic Counter 1",
@@ -920,7 +1121,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-055",
+      "id": "ITS-CCTV-068",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 4",
@@ -936,7 +1137,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-056",
+      "id": "ITS-CCTV-069",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 5",
@@ -952,7 +1153,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-057",
+      "id": "ITS-CCTV-070",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 6",
@@ -968,7 +1169,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-ATC-058",
+      "id": "ITS-ATC-071",
       "corridor": "M20",
       "type": "ATC",
       "site": "M20 Traffic Counter 2",
@@ -984,7 +1185,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-059",
+      "id": "ITS-CCTV-072",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 7",
@@ -1000,7 +1201,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-060",
+      "id": "ITS-CCTV-073",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 8",
@@ -1016,7 +1217,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-061",
+      "id": "ITS-CCTV-074",
       "corridor": "M20",
       "type": "CCTV",
       "site": "M20 Mainline Cam 9",
@@ -1032,7 +1233,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-ATC-062",
+      "id": "ITS-ATC-075",
       "corridor": "M20",
       "type": "ATC",
       "site": "M20 Traffic Counter 3",
@@ -1048,247 +1249,871 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-063",
-      "corridor": "M3",
+      "id": "ITS-Toll-076",
+      "corridor": "M20",
       "type": "Toll",
-      "site": "Munyonyo Toll Plaza",
-      "lat": 0.2748802199239951,
-      "lon": 32.51834691752366,
-      "km": 10.0,
+      "site": "Busega Toll Plaza",
+      "lat": 0.12410357158750256,
+      "lon": 32.51136709108633,
+      "km": 2.5,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
-      "purpose": "Munyonyo spur tolling",
+      "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-064",
-      "corridor": "M3",
+      "id": "ITS-Toll-077",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Kajjansi Toll Plaza",
+      "lat": 0.2102961990149038,
+      "lon": 32.53002701696637,
+      "km": 12.0,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Kajjansi",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-Toll-078",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Mpala Toll Plaza",
+      "lat": 0.29518629875628377,
+      "lon": 32.5122467840748,
+      "km": 22.5,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Mpala",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-079",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Busega Approach VMS",
+      "lat": 0.11959753293084663,
+      "lon": 32.511565254246484,
+      "km": 2.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Busega Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-080",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Kajjansi Approach VMS",
+      "lat": 0.20605890323591505,
+      "lon": 32.52847919802406,
+      "km": 11.5,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Kajjansi Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-081",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Mpala Approach VMS",
+      "lat": 0.29073714676030915,
+      "lon": 32.51150459084902,
+      "km": 22.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Mpala Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-082",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 1",
+      "site": "M20 Mainline Cam 1",
+      "lat": 0.12410357158750256,
+      "lon": 32.51136709108633,
+      "km": 2.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-083",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 2",
       "lat": 0.14656220972409897,
       "lon": 32.51051987481349,
-      "km": 2.4,
+      "km": 5.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-065",
-      "corridor": "M3",
+      "id": "ITS-CCTV-084",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 2",
+      "site": "M20 Mainline Cam 3",
+      "lat": 0.16874082071780683,
+      "lon": 32.51440002858241,
+      "km": 7.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-085",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 1",
+      "lat": 0.16874082071780683,
+      "lon": 32.51440002858241,
+      "km": 7.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-086",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 4",
       "lat": 0.18844830687753283,
       "lon": 32.52492802777132,
-      "km": 4.8,
+      "km": 10.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-066",
-      "corridor": "M3",
+      "id": "ITS-CCTV-087",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 3",
+      "site": "M20 Mainline Cam 5",
+      "lat": 0.2102961990149038,
+      "lon": 32.53002701696637,
+      "km": 12.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-088",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 6",
       "lat": 0.23084411786328063,
       "lon": 32.52396086604408,
-      "km": 7.2,
+      "km": 15.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-067",
-      "corridor": "M3",
+      "id": "ITS-ATC-089",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 2",
+      "lat": 0.23084411786328063,
+      "lon": 32.52396086604408,
+      "km": 15.0,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-090",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 4",
+      "site": "M20 Mainline Cam 7",
+      "lat": 0.25318478087826146,
+      "lon": 32.5224765478448,
+      "km": 17.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-091",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 8",
       "lat": 0.2748802199239951,
       "lon": 32.51834691752366,
-      "km": 9.6,
+      "km": 20.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-068",
-      "corridor": "M3",
+      "id": "ITS-CCTV-092",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 9",
+      "lat": 0.29518629875628377,
+      "lon": 32.5122467840748,
+      "km": 22.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-093",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 3",
+      "lat": 0.29518629875628377,
+      "lon": 32.5122467840748,
+      "km": 22.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-Toll-094",
+      "corridor": "M20",
       "type": "Toll",
-      "site": "Munyonyo Toll Plaza",
-      "lat": 0.2260972131886198,
-      "lon": 32.60574022446766,
-      "km": 10.0,
+      "site": "Busega Toll Plaza",
+      "lat": 0.2108723022407088,
+      "lon": 32.5440617067027,
+      "km": 2.5,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
-      "purpose": "Munyonyo spur tolling",
+      "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-069",
-      "corridor": "M3",
+      "id": "ITS-Toll-095",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Kajjansi Toll Plaza",
+      "lat": 0.20928796294889052,
+      "lon": 32.58680612991699,
+      "km": 12.0,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Kajjansi",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-Toll-096",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Mpala Toll Plaza",
+      "lat": 0.23619415545882327,
+      "lon": 32.60981321900291,
+      "km": 22.5,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Mpala",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-097",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Busega Approach VMS",
+      "lat": 0.2122323249354681,
+      "lon": 32.54231087407612,
+      "km": 2.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Busega Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-098",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Kajjansi Approach VMS",
+      "lat": 0.21033065082035604,
+      "lon": 32.58485239222825,
+      "km": 11.5,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Kajjansi Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-099",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Mpala Approach VMS",
+      "lat": 0.23456559473455835,
+      "lon": 32.608342231687075,
+      "km": 22.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Mpala Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-100",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 1",
+      "site": "M20 Mainline Cam 1",
+      "lat": 0.2108723022407088,
+      "lon": 32.5440617067027,
+      "km": 2.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-101",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 2",
       "lat": 0.2087904193718798,
       "lon": 32.55398543914599,
-      "km": 2.4,
+      "km": 5.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-070",
-      "corridor": "M3",
+      "id": "ITS-CCTV-102",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 2",
+      "site": "M20 Mainline Cam 3",
+      "lat": 0.20982276138502506,
+      "lon": 32.56495848853884,
+      "km": 7.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-103",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 1",
+      "lat": 0.20982276138502506,
+      "lon": 32.56495848853884,
+      "km": 7.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-104",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 4",
       "lat": 0.21051818314379436,
       "lon": 32.57602073246204,
-      "km": 4.8,
+      "km": 10.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-071",
-      "corridor": "M3",
+      "id": "ITS-CCTV-105",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 3",
+      "site": "M20 Mainline Cam 5",
+      "lat": 0.20928796294889052,
+      "lon": 32.58680612991699,
+      "km": 12.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-106",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 6",
       "lat": 0.20690775599323702,
       "lon": 32.597046512162215,
-      "km": 7.2,
+      "km": 15.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-072",
-      "corridor": "M3",
+      "id": "ITS-ATC-107",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 2",
+      "lat": 0.20690775599323702,
+      "lon": 32.597046512162215,
+      "km": 15.0,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-108",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 4",
+      "site": "M20 Mainline Cam 7",
+      "lat": 0.21531827224151012,
+      "lon": 32.603231742494685,
+      "km": 17.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-109",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 8",
       "lat": 0.2260972131886198,
       "lon": 32.60574022446766,
-      "km": 9.6,
+      "km": 20.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-Toll-073",
-      "corridor": "M3",
+      "id": "ITS-CCTV-110",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 9",
+      "lat": 0.23619415545882327,
+      "lon": 32.60981321900291,
+      "km": 22.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-111",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 3",
+      "lat": 0.23619415545882327,
+      "lon": 32.60981321900291,
+      "km": 22.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-Toll-112",
+      "corridor": "M20",
       "type": "Toll",
-      "site": "Munyonyo Toll Plaza",
-      "lat": 0.14756871278013292,
-      "lon": 32.510678173757135,
-      "km": 10.0,
+      "site": "Busega Toll Plaza",
+      "lat": 0.2952661735420731,
+      "lon": 32.51234056587006,
+      "km": 2.5,
       "status": "Existing interface",
       "phase": "Phase 1",
       "priority": "Critical",
-      "purpose": "Munyonyo spur tolling",
+      "purpose": "Mainline tolling at Busega entry",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-074",
-      "corridor": "M3",
+      "id": "ITS-Toll-113",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Kajjansi Toll Plaza",
+      "lat": 0.2108671963654355,
+      "lon": 32.53032964137609,
+      "km": 12.0,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Kajjansi",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-Toll-114",
+      "corridor": "M20",
+      "type": "Toll",
+      "site": "Mpala Toll Plaza",
+      "lat": 0.12524586421235415,
+      "lon": 32.51139878222591,
+      "km": 22.5,
+      "status": "Existing interface",
+      "phase": "Phase 1",
+      "priority": "Critical",
+      "purpose": "Mainline tolling at Mpala",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-115",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Busega Approach VMS",
+      "lat": 0.2997367466064631,
+      "lon": 32.51257158060193,
+      "km": 2.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Busega Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-116",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Kajjansi Approach VMS",
+      "lat": 0.2152271381311742,
+      "lon": 32.5312670107436,
+      "km": 11.5,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Kajjansi Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-VMS-117",
+      "corridor": "M20",
+      "type": "VMS",
+      "site": "Mpala Approach VMS",
+      "lat": 0.12972555631516125,
+      "lon": 32.51120082046716,
+      "km": 22.0,
+      "status": "Planned",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Advisory messages before Mpala Plaza",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-118",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 1",
+      "site": "M20 Mainline Cam 1",
+      "lat": 0.2952661735420731,
+      "lon": 32.51234056587006,
+      "km": 2.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-119",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 2",
       "lat": 0.2750485095124156,
       "lon": 32.51825984607246,
-      "km": 2.4,
+      "km": 5.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-075",
-      "corridor": "M3",
+      "id": "ITS-CCTV-120",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 2",
+      "site": "M20 Mainline Cam 3",
+      "lat": 0.25353147515625163,
+      "lon": 32.52256575761386,
+      "km": 7.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-121",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 1",
+      "lat": 0.25353147515625163,
+      "lon": 32.52256575761386,
+      "km": 7.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-122",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 4",
       "lat": 0.23129895824922064,
       "lon": 32.52386628737126,
-      "km": 4.8,
+      "km": 10.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-076",
-      "corridor": "M3",
+      "id": "ITS-CCTV-123",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 3",
+      "site": "M20 Mainline Cam 5",
+      "lat": 0.2108671963654355,
+      "lon": 32.53032964137609,
+      "km": 12.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-124",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 6",
       "lat": 0.18916581738977442,
       "lon": 32.52520650982399,
-      "km": 7.2,
+      "km": 15.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-077",
-      "corridor": "M3",
+      "id": "ITS-ATC-125",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 2",
+      "lat": 0.18916581738977442,
+      "lon": 32.52520650982399,
+      "km": 15.0,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-126",
+      "corridor": "M20",
       "type": "CCTV",
-      "site": "Munyonyo Spur Cam 4",
+      "site": "M20 Mainline Cam 7",
+      "lat": 0.16959214411651408,
+      "lon": 32.514690164397344,
+      "km": 17.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-127",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 8",
       "lat": 0.14756871278013292,
       "lon": 32.510678173757135,
-      "km": 9.6,
+      "km": 20.0,
       "status": "Planned",
       "phase": "Phase 2",
       "priority": "Normal",
-      "purpose": "Spur incident detection",
+      "purpose": "Mainline incident detection",
       "power": "Solar/Mains",
       "comms": "FOC Core",
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-078",
+      "id": "ITS-CCTV-128",
+      "corridor": "M20",
+      "type": "CCTV",
+      "site": "M20 Mainline Cam 9",
+      "lat": 0.12524586421235415,
+      "lon": 32.51139878222591,
+      "km": 22.5,
+      "status": "Planned",
+      "phase": "Phase 2",
+      "priority": "Normal",
+      "purpose": "Mainline incident detection",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-ATC-129",
+      "corridor": "M20",
+      "type": "ATC",
+      "site": "M20 Traffic Counter 3",
+      "lat": 0.12524586421235415,
+      "lon": 32.51139878222591,
+      "km": 22.5,
+      "status": "Design",
+      "phase": "Phase 1",
+      "priority": "High",
+      "purpose": "Vehicle classification and volume counting",
+      "power": "Solar/Mains",
+      "comms": "FOC Core",
+      "dependency": "None"
+    },
+    {
+      "id": "ITS-CCTV-130",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 11 Monitoring",
@@ -1304,7 +2129,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-079",
+      "id": "ITS-CCTV-131",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kalerwe Interchange Slip 1 Monitoring",
@@ -1320,7 +2145,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-080",
+      "id": "ITS-CCTV-132",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kalerwe Interchange Slip 2 Monitoring",
@@ -1336,7 +2161,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-081",
+      "id": "ITS-CCTV-133",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 1 Monitoring",
@@ -1352,7 +2177,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-082",
+      "id": "ITS-CCTV-134",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 3 Monitoring",
@@ -1368,7 +2193,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-083",
+      "id": "ITS-CCTV-135",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 1 Monitoring",
@@ -1384,7 +2209,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-084",
+      "id": "ITS-CCTV-136",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Bwaise Interchange Slip 2 Monitoring",
@@ -1400,7 +2225,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-085",
+      "id": "ITS-CCTV-137",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kalerwe Interchange Slip 3 Monitoring",
@@ -1416,7 +2241,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-086",
+      "id": "ITS-CCTV-138",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 3 Monitoring",
@@ -1432,7 +2257,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-087",
+      "id": "ITS-CCTV-139",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 2 Monitoring",
@@ -1448,7 +2273,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-088",
+      "id": "ITS-CCTV-140",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 7 Monitoring",
@@ -1464,7 +2289,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-089",
+      "id": "ITS-CCTV-141",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 6 Monitoring",
@@ -1480,7 +2305,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-090",
+      "id": "ITS-CCTV-142",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kyebando Interchange Slip 1 Monitoring",
@@ -1496,7 +2321,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-091",
+      "id": "ITS-CCTV-143",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 5 Monitoring",
@@ -1512,7 +2337,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-092",
+      "id": "ITS-CCTV-144",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 4 Monitoring",
@@ -1528,7 +2353,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-093",
+      "id": "ITS-CCTV-145",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Kisaasi Interchange Slip 8 Monitoring",
@@ -1544,7 +2369,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-094",
+      "id": "ITS-CCTV-146",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 9 Monitoring",
@@ -1560,7 +2385,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-095",
+      "id": "ITS-CCTV-147",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 8 Monitoring",
@@ -1576,7 +2401,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-096",
+      "id": "ITS-CCTV-148",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 7 Monitoring",
@@ -1592,7 +2417,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-097",
+      "id": "ITS-CCTV-149",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 2 Monitoring",
@@ -1608,7 +2433,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-098",
+      "id": "ITS-CCTV-150",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Naalya Interchange Slip 1 Monitoring",
@@ -1624,7 +2449,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-099",
+      "id": "ITS-CCTV-151",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 4 Monitoring",
@@ -1640,7 +2465,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-100",
+      "id": "ITS-CCTV-152",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 5 Monitoring",
@@ -1656,7 +2481,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-101",
+      "id": "ITS-CCTV-153",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namboole Interchange Slip 1 Monitoring",
@@ -1672,7 +2497,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-102",
+      "id": "ITS-CCTV-154",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 2 Monitoring",
@@ -1688,7 +2513,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-103",
+      "id": "ITS-CCTV-155",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 5 Monitoring",
@@ -1704,7 +2529,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-104",
+      "id": "ITS-CCTV-156",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 8 Monitoring",
@@ -1720,7 +2545,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-105",
+      "id": "ITS-CCTV-157",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 9 Monitoring",
@@ -1736,7 +2561,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-106",
+      "id": "ITS-CCTV-158",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 6 Monitoring",
@@ -1752,7 +2577,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-107",
+      "id": "ITS-CCTV-159",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Masanafu Interchange Slip 7 Monitoring",
@@ -1768,7 +2593,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-108",
+      "id": "ITS-CCTV-160",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Busega Interchange Slip 3 Monitoring",
@@ -1784,7 +2609,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-109",
+      "id": "ITS-CCTV-161",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Bwaise Interchange Slip 1 Monitoring",
@@ -1800,7 +2625,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-110",
+      "id": "ITS-CCTV-162",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Namungoona Interchange Slip 2 Monitoring",
@@ -1816,7 +2641,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-111",
+      "id": "ITS-CCTV-163",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Busega Interchange Slip 1 Monitoring",
@@ -1832,7 +2657,7 @@ window.ITS_GEOSPATIAL_DATA = {
       "dependency": "None"
     },
     {
-      "id": "ITS-CCTV-112",
+      "id": "ITS-CCTV-164",
       "corridor": "M20",
       "type": "CCTV",
       "site": "Busega Interchange Slip 2 Monitoring",
