@@ -542,20 +542,22 @@ function renderProcurementTable(query = '') {
     const items = window.BOQ_DATA.filter(row => {
         if (row.is_header) return false; // Only show actual components, not headers
         if (!row.component) return false;
+        const rc = String(row.component).toLowerCase();
         if (!q) return true;
-        return row.component.toLowerCase().includes(q) || 
-               (row.spec && row.spec.toLowerCase().includes(q)) || 
-               (row.site && row.site.toLowerCase().includes(q));
+        return rc.includes(q) || 
+               (row.spec && String(row.spec).toLowerCase().includes(q)) || 
+               (row.site && String(row.site).toLowerCase().includes(q));
     });
     
     items.forEach(row => {
+        const rc = String(row.component).toLowerCase();
         // Try to find matching dictionary item for category
         let dictItem = null;
         if (window.DICTIONARY_DATA) {
-            dictItem = window.DICTIONARY_DATA.find(d => 
-                (d.name && d.name.toLowerCase().includes(row.component.toLowerCase())) || 
-                (row.component && row.component.toLowerCase().includes(d.name ? d.name.toLowerCase() : ''))
-            );
+            dictItem = window.DICTIONARY_DATA.find(d => {
+                const dn = d.name ? String(d.name).toLowerCase() : '';
+                return dn && (dn.includes(rc) || rc.includes(dn));
+            });
         }
         const category = dictItem ? dictItem.category : 'Field Equipment';
         
@@ -566,12 +568,15 @@ function renderProcurementTable(query = '') {
         let hasSpecDoc = false;
         if (window.DOCS_CONTENT) {
             for (let docKey in window.DOCS_CONTENT) {
-                const found = window.DOCS_CONTENT[docKey].find(s => s.title && (s.title.toLowerCase().includes(row.component.toLowerCase()) || row.component.toLowerCase().includes(s.title.toLowerCase())));
+                const found = window.DOCS_CONTENT[docKey].find(s => {
+                    const st = s.title ? String(s.title).toLowerCase() : '';
+                    return st && (st.includes(rc) || rc.includes(st));
+                });
                 if (found) { hasSpecDoc = true; break; }
             }
         }
         
-        const safeComponent = row.component.replace(/'/g, "\\'");
+        const safeComponent = String(row.component).replace(/'/g, "\\'");
         
         tr.innerHTML = `
             <td style="padding: 1rem 1.5rem;">
