@@ -103,45 +103,52 @@
                     
                     <aside class="map-side-panel">
                         <div class="glass-panel side-panel-inner">
-                            <h3><i class="fa-solid fa-sliders"></i> Filters & Summary</h3>
-                            
-                            <div class="filter-group">
-                                <label class="filter-label">Corridor</label>
-                                <div class="segmented" id="corridorFilter"></div>
+                            <div id="mapFiltersPane">
+                                <h3><i class="fa-solid fa-sliders"></i> Filters & Summary</h3>
+                                
+                                <div class="filter-group">
+                                    <label class="filter-label">Corridor</label>
+                                    <div class="segmented" id="corridorFilter"></div>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="filter-label">Asset Type</label>
+                                    <div class="chip-grid" id="typeFilter"></div>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="filter-label">Status</label>
+                                    <select id="mapStatusFilter" class="glass-select">
+                                        <option value="All">All statuses</option>
+                                        <option value="Existing interface">Existing interface</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Planned">Planned</option>
+                                        <option value="Survey required">Survey required</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="filter-label">Search</label>
+                                    <input id="mapSearchInput" type="search" placeholder="Site, asset, purpose or ID" class="glass-input">
+                                </div>
+                                
+                                <div class="summary-grid" id="mapSummaryGrid"></div>
+                                
+                                <div class="export-actions mt-3">
+                                    <button id="exportGeojson" class="btn-export"><i class="fa-solid fa-download"></i> GeoJSON</button>
+                                    <button id="exportCsv" class="btn-export"><i class="fa-solid fa-file-csv"></i> CSV</button>
+                                </div>
                             </div>
-                            
-                            <div class="filter-group">
-                                <label class="filter-label">Asset Type</label>
-                                <div class="chip-grid" id="typeFilter"></div>
-                            </div>
-                            
-                            <div class="filter-group">
-                                <label class="filter-label">Status</label>
-                                <select id="mapStatusFilter" class="glass-select">
-                                    <option value="All">All statuses</option>
-                                    <option value="Existing interface">Existing interface</option>
-                                    <option value="Design">Design</option>
-                                    <option value="Planned">Planned</option>
-                                    <option value="Survey required">Survey required</option>
-                                </select>
-                            </div>
-                            
-                            <div class="filter-group">
-                                <label class="filter-label">Search</label>
-                                <input id="mapSearchInput" type="search" placeholder="Site, asset, purpose or ID" class="glass-input">
-                            </div>
-                            
-                            <div class="summary-grid" id="mapSummaryGrid"></div>
 
-                            <h3 class="mt-3"><i class="fa-solid fa-crosshairs"></i> Selected Site</h3>
-                            <div id="mapDetailPanel" class="detail-panel empty-detail">
-                                <i class="fa-solid fa-hand-pointer"></i>
-                                <p>Click a marker on the map</p>
-                            </div>
-                            
-                            <div class="export-actions mt-3">
-                                <button id="exportGeojson" class="btn-export"><i class="fa-solid fa-download"></i> GeoJSON</button>
-                                <button id="exportCsv" class="btn-export"><i class="fa-solid fa-file-csv"></i> CSV</button>
+                            <div id="mapDetailsPane" style="display: none;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                    <h3 style="margin: 0;"><i class="fa-solid fa-crosshairs"></i> Selected Site</h3>
+                                    <button onclick="clearMapSelection()" style="background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                                </div>
+                                <div id="mapDetailPanel" class="detail-panel empty-detail">
+                                    <i class="fa-solid fa-hand-pointer"></i>
+                                    <p>Click a marker on the map</p>
+                                </div>
                             </div>
                         </div>
                     </aside>

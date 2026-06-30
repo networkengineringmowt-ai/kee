@@ -184,15 +184,28 @@ function renderSummary() {
 
 
 function renderDetail(item) {
+    const filtersPane = document.getElementById('mapFiltersPane');
+    const detailsPane = document.getElementById('mapDetailsPane');
     const panel = document.getElementById('mapDetailPanel');
-    if (!item) { panel.className = 'detail-panel empty-detail'; panel.innerHTML = '<i class="fa-solid fa-hand-pointer"></i><p>Click a marker on the map</p>'; return; }
+    
+    if (!item) { 
+        if (filtersPane) filtersPane.style.display = 'block';
+        if (detailsPane) detailsPane.style.display = 'none';
+        panel.className = 'detail-panel empty-detail'; 
+        panel.innerHTML = '<i class="fa-solid fa-hand-pointer"></i><p>Click a marker on the map</p>'; 
+        return; 
+    }
+    
+    if (filtersPane) filtersPane.style.display = 'none';
+    if (detailsPane) detailsPane.style.display = 'block';
+    
     const t = typeById[item.type], c = corridorById[item.corridor];
     panel.className = 'detail-panel';
     panel.innerHTML = `
         <div style="border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.6rem; margin-bottom:0.6rem;">
             <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700">${t.label}</div>
             <div style="font-size:1.1rem; font-weight:700; color:var(--text-h1); font-family:Outfit; margin-top:0.25rem">${item.site}</div>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.15rem">${item.id} Â· ${c.name}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.15rem">${item.id} · ${c.name}</div>
         </div>
         <div class="detail-grid">
             <div class="lbl">Status</div><div class="val"><span class="status-pill ${statusClass(item.status)}">${item.status}</span></div>
@@ -206,6 +219,12 @@ function renderDetail(item) {
             <strong style="color:var(--text-main)">Purpose:</strong> ${item.purpose}
         </div>`;
 }
+
+window.clearMapSelection = function() {
+    state.selectedId = null;
+    drawMarkers();
+    renderDetail(null);
+};
 
 function selectInstallation(id, pan = false) {
     state.selectedId = id;
