@@ -7,13 +7,16 @@
     const docsContent = window.DOCS_CONTENT || {};
     const rawItsData = window.ITS_GEOSPATIAL_DATA || window.itsData || null;
     const roadNetworkData = window.ROAD_NETWORK || null;
-    const actualNetworkData = window.ACTUAL_NETWORK || null; // authoritative FY25-26 national roads (WGS84)
+    let actualNetworkData = window.ACTUAL_NETWORK || null; // authoritative FY25-26 national roads (WGS84)
     const tollComponentData = Array.isArray(window.TOLL_COMPONENTS) ? window.TOLL_COMPONENTS : [];
     const dictionaryData = Array.isArray(window.DICTIONARY_DATA) ? window.DICTIONARY_DATA : [];
     const dictionaryCategories = Array.isArray(window.DICTIONARY_CATEGORIES) ? window.DICTIONARY_CATEGORIES : [];
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+    const actualNetworkSource = Array.from(document.scripts)
+        .map((script) => script.getAttribute("src") || "")
+        .find((src) => src.includes("actual_network.js")) || "docs/data/actual_network.js";
 
     const palette = ["#34d399", "#fbbf24", "#22d3ee", "#a78bfa", "#fb7185", "#60a5fa", "#fb923c"];
     const statusPalette = {
@@ -36,9 +39,13 @@
         tourTimer: null,
         tourIndex: 0,
         map: null,
+        nationalLayer: null,
         routeLayer: null,
         markerLayer: null,
         projectBounds: null,
+        nationalBounds: null,
+        nationalNetworkDrawn: false,
+        nationalNetworkQueued: false,
         markers: new Map(),
         workbook: null,
         workbookCharts: [],
@@ -185,6 +192,7 @@
             maxZoom: 20
         }).addTo(state.map);
 
+        state.nationalLayer = L.layerGroup().addTo(state.map);
         state.routeLayer = L.layerGroup().addTo(state.map);
         state.markerLayer = L.layerGroup().addTo(state.map);
 
@@ -194,6 +202,7 @@
         renderComponentChips();
         applyMapFilters();
         fitMapToProject();
+        scheduleActualNetwork();
 
         // Keep the map filling its container: recompute size once the layout settles,
         // when fonts/layout finish, and on any viewport resize (prevents cut-off tiles).
@@ -210,7 +219,6 @@
     function drawRoutes() {
         if (!state.routeLayer) return;
 
-        drawActualNetwork();
         drawDeclaredCorridorPaths();
 
         if (!roadNetworkData || !Array.isArray(roadNetworkData.features)) return;
@@ -251,12 +259,71 @@
 
     // Plot the actual FY25-26 national road network (authoritative GIS geometry) as a
     // muted context layer beneath the project corridors and ITS assets.
-    function drawActualNetwork() {
-        if (!actualNetworkData || !Array.isArray(actualNetworkData.features) || !state.routeLayer) return;
-        const layer = L.geoJSON(actualNetworkData, {
-            style: () => ({ color: "#7dd3fc", weight: 1.1, opacity: 0.42, lineCap: "round", lineJoin: "round" })
-        }).addTo(state.routeLayer);
+    async function drawActualNetwork() {
+        const network = await loadActualNetworkData();
+        if (state.nationalNetworkDrawn || !network || !Array.isArray(network.features) || !state.nationalLayer) return false;
+        const renderer = L.canvas({ padding: 0.25 });
+        const layer = L.geoJSON(network, {
+            renderer,
+            style: () => ({ color: "#7dd3fc", weight: 1.1, opacity: 0.42, lineCap: "round", lineJoin: "round" }),
+            onEachFeature: (feature, roadLayer) => {
+                const props = feature.properties || {};
+                const sourceRecord = props.sourceRecord ? `Record ${escapeHtml(props.sourceRecord)}` : "FY25-26 road link";
+                const length = Number.isFinite(Number(props.geometryLengthKm)) ? `${formatNumber(props.geometryLengthKm)} km` : "Measured from GIS geometry";
+                roadLayer.bindPopup(`
+                    <div class="popup-card">
+                        <h4>Actual FY25-26 road network</h4>
+                        <p><strong>${sourceRecord}</strong></p>
+                        <p>Geometry length: ${escapeHtml(length)}</p>
+                        <p>${escapeHtml(props.attributeStatus || "Source GIS road geometry")}</p>
+                    </div>
+                `);
+            }
+        }).addTo(state.nationalLayer);
         state.nationalBounds = layer.getBounds();
+        state.nationalNetworkDrawn = true;
+        if (layer.bringToBack) layer.bringToBack();
+        return true;
+    }
+
+    async function loadActualNetworkData() {
+        if (actualNetworkData && Array.isArray(actualNetworkData.features)) return actualNetworkData;
+        if (window.ACTUAL_NETWORK && Array.isArray(window.ACTUAL_NETWORK.features)) {
+            actualNetworkData = window.ACTUAL_NETWORK;
+            return actualNetworkData;
+        }
+        if (typeof fetch !== "function") return null;
+
+        try {
+            const response = await fetch(actualNetworkSource, { cache: "force-cache" });
+            if (!response.ok) return null;
+            const text = await response.text();
+            const marker = "window.ACTUAL_NETWORK = ";
+            const start = text.indexOf(marker);
+            if (start === -1) return null;
+            let payload = text.slice(start + marker.length).trim();
+            if (payload.endsWith(";")) payload = payload.slice(0, -1);
+            actualNetworkData = JSON.parse(payload);
+            window.ACTUAL_NETWORK = actualNetworkData;
+            return actualNetworkData;
+        } catch (error) {
+            console.warn("Actual FY25-26 road network could not be loaded", error);
+            return null;
+        }
+    }
+
+    function scheduleActualNetwork() {
+        if (state.nationalNetworkQueued || state.nationalNetworkDrawn) return;
+        state.nationalNetworkQueued = true;
+        const render = () => {
+            state.nationalNetworkQueued = false;
+            drawActualNetwork();
+        };
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(render, { timeout: 1800 });
+        } else {
+            setTimeout(render, 650);
+        }
     }
 
     function drawDeclaredCorridorPaths() {
@@ -337,7 +404,8 @@
         });
 
         $("#mapFitBtn")?.addEventListener("click", fitMapToProject);
-        $("#mapNationalBtn")?.addEventListener("click", () => {
+        $("#mapNationalBtn")?.addEventListener("click", async () => {
+            if (!state.nationalNetworkDrawn) await drawActualNetwork();
             if (state.map && state.nationalBounds && state.nationalBounds.isValid()) {
                 state.map.fitBounds(state.nationalBounds, { padding: [24, 24], animate: false });
             }
