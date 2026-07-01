@@ -2283,4 +2283,216 @@ body.map-fullscreen-active .map-stage .ghost-btn {
 .nav-item { padding: 0 18px; }
 .live-clock { padding: 7px 10px; min-width: 88px; }
 .dict-category-rail { padding-top: 2px; }
+
+/* ============ Uncontained map surface ============ */
+#map-view.view-section {
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+#map-view .map-workspace {
+    display: block;
+    height: 100%;
+    min-height: calc(100vh - 64px);
+}
+
+#map-view .map-stage {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(100vh - 64px);
+    min-height: calc(100vh - 64px);
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #0b0f19;
+}
+
+.map-control-overlay {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 650;
+    display: grid;
+    gap: 8px;
+    padding: 12px 16px 18px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(11, 15, 25, 0.96) 0%, rgba(11, 15, 25, 0.82) 58%, rgba(11, 15, 25, 0) 100%);
+}
+
+.map-control-overlay > * {
+    pointer-events: auto;
+}
+
+#map-view .map-header,
+#map-view .metric-strip,
+#map-view .control-deck,
+#map-view .component-rail {
+    padding: 0;
+    background: transparent;
+}
+
+#map-view .map-header {
+    align-items: flex-start;
+}
+
+#map-view .map-header .nexus-map-title {
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+}
+
+#map-view .metric-strip {
+    width: min(880px, calc(100vw - 32px));
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+}
+
+#map-view .metric-card,
+#map-view .ghost-btn,
+#map-view .icon-button,
+#map-view .chip,
+#map-view .search-field input,
+#map-view .control-select {
+    background-color: rgba(8, 12, 20, 0.78);
+    backdrop-filter: blur(16px);
+}
+
+#map-view .control-deck {
+    width: min(1120px, calc(100vw - 32px));
+}
+
+#map-view .component-rail {
+    max-width: min(1120px, calc(100vw - 32px));
+    max-height: 88px;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+#map-view .map-canvas-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: #101214;
+}
+
+#map-view .unified-map {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+#map-view .map-detail-overlay {
+    top: 218px;
+    right: 16px;
+    width: min(318px, calc(100% - 32px));
+    max-height: calc(100% - 236px);
+}
+
+#map-view .map-legend {
+    left: 16px;
+    bottom: 16px;
+    max-width: min(820px, calc(100% - 340px));
+}
+
+#map-view .leaflet-top.leaflet-right {
+    top: 218px;
+    right: 16px;
+}
+
+.map-stage:fullscreen,
+body.map-fullscreen-active .map-stage {
+    display: block;
+}
+
+.map-stage:fullscreen .map-control-overlay,
+body.map-fullscreen-active .map-stage .map-control-overlay {
+    padding: 12px 16px 18px;
+}
+
+.map-stage:fullscreen .map-canvas-wrap,
+body.map-fullscreen-active .map-stage .map-canvas-wrap {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    margin: 0;
+}
+
+.map-stage:fullscreen .unified-map,
+body.map-fullscreen-active .map-stage .unified-map {
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+    #map-view .map-workspace {
+        min-height: calc(100vh - 1px);
+    }
+
+    #map-view .map-stage {
+        height: calc(100vh - 1px);
+        min-height: 640px;
+    }
+
+    .map-control-overlay {
+        max-height: 60%;
+        overflow: auto;
+        padding: 10px 10px 18px;
+    }
+
+    #map-view .map-header {
+        gap: 10px;
+    }
+
+    #map-view .map-header-actions,
+    #map-view .control-deck,
+    #map-view .component-rail {
+        width: 100%;
+        max-width: none;
+    }
+
+    #map-view .metric-strip {
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #map-view .map-detail-overlay {
+        top: auto;
+        left: 10px;
+        right: 10px;
+        bottom: 12px;
+        width: auto;
+        max-height: 38%;
+    }
+
+    #map-view .map-legend {
+        left: 10px;
+        right: 10px;
+        bottom: 12px;
+        max-width: none;
+    }
+
+    #map-view .leaflet-top.leaflet-right {
+        top: auto;
+        right: 12px;
+        bottom: 14px;
+    }
+}
+
+@media (max-width: 620px) {
+    #map-view .map-stage {
+        min-height: 700px;
+    }
+
+    #map-view .metric-strip {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #map-view .metric-card strong {
+        font-size: 1.2rem;
+    }
+}
 .brand-block h1 { font-size: 1.2rem; }
