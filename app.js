@@ -204,12 +204,13 @@
         bindMapControls();
         renderComponentChips();
         applyMapFilters();
-        fitMapToProject();
-        scheduleActualNetwork();
+        // Draw the entire national road network immediately (always visible) and frame it.
+        drawActualNetwork().then(() => { if (state.map) { state.map.invalidateSize(); fitMapToNetwork(); } });
+        fitMapToNetwork();
 
         // Keep the map filling its container: recompute size once the layout settles,
         // when fonts/layout finish, and on any viewport resize (prevents cut-off tiles).
-        const refresh = () => { if (state.map) { state.map.invalidateSize(); fitMapToProject(); } };
+        const refresh = () => { if (state.map) { state.map.invalidateSize(); fitMapToNetwork(); } };
         [150, 400, 900].forEach((ms) => setTimeout(refresh, ms));
         window.addEventListener("load", refresh);
         window.addEventListener("resize", () => {
@@ -407,12 +408,6 @@
         });
 
         $("#mapFitBtn")?.addEventListener("click", fitMapToProject);
-        $("#mapNationalBtn")?.addEventListener("click", async () => {
-            if (!state.nationalNetworkDrawn) await drawActualNetwork();
-            if (state.map && state.nationalBounds && state.nationalBounds.isValid()) {
-                state.map.fitBounds(state.nationalBounds, { padding: [24, 24], animate: false });
-            }
-        });
         $("#mapTourBtn")?.addEventListener("click", toggleMapTour);
         $("#mapFullscreenBtn")?.addEventListener("click", toggleMapFullscreen);
         document.addEventListener("fullscreenchange", syncMapFullscreenState);
@@ -861,6 +856,17 @@
     }
 
     // Full project extent = corridor route geometry + declared corridor paths + all assets.
+    // Default/home view: frame the entire national road network (falls back to the
+    // project scope until the network layer has drawn).
+    function fitMapToNetwork() {
+        if (!state.map) return;
+        const b = (state.nationalBounds && state.nationalBounds.isValid()) ? state.nationalBounds
+            : ((state.scopeBounds && state.scopeBounds.isValid()) ? state.scopeBounds
+            : (state.projectBounds = state.projectBounds || computeProjectBounds()));
+        if (b && b.isValid()) state.map.fitBounds(b, { padding: [16, 16], animate: false });
+        else fitMapToAssets();
+    }
+
     function fitMapToProject() {
         if (!state.map) return;
         if (!state.projectBounds) state.projectBounds = computeProjectBounds();
