@@ -216,45 +216,40 @@
         });
     }
 
+    // Highlight the project scope (the 77 authoritative links, scope=1 in the
+    // network2026 layer): expressway teal, Northern Bypass blue, Entebbe dual orange.
+    function scopeColor(road) {
+        const r = String(road || "");
+        if (r.startsWith("M20")) return "#2563eb";     // Kampala Northern Bypass
+        if (r.startsWith("A003N2")) return "#e4572e";   // Entebbe dual carriageway
+        if (r.startsWith("M3")) return "#0f766e";       // Kampala-Entebbe Expressway
+        return "#34d399";
+    }
+    const SCOPE_MAINLINES = new Set(["M20", "M20N1", "M3_Link01", "M3N1_Link01", "A003N2_Link01"]);
+
     function drawRoutes() {
         if (!state.routeLayer) return;
+        const net = actualNetworkData || window.ACTUAL_NETWORK;
+        const scope = net && Array.isArray(net.features) ? net.features.filter((f) => f.properties && f.properties.scope) : [];
+        if (!scope.length) { drawDeclaredCorridorPaths(); return; }
 
-        drawDeclaredCorridorPaths();
-
-        if (!roadNetworkData || !Array.isArray(roadNetworkData.features)) return;
-
-        // The exact project scope includes Kampala-Entebbe Expressway (M3, M3N1, M3N2), 
-        // Kampala Northern Bypass (M20, M20N1), Entebbe Airport Dual (A003N2), and all their slip roads.
-        let features = roadNetworkData.features.filter((feature) => {
-            const roadNo = String(feature.properties?.Road_No_1 || "");
-            return roadNo.startsWith("M20") || roadNo.startsWith("M3") || roadNo.startsWith("A003N2");
-        });
-
-        L.geoJSON(features, {
-            style: () => ({
-                color: "#fbbf24",
-                weight: 12,
-                opacity: 0.11,
-                lineCap: "round",
-                lineJoin: "round"
-            })
+        // soft glow under the scope corridors
+        L.geoJSON(scope, {
+            style: (f) => ({ color: scopeColor(f.properties.road), weight: 12, opacity: 0.13, lineCap: "round", lineJoin: "round" })
         }).addTo(state.routeLayer);
-
-        L.geoJSON(features, {
-            style: (feature) => ({
-                color: routeColor(feature.properties?.Link_Name || feature.properties?.name),
-                weight: 4,
-                opacity: 0.88,
-                dashArray: "1 10",
-                lineCap: "round",
-                lineJoin: "round"
+        // highlighted scope: mainlines bold, interchange slip roads thinner
+        const layer = L.geoJSON(scope, {
+            style: (f) => ({
+                color: scopeColor(f.properties.road),
+                weight: SCOPE_MAINLINES.has(String(f.properties.lid)) ? 5 : 2.4,
+                opacity: 0.95, lineCap: "round", lineJoin: "round"
             }),
-            onEachFeature: (feature, layer) => {
-                const name = escapeHtml(feature.properties?.Link_Name || feature.properties?.name || "KEE corridor");
-                const roadNo = escapeHtml(feature.properties?.Road_No_1 || "");
-                layer.bindPopup(`<div class="popup-card"><h4>${name}</h4><p><strong>${roadNo}</strong></p><p>Expressway route geometry layer</p></div>`);
+            onEachFeature: (f, lyr) => {
+                const p = f.properties || {};
+                lyr.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "Project scope link")}</h4><p><strong>${escapeHtml(p.road || "")}</strong> &middot; ${escapeHtml(p.lid || "")}</p><p>Project scope corridor</p></div>`);
             }
         }).addTo(state.routeLayer);
+        state.scopeBounds = layer.getBounds();
     }
 
     // Plot the actual FY25-26 national road network (authoritative GIS geometry) as a
@@ -263,21 +258,15 @@
         const network = await loadActualNetworkData();
         if (state.nationalNetworkDrawn || !network || !Array.isArray(network.features) || !state.nationalLayer) return false;
         const renderer = L.canvas({ padding: 0.25 });
-        const layer = L.geoJSON(network, {
+        // Draw only the non-scope national roads as muted context; the project scope
+        // is highlighted separately (drawRoutes) so it is never double-drawn.
+        const context = { type: "FeatureCollection", features: network.features.filter((f) => !(f.properties && f.properties.scope)) };
+        const layer = L.geoJSON(context, {
             renderer,
-            style: () => ({ color: "#7dd3fc", weight: 1.1, opacity: 0.42, lineCap: "round", lineJoin: "round" }),
+            style: () => ({ color: "#7dd3fc", weight: 1, opacity: 0.32, lineCap: "round", lineJoin: "round" }),
             onEachFeature: (feature, roadLayer) => {
-                const props = feature.properties || {};
-                const sourceRecord = props.sourceRecord ? `Record ${escapeHtml(props.sourceRecord)}` : "FY25-26 road link";
-                const length = Number.isFinite(Number(props.geometryLengthKm)) ? `${formatNumber(props.geometryLengthKm)} km` : "Measured from GIS geometry";
-                roadLayer.bindPopup(`
-                    <div class="popup-card">
-                        <h4>Actual FY25-26 road network</h4>
-                        <p><strong>${sourceRecord}</strong></p>
-                        <p>Geometry length: ${escapeHtml(length)}</p>
-                        <p>${escapeHtml(props.attributeStatus || "Source GIS road geometry")}</p>
-                    </div>
-                `);
+                const p = feature.properties || {};
+                roadLayer.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "National road")}</h4><p><strong>${escapeHtml(p.road || "")}</strong></p><p>Actual national road network (network2026)</p></div>`);
             }
         }).addTo(state.nationalLayer);
         state.nationalBounds = layer.getBounds();
@@ -557,16 +546,19 @@
     function animateCount(selector, to) {
         const el = $(selector);
         if (!el) return;
+        const setFinal = () => { el.textContent = Number(to).toLocaleString(); };
         const from = parseInt(String(el.textContent).replace(/[^\d]/g, ""), 10) || 0;
-        if (from === to) { el.textContent = to.toLocaleString(); return; }
+        if (from === to || typeof requestAnimationFrame !== "function") { setFinal(); return; }
         const start = performance.now();
+        let done = false;
         const step = (now) => {
-            const t = Math.min(1, (now - start) / 500);
-            const eased = 1 - Math.pow(1 - t, 3);
-            el.textContent = Math.round(from + (to - from) * eased).toLocaleString();
-            if (t < 1) requestAnimationFrame(step);
+            const t = Math.min(1, ((now || start) - start) / 500);
+            el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - t, 3))).toLocaleString();
+            if (t < 1) requestAnimationFrame(step); else { done = true; setFinal(); }
         };
         requestAnimationFrame(step);
+        // Fallback: rAF is throttled in background/non-painting contexts — guarantee the value.
+        setTimeout(() => { if (!done) setFinal(); }, 650);
     }
 
     function renderMarkers() {
@@ -858,7 +850,8 @@
     function fitMapToProject() {
         if (!state.map) return;
         if (!state.projectBounds) state.projectBounds = computeProjectBounds();
-        const b = state.projectBounds;
+        // Prefer the highlighted scope extent when available; fall back to asset/corridor bounds.
+        const b = (state.scopeBounds && state.scopeBounds.isValid()) ? state.scopeBounds : state.projectBounds;
         if (b && b.isValid()) {
             // animate:false forces setView, which always applies; animated fitBounds /
             // flyToBounds silently no-op on the large national<->corridor zoom deltas here.
