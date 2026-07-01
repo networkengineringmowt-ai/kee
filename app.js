@@ -193,6 +193,17 @@
         renderComponentChips();
         applyMapFilters();
         fitMapToProject();
+
+        // Keep the map filling its container: recompute size once the layout settles,
+        // when fonts/layout finish, and on any viewport resize (prevents cut-off tiles).
+        const refresh = () => { if (state.map) { state.map.invalidateSize(); fitMapToProject(); } };
+        [150, 400, 900].forEach((ms) => setTimeout(refresh, ms));
+        window.addEventListener("load", refresh);
+        window.addEventListener("resize", () => {
+            if (!state.map) return;
+            clearTimeout(state.resizeTimer);
+            state.resizeTimer = setTimeout(() => state.map.invalidateSize(), 150);
+        });
     }
 
     function drawRoutes() {
