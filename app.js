@@ -220,10 +220,18 @@
     // network2026 layer): expressway teal, Northern Bypass blue, Entebbe dual orange.
     function scopeColor(road) {
         const r = String(road || "");
-        if (r.startsWith("M20")) return "#2563eb";     // Kampala Northern Bypass
-        if (r.startsWith("A003N2")) return "#e4572e";   // Entebbe dual carriageway
-        if (r.startsWith("M3")) return "#0f766e";       // Kampala-Entebbe Expressway
+        if (r.startsWith("M20")) return "#c084fc";     // Kampala Northern Bypass - violet
+        if (r.startsWith("A003N2")) return "#fb7185";   // Entebbe dual carriageway - rose
+        if (r.startsWith("M3")) return "#34d399";       // Kampala-Entebbe Expressway - emerald
         return "#34d399";
+    }
+
+    // Colour the base national road network by surface type (network2026).
+    function surfaceColor(surf) {
+        const v = String(surf || "").toLowerCase();
+        if (v.startsWith("bitumin")) return "#3b82f6";  // sealed / paved
+        if (v.startsWith("unseal")) return "#b45309";   // gravel / earth
+        return "#94a3b8";
     }
     const SCOPE_MAINLINES = new Set(["M20", "M20N1", "M3_Link01", "M3N1_Link01", "A003N2_Link01"]);
 
@@ -263,10 +271,10 @@
         const context = { type: "FeatureCollection", features: network.features.filter((f) => !(f.properties && f.properties.scope)) };
         const layer = L.geoJSON(context, {
             renderer,
-            style: () => ({ color: "#7dd3fc", weight: 1, opacity: 0.32, lineCap: "round", lineJoin: "round" }),
+            style: (f) => ({ color: surfaceColor(f.properties && f.properties.surf), weight: 1.4, opacity: 0.72, lineCap: "round", lineJoin: "round" }),
             onEachFeature: (feature, roadLayer) => {
                 const p = feature.properties || {};
-                roadLayer.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "National road")}</h4><p><strong>${escapeHtml(p.road || "")}</strong></p><p>Actual national road network (network2026)</p></div>`);
+                roadLayer.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "National road")}</h4><p><strong>${escapeHtml(p.road || "")}</strong> &middot; ${escapeHtml(p.surf || "")}</p><p>Actual national road network (network2026)</p></div>`);
             }
         }).addTo(state.nationalLayer);
         state.nationalBounds = layer.getBounds();
