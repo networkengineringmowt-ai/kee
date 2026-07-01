@@ -1993,11 +1993,56 @@ button.cat-tag.linkable:hover { background: rgba(52, 211, 153, 0.18); color: var
 }
 .def-item {
     border: 1px solid var(--line); border-radius: 12px; background: var(--panel);
-    padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
+    padding: 10px; display: flex; flex-direction: column; gap: 9px;
     animation: cardIn 320ms var(--ease) both;
     transition: border-color .15s, transform .12s, box-shadow .15s;
+    overflow: hidden;
 }
 .def-item:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(0,0,0,.34); }
+.def-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(52, 211, 153, 0.08)),
+        #0b0f19;
+}
+.def-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.02);
+    transition: transform 260ms var(--ease), filter 260ms var(--ease);
+}
+.def-item:hover .def-media img {
+    transform: scale(1.035);
+    filter: saturate(1.12) contrast(1.05);
+}
+.def-media figcaption {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    max-width: calc(100% - 16px);
+    padding: 4px 7px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    color: var(--text);
+    background: rgba(8, 12, 20, 0.74);
+    backdrop-filter: blur(12px);
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+.def-media figcaption span {
+    color: var(--muted);
+    font-weight: 600;
+}
+.def-media.image-missing {
+    display: none;
+}
 .def-term { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
 .def-term h4 { font-size: 0.95rem; color: var(--text); line-height: 1.32; }
 .def-body { font-size: 0.85rem; color: var(--soft); line-height: 1.55; flex: 1; }

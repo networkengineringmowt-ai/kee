@@ -1200,11 +1200,60 @@
         });
     }
 
-    // ---- Dictionary: text-only catalogue of component definitions ----
+    // ---- Dictionary: catalogue of component definitions with internet images ----
     const DICT_PAGE = 80;
     const dictState = { term: "", category: "All", limit: DICT_PAGE };
     let dictDefs = null;
     let dictCatCounts = null;
+
+    function commonsImage(fileName) {
+        return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(fileName)}?width=900`;
+    }
+
+    const dictionaryImages = {
+        anpr: { file: "ANPR Camera Front.jpg", alt: "ANPR camera with infrared illuminators", caption: "ANPR / OCR camera" },
+        cctv: { file: "401 Traffic Cam.jpg", alt: "Traffic CCTV camera mounted above a highway", caption: "Traffic CCTV monitoring" },
+        avids: { file: "Fixed traffic camera on Cornelius Pass at Wilkins - Hillsboro, Oregon.JPG", alt: "Fixed road traffic camera on a mast", caption: "Video incident detection camera" },
+        vms: { file: "Variable Message Sign (VMS) on Eastbound M62 - geograph.org.uk - 4768167.jpg", alt: "Variable message sign on a motorway", caption: "Variable message sign" },
+        rfid: { file: "E-ZPass Toll Plaza - Spaulding Turnpike.jpg", alt: "Electronic toll plaza lanes", caption: "Electronic toll collection plaza" },
+        barrier: { file: "E-ZPass Toll Plaza - Spaulding Turnpike.jpg", alt: "Toll plaza barriers and lane signals", caption: "Lane barrier and toll approach" },
+        payment: { file: "POS terminal at a bookstore.jpg", alt: "Point-of-sale payment terminal", caption: "Payment terminal / POS" },
+        printer: { file: "Twitter receipt printer.jpg", alt: "Thermal receipt printer", caption: "Thermal receipt printing" },
+        scanner: { file: "Barcode-scanner.jpg", alt: "Handheld barcode scanner", caption: "Scanner / document capture" },
+        power: { file: "UPS Power Management Module, racks with network cabling in NERSC data center.jpg", alt: "UPS power module and network cabling in racks", caption: "UPS and power distribution" },
+        network: { file: "19-inch rackmount Ethernet switches and patch panels.jpg", alt: "Rack-mounted Ethernet switches and patch panels", caption: "Network switch and patching" },
+        server: { file: "Datacenter Server Racks (22370909788).jpg", alt: "Data center server racks", caption: "Server / back-office infrastructure" },
+        software: { file: "Network server and technician.jpg", alt: "Technician checking a network server", caption: "Software and operations platform" },
+        comms: { file: "Network server and technician.jpg", alt: "Technician working near network equipment", caption: "Communications node" },
+        console: { file: "Clover Station with receipt printer and cash drawer.jpg", alt: "Operator-style point-of-sale console with printer and cash drawer", caption: "Operator console" },
+        signal: { file: "UK traffic sign 6031.1.jpg", alt: "Electronic road sign diagram", caption: "Lane signal / beacon" },
+        avc: { file: "Pneumatic road tube counter.jpg", alt: "Pneumatic road tube traffic counter", caption: "Vehicle counter / classifier" },
+        vasd: { file: "Solar radar speed sign.jpg", alt: "Solar radar speed display sign", caption: "Radar speed display" },
+        wim: { file: "SB US 1 Palm Coast Weigh Station; Scales.jpg", alt: "Truck weigh station scales", caption: "Weigh-in-motion / scale system" },
+        services: { file: "Autostrada A1 - Centura Arad.jpg", alt: "Roadside ITS installation work for variable message sign", caption: "Installation and commissioning" },
+        other: { file: "E-ZPass Toll Plaza - Spaulding Turnpike.jpg", alt: "Integrated toll and ITS roadway equipment", caption: "Integrated ITS equipment" }
+    };
+
+    function dictionaryImageFor(definition) {
+        const text = `${definition.name || ""} ${definition.definition || ""}`.toLowerCase();
+        let key = definition.category || "other";
+        if (/anpr|alpr|ocr|number plate|license plate|licence plate/.test(text)) key = "anpr";
+        else if (/vms|variable message|message sign|lane status|display|ohls/.test(text)) key = "vms";
+        else if (/radar|speed display|vasd/.test(text)) key = "vasd";
+        else if (/weigh|wim|scale/.test(text)) key = "wim";
+        else if (/barrier|boom|alb|gate/.test(text)) key = "barrier";
+        else if (/rfid|dsrc|tag|toll plaza|toll lane|etc system/.test(text)) key = "rfid";
+        else if (/payment|cash|drawer|pos|card|bank/.test(text)) key = "payment";
+        else if (/printer|receipt|thermal/.test(text)) key = "printer";
+        else if (/scanner|barcode|document scan/.test(text)) key = "scanner";
+        else if (/ups|battery|solar|power|surge|earthing/.test(text)) key = "power";
+        else if (/server|database|back office|back-office|toc|control centre|control center/.test(text)) key = "server";
+        else if (/fibre|fiber|switch|router|network|liu|rack|patch/.test(text)) key = "network";
+        else if (/camera|cctv|ptz|surveillance|video/.test(text)) key = definition.category === "avids" ? "avids" : "cctv";
+
+        const image = dictionaryImages[key] || dictionaryImages.other;
+        return { ...image, url: commonsImage(image.file) };
+    }
 
     function catLabel(key) {
         return dictionaryCategories.find((x) => x.key === key)?.label || key;
@@ -1278,8 +1327,13 @@
             list.innerHTML = shown.map((d) => {
                 const attrs = [d.make, d.unit].filter(Boolean).join(" | ");
                 const mapTerm = mapTermForCategory(d.category, d.name);
+                const image = dictionaryImageFor(d);
                 return `
                     <article class="def-item">
+                        <figure class="def-media">
+                            <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                            <figcaption>${escapeHtml(image.caption)} <span>Wikimedia Commons</span></figcaption>
+                        </figure>
                         <div class="def-term">
                             <h4>${highlightText(d.name, term)}</h4>
                             <button class="cat-tag linkable" type="button" data-cat="${escapeAttr(d.category)}">${escapeHtml(catLabel(d.category))}</button>
@@ -1306,6 +1360,9 @@
                 if (action === "specs") openSpecsForTerm(btn.dataset.term, btn.dataset.cat);
                 if (action === "boq") openBOQForTerm(btn.dataset.term);
             }));
+            $$("#mediaGrid .def-media img").forEach((img) => img.addEventListener("error", () => {
+                img.closest(".def-media")?.classList.add("image-missing");
+            }, { once: true }));
         }
 
         const more = $("#dictLoadMore");
