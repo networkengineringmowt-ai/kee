@@ -11,60 +11,6 @@
     const dictionaryData = Array.isArray(window.DICTIONARY_DATA) ? window.DICTIONARY_DATA : [];
     const dictionaryCategories = Array.isArray(window.DICTIONARY_CATEGORIES) ? window.DICTIONARY_CATEGORIES : [];
 
-    // ITS/ETC element media: representative internet image + YouTube demo video per
-    // component category. Applied to every component in the dictionary by category so
-    // each element type is illustrated and demonstrated. (Planning-grade references.)
-    const IMG = {
-        cam: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=640&q=70",
-        sign: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=640&q=70",
-        toll: "https://images.unsplash.com/photo-1582298538104-fe2e74c27f59?w=640&q=70",
-        road: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=640&q=70",
-        control: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&q=70",
-        fiber: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=640&q=70"
-    };
-    const CATEGORY_MEDIA = {
-        anpr:    { icon: "fa-camera", color: "#34d399", image: IMG.cam,     video: "UxrOHCH5SdQ", query: "ANPR automatic number plate recognition tolling" },
-        rfid:    { icon: "fa-wifi", color: "#22d3ee", image: IMG.toll,      video: "wbErZjLxlBM", query: "RFID electronic toll collection how it works" },
-        avc:     { icon: "fa-car-side", color: "#a78bfa", image: IMG.toll,  video: "PsBmJb3tA-s", query: "automatic vehicle classification axle count toll" },
-        barrier: { icon: "fa-road-barrier", color: "#fb7185", image: IMG.toll, video: "IX0rFjPuNV4", query: "toll lane automatic boom barrier" },
-        vms:     { icon: "fa-display", color: "#fbbf24", image: IMG.sign,   video: "DJWBz7RjUac", query: "variable message sign highway ITS" },
-        avids:   { icon: "fa-video", color: "#f59e0b", image: IMG.cam,      video: "zA_SIC6nmdM", query: "automatic video incident detection highway" },
-        vasd:    { icon: "fa-gauge-high", color: "#60a5fa", image: IMG.sign, video: "IX0rFjPuNV4", query: "vehicle activated speed display radar sign" },
-        wim:     { icon: "fa-weight-hanging", color: "#f97316", image: IMG.road, video: "IX0rFjPuNV4", query: "weigh in motion system highway trucks" },
-        cctv:    { icon: "fa-video", color: "#38bdf8", image: IMG.cam,      video: "SXmI6AK6Vnc", query: "highway PTZ CCTV traffic surveillance camera" },
-        server:  { icon: "fa-server", color: "#818cf8", image: IMG.control, video: "EkbhyTGyBGo", query: "traffic management control centre servers" },
-        power:   { icon: "fa-bolt", color: "#facc15", image: IMG.control,   video: "EkbhyTGyBGo", query: "toll plaza UPS power backup system" },
-        network: { icon: "fa-network-wired", color: "#2dd4bf", image: IMG.fiber, video: "EkbhyTGyBGo", query: "fibre optic network switch ITS backbone" },
-        printer: { icon: "fa-print", color: "#94a3b8", image: IMG.toll,     video: "IX0rFjPuNV4", query: "toll booth thermal receipt printer" },
-        console: { icon: "fa-desktop", color: "#c084fc", image: IMG.toll,   video: "IX0rFjPuNV4", query: "toll lane operator console booth" },
-        comms:   { icon: "fa-tower-broadcast", color: "#4ade80", image: IMG.control, video: "EkbhyTGyBGo", query: "toll plaza intercom public address system" },
-        signal:  { icon: "fa-traffic-light", color: "#fb923c", image: IMG.sign, video: "IX0rFjPuNV4", query: "toll lane traffic signal overhead lane status" },
-        civil:   { icon: "fa-helmet-safety", color: "#a3a3a3", image: IMG.road, video: "IX0rFjPuNV4", query: "toll plaza gantry civil works canopy" },
-        software:{ icon: "fa-code", color: "#a78bfa", image: IMG.control,   video: "EkbhyTGyBGo", query: "toll management system TMS software" },
-        scanner: { icon: "fa-barcode", color: "#5eead4", image: IMG.toll,   video: "IX0rFjPuNV4", query: "toll booth document barcode scanner" },
-        payment: { icon: "fa-money-bill-wave", color: "#4ade80", image: IMG.toll, video: "d-ilXg7E0L0", query: "toll payment FASTag cash lane" },
-        weather: { icon: "fa-cloud-sun-rain", color: "#38bdf8", image: IMG.road, video: "EkbhyTGyBGo", query: "road weather information system RWIS" },
-        enforcement: { icon: "fa-shield-halved", color: "#f87171", image: IMG.cam, video: "UxrOHCH5SdQ", query: "toll enforcement violation ANPR" },
-        services:{ icon: "fa-screwdriver-wrench", color: "#cbd5e1", image: IMG.road, video: "IX0rFjPuNV4", query: "ITS installation testing commissioning" },
-        other:   { icon: "fa-microchip", color: "#94a3b8", image: IMG.control, video: "IX0rFjPuNV4", query: "intelligent transport system equipment" }
-    };
-    function catMedia(key) { return CATEGORY_MEDIA[key] || CATEGORY_MEDIA.other; }
-    const _tileCache = {};
-    function catTile(key) {
-        if (_tileCache[key]) return _tileCache[key];
-        const m = catMedia(key);
-        const label = (dictionaryCategories.find((c) => c.key === key)?.label || key).toUpperCase();
-        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='320' height='200'>` +
-            `<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>` +
-            `<stop offset='0' stop-color='${m.color}' stop-opacity='0.35'/>` +
-            `<stop offset='1' stop-color='#0b0f19'/></linearGradient></defs>` +
-            `<rect width='320' height='200' fill='#0b0f19'/><rect width='320' height='200' fill='url(#g)'/>` +
-            `<text x='160' y='108' font-family='Outfit,Arial' font-size='16' font-weight='700' fill='#f2f1ec' ` +
-            `text-anchor='middle'>${label.replace(/&/g, "and")}</text></svg>`;
-        _tileCache[key] = "data:image/svg+xml;utf8," + encodeURIComponent(svg);
-        return _tileCache[key];
-    }
-
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -109,9 +55,8 @@
         setInterval(updateClock, 1000);
         setupMap();
         setupSpecs();
+        setupBOQ();
         setupExplorer();
-        setupAnalytics();
-        setupGlobal();
 
         switchView("map");
     }
@@ -370,7 +315,61 @@
 
         $("#mapFitBtn")?.addEventListener("click", fitMapToProject);
         $("#mapTourBtn")?.addEventListener("click", toggleMapTour);
+        $("#mapFullscreenBtn")?.addEventListener("click", toggleMapFullscreen);
+        document.addEventListener("fullscreenchange", syncMapFullscreenState);
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && document.body.classList.contains("map-fullscreen-active") && !document.fullscreenElement) {
+                document.body.classList.remove("map-fullscreen-active");
+                syncMapFullscreenState();
+            }
+        });
         $("#assetTableTopBtn")?.addEventListener("click", () => $(".asset-table-wrap")?.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+
+    async function toggleMapFullscreen() {
+        const stage = $(".map-stage");
+        if (!stage) return;
+
+        const isActive = document.fullscreenElement === stage || document.body.classList.contains("map-fullscreen-active");
+        if (isActive) {
+            if (document.fullscreenElement && document.exitFullscreen) {
+                await document.exitFullscreen().catch(() => {});
+            }
+            document.body.classList.remove("map-fullscreen-active");
+            syncMapFullscreenState();
+            return;
+        }
+
+        if (stage.requestFullscreen) {
+            await stage.requestFullscreen().catch(() => {
+                document.body.classList.add("map-fullscreen-active");
+            });
+        } else {
+            document.body.classList.add("map-fullscreen-active");
+        }
+        syncMapFullscreenState();
+    }
+
+    function syncMapFullscreenState() {
+        const stage = $(".map-stage");
+        const button = $("#mapFullscreenBtn");
+        const active = Boolean(stage && (document.fullscreenElement === stage || document.body.classList.contains("map-fullscreen-active")));
+
+        if (button) {
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-pressed", String(active));
+            button.title = active ? "Exit fullscreen map view" : "View the map console fullscreen";
+            button.innerHTML = active
+                ? `<i class="fa-solid fa-down-left-and-up-right-to-center"></i><span>Exit</span>`
+                : `<i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>Fullscreen</span>`;
+        }
+
+        if (state.map) {
+            setTimeout(() => {
+                state.map.invalidateSize();
+                fitMapToAssets();
+            }, 180);
+        }
     }
 
     function renderComponentChips() {
@@ -452,11 +451,26 @@
         const corridors = unique(assets.map((asset) => asset.corridor)).length;
         const maxKm = assets.reduce((max, asset) => Number.isFinite(asset.km) ? Math.max(max, asset.km) : max, 0);
 
-        setText("#metricTotalAssets", assets.length.toLocaleString());
-        setText("#metricCriticalAssets", critical.toLocaleString());
-        setText("#metricCorridors", corridors.toLocaleString());
+        animateCount("#metricTotalAssets", assets.length);
+        animateCount("#metricCriticalAssets", critical);
+        animateCount("#metricCorridors", corridors);
         setText("#metricMaxKm", `${formatNumber(maxKm)} km`);
         setText("#mapResultCount", assets.length.toLocaleString());
+    }
+
+    function animateCount(selector, to) {
+        const el = $(selector);
+        if (!el) return;
+        const from = parseInt(String(el.textContent).replace(/[^\d]/g, ""), 10) || 0;
+        if (from === to) { el.textContent = to.toLocaleString(); return; }
+        const start = performance.now();
+        const step = (now) => {
+            const t = Math.min(1, (now - start) / 500);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(from + (to - from) * eased).toLocaleString();
+            if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
     }
 
     function renderMarkers() {
@@ -582,6 +596,105 @@
         if (marker) marker.openPopup();
     }
 
+    const categoryMapTerms = {
+        anpr: "ANPR",
+        avc: "ATC",
+        avids: "CCTV",
+        barrier: "Toll",
+        cctv: "CCTV",
+        comms: "Comms",
+        console: "TOC",
+        network: "Cabinet",
+        other: "ITS",
+        payment: "Toll",
+        power: "Cabinet",
+        printer: "Toll",
+        rfid: "Toll",
+        scanner: "Toll",
+        server: "TOC",
+        services: "ITS",
+        signal: "Toll",
+        software: "TOC",
+        vasd: "VMS",
+        vms: "VMS",
+        weather: "RWIS",
+        wim: "WIM"
+    };
+
+    function assetLinkTerm(asset) {
+        return String(asset?.type || asset?.site || "").trim();
+    }
+
+    function mapTermForCategory(category, fallback = "") {
+        return categoryMapTerms[String(category || "").toLowerCase()] || fallback || "";
+    }
+
+    function mapTermForText(text) {
+        const value = String(text || "").toLowerCase();
+        if (/anpr|ocr|plate|number plate/.test(value)) return "ANPR";
+        if (/rfid|dsrc|tag|toll|barrier|booth|fare|cash|lane/.test(value)) return "Toll";
+        if (/avc|classifier|classification|axle|counter|loop/.test(value)) return "ATC";
+        if (/cctv|camera|ptz|video|incident|surveillance/.test(value)) return "CCTV";
+        if (/vms|message sign|variable message|display|sign/.test(value)) return "VMS";
+        if (/weather|rain|flood|rwis/.test(value)) return "RWIS";
+        if (/fibre|fiber|switch|router|network|cabinet|ups|power/.test(value)) return "Cabinet";
+        if (/toc|server|control|software|operator|console/.test(value)) return "TOC";
+        if (/wim|weigh/.test(value)) return "WIM";
+        return String(text || "").trim();
+    }
+
+    function openSpecsForTerm(term, category = "") {
+        switchView("specs");
+        if (category && typeof specState !== "undefined") {
+            specState.category = category;
+            specState.limit = SPEC_PAGE;
+            renderSpecCategoryRail();
+        }
+        const search = $("#specsSearchInput");
+        if (search) {
+            search.value = term || "";
+            search.dispatchEvent(new Event("input"));
+        }
+    }
+
+    function openBOQForTerm(term) {
+        switchView("boq");
+        activateBOQPane("boq-register");
+        const search = $("#componentSearchInput");
+        if (search) {
+            search.value = term || "";
+            search.dispatchEvent(new Event("input"));
+        }
+    }
+
+    function openDictionaryForTerm(term, category = "") {
+        switchView("explorer");
+        if (category && typeof dictState !== "undefined") {
+            dictState.category = category;
+            dictState.limit = DICT_PAGE;
+            renderDictCategoryRail();
+        }
+        const search = $("#mediaSearchInput");
+        if (search) {
+            search.value = term || "";
+            search.dispatchEvent(new Event("input"));
+        }
+    }
+
+    function openMapForTerm(term) {
+        switchView("map");
+        const search = $("#mapSearchInput");
+        const typeFilter = $("#mapTypeFilter");
+        const cleanTerm = String(term || "").trim();
+        if (typeFilter) {
+            const exact = Array.from(typeFilter.options).find((opt) => opt.value.toLowerCase() === cleanTerm.toLowerCase());
+            typeFilter.value = exact ? exact.value : "All";
+        }
+        if (search) search.value = typeFilter?.value === "All" ? cleanTerm : "";
+        applyMapFilters();
+        setTimeout(fitMapToAssets, 90);
+    }
+
     function renderSelectedAsset(asset) {
         const panel = $("#mapDetailPanel");
         if (!panel) return;
@@ -620,37 +733,22 @@
                 <span>Purpose</span><strong>${escapeHtml(asset.purpose)}</strong>
             </div>
             <div class="detail-actions triple">
-                <button class="btn-analyze" type="button" id="selectedReadSpecBtn"><i class="fa-solid fa-book-open"></i> Specs</button>
-                <button class="btn-analyze" type="button" id="selectedDictBtn"><i class="fa-solid fa-photo-film"></i> Media</button>
-                <button class="btn-analyze" type="button" id="selectedFilterBtn"><i class="fa-solid fa-filter"></i> Isolate</button>
+                <button class="btn-analyze" type="button" id="selectedReadSpecBtn"><i class="fa-solid fa-table-list"></i> Specs</button>
+                <button class="btn-analyze" type="button" id="selectedBOQBtn"><i class="fa-solid fa-file-invoice-dollar"></i> BOQ</button>
+                <button class="btn-analyze" type="button" id="selectedDictBtn"><i class="fa-solid fa-book"></i> Dictionary</button>
             </div>
         `;
 
         $("#selectedReadSpecBtn")?.addEventListener("click", () => {
-            switchView("specs");
-            const reader = document.querySelector('.spec-sub-tab[data-target="specs-reader"]');
-            if (reader) reader.click();
-            const search = $("#specsSearchInput");
-            if (search) {
-                search.value = asset.type;
-                search.dispatchEvent(new Event("input"));
-            }
+            openSpecsForTerm(assetLinkTerm(asset));
+        });
+
+        $("#selectedBOQBtn")?.addEventListener("click", () => {
+            openBOQForTerm(assetLinkTerm(asset));
         });
 
         $("#selectedDictBtn")?.addEventListener("click", () => {
-            switchView("explorer");
-            const search = $("#mediaSearchInput");
-            if (search) {
-                search.value = asset.type;
-                search.dispatchEvent(new Event("input"));
-            }
-        });
-
-        $("#selectedFilterBtn")?.addEventListener("click", () => {
-            const typeFilter = $("#mapTypeFilter");
-            if (typeFilter) typeFilter.value = asset.type;
-            applyMapFilters();
-            setTimeout(fitMapToAssets, 80);
+            openDictionaryForTerm(assetLinkTerm(asset));
         });
     }
 
@@ -716,46 +814,102 @@
         if (button) button.innerHTML = `<i class="fa-solid fa-play"></i><span>Tour</span>`;
     }
 
+    // ---- Specs: massive wide component specification table ----
+    const SPEC_PAGE = 100;
+    const specState = { term: "", category: "All", limit: SPEC_PAGE };
+
     function setupSpecs() {
-        // DOCS_CONTENT is a flat array of sections. Each content item is either a
-        // paragraph string or a table block: { type: "table", rows: [[cell, ...], ...] }.
-        const flat = (Array.isArray(docsContent) ? docsContent : []).map((section, index) => {
-            const content = Array.isArray(section.content)
-                ? section.content
-                : (section.content ? [section.content] : []);
-            return {
-                id: String(section.id || `${String(section.docName || "doc").replace(/\W/g, "_")}_${index}`),
-                docName: String(section.docName || "Document"),
-                title: String(section.title || `Section ${index + 1}`),
-                content,
-                searchText: buildSpecSearchText(section.title, content)
-            };
+        renderSpecCategoryRail();
+        renderSpecMasterTable();
+        $("#specsSearchInput")?.addEventListener("input", () => { specState.limit = SPEC_PAGE; renderSpecMasterTable(); });
+        $("#specLoadMore")?.addEventListener("click", () => { specState.limit += SPEC_PAGE; renderSpecMasterTable(); });
+    }
+
+    function specFiltered() {
+        const term = specState.term.trim().toLowerCase();
+        return dictionaryData.filter((c) => {
+            if (specState.category !== "All" && c.category !== specState.category) return false;
+            if (!term) return true;
+            return `${c.code} ${c.name} ${c.description} ${c.make} ${c.subsystem} ${c.location} ${c.source}`.toLowerCase().includes(term);
         });
+    }
 
-        const toc = $("#specsTocContainer");
-        if (toc) {
-            setText("#specSectionCount", flat.length.toLocaleString());
-            renderSpecTopicChips();
+    function renderSpecCategoryRail() {
+        const rail = $("#specCategoryRail");
+        if (!rail) return;
+        const chips = [{ key: "All", label: "All", count: dictionaryData.length }].concat(dictionaryCategories);
+        rail.innerHTML = chips.map((c) => `
+            <button class="dict-chip${c.key === specState.category ? " active" : ""}" type="button" data-cat="${escapeAttr(c.key)}">
+                <span>${escapeHtml(c.label)}</span><strong>${c.count.toLocaleString()}</strong>
+            </button>`).join("");
+        $$("#specCategoryRail .dict-chip").forEach((chip) => chip.addEventListener("click", () => {
+            specState.category = chip.dataset.cat;
+            specState.limit = SPEC_PAGE;
+            $$("#specCategoryRail .dict-chip").forEach((c) => c.classList.toggle("active", c === chip));
+            renderSpecMasterTable();
+        }));
+    }
 
-            const render = () => renderSpecToc(flat);
-            $("#specsSearchInput")?.addEventListener("input", render);
-            render();
-            if (flat.length) renderSpecsContent(flat[0]);
+    function renderSpecMasterTable() {
+        const body = $("#specsTableBody");
+        if (!body) return;
+        specState.term = $("#specsSearchInput")?.value || "";
+        const all = specFiltered();
+        const shown = all.slice(0, specState.limit);
+        const term = specState.term.trim();
+        setText("#specCountNote", `${dictionaryData.length.toLocaleString()} components - showing ${shown.length.toLocaleString()} of ${all.length.toLocaleString()}`);
+
+        if (!all.length) {
+            body.innerHTML = `<tr><td colspan="12"><div class="empty-state compact"><i class="fa-solid fa-magnifying-glass"></i><h4>No components</h4><p>Try another search or element type.</p></div></td></tr>`;
+        } else {
+            body.innerHTML = shown.map((c, i) => `
+                <tr>
+                    <td class="col-idx">${i + 1}</td>
+                    <td>${escapeHtml(c.code || "-")}</td>
+                    <td class="col-name">${highlightText(c.name, term)}</td>
+                    <td><span class="cat-tag">${escapeHtml(catLabel(c.category))}</span></td>
+                    <td class="col-desc">${highlightText(c.description || c.name, term)}</td>
+                    <td>${highlightText(c.make || "-", term)}</td>
+                    <td class="num">${escapeHtml(c.qty || "-")}</td>
+                    <td>${escapeHtml(c.unit || "-")}</td>
+                    <td>${escapeHtml(c.subsystem || "-")}</td>
+                    <td>${escapeHtml(c.location || "-")}</td>
+                    <td>${escapeHtml(c.source || "-")}</td>
+                    <td class="link-cell">
+                        <button class="mini-link" type="button" data-spec-link="map" data-term="${escapeAttr(mapTermForCategory(c.category, c.name))}" title="Filter map"><i class="fa-solid fa-map-location-dot"></i></button>
+                        <button class="mini-link" type="button" data-spec-link="boq" data-term="${escapeAttr(mapTermForCategory(c.category, c.name))}" title="Find BOQ rows"><i class="fa-solid fa-file-invoice-dollar"></i></button>
+                        <button class="mini-link" type="button" data-spec-link="dict" data-term="${escapeAttr(c.name)}" data-cat="${escapeAttr(c.category)}" title="Open dictionary"><i class="fa-solid fa-book"></i></button>
+                    </td>
+                </tr>`).join("");
+
+            $$("#specsTableBody .mini-link").forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    const action = button.dataset.specLink;
+                    if (action === "map") openMapForTerm(button.dataset.term);
+                    if (action === "boq") openBOQForTerm(button.dataset.term);
+                    if (action === "dict") openDictionaryForTerm(button.dataset.term, button.dataset.cat);
+                });
+            });
         }
+        const more = $("#specLoadMore");
+        if (more) more.style.display = all.length > specState.limit ? "inline-flex" : "none";
+    }
 
-        // BOQ view: Priced BOQ / Component Register sub-tab switching
+    function setupBOQ() {
         $$(".boq-sub-tab").forEach((tab) => {
             tab.addEventListener("click", () => {
-                $$(".boq-sub-tab").forEach((t) => t.classList.remove("active"));
-                $$(".boq-content-pane").forEach((p) => p.classList.remove("active"));
-                tab.classList.add("active");
-                $("#" + tab.dataset.target)?.classList.add("active");
+                activateBOQPane(tab.dataset.target);
             });
         });
-
         renderBOQTable();
         renderTollComponentRegister();
         $("#componentSearchInput")?.addEventListener("input", renderTollComponentRegister);
+    }
+
+    function activateBOQPane(target = "boq-priced") {
+        $$(".boq-sub-tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.target === target));
+        $$(".boq-content-pane").forEach((pane) => pane.classList.toggle("active", pane.id === target));
     }
 
     function renderSpecTopicChips() {
@@ -898,12 +1052,14 @@
         }
 
         if (!rows.length) {
-            tableBody.innerHTML = `<tr><td colspan="6"><div class="empty-state compact"><i class="fa-solid fa-magnifying-glass"></i><h4>No components found</h4><p>Try another equipment, make or model.</p></div></td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="7"><div class="empty-state compact"><i class="fa-solid fa-magnifying-glass"></i><h4>No components found</h4><p>Try another equipment, make or model.</p></div></td></tr>`;
             return;
         }
 
         tableBody.innerHTML = rows.map((item) => {
             const makeModel = [item.make, item.model].filter(Boolean).join(" / ");
+            const linkTerm = item.description || item.item || makeModel || "";
+            const mapTerm = mapTermForText(`${item.description || ""} ${makeModel}`);
             return `
                 <tr>
                     <td>${escapeHtml(item.source || "-")}<br><small>${escapeHtml(item.level || "")}</small></td>
@@ -912,45 +1068,79 @@
                     <td>${highlightText(makeModel || "-", term)}</td>
                     <td>${escapeHtml(item.quantity || "-")}</td>
                     <td>${escapeHtml(item.unit || "-")}</td>
+                    <td class="link-cell">
+                        <button class="mini-link" type="button" data-register-link="map" data-term="${escapeAttr(mapTerm)}" title="Filter map"><i class="fa-solid fa-map-location-dot"></i></button>
+                        <button class="mini-link" type="button" data-register-link="specs" data-term="${escapeAttr(linkTerm)}" title="Open specs"><i class="fa-solid fa-table-list"></i></button>
+                        <button class="mini-link" type="button" data-register-link="dict" data-term="${escapeAttr(linkTerm)}" title="Open dictionary"><i class="fa-solid fa-book"></i></button>
+                    </td>
                 </tr>
             `;
         }).join("");
+
+        $$("#componentTableBody .mini-link").forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.stopPropagation();
+                const action = button.dataset.registerLink;
+                if (action === "map") openMapForTerm(button.dataset.term);
+                if (action === "specs") openSpecsForTerm(button.dataset.term);
+                if (action === "dict") openDictionaryForTerm(button.dataset.term);
+            });
+        });
     }
 
-    const DICT_PAGE = 60;
+    // ---- Dictionary: text-only catalogue of component definitions ----
+    const DICT_PAGE = 80;
     const dictState = { term: "", category: "All", limit: DICT_PAGE };
+    let dictDefs = null;
+    let dictCatCounts = null;
+
+    function catLabel(key) {
+        return dictionaryCategories.find((x) => x.key === key)?.label || key;
+    }
+
+    function buildDefinitions() {
+        if (dictDefs) return dictDefs;
+        const seen = new Map();
+        dictionaryData.forEach((c) => {
+            const key = String(c.name || "").toLowerCase().trim();
+            if (!key || seen.has(key)) return;
+            seen.set(key, {
+                name: c.name, category: c.category,
+                definition: c.description || c.name,
+                make: c.make || "", unit: c.unit || ""
+            });
+        });
+        dictDefs = Array.from(seen.values()).sort((a, b) => a.name.localeCompare(b.name));
+        dictCatCounts = { All: dictDefs.length };
+        dictDefs.forEach((d) => { dictCatCounts[d.category] = (dictCatCounts[d.category] || 0) + 1; });
+        return dictDefs;
+    }
 
     function setupExplorer() {
+        buildDefinitions();
         renderDictCategoryRail();
         renderDictionary();
-
         $("#mediaSearchInput")?.addEventListener("input", () => { dictState.limit = DICT_PAGE; renderDictionary(); });
         $("#dictLoadMore")?.addEventListener("click", () => { dictState.limit += DICT_PAGE; renderDictionary(); });
-
-        // modal close events (legacy video modal + new component modal)
-        $("#closeVideoBtn")?.addEventListener("click", closeVideoModal);
-        $("#videoModalBackdrop")?.addEventListener("click", closeVideoModal);
-        $("#closeComponentBtn")?.addEventListener("click", closeComponentModal);
-        $("#componentModalBackdrop")?.addEventListener("click", closeComponentModal);
     }
 
     function dictFiltered() {
         const term = dictState.term.trim().toLowerCase();
-        return dictionaryData.filter((c) => {
-            if (dictState.category !== "All" && c.category !== dictState.category) return false;
+        return buildDefinitions().filter((d) => {
+            if (dictState.category !== "All" && d.category !== dictState.category) return false;
             if (!term) return true;
-            return `${c.name} ${c.make} ${c.description} ${c.code} ${c.subsystem} ${c.location}`.toLowerCase().includes(term);
+            return `${d.name} ${d.definition} ${d.make}`.toLowerCase().includes(term);
         });
     }
 
     function renderDictCategoryRail() {
         const rail = $("#dictCategoryRail");
         if (!rail) return;
-        const chips = [{ key: "All", label: "All", count: dictionaryData.length, color: "#f2f1ec", icon: "fa-layer-group" }]
-            .concat(dictionaryCategories.map((c) => ({ ...c, color: catMedia(c.key).color, icon: catMedia(c.key).icon })));
+        buildDefinitions();
+        const chips = [{ key: "All", label: "All", count: dictCatCounts.All }]
+            .concat(dictionaryCategories.filter((c) => dictCatCounts[c.key]).map((c) => ({ key: c.key, label: c.label, count: dictCatCounts[c.key] })));
         rail.innerHTML = chips.map((c) => `
             <button class="dict-chip${c.key === dictState.category ? " active" : ""}" type="button" data-cat="${escapeAttr(c.key)}">
-                <i class="fa-solid ${c.icon}" style="color:${c.color}"></i>
                 <span>${escapeHtml(c.label)}</span><strong>${c.count.toLocaleString()}</strong>
             </button>`).join("");
         $$("#dictCategoryRail .dict-chip").forEach((chip) => chip.addEventListener("click", () => {
@@ -962,101 +1152,52 @@
     }
 
     function renderDictionary() {
-        const grid = $("#mediaGrid");
-        if (!grid) return;
+        const list = $("#mediaGrid");
+        if (!list) return;
         dictState.term = $("#mediaSearchInput")?.value || "";
         const all = dictFiltered();
         const shown = all.slice(0, dictState.limit);
-
-        setText("#dictCountNote", `${dictionaryData.length.toLocaleString()} components across ${dictionaryCategories.length} ETC & ITS element types — showing ${shown.length.toLocaleString()} of ${all.length.toLocaleString()}`);
+        setText("#dictCountNote", `${buildDefinitions().length.toLocaleString()} defined components across ${dictionaryCategories.length} element types - showing ${shown.length.toLocaleString()} of ${all.length.toLocaleString()}`);
 
         if (!all.length) {
-            grid.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h4>No components</h4><p>Try another search term or category.</p></div>`;
+            list.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h4>No definitions</h4><p>Try another search term or category.</p></div>`;
         } else {
-            grid.innerHTML = shown.map((c) => {
-                const m = catMedia(c.category);
-                const label = dictionaryCategories.find((x) => x.key === c.category)?.label || c.category;
-                const sub = c.make || c.subsystem || c.location || "";
+            const term = dictState.term.trim();
+            list.innerHTML = shown.map((d) => {
+                const attrs = [d.make, d.unit].filter(Boolean).join(" | ");
+                const mapTerm = mapTermForCategory(d.category, d.name);
                 return `
-                    <article class="dict-card" data-id="${escapeAttr(c.id)}">
-                        <div class="dict-card-media">
-                            <img class="dict-card-img" src="${escapeAttr(m.image)}" data-cat="${escapeAttr(c.category)}" alt="${escapeAttr(label)}" loading="lazy">
-                            <span class="dict-card-badge" style="background:${m.color}"><i class="fa-solid ${m.icon}"></i> ${escapeHtml(label)}</span>
-                            <span class="dict-card-play"><i class="fa-solid fa-play"></i></span>
+                    <article class="def-item">
+                        <div class="def-term">
+                            <h4>${highlightText(d.name, term)}</h4>
+                            <button class="cat-tag linkable" type="button" data-cat="${escapeAttr(d.category)}">${escapeHtml(catLabel(d.category))}</button>
                         </div>
-                        <div class="dict-card-body">
-                            <h4 class="dict-card-title">${escapeHtml(c.name)}</h4>
-                            <p class="dict-card-sub">${escapeHtml(sub)}</p>
-                            <p class="dict-card-meta">${escapeHtml(c.code || "")}${c.code ? " · " : ""}${escapeHtml(c.source || "")}</p>
+                        <p class="def-body">${highlightText(d.definition, term)}</p>
+                        ${attrs ? `<p class="def-attrs"><i class="fa-solid fa-tag"></i> ${escapeHtml(attrs)}</p>` : ""}
+                        <div class="def-actions">
+                            <button class="def-link" type="button" data-dict-link="map" data-term="${escapeAttr(mapTerm)}"><i class="fa-solid fa-map-location-dot"></i> Map</button>
+                            <button class="def-link" type="button" data-dict-link="specs" data-term="${escapeAttr(d.name)}" data-cat="${escapeAttr(d.category)}"><i class="fa-solid fa-table-list"></i> Specs</button>
+                            <button class="def-link" type="button" data-dict-link="boq" data-term="${escapeAttr(mapTerm)}"><i class="fa-solid fa-file-invoice-dollar"></i> BOQ</button>
                         </div>
                     </article>`;
             }).join("");
 
-            $$("#mediaGrid .dict-card-img").forEach((img) => img.addEventListener("error", () => {
-                if (!img.dataset.fb) { img.dataset.fb = "1"; img.src = catTile(img.dataset.cat); }
+            $$("#mediaGrid .cat-tag.linkable").forEach((btn) => btn.addEventListener("click", () => {
+                dictState.category = btn.dataset.cat;
+                dictState.limit = DICT_PAGE;
+                renderDictCategoryRail();
+                renderDictionary();
             }));
-            $$("#mediaGrid .dict-card").forEach((card) => card.addEventListener("click", () => {
-                const comp = dictionaryData.find((x) => x.id === card.dataset.id);
-                if (comp) openComponentModal(comp);
+            $$("#mediaGrid .def-link").forEach((btn) => btn.addEventListener("click", () => {
+                const action = btn.dataset.dictLink;
+                if (action === "map") openMapForTerm(btn.dataset.term);
+                if (action === "specs") openSpecsForTerm(btn.dataset.term, btn.dataset.cat);
+                if (action === "boq") openBOQForTerm(btn.dataset.term);
             }));
         }
 
         const more = $("#dictLoadMore");
         if (more) more.style.display = all.length > dictState.limit ? "inline-flex" : "none";
-    }
-
-    function openComponentModal(comp) {
-        const m = catMedia(comp.category);
-        const label = dictionaryCategories.find((x) => x.key === comp.category)?.label || comp.category;
-        setText("#componentModalTitle", comp.name);
-        const rows = [
-            ["Element type", label], ["Make / model", comp.make], ["BOQ code", comp.code],
-            ["Quantity", comp.qty], ["Unit", comp.unit], ["Subsystem", comp.subsystem],
-            ["Location", comp.location], ["Source", comp.source]
-        ].filter(([, v]) => v);
-        const body = $("#componentModalBody");
-        if (body) {
-            body.innerHTML = `
-                <div class="cmodal-video">
-                    <iframe src="https://www.youtube-nocookie.com/embed/${escapeAttr(m.video)}" title="${escapeAttr(label)} demonstration"
-                        frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <p class="cmodal-desc">${escapeHtml(comp.description || comp.name)}</p>
-                <div class="cmodal-grid">
-                    ${rows.map(([k, v]) => `<div><span>${escapeHtml(k)}</span><strong>${escapeHtml(String(v))}</strong></div>`).join("")}
-                </div>
-                <div class="cmodal-actions">
-                    <a class="media-card-btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(m.query)}" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> More demos on YouTube</a>
-                    <button class="media-card-btn ghost" type="button" id="cmodalLocate"><i class="fa-solid fa-location-dot"></i> Find on map</button>
-                </div>`;
-            $("#cmodalLocate")?.addEventListener("click", () => {
-                closeComponentModal();
-                switchView("map");
-                const search = $("#mapSearchInput");
-                const typeSel = $("#mapTypeFilter");
-                if (typeSel) typeSel.value = "All";
-                if (search) { search.value = label.split(" ")[0]; search.dispatchEvent(new Event("input")); }
-                setTimeout(() => { if (state.map) { state.map.invalidateSize(); fitMapToAssets(); } }, 160);
-            });
-        }
-        $("#componentModal")?.classList.add("active");
-    }
-
-    function closeComponentModal() {
-        $("#componentModal")?.classList.remove("active");
-        const body = $("#componentModalBody");
-        if (body) body.innerHTML = ""; // stop video playback
-    }
-
-    function openVideoModal(videoId, title) {
-        $("#videoModalTitle").textContent = title;
-        $("#videoContainer").innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        $("#videoModal").classList.add("active");
-    }
-
-    function closeVideoModal() {
-        $("#videoModal").classList.remove("active");
-        $("#videoContainer").innerHTML = ""; // Stop video playback
     }
 
     function renderFileCard(file) {

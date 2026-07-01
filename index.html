@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,14 +43,6 @@
                     <i class="fa-solid fa-book-journal-whills"></i>
                     <span>Dictionary</span>
                 </button>
-                <button class="nav-item" type="button" data-view="global">
-                    <i class="fa-solid fa-chart-network"></i>
-                    <span>Portfolio</span>
-                </button>
-                <button class="nav-item" type="button" data-view="analytics">
-                    <i class="fa-solid fa-chart-column"></i>
-                    <span>Books</span>
-                </button>
             </nav>
 
             <div class="topbar-actions">
@@ -81,6 +73,9 @@
                                 </button>
                                 <button class="ghost-btn" type="button" id="mapTourBtn" title="Auto-tour the assets">
                                     <i class="fa-solid fa-play"></i><span>Tour</span>
+                                </button>
+                                <button class="ghost-btn" type="button" id="mapFullscreenBtn" title="View the map console fullscreen" aria-pressed="false">
+                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>Fullscreen</span>
                                 </button>
                             </div>
                         </div>
@@ -147,76 +142,50 @@
                             </aside>
                         </div>
                     </section>
-
-                    <aside class="map-side-panels">
-                        <section class="panel mix-panel">
-                            <div class="panel-heading compact">
-                                <h3>Deployment Mix</h3>
-                                <span class="pill" id="mapResultCount">0</span>
-                            </div>
-                            <div class="status-bars" id="statusBars"></div>
-                        </section>
-                        <section class="panel asset-table-panel">
-                            <div class="panel-heading compact">
-                                <h3>Installations</h3>
-                                <button class="icon-button small" type="button" id="assetTableTopBtn" title="Back to top">
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                </button>
-                            </div>
-                            <div class="table-wrap asset-table-wrap">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Site</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="mapAssetTable"></tbody>
-                                </table>
-                            </div>
-                        </section>
-                    </aside>
                 </div>
             </section>
 
             <section id="specs-view" class="view-section" aria-labelledby="specTitle">
-                <div class="view-header">
+                <div class="view-header slim">
                     <div>
-                        <p class="eyebrow">Contract intelligence</p>
-                        <h3 id="specTitle">Technical specification and operations reader</h3>
+                        <p class="eyebrow">Technical specification</p>
+                        <h3 id="specTitle">ETC &amp; ITS Component Specifications</h3>
+                        <p class="panel-note" id="specCountNote">Loading components...</p>
                     </div>
                     <label class="search-field view-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" id="specsSearchInput" placeholder="Search ANPR, VMS, HCI, testing">
+                        <input type="search" id="specsSearchInput" placeholder="Search components, makes, models, attributes...">
                     </label>
                 </div>
 
-                <div class="topic-rail" id="specTopicChips"></div>
+                <div class="dict-category-rail" id="specCategoryRail"></div>
 
-                <div id="specs-reader">
-                    <div class="workspace-grid reader-grid">
-                        <aside class="panel spec-nav">
-                            <div class="panel-heading compact">
-                                <h3>Document sections</h3>
-                                <span class="pill" id="specSectionCount">0</span>
-                            </div>
-                            <div id="specsTocContainer" class="toc-container"></div>
-                        </aside>
-
-                        <article class="panel reader-panel">
-                            <div class="breadcrumb" id="specsBreadcrumb">Specification library</div>
-                            <div id="specsContent" class="reader-content">
-                                <div class="empty-state">
-                                    <i class="fa-solid fa-book-open"></i>
-                                    <h4>Specification ready</h4>
-                                    <p>Select a section from the document index.</p>
-                                </div>
-                            </div>
-                        </article>
+                <div class="panel table-panel spec-master-panel">
+                    <div class="table-wrap spec-master-wrap">
+                        <table class="dense-table spec-master-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Code</th>
+                                    <th>Component</th>
+                                    <th>Element type</th>
+                                    <th>Description &amp; attributes</th>
+                                    <th>Make / model</th>
+                                    <th>Qty</th>
+                                    <th>Unit</th>
+                                    <th>Subsystem</th>
+                                    <th>Location</th>
+                                    <th>Source</th>
+                                    <th>Links</th>
+                                </tr>
+                            </thead>
+                            <tbody id="specsTableBody"></tbody>
+                        </table>
                     </div>
                 </div>
-
+                <div class="dict-more">
+                    <button class="ghost-btn" type="button" id="specLoadMore"><i class="fa-solid fa-plus"></i><span>Load more rows</span></button>
+                </div>
             </section>
 
             <section id="boq-view" class="view-section" aria-labelledby="boqTitle">
@@ -279,6 +248,7 @@
                                         <th>Make / Model</th>
                                         <th>Qty</th>
                                         <th>Unit</th>
+                                        <th>Links</th>
                                     </tr>
                                 </thead>
                                 <tbody id="componentTableBody"></tbody>
@@ -289,134 +259,36 @@
             </section>
 
             <section id="explorer-view" class="view-section" aria-labelledby="docsTitle">
-                <div class="view-header">
+                <div class="view-header slim">
                     <div>
-                        <p class="eyebrow">Procurement Library</p>
+                        <p class="eyebrow">Reference glossary</p>
                         <h3 id="docsTitle">ETC &amp; ITS Component Dictionary</h3>
-                        <p class="panel-note" id="dictCountNote">Loading components…</p>
+                        <p class="panel-note" id="dictCountNote">Loading definitions...</p>
                     </div>
                     <label class="search-field view-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" id="mediaSearchInput" placeholder="Search 1,300+ components, makes, models...">
+                        <input type="search" id="mediaSearchInput" placeholder="Search component definitions...">
                     </label>
                 </div>
 
                 <div class="dict-category-rail" id="dictCategoryRail"></div>
-                <div class="media-grid dict-grid" id="mediaGrid"></div>
+                <div class="definition-list" id="mediaGrid"></div>
                 <div class="dict-more">
-                    <button class="ghost-btn" type="button" id="dictLoadMore"><i class="fa-solid fa-plus"></i><span>Load more components</span></button>
+                    <button class="ghost-btn" type="button" id="dictLoadMore"><i class="fa-solid fa-plus"></i><span>Load more definitions</span></button>
                 </div>
             </section>
 
-            <section id="global-view" class="view-section" aria-labelledby="globalTitle">
-                <div class="view-header">
-                    <div>
-                        <p class="eyebrow">Portfolio view</p>
-                        <h3 id="globalTitle">Cost, documents and deployment intelligence</h3>
-                    </div>
-                </div>
-
-                <div id="globalSummaryGrid" class="global-summary-grid"></div>
-
-                <div class="workspace-grid analytics-grid">
-                    <section class="panel chart-panel">
-                        <div class="panel-heading compact">
-                            <h3>Highest value documents</h3>
-                        </div>
-                        <div class="chart-wrapper"><canvas id="globalValueChart"></canvas></div>
-                    </section>
-                    <section class="panel chart-panel">
-                        <div class="panel-heading compact">
-                            <h3>Documents by item count</h3>
-                        </div>
-                        <div class="chart-wrapper"><canvas id="globalItemChart"></canvas></div>
-                    </section>
-                </div>
-            </section>
-
-            <section id="analytics-view" class="view-section" aria-labelledby="analyticsTitle">
-                <div class="view-header">
-                    <div>
-                        <p class="eyebrow">Extracted tables</p>
-                        <h3 id="analyticsTitle">Interactive workbook analytics</h3>
-                    </div>
-                    <select id="fileSelect" class="control-select wide-select" aria-label="Select data source">
-                        <option value="">Select data source</option>
-                    </select>
-                </div>
-
-                <div class="analytics-surface">
-                    <div id="loader" class="loader-overlay">
-                        <div class="spinner"></div>
-                        <span>Loading data</span>
-                    </div>
-
-                    <div id="initialState" class="panel empty-state tall">
-                        <i class="fa-solid fa-chart-column"></i>
-                        <h4>No workbook selected</h4>
-                        <p>Select a data source from the menu.</p>
-                    </div>
-
-                    <div id="dashboardContent" class="dashboard-content">
-                        <div class="sheet-tabs" id="sheetTabs"></div>
-                        <div class="workspace-grid workbook-grid">
-                            <section class="panel table-panel">
-                                <div class="panel-heading compact">
-                                    <h3 id="tableTitle">Extracted data</h3>
-                                </div>
-                                <div class="table-container" id="tableContainer"></div>
-                            </section>
-                            <section class="panel chart-panel" id="chartsSection">
-                                <div class="panel-heading compact">
-                                    <h3>Visual insights</h3>
-                                </div>
-                                <div class="charts-container" id="chartsContainer"></div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
 
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
-        <div class="video-modal-content">
-            <div class="video-modal-header">
-                <h3 id="videoModalTitle">Video Explainer</h3>
-                <button class="icon-button" id="closeVideoBtn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="video-container" id="videoContainer"></div>
-        </div>
-    </div>
-
-    <!-- Component detail modal -->
-    <div class="component-modal" id="componentModal">
-        <div class="component-modal-backdrop" id="componentModalBackdrop"></div>
-        <div class="component-modal-content">
-            <div class="component-modal-header">
-                <h3 id="componentModalTitle">Component</h3>
-                <button class="icon-button" id="closeComponentBtn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="component-modal-body" id="componentModalBody"></div>
-        </div>
-    </div>
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="road_network.js"></script>
     <script src="data/its-data.js"></script>
     <script src="data/boq_data.js"></script>
     <script src="data/toll_components.js"></script>
     <script src="data/dictionary_data.js"></script>
-    <script src="data/media_dictionary.js"></script>
-    <script src="docs_content.js"></script>
-    <script src="file_metadata.js"></script>
-    <script src="data_store.js"></script>
-    <script src="master_data.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
+
