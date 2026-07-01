@@ -29,19 +29,32 @@
             <nav class="nav-links">
                 <button class="nav-item active" type="button" data-view="map">
                     <i class="fa-solid fa-map"></i>
-                    <span>Geospatial Map</span>
+                    <span>Map</span>
                 </button>
                 <button class="nav-item" type="button" data-view="specs">
                     <i class="fa-solid fa-book-open"></i>
-                    <span>Tech Specs & Ops</span>
+                    <span>Specs</span>
+                </button>
+                <button class="nav-item" type="button" data-view="boq">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <span>BOQ</span>
                 </button>
                 <button class="nav-item" type="button" data-view="explorer">
                     <i class="fa-solid fa-book-journal-whills"></i>
-                    <span>Data Dictionary</span>
+                    <span>Dictionary</span>
+                </button>
+                <button class="nav-item" type="button" data-view="global">
+                    <i class="fa-solid fa-chart-network"></i>
+                    <span>Portfolio</span>
+                </button>
+                <button class="nav-item" type="button" data-view="analytics">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Books</span>
                 </button>
             </nav>
 
             <div class="topbar-actions">
+                <div class="live-clock" id="liveClock" aria-label="Live local time">--:--:--</div>
                 <div class="status-block">
                     <div class="system-status">
                         <span class="status-dot"></span>
@@ -135,7 +148,35 @@
                         </div>
                     </section>
 
-
+                    <aside class="map-side-panels">
+                        <section class="panel mix-panel">
+                            <div class="panel-heading compact">
+                                <h3>Deployment Mix</h3>
+                                <span class="pill" id="mapResultCount">0</span>
+                            </div>
+                            <div class="status-bars" id="statusBars"></div>
+                        </section>
+                        <section class="panel asset-table-panel">
+                            <div class="panel-heading compact">
+                                <h3>Installations</h3>
+                                <button class="icon-button small" type="button" id="assetTableTopBtn" title="Back to top">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                </button>
+                            </div>
+                            <div class="table-wrap asset-table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Site</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mapAssetTable"></tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </aside>
                 </div>
             </section>
 
@@ -145,10 +186,6 @@
                         <p class="eyebrow">Contract intelligence</p>
                         <h3 id="specTitle">Technical specification and operations reader</h3>
                     </div>
-                    <div class="spec-sub-tabs">
-                        <button class="spec-sub-tab active" data-target="specs-reader">Specification Library</button>
-                        <button class="spec-sub-tab" data-target="specs-boq">Priced Bill of Quantities</button>
-                    </div>
                     <label class="search-field view-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="search" id="specsSearchInput" placeholder="Search ANPR, VMS, HCI, testing">
@@ -157,7 +194,7 @@
 
                 <div class="topic-rail" id="specTopicChips"></div>
 
-                <div id="specs-reader" class="specs-content-pane active">
+                <div id="specs-reader">
                     <div class="workspace-grid reader-grid">
                         <aside class="panel spec-nav">
                             <div class="panel-heading compact">
@@ -180,7 +217,21 @@
                     </div>
                 </div>
 
-                <div id="specs-boq" class="specs-content-pane">
+            </section>
+
+            <section id="boq-view" class="view-section" aria-labelledby="boqTitle">
+                <div class="view-header">
+                    <div>
+                        <p class="eyebrow">Procurement</p>
+                        <h3 id="boqTitle">Bill of Quantities &amp; Component Register</h3>
+                    </div>
+                    <div class="spec-sub-tabs">
+                        <button class="boq-sub-tab active" data-target="boq-priced">Priced Bill of Quantities</button>
+                        <button class="boq-sub-tab" data-target="boq-register">Component Register</button>
+                    </div>
+                </div>
+
+                <div id="boq-priced" class="boq-content-pane active">
                     <div class="panel boq-panel">
                         <div class="panel-heading compact">
                             <h3>Fully Priced Bill of Quantities (Target: 7 Billion UGX)</h3>
@@ -204,21 +255,57 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="boq-register" class="boq-content-pane">
+                    <div class="panel component-register-panel">
+                        <div class="panel-heading compact register-heading">
+                            <div>
+                                <h3>Busega Plaza and Tecidel Tolling Component Register</h3>
+                                <p class="panel-note">Lane, booth, plaza, backoffice, ITS and spare items normalized from the project BOQ extracts.</p>
+                            </div>
+                            <label class="search-field compact-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="componentSearchInput" placeholder="Search barrier, RFID, UPS, camera, switch">
+                            </label>
+                        </div>
+                        <div class="component-summary-grid" id="componentSummaryGrid"></div>
+                        <div class="table-wrap component-table-wrap">
+                            <table class="dense-table component-table">
+                                <thead>
+                                    <tr>
+                                        <th>Source</th>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Make / Model</th>
+                                        <th>Qty</th>
+                                        <th>Unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="componentTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="explorer-view" class="view-section" aria-labelledby="docsTitle">
                 <div class="view-header">
                     <div>
                         <p class="eyebrow">Procurement Library</p>
-                        <h3 id="docsTitle">Component Media Dictionary</h3>
+                        <h3 id="docsTitle">ETC &amp; ITS Component Dictionary</h3>
+                        <p class="panel-note" id="dictCountNote">Loading components…</p>
                     </div>
                     <label class="search-field view-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" id="mediaSearchInput" placeholder="Search ANPR, VMS, Tolls...">
+                        <input type="search" id="mediaSearchInput" placeholder="Search 1,300+ components, makes, models...">
                     </label>
                 </div>
 
-                <div class="media-grid" id="mediaGrid"></div>
+                <div class="dict-category-rail" id="dictCategoryRail"></div>
+                <div class="media-grid dict-grid" id="mediaGrid"></div>
+                <div class="dict-more">
+                    <button class="ghost-btn" type="button" id="dictLoadMore"><i class="fa-solid fa-plus"></i><span>Load more components</span></button>
+                </div>
             </section>
 
             <section id="global-view" class="view-section" aria-labelledby="globalTitle">
@@ -304,6 +391,18 @@
         </div>
     </div>
 
+    <!-- Component detail modal -->
+    <div class="component-modal" id="componentModal">
+        <div class="component-modal-backdrop" id="componentModalBackdrop"></div>
+        <div class="component-modal-content">
+            <div class="component-modal-header">
+                <h3 id="componentModalTitle">Component</h3>
+                <button class="icon-button" id="closeComponentBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="component-modal-body" id="componentModalBody"></div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -311,6 +410,8 @@
     <script src="road_network.js"></script>
     <script src="data/its-data.js"></script>
     <script src="data/boq_data.js"></script>
+    <script src="data/toll_components.js"></script>
+    <script src="data/dictionary_data.js"></script>
     <script src="data/media_dictionary.js"></script>
     <script src="docs_content.js"></script>
     <script src="file_metadata.js"></script>

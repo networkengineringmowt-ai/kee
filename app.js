@@ -7,6 +7,63 @@
     const docsContent = window.DOCS_CONTENT || {};
     const rawItsData = window.ITS_GEOSPATIAL_DATA || window.itsData || null;
     const roadNetworkData = window.ROAD_NETWORK || null;
+    const tollComponentData = Array.isArray(window.TOLL_COMPONENTS) ? window.TOLL_COMPONENTS : [];
+    const dictionaryData = Array.isArray(window.DICTIONARY_DATA) ? window.DICTIONARY_DATA : [];
+    const dictionaryCategories = Array.isArray(window.DICTIONARY_CATEGORIES) ? window.DICTIONARY_CATEGORIES : [];
+
+    // ITS/ETC element media: representative internet image + YouTube demo video per
+    // component category. Applied to every component in the dictionary by category so
+    // each element type is illustrated and demonstrated. (Planning-grade references.)
+    const IMG = {
+        cam: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=640&q=70",
+        sign: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=640&q=70",
+        toll: "https://images.unsplash.com/photo-1582298538104-fe2e74c27f59?w=640&q=70",
+        road: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=640&q=70",
+        control: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&q=70",
+        fiber: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=640&q=70"
+    };
+    const CATEGORY_MEDIA = {
+        anpr:    { icon: "fa-camera", color: "#34d399", image: IMG.cam,     video: "UxrOHCH5SdQ", query: "ANPR automatic number plate recognition tolling" },
+        rfid:    { icon: "fa-wifi", color: "#22d3ee", image: IMG.toll,      video: "wbErZjLxlBM", query: "RFID electronic toll collection how it works" },
+        avc:     { icon: "fa-car-side", color: "#a78bfa", image: IMG.toll,  video: "PsBmJb3tA-s", query: "automatic vehicle classification axle count toll" },
+        barrier: { icon: "fa-road-barrier", color: "#fb7185", image: IMG.toll, video: "IX0rFjPuNV4", query: "toll lane automatic boom barrier" },
+        vms:     { icon: "fa-display", color: "#fbbf24", image: IMG.sign,   video: "DJWBz7RjUac", query: "variable message sign highway ITS" },
+        avids:   { icon: "fa-video", color: "#f59e0b", image: IMG.cam,      video: "zA_SIC6nmdM", query: "automatic video incident detection highway" },
+        vasd:    { icon: "fa-gauge-high", color: "#60a5fa", image: IMG.sign, video: "IX0rFjPuNV4", query: "vehicle activated speed display radar sign" },
+        wim:     { icon: "fa-weight-hanging", color: "#f97316", image: IMG.road, video: "IX0rFjPuNV4", query: "weigh in motion system highway trucks" },
+        cctv:    { icon: "fa-video", color: "#38bdf8", image: IMG.cam,      video: "SXmI6AK6Vnc", query: "highway PTZ CCTV traffic surveillance camera" },
+        server:  { icon: "fa-server", color: "#818cf8", image: IMG.control, video: "EkbhyTGyBGo", query: "traffic management control centre servers" },
+        power:   { icon: "fa-bolt", color: "#facc15", image: IMG.control,   video: "EkbhyTGyBGo", query: "toll plaza UPS power backup system" },
+        network: { icon: "fa-network-wired", color: "#2dd4bf", image: IMG.fiber, video: "EkbhyTGyBGo", query: "fibre optic network switch ITS backbone" },
+        printer: { icon: "fa-print", color: "#94a3b8", image: IMG.toll,     video: "IX0rFjPuNV4", query: "toll booth thermal receipt printer" },
+        console: { icon: "fa-desktop", color: "#c084fc", image: IMG.toll,   video: "IX0rFjPuNV4", query: "toll lane operator console booth" },
+        comms:   { icon: "fa-tower-broadcast", color: "#4ade80", image: IMG.control, video: "EkbhyTGyBGo", query: "toll plaza intercom public address system" },
+        signal:  { icon: "fa-traffic-light", color: "#fb923c", image: IMG.sign, video: "IX0rFjPuNV4", query: "toll lane traffic signal overhead lane status" },
+        civil:   { icon: "fa-helmet-safety", color: "#a3a3a3", image: IMG.road, video: "IX0rFjPuNV4", query: "toll plaza gantry civil works canopy" },
+        software:{ icon: "fa-code", color: "#a78bfa", image: IMG.control,   video: "EkbhyTGyBGo", query: "toll management system TMS software" },
+        scanner: { icon: "fa-barcode", color: "#5eead4", image: IMG.toll,   video: "IX0rFjPuNV4", query: "toll booth document barcode scanner" },
+        payment: { icon: "fa-money-bill-wave", color: "#4ade80", image: IMG.toll, video: "d-ilXg7E0L0", query: "toll payment FASTag cash lane" },
+        weather: { icon: "fa-cloud-sun-rain", color: "#38bdf8", image: IMG.road, video: "EkbhyTGyBGo", query: "road weather information system RWIS" },
+        enforcement: { icon: "fa-shield-halved", color: "#f87171", image: IMG.cam, video: "UxrOHCH5SdQ", query: "toll enforcement violation ANPR" },
+        services:{ icon: "fa-screwdriver-wrench", color: "#cbd5e1", image: IMG.road, video: "IX0rFjPuNV4", query: "ITS installation testing commissioning" },
+        other:   { icon: "fa-microchip", color: "#94a3b8", image: IMG.control, video: "IX0rFjPuNV4", query: "intelligent transport system equipment" }
+    };
+    function catMedia(key) { return CATEGORY_MEDIA[key] || CATEGORY_MEDIA.other; }
+    const _tileCache = {};
+    function catTile(key) {
+        if (_tileCache[key]) return _tileCache[key];
+        const m = catMedia(key);
+        const label = (dictionaryCategories.find((c) => c.key === key)?.label || key).toUpperCase();
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='320' height='200'>` +
+            `<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>` +
+            `<stop offset='0' stop-color='${m.color}' stop-opacity='0.35'/>` +
+            `<stop offset='1' stop-color='#0b0f19'/></linearGradient></defs>` +
+            `<rect width='320' height='200' fill='#0b0f19'/><rect width='320' height='200' fill='url(#g)'/>` +
+            `<text x='160' y='108' font-family='Outfit,Arial' font-size='16' font-weight='700' fill='#f2f1ec' ` +
+            `text-anchor='middle'>${label.replace(/&/g, "and")}</text></svg>`;
+        _tileCache[key] = "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+        return _tileCache[key];
+    }
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -686,17 +743,19 @@
             if (flat.length) renderSpecsContent(flat[0]);
         }
 
-        // Specification Library / Priced BOQ sub-tab switching
-        $$(".spec-sub-tab").forEach((tab) => {
+        // BOQ view: Priced BOQ / Component Register sub-tab switching
+        $$(".boq-sub-tab").forEach((tab) => {
             tab.addEventListener("click", () => {
-                $$(".spec-sub-tab").forEach((t) => t.classList.remove("active"));
-                $$(".specs-content-pane").forEach((p) => p.classList.remove("active"));
+                $$(".boq-sub-tab").forEach((t) => t.classList.remove("active"));
+                $$(".boq-content-pane").forEach((p) => p.classList.remove("active"));
                 tab.classList.add("active");
                 $("#" + tab.dataset.target)?.classList.add("active");
             });
         });
 
         renderBOQTable();
+        renderTollComponentRegister();
+        $("#componentSearchInput")?.addEventListener("input", renderTollComponentRegister);
     }
 
     function renderSpecTopicChips() {
@@ -805,88 +864,188 @@
         return `<div class="spec-table-wrap"><table class="spec-table">${thead}${tbody}</table></div>`;
     }
 
-    function setupExplorer() {
-        renderMediaDictionary();
+    function renderTollComponentRegister() {
+        const tableBody = $("#componentTableBody");
+        const summary = $("#componentSummaryGrid");
+        if (!tableBody) return;
 
-        const searchInput = $("#mediaSearchInput");
-        if (searchInput) {
-            searchInput.addEventListener("input", (e) => {
-                const term = e.target.value.toLowerCase();
-                const cards = $$(".media-card");
-                cards.forEach(card => {
-                    const title = card.querySelector(".media-card-title").textContent.toLowerCase();
-                    const desc = card.querySelector(".media-card-desc").textContent.toLowerCase();
-                    if (title.includes(term) || desc.includes(term)) {
-                        card.style.display = "flex";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            });
+        const term = ($("#componentSearchInput")?.value || "").trim().toLowerCase();
+        const rows = tollComponentData.filter((item) => {
+            if (!term) return true;
+            const text = [
+                item.source,
+                item.level,
+                item.item,
+                item.description,
+                item.make,
+                item.model,
+                item.quantity,
+                item.unit
+            ].join(" ").toLowerCase();
+            return text.includes(term);
+        });
+
+        if (summary) {
+            const sources = unique(rows.map((item) => item.source || "Source")).length;
+            const laneItems = rows.filter((item) => /lane|barrier|rfid|anpr|avc|booth|loop|photocell|fare|display/i.test(item.description || "")).length;
+            const networkItems = rows.filter((item) => /switch|router|firewall|server|rack|ups|fibre|fiber|database|sql/i.test(`${item.description || ""} ${item.make || ""}`)).length;
+            summary.innerHTML = `
+                ${summaryCard("fa-list-check", "Register rows", rows.length.toLocaleString(), "Visible component items")}
+                ${summaryCard("fa-layer-group", "Sources", sources.toLocaleString(), "BOQ extracts normalized")}
+                ${summaryCard("fa-road-barrier", "Lane systems", laneItems.toLocaleString(), "Toll lane and booth equipment")}
+                ${summaryCard("fa-network-wired", "ICT backbone", networkItems.toLocaleString(), "Servers, switches, UPS and network")}
+            `;
         }
 
-        // Setup modal close events
-        $("#closeVideoBtn").addEventListener("click", closeVideoModal);
-        $("#videoModalBackdrop").addEventListener("click", closeVideoModal);
+        if (!rows.length) {
+            tableBody.innerHTML = `<tr><td colspan="6"><div class="empty-state compact"><i class="fa-solid fa-magnifying-glass"></i><h4>No components found</h4><p>Try another equipment, make or model.</p></div></td></tr>`;
+            return;
+        }
+
+        tableBody.innerHTML = rows.map((item) => {
+            const makeModel = [item.make, item.model].filter(Boolean).join(" / ");
+            return `
+                <tr>
+                    <td>${escapeHtml(item.source || "-")}<br><small>${escapeHtml(item.level || "")}</small></td>
+                    <td>${escapeHtml(item.item || "-")}</td>
+                    <td>${highlightText(item.description || "-", term)}</td>
+                    <td>${highlightText(makeModel || "-", term)}</td>
+                    <td>${escapeHtml(item.quantity || "-")}</td>
+                    <td>${escapeHtml(item.unit || "-")}</td>
+                </tr>
+            `;
+        }).join("");
     }
 
-    function renderMediaDictionary() {
+    const DICT_PAGE = 60;
+    const dictState = { term: "", category: "All", limit: DICT_PAGE };
+
+    function setupExplorer() {
+        renderDictCategoryRail();
+        renderDictionary();
+
+        $("#mediaSearchInput")?.addEventListener("input", () => { dictState.limit = DICT_PAGE; renderDictionary(); });
+        $("#dictLoadMore")?.addEventListener("click", () => { dictState.limit += DICT_PAGE; renderDictionary(); });
+
+        // modal close events (legacy video modal + new component modal)
+        $("#closeVideoBtn")?.addEventListener("click", closeVideoModal);
+        $("#videoModalBackdrop")?.addEventListener("click", closeVideoModal);
+        $("#closeComponentBtn")?.addEventListener("click", closeComponentModal);
+        $("#componentModalBackdrop")?.addEventListener("click", closeComponentModal);
+    }
+
+    function dictFiltered() {
+        const term = dictState.term.trim().toLowerCase();
+        return dictionaryData.filter((c) => {
+            if (dictState.category !== "All" && c.category !== dictState.category) return false;
+            if (!term) return true;
+            return `${c.name} ${c.make} ${c.description} ${c.code} ${c.subsystem} ${c.location}`.toLowerCase().includes(term);
+        });
+    }
+
+    function renderDictCategoryRail() {
+        const rail = $("#dictCategoryRail");
+        if (!rail) return;
+        const chips = [{ key: "All", label: "All", count: dictionaryData.length, color: "#f2f1ec", icon: "fa-layer-group" }]
+            .concat(dictionaryCategories.map((c) => ({ ...c, color: catMedia(c.key).color, icon: catMedia(c.key).icon })));
+        rail.innerHTML = chips.map((c) => `
+            <button class="dict-chip${c.key === dictState.category ? " active" : ""}" type="button" data-cat="${escapeAttr(c.key)}">
+                <i class="fa-solid ${c.icon}" style="color:${c.color}"></i>
+                <span>${escapeHtml(c.label)}</span><strong>${c.count.toLocaleString()}</strong>
+            </button>`).join("");
+        $$("#dictCategoryRail .dict-chip").forEach((chip) => chip.addEventListener("click", () => {
+            dictState.category = chip.dataset.cat;
+            dictState.limit = DICT_PAGE;
+            $$("#dictCategoryRail .dict-chip").forEach((c) => c.classList.toggle("active", c === chip));
+            renderDictionary();
+        }));
+    }
+
+    function renderDictionary() {
         const grid = $("#mediaGrid");
-        if (!grid || !window.MEDIA_DICTIONARY) return;
+        if (!grid) return;
+        dictState.term = $("#mediaSearchInput")?.value || "";
+        const all = dictFiltered();
+        const shown = all.slice(0, dictState.limit);
 
-        const idToType = {
-            "comp-anpr": "ANPR", "comp-vms": "VMS", "comp-toll": "Toll",
-            "comp-wim": "WIM", "comp-hcc": "TOC", "comp-fiber": "Comms"
-        };
+        setText("#dictCountNote", `${dictionaryData.length.toLocaleString()} components across ${dictionaryCategories.length} ETC & ITS element types — showing ${shown.length.toLocaleString()} of ${all.length.toLocaleString()}`);
 
-        let html = "";
-        window.MEDIA_DICTIONARY.forEach(comp => {
-            const keyword = idToType[comp.id] || (comp.title.match(/\(([^)]+)\)/)?.[1] || String(comp.title).split(" ")[0]);
-            html += `
-                <article class="media-card" data-video="${escapeHtml(comp.videoId)}" data-title="${escapeHtml(comp.title)}" data-keyword="${escapeAttr(keyword)}">
-                    <img src="${escapeHtml(comp.imageUrl)}" alt="${escapeHtml(comp.title)}" class="media-card-img" loading="lazy">
-                    <div class="media-card-body">
-                        <h4 class="media-card-title">${escapeHtml(comp.title)}</h4>
-                        <p class="media-card-desc">${escapeHtml(comp.description)}</p>
-                        <div class="media-card-actions">
-                            <button class="media-card-btn watch-btn"><i class="fa-solid fa-play"></i> Watch Explainer</button>
-                            <button class="media-card-btn ghost locate-btn"><i class="fa-solid fa-location-dot"></i> Locate on map</button>
+        if (!all.length) {
+            grid.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h4>No components</h4><p>Try another search term or category.</p></div>`;
+        } else {
+            grid.innerHTML = shown.map((c) => {
+                const m = catMedia(c.category);
+                const label = dictionaryCategories.find((x) => x.key === c.category)?.label || c.category;
+                const sub = c.make || c.subsystem || c.location || "";
+                return `
+                    <article class="dict-card" data-id="${escapeAttr(c.id)}">
+                        <div class="dict-card-media">
+                            <img class="dict-card-img" src="${escapeAttr(m.image)}" data-cat="${escapeAttr(c.category)}" alt="${escapeAttr(label)}" loading="lazy">
+                            <span class="dict-card-badge" style="background:${m.color}"><i class="fa-solid ${m.icon}"></i> ${escapeHtml(label)}</span>
+                            <span class="dict-card-play"><i class="fa-solid fa-play"></i></span>
                         </div>
-                    </div>
-                </article>
-            `;
-        });
-        grid.innerHTML = html;
+                        <div class="dict-card-body">
+                            <h4 class="dict-card-title">${escapeHtml(c.name)}</h4>
+                            <p class="dict-card-sub">${escapeHtml(sub)}</p>
+                            <p class="dict-card-meta">${escapeHtml(c.code || "")}${c.code ? " · " : ""}${escapeHtml(c.source || "")}</p>
+                        </div>
+                    </article>`;
+            }).join("");
 
-        // Watch -> open video modal
-        $$(".watch-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                const card = e.target.closest(".media-card");
-                openVideoModal(card.dataset.video, card.dataset.title);
-            });
-        });
+            $$("#mediaGrid .dict-card-img").forEach((img) => img.addEventListener("error", () => {
+                if (!img.dataset.fb) { img.dataset.fb = "1"; img.src = catTile(img.dataset.cat); }
+            }));
+            $$("#mediaGrid .dict-card").forEach((card) => card.addEventListener("click", () => {
+                const comp = dictionaryData.find((x) => x.id === card.dataset.id);
+                if (comp) openComponentModal(comp);
+            }));
+        }
 
-        // Locate on map -> jump to Map tab filtered to this component
-        $$(".locate-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                const card = e.target.closest(".media-card");
-                const keyword = card.dataset.keyword || "";
+        const more = $("#dictLoadMore");
+        if (more) more.style.display = all.length > dictState.limit ? "inline-flex" : "none";
+    }
+
+    function openComponentModal(comp) {
+        const m = catMedia(comp.category);
+        const label = dictionaryCategories.find((x) => x.key === comp.category)?.label || comp.category;
+        setText("#componentModalTitle", comp.name);
+        const rows = [
+            ["Element type", label], ["Make / model", comp.make], ["BOQ code", comp.code],
+            ["Quantity", comp.qty], ["Unit", comp.unit], ["Subsystem", comp.subsystem],
+            ["Location", comp.location], ["Source", comp.source]
+        ].filter(([, v]) => v);
+        const body = $("#componentModalBody");
+        if (body) {
+            body.innerHTML = `
+                <div class="cmodal-video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/${escapeAttr(m.video)}" title="${escapeAttr(label)} demonstration"
+                        frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="cmodal-desc">${escapeHtml(comp.description || comp.name)}</p>
+                <div class="cmodal-grid">
+                    ${rows.map(([k, v]) => `<div><span>${escapeHtml(k)}</span><strong>${escapeHtml(String(v))}</strong></div>`).join("")}
+                </div>
+                <div class="cmodal-actions">
+                    <a class="media-card-btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(m.query)}" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> More demos on YouTube</a>
+                    <button class="media-card-btn ghost" type="button" id="cmodalLocate"><i class="fa-solid fa-location-dot"></i> Find on map</button>
+                </div>`;
+            $("#cmodalLocate")?.addEventListener("click", () => {
+                closeComponentModal();
                 switchView("map");
+                const search = $("#mapSearchInput");
                 const typeSel = $("#mapTypeFilter");
                 if (typeSel) typeSel.value = "All";
-                const search = $("#mapSearchInput");
-                if (search) {
-                    search.value = keyword;
-                    search.dispatchEvent(new Event("input"));
-                }
-                setTimeout(() => {
-                    if (state.map) {
-                        state.map.invalidateSize();
-                        fitMapToAssets();
-                    }
-                }, 160);
+                if (search) { search.value = label.split(" ")[0]; search.dispatchEvent(new Event("input")); }
+                setTimeout(() => { if (state.map) { state.map.invalidateSize(); fitMapToAssets(); } }, 160);
             });
-        });
+        }
+        $("#componentModal")?.classList.add("active");
+    }
+
+    function closeComponentModal() {
+        $("#componentModal")?.classList.remove("active");
+        const body = $("#componentModalBody");
+        if (body) body.innerHTML = ""; // stop video playback
     }
 
     function openVideoModal(videoId, title) {
