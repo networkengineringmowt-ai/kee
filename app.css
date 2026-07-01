@@ -2259,3 +2259,28 @@ body.map-fullscreen-active .map-stage .map-detail-overlay {
 body.map-fullscreen-active .map-stage .ghost-btn {
     height: 38px;
 }
+
+/* ============ Density pass 2: cut wasted margins/space ============ */
+.map-header { padding: 10px 12px 6px; }
+.map-header .nexus-map-title { font-size: 1.15rem; }
+.metric-strip { padding: 0 12px 6px; gap: 8px; }
+.control-deck { padding: 0 12px 6px; gap: 8px; }
+.component-rail, .topic-rail, .dict-category-rail { padding: 0 12px 6px; gap: 6px; margin-bottom: 0; }
+.map-canvas-wrap { margin: 0 12px 12px; }
+.metric-card { padding: 9px 12px; }
+.metric-card span { font-size: 0.66rem; letter-spacing: .04em; }
+.metric-card strong { font-size: 1.45rem; }
+.view-header, .view-header.slim { margin-bottom: 8px; }
+.view-header.slim h3 { font-size: 1.1rem; }
+.eyebrow { font-size: 0.66rem; }
+.panel { padding: 12px; }
+.panel-heading.compact { margin-bottom: 8px; }
+.boq-panel, .component-register-panel, .spec-master-panel { padding: 10px; }
+.spec-master-wrap { max-height: calc(100vh - 176px); }
+.component-table-wrap, .boq-table-wrap { max-height: calc(100vh - 210px); }
+.definition-list { gap: 10px; }
+.def-item { padding: 12px 13px; gap: 6px; }
+.nav-item { padding: 0 18px; }
+.live-clock { padding: 7px 10px; min-width: 88px; }
+.dict-category-rail { padding-top: 2px; }
+.brand-block h1 { font-size: 1.2rem; }

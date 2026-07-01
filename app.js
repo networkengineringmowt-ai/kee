@@ -7,6 +7,7 @@
     const docsContent = window.DOCS_CONTENT || {};
     const rawItsData = window.ITS_GEOSPATIAL_DATA || window.itsData || null;
     const roadNetworkData = window.ROAD_NETWORK || null;
+    const actualNetworkData = window.ACTUAL_NETWORK || null; // authoritative FY25-26 national roads (WGS84)
     const tollComponentData = Array.isArray(window.TOLL_COMPONENTS) ? window.TOLL_COMPONENTS : [];
     const dictionaryData = Array.isArray(window.DICTIONARY_DATA) ? window.DICTIONARY_DATA : [];
     const dictionaryCategories = Array.isArray(window.DICTIONARY_CATEGORIES) ? window.DICTIONARY_CATEGORIES : [];
@@ -209,6 +210,7 @@
     function drawRoutes() {
         if (!state.routeLayer) return;
 
+        drawActualNetwork();
         drawDeclaredCorridorPaths();
 
         if (!roadNetworkData || !Array.isArray(roadNetworkData.features)) return;
@@ -245,6 +247,16 @@
                 layer.bindPopup(`<div class="popup-card"><h4>${name}</h4><p><strong>${roadNo}</strong></p><p>Expressway route geometry layer</p></div>`);
             }
         }).addTo(state.routeLayer);
+    }
+
+    // Plot the actual FY25-26 national road network (authoritative GIS geometry) as a
+    // muted context layer beneath the project corridors and ITS assets.
+    function drawActualNetwork() {
+        if (!actualNetworkData || !Array.isArray(actualNetworkData.features) || !state.routeLayer) return;
+        const layer = L.geoJSON(actualNetworkData, {
+            style: () => ({ color: "#7dd3fc", weight: 1.1, opacity: 0.42, lineCap: "round", lineJoin: "round" })
+        }).addTo(state.routeLayer);
+        state.nationalBounds = layer.getBounds();
     }
 
     function drawDeclaredCorridorPaths() {
@@ -325,6 +337,11 @@
         });
 
         $("#mapFitBtn")?.addEventListener("click", fitMapToProject);
+        $("#mapNationalBtn")?.addEventListener("click", () => {
+            if (state.map && state.nationalBounds && state.nationalBounds.isValid()) {
+                state.map.fitBounds(state.nationalBounds, { padding: [24, 24], animate: false });
+            }
+        });
         $("#mapTourBtn")?.addEventListener("click", toggleMapTour);
         $("#mapFullscreenBtn")?.addEventListener("click", toggleMapFullscreen);
         document.addEventListener("fullscreenchange", syncMapFullscreenState);
@@ -773,8 +790,11 @@
     function fitMapToProject() {
         if (!state.map) return;
         if (!state.projectBounds) state.projectBounds = computeProjectBounds();
-        if (state.projectBounds && state.projectBounds.isValid()) {
-            state.map.fitBounds(state.projectBounds, { padding: [40, 40] });
+        const b = state.projectBounds;
+        if (b && b.isValid()) {
+            // animate:false forces setView, which always applies; animated fitBounds /
+            // flyToBounds silently no-op on the large national<->corridor zoom deltas here.
+            state.map.fitBounds(b, { padding: [40, 40], animate: false });
         } else {
             fitMapToAssets();
         }
