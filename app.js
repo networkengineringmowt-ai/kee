@@ -11,6 +11,8 @@
     const tollComponentData = Array.isArray(window.TOLL_COMPONENTS) ? window.TOLL_COMPONENTS : [];
     const dictionaryData = Array.isArray(window.DICTIONARY_DATA) ? window.DICTIONARY_DATA : [];
     const dictionaryCategories = Array.isArray(window.DICTIONARY_CATEGORIES) ? window.DICTIONARY_CATEGORIES : [];
+    const projectScope = Array.isArray(window.PROJECT_SCOPE) ? window.PROJECT_SCOPE : [];
+    const rssData = window.RSS_DATA || null;
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -65,6 +67,7 @@
         setupSpecs();
         setupBOQ();
         setupExplorer();
+        setupAnalyticsDash();
 
         switchView("map");
     }
@@ -229,7 +232,7 @@
     // Colour the base national road network by surface type (network2026).
     function surfaceColor(surf) {
         const v = String(surf || "").toLowerCase();
-        if (v.startsWith("bitumin")) return "#3b82f6";  // sealed / paved
+        if (v.startsWith("bitumin")) return "#0a0a0a";  // sealed / paved - bold black
         if (v.startsWith("unseal")) return "#b45309";   // gravel / earth
         return "#94a3b8";
     }
@@ -271,7 +274,10 @@
         const context = { type: "FeatureCollection", features: network.features.filter((f) => !(f.properties && f.properties.scope)) };
         const layer = L.geoJSON(context, {
             renderer,
-            style: (f) => ({ color: surfaceColor(f.properties && f.properties.surf), weight: 1.4, opacity: 0.72, lineCap: "round", lineJoin: "round" }),
+            style: (f) => {
+                const bit = String((f.properties && f.properties.surf) || "").toLowerCase().startsWith("bitumin");
+                return { color: surfaceColor(f.properties && f.properties.surf), weight: bit ? 2.6 : 1.3, opacity: bit ? 0.95 : 0.6, lineCap: "round", lineJoin: "round" };
+            },
             onEachFeature: (feature, roadLayer) => {
                 const p = feature.properties || {};
                 roadLayer.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "National road")}</h4><p><strong>${escapeHtml(p.road || "")}</strong> &middot; ${escapeHtml(p.surf || "")}</p><p>Actual national road network (network2026)</p></div>`);
@@ -1732,6 +1738,76 @@
             </tr>`;
         });
         tbody.innerHTML = html;
+    }
+
+    // ---- Analytics: numerical + categorical summaries across every data source ----
+    function setupAnalyticsDash() {
+        const cardsEl = $("#analyticsCards");
+        const bdEl = $("#analyticsBreakdowns");
+        if (!cardsEl && !bdEl) return;
+
+        const assets = state.assets;
+        const net = ((actualNetworkData || window.ACTUAL_NETWORK || {}).features) || [];
+        const boq = Array.isArray(window.BOQ_DATA) ? window.BOQ_DATA : [];
+        const rss = rssData || {};
+        const scopeKm = projectScope.reduce((s, r) => s + (Number(r.length_km) || 0), 0);
+        const critical = assets.filter((a) => String(a.priority).toLowerCase().includes("critical")).length;
+        const glossaryCount = (rss.glossary || []).length + (rss.acronyms || []).length;
+
+        const cards = [
+            ["fa-tower-cell", assets.length.toLocaleString(), "ITS / RSS assets", "Distributed field devices"],
+            ["fa-road", `${Math.round(scopeKm)} km`, "Project scope length", `${projectScope.length} links`],
+            ["fa-diagram-project", net.length.toLocaleString(), "Road network links", "network2026 (WGS84)"],
+            ["fa-book", dictionaryData.length.toLocaleString(), "Component dictionary", `${dictionaryCategories.length} element types`],
+            ["fa-file-invoice-dollar", boq.length.toLocaleString(), "BOQ line items", `${tollComponentData.length} register items`],
+            ["fa-list-check", (rss.parameters || []).length.toLocaleString(), "RSS parameters", `${(rss.techSpecs || []).length} technical specs`],
+            ["fa-spell-check", glossaryCount.toLocaleString(), "Glossary & acronyms", "RSS specification"],
+            ["fa-triangle-exclamation", critical.toLocaleString(), "Critical assets", "Priority ETC / control"],
+        ];
+        if (cardsEl) {
+            cardsEl.innerHTML = cards.map(([ic, val, label, sub]) => `
+                <article class="an-card">
+                    <div class="an-icon"><i class="fa-solid ${ic}"></i></div>
+                    <div class="an-body">
+                        <div class="an-val">${escapeHtml(String(val))}</div>
+                        <div class="an-label">${escapeHtml(label)}</div>
+                        <div class="an-sub">${escapeHtml(sub)}</div>
+                    </div>
+                </article>`).join("");
+        }
+
+        const dictByCat = {};
+        dictionaryData.forEach((x) => { const l = catLabel(x.category); dictByCat[l] = (dictByCat[l] || 0) + 1; });
+        const props = net.map((f) => f.properties || {});
+
+        const breakdowns = [
+            ["ITS / RSS assets by component type", countBy(assets, "type")],
+            ["ITS / RSS assets by corridor", countBy(assets, "corridor")],
+            ["ITS / RSS assets by status", countBy(assets, "status")],
+            ["ITS / RSS assets by priority", countBy(assets, "priority")],
+            ["Road network by surface type", countBy(props, "surf")],
+            ["Road network by class", countBy(props, "cls")],
+            ["Project scope by road number", countBy(projectScope, "road_no")],
+            ["Dictionary components by category", dictByCat],
+            ["RSS specification parameters by category", countBy((rss.parameters || []), "cat")],
+        ];
+        if (bdEl) bdEl.innerHTML = breakdowns.map(([title, counts]) => renderBreakdownHTML(title, counts)).join("");
+    }
+
+    function renderBreakdownHTML(title, counts) {
+        const entries = Object.entries(counts || {})
+            .filter(([k]) => k && k !== "undefined" && k !== "null" && String(k).trim() !== "")
+            .sort((a, b) => b[1] - a[1]);
+        const max = entries.reduce((m, [, v]) => Math.max(m, v), 0) || 1;
+        const total = entries.reduce((s, [, v]) => s + v, 0);
+        const rows = entries.map(([k, v]) => {
+            const pct = Math.round((v / max) * 100);
+            return `<div class="an-row"><div class="an-row-top"><span title="${escapeAttr(k)}">${escapeHtml(k)}</span><strong>${Number(v).toLocaleString()}</strong></div><div class="an-bar"><div class="an-fill" style="width:${pct}%"></div></div></div>`;
+        }).join("");
+        return `<section class="panel an-panel">
+            <div class="an-panel-head"><h3>${escapeHtml(title)}</h3><span class="pill">${total.toLocaleString()}</span></div>
+            ${rows || '<p class="panel-note">No data.</p>'}
+        </section>`;
     }
 
     document.addEventListener("DOMContentLoaded", init);

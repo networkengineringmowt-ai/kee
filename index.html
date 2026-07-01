@@ -43,6 +43,10 @@
                     <i class="fa-solid fa-book-journal-whills"></i>
                     <span>Dictionary</span>
                 </button>
+                <button class="nav-item" type="button" data-view="analytics">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Analytics</span>
+                </button>
             </nav>
 
             <div class="topbar-actions">
@@ -84,25 +88,6 @@
                                 </div>
                             </div>
 
-                            <div class="metric-strip" id="mapMetricStrip">
-                                <article class="metric-card">
-                                    <span>Total assets</span>
-                                    <strong id="metricTotalAssets">0</strong>
-                                </article>
-                                <article class="metric-card">
-                                    <span>Critical assets</span>
-                                    <strong id="metricCriticalAssets">0</strong>
-                                </article>
-                                <article class="metric-card">
-                                    <span>Corridors</span>
-                                    <strong id="metricCorridors">0</strong>
-                                </article>
-                                <article class="metric-card">
-                                    <span>Max chainage</span>
-                                    <strong id="metricMaxKm">0 km</strong>
-                                </article>
-                            </div>
-
                             <div class="control-deck">
                                 <label class="search-field">
                                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -132,7 +117,7 @@
                             <div id="unifiedMap" class="unified-map" role="application" aria-label="KEE ITS geospatial map"></div>
                             <div class="road-legend" id="mapRoadLegend">
                                 <div class="rl-title">Road surface (network2026)</div>
-                                <div class="rl-row"><span class="rl-line" style="background:#3b82f6"></span>Bituminous (sealed)</div>
+                                <div class="rl-row"><span class="rl-line" style="background:#0a0a0a;border:1px solid rgba(255,255,255,0.55)"></span>Bituminous (sealed)</div>
                                 <div class="rl-row"><span class="rl-line" style="background:#b45309"></span>Unsealed (gravel / earth)</div>
                                 <div class="rl-title">Project scope</div>
                                 <div class="rl-row"><span class="rl-line thick" style="background:#34d399"></span>KEE Expressway (M3)</div>
@@ -292,6 +277,18 @@
                 </div>
             </section>
 
+            <section id="analytics-view" class="view-section" aria-labelledby="analyticsTitle">
+                <div class="view-header slim">
+                    <div>
+                        <p class="eyebrow">Data intelligence</p>
+                        <h3 id="analyticsTitle">Analytics — numerical &amp; categorical summaries</h3>
+                        <p class="panel-note" id="analyticsNote">Aggregated from the geospatial layer, component register, BOQ, road network and the RSS specification.</p>
+                    </div>
+                </div>
+                <div class="analytics-cards" id="analyticsCards"></div>
+                <div class="analytics-breakdowns" id="analyticsBreakdowns"></div>
+            </section>
+
         </main>
     </div>
 
@@ -302,7 +299,9 @@
     <script src="data/boq_data.js?v=20260701-uncontained-map"></script>
     <script src="data/toll_components.js?v=20260701-uncontained-map"></script>
     <script src="data/dictionary_data.js?v=20260701-uncontained-map"></script>
-    <script src="app.js?v=20260701-uncontained-map"></script>
+    <script src="data/project_scope.js?v=20260701-analytics"></script>
+    <script src="data/rss_data.js?v=20260701-analytics"></script>
+    <script src="app.js?v=20260701-analytics"></script>
 </body>
 </html>
 
