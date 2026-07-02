@@ -3017,3 +3017,11 @@ body.map-fullscreen-active .map-stage .map-control-overlay,
 .smt-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 12px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.82rem; }
 .smt-risk { color: #fbbf24; } .smt-risk i { margin-right: 6px; }
 .smt-resp { color: var(--soft); } .smt-resp i { color: #34d399; margin-right: 6px; }
+
+/* ---- Patrol operations panel ---- */
+.patrol-steps { display: grid; gap: 10px; }
+.patrol-step { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; }
+.ps-badge { position: relative; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 10px; background: rgba(52, 211, 153, 0.12); color: #34d399; font-size: 1.1rem; }
+.ps-badge em { position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 50%; background: #34d399; color: #08120b; font-style: normal; font-size: 0.66rem; font-weight: 800; display: grid; place-items: center; }
+.patrol-step strong { color: var(--text); font-size: 0.9rem; }
+.patrol-step p { color: var(--soft); font-size: 0.82rem; line-height: 1.5; margin-top: 2px; }

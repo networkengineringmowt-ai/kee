@@ -972,7 +972,6 @@
                 <span>Category total</span><strong>${budget.categoryTotalUgx ? fmtUgx(budget.categoryTotalUgx) : "-"}</strong>
                 <span>Rate source</span><strong>${escapeHtml(budget.source)}</strong>
                 <span>Priority</span><strong>${escapeHtml(asset.priority)}</strong>
-                <span>Phase</span><strong>${escapeHtml(asset.phase)}</strong>
                 <span>Power</span><strong>${escapeHtml(asset.power)}</strong>
                 <span>Comms</span><strong>${escapeHtml(asset.comms)}</strong>
                 <span>Dependency</span><strong>${escapeHtml(asset.dependency)}</strong>
@@ -1965,18 +1964,16 @@
         const bud = rssBudget || {};
         const scopeKm = rssScopeLengthKm();
         const grand = Number(bud.grandTotalUgx) || 0;
-        const cap = Number(bud.budgetCapUgx) || 7e9;
-        const headroom = cap - grand;
         const costPerKm = scopeKm ? grand / scopeKm : 0;
         const wimSiteCount = Array.isArray(bud.wimSites) ? bud.wimSites.length : assets.filter((a) => a.type === "WIM").length;
+        const ptzCount = assets.filter((a) => a.type === "CCTV").length;
 
         const cards = [
-            ["fa-tower-cell", assets.length.toLocaleString(), "RSS components", "Deployed along the scope"],
+            ["fa-tower-cell", assets.length.toLocaleString(), "RSS components", "Single deployment along the scope"],
             ["fa-road", `${Math.round(scopeKm)} km`, "Project scope", "KNBP + KEE + Entebbe dual"],
-            ["fa-sitemap", String(unique(assets.map((a) => a.corridor)).length), "Scope corridors", "KNBP / KEE / EDC"],
-            ["fa-weight-hanging", String(wimSiteCount), "WIM sites", "2 high-speed + 1 enforcement site"],
+            ["fa-video", String(ptzCount), "PTZ / TMCS cameras", "AI-ML traffic + incident monitoring"],
+            ["fa-weight-hanging", String(wimSiteCount), "WIM sites (with ANPR)", "Busega, Kajjansi, Mpala"],
             ["fa-sack-dollar", `${ugxB(grand)} UGX`, "RSS package total", "CAPEX incl. 10% cont. + 18% VAT"],
-            ["fa-piggy-bank", `${ugxB(cap)} UGX`, "Budget cap", `Headroom ${ugxB(headroom)} UGX`],
             ["fa-coins", `${ugxB(bud.subtotalUgx || 0)} UGX`, "CAPEX sub-total", "Equipment, structures, software, install"],
             ["fa-gauge-high", `${ugxB(costPerKm)} UGX`, "Cost per km", "Package total / scope length"],
             ["fa-list-check", (rss.parameters || []).length.toLocaleString(), "RSS spec parameters", `${(rss.techSpecs || []).length} technical specs`],
@@ -1995,7 +1992,7 @@
 
         // Crash-record safety analysis (2021-26) driving the RSS placement
         const safetyEl = $("#analyticsSafety");
-        if (safetyEl) safetyEl.innerHTML = renderSafetyAnalysis();
+        if (safetyEl) safetyEl.innerHTML = renderSafetyAnalysis() + renderPatrolOps();
 
         // Full costed RSS Bill of Quantities (in-depth) + budget waterfall
         const budgetEl = $("#analyticsBudget");
@@ -2030,9 +2027,6 @@
 
     function renderBudgetSummary(bud) {
         if (!bud || !bud.grandTotalUgx) return "";
-        const cap = Number(bud.budgetCapUgx) || 7e9;
-        const grand = Number(bud.grandTotalUgx);
-        const pct = Math.min(100, Math.round((grand / cap) * 100));
         const rows = [
             ["CAPEX sub-total", bud.subtotalUgx],
             ["Contingencies (10%)", bud.contingencyUgx],
@@ -2040,13 +2034,12 @@
             ["GRAND TOTAL", bud.grandTotalUgx],
         ];
         return `<section class="panel an-panel budget-summary">
-            <div class="an-panel-head"><h3>RSS package budget &mdash; within 7,000,000,000 UGX</h3>
-                <span class="pill" style="color:${grand < cap ? "#34d399" : "#fb7185"}">${grand < cap ? "WITHIN BUDGET" : "OVER"}</span></div>
-            <div class="budget-bar"><div class="budget-fill" style="width:${pct}%"></div><span class="budget-cap">Cap 7.00B UGX</span></div>
+            <div class="an-panel-head"><h3>RSS deployment budget</h3>
+                <span class="pill">Single deployment</span></div>
             <div class="budget-rows">
                 ${rows.map(([k, v], i) => `<div class="${i === rows.length - 1 ? "budget-grand" : ""}"><span>${escapeHtml(k)}</span><strong>${Number(v).toLocaleString()} UGX</strong></div>`).join("")}
-                <div><span>Headroom under cap</span><strong>${(cap - grand).toLocaleString()} UGX</strong></div>
                 <div><span>Approx. USD (@ ${bud.currencyRate}/USD)</span><strong>$${Number(bud.grandTotalUsd).toLocaleString()}</strong></div>
+                <div><span>Fibre backbone</span><strong>Already laid &mdash; only site drops priced</strong></div>
             </div>
         </section>`;
     }
@@ -2059,31 +2052,30 @@
             </div>
             <div class="rss-schematic" aria-label="RSS schematic architecture">
                 <div class="schem-band field-band">
-                    <div class="schem-title">Field layer</div>
-                    <div class="schem-node"><i class="fa-solid fa-video"></i><strong>CCTV / AVIDS</strong><span>12 PTZ, 3 AVIDS, 6 ANPR</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>WIM enforcement</strong><span>2 HS-WIM + 1 SWIM / weighbridge</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>VMS / VASD / ECB / RWIS</strong><span>Traveller information, speed feedback, SOS and weather</span></div>
+                    <div class="schem-title">Field layer &mdash; monitoring &amp; display</div>
+                    <div class="schem-node"><i class="fa-solid fa-video"></i><strong>PTZ / TMCS with AI-ML</strong><span>21 cameras: all traffic + incident monitoring, auto-detection</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>WIM x3 with ANPR</strong><span>HS-WIM Busega + Mpala, SWIM Kajjansi</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>VMS + weather comm</strong><span>5 signs (auto field display) + 2 geolocated weather feeds</span></div>
                 </div>
-                <div class="schem-link"><span>13 fibre drops + cellular fallback</span></div>
+                <div class="schem-link"><span>13 site drops onto the EXISTING fibre backbone (backbone not priced)</span></div>
                 <div class="schem-band comms-band">
-                    <div class="schem-title">Roadside communications</div>
-                    <div class="schem-node"><i class="fa-solid fa-box"></i><strong>RSU cabinets</strong><span>UPS, edge controller, media conversion</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-network-wired"></i><strong>OFC backbone</strong><span>Field aggregation, NMS monitoring, secure routing</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-tower-broadcast"></i><strong>Radio comms</strong><span>Base station, repeater, patrol vehicle and handheld radios</span></div>
+                    <div class="schem-title">Data feed</div>
+                    <div class="schem-node"><i class="fa-solid fa-box"></i><strong>RSU cabinets</strong><span>Hybrid solar UPS, industrial fibre switch, edge streaming</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-network-wired"></i><strong>Existing OFC backbone</strong><span>All field data streams to the central database</span></div>
                 </div>
-                <div class="schem-link"><span>Encrypted video, event and overload records</span></div>
+                <div class="schem-link"><span>Continuous video, events, weigh records, weather status</span></div>
                 <div class="schem-band tcc-band">
-                    <div class="schem-title">Traffic Control Centre</div>
-                    <div class="schem-node"><i class="fa-solid fa-display"></i><strong>Video wall + operators</strong><span>Incident verification and dispatch</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-server"></i><strong>Servers + storage</strong><span>VAMS, NMS, NAS, analytics and reporting</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-map-location-dot"></i><strong>Unified RSS platform</strong><span>GIS dashboard, AI analytics, public feed</span></div>
+                    <div class="schem-title">TCC &mdash; Kajjansi Toll Plaza</div>
+                    <div class="schem-node"><i class="fa-solid fa-database"></i><strong>Central database</strong><span>Automated analytics on every feed &mdash; no manual trawling</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-display"></i><strong>Video wall + operators</strong><span>Verification of AI-flagged incidents</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-bullhorn"></i><strong>Automated dissemination</strong><span>Notifications pushed to affected stakeholders; VMS updated</span></div>
                 </div>
-                <div class="schem-link"><span>Controlled data exchange</span></div>
+                <div class="schem-link"><span>Automatic notification &mdash; triggers action</span></div>
                 <div class="schem-band stakeholder-band">
-                    <div class="schem-title">Interfaces</div>
-                    <div class="schem-node"><i class="fa-solid fa-scale-balanced"></i><strong>GOU enforcement / UNBS</strong><span>WIM violations, calibration and evidence</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-shield-halved"></i><strong>Police / emergency response</strong><span>Incident records, live/recorded video and dispatch</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-mobile-screen"></i><strong>Public information</strong><span>VMS messages, travel warnings and anonymised status feeds</span></div>
+                    <div class="schem-title">Stakeholders notified</div>
+                    <div class="schem-node"><i class="fa-solid fa-car-on"></i><strong>Patrol operations</strong><span>Dispatched to exact chainage with incident context</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-scale-balanced"></i><strong>Enforcement / UNBS</strong><span>Overload exceptions with ANPR-matched evidence</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-mobile-screen"></i><strong>Road users</strong><span>VMS warnings and travel information in real time</span></div>
                 </div>
             </div>
         </section>`;
@@ -2124,7 +2116,7 @@
             return head + items;
         }).join("");
         return `<section class="panel an-panel budget-table-panel">
-            <div class="an-panel-head"><h3>Costed RSS Bill of Quantities (Phase-1, &lt; 7B UGX)</h3></div>
+            <div class="an-panel-head"><h3>Costed RSS Bill of Quantities &mdash; single deployment</h3></div>
             <div class="table-wrap budget-table-wrap">
                 <table class="dense-table budget-table">
                     <thead><tr><th>Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate (UGX)</th><th class="num">Amount (UGX)</th></tr></thead>
@@ -2207,12 +2199,12 @@
             </div>`;
         }).join("");
         const placements = [
-            ["km 21-22 (worst hotspot, risk 98.6, 2 fatal)", "AVIDS gantry + twin ANPR at km 21.5"],
-            ["km 9-13 cluster (111 crashes)", "CCTV km 9.5 & 11.5, VASD km 9.5, VMS advance warning km 7.5, SWIM/TCC Kajjansi km 12.1"],
-            ["km 2-5 cluster (89 crashes)", "CCTV km 2.5 & 4.5, HS-WIM + ANPR Busega km 1.2"],
-            ["km 17-18 hotspot", "CCTV km 17.5"],
-            ["Slow response km 5 / 16 / 23-24 (68-79 min)", "ECBs at km 5, 16 and 23.5 for immediate SOS + dispatch"],
-            ["km 23-24 hotspot + Mpala entry", "HS-WIM + ANPR Mpala km 24.2"],
+            ["km 21-22 (worst hotspot, risk 98.6, 2 fatal)", "PTZ with AI-ML at km 21.5 - automatic incident detection and notification"],
+            ["km 9-13 cluster (111 crashes)", "PTZ km 9.5 & 11.5, VMS advance warning km 7.5, SWIM + TCC Kajjansi km 12.1"],
+            ["km 2-5 cluster (89 crashes)", "PTZ km 2.5 & 4.5, HS-WIM + ANPR Busega km 1.2"],
+            ["km 17-18 and 19-20 hotspots", "PTZ km 17.5 and 19.5"],
+            ["Slow response km 5 / 16 / 23-24 (68-79 min avg)", "PTZ AI detection triggers immediate stakeholder notification - no wait for road-user reports"],
+            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, HS-WIM + ANPR Mpala km 24.2, VMS warning km 19"],
         ];
         return `<section class="panel an-panel safety-panel">
             <div class="an-panel-head"><h3>Safety analysis &mdash; KEE crash record 2021-26 drives the RSS placement</h3>
@@ -2232,6 +2224,25 @@
         </section>`;
     }
 
+    // ---- Patrol operations: how the RSS triggers action through notification ------
+    function renderPatrolOps() {
+        const steps = [
+            ["fa-video", "Detect", "PTZ (TMCS) cameras with AI/ML watch every kilometre continuously; the analytics engine detects incidents, stopped vehicles, queues, wrong-way movement and overloads (WIM) the moment they occur."],
+            ["fa-database", "Log & analyse", "Every detection streams over the existing fibre backbone into the central database at the Kajjansi TCC, where automated analytics classify the event, locate it to the exact chainage and attach the video evidence."],
+            ["fa-bell", "Notify stakeholders", "The database automatically pushes notifications to the affected stakeholders - patrol crews, police, ambulance, recovery, maintenance and the toll operator - each receiving only the events relevant to them."],
+            ["fa-car-on", "Patrol acts", "Patrol crews are dispatched to a verified location with context (event type, lane, severity, live picture) instead of driving the corridor hoping to find incidents - cutting the measured 26-minute average response and eliminating blind patrol mileage."],
+            ["fa-signs-post", "Inform road users", "In parallel the database updates the VMS boards upstream of the event, warning approaching traffic and protecting both the scene and the responding patrol."],
+        ];
+        return `<section class="panel an-panel patrol-panel">
+            <div class="an-panel-head"><h3>Patrol operations &mdash; how the RSS triggers action</h3>
+                <span class="pill">Notification-driven</span></div>
+            <p class="panel-note">The RSS does not replace patrols; it makes them efficient. Detection is automatic, so patrols respond to verified, located events instead of discovering them.</p>
+            <div class="patrol-steps">
+                ${steps.map(([ic, t, d], i) => `<div class="patrol-step"><div class="ps-badge"><i class="fa-solid ${ic}"></i><em>${i + 1}</em></div><div><strong>${t}</strong><p>${d}</p></div></div>`).join("")}
+            </div>
+        </section>`;
+    }
+
     // ---- Exports: CSV, Excel, KML, PNG, PDF --------------------------------------
     function downloadBlob(name, blob) {
         const a = document.createElement("a");
@@ -2245,7 +2256,7 @@
     function exportRows() {
         return state.assets.map((a) => ({
             ID: a.id, Type: a.type, Site: a.site, Corridor: a.corridor, "Chainage (km)": a.km,
-            "Latitude (Y)": a.lat, "Longitude (X)": a.lon, Priority: a.priority, Phase: a.phase,
+            "Latitude (Y)": a.lat, "Longitude (X)": a.lon, Priority: a.priority,
             Status: a.status, Purpose: a.purpose
         }));
     }
@@ -2311,7 +2322,7 @@
         g.fillStyle = "#f2f1ec"; g.font = "700 30px Arial";
         g.fillText("RSS Deployment Schematic - KNBP, KEE & Entebbe Airport Dual", 40, 52);
         g.font = "16px Arial"; g.fillStyle = "#a9aaa2";
-        g.fillText("Risk-weighted from the 2021-26 KEE crash record (503 crashes, 16 fatalities). Budget " + ugxB((rssBudget || {}).grandTotalUgx || 0) + " UGX < 7B cap.", 40, 80);
+        g.fillText("Risk-weighted from the 2021-26 KEE crash record (503 crashes, 16 fatalities). Package total " + ugxB((rssBudget || {}).grandTotalUgx || 0) + " UGX.", 40, 80);
         const corr = [["KEE", "Kampala-Entebbe Expressway (24.9 km)", "#34d399", 200],
                       ["KNBP", "Kampala Northern Bypass (21 km)", "#c084fc", 460],
                       ["EDC", "Entebbe Airport Dual (7.6 km)", "#fb7185", 720]];
@@ -2363,7 +2374,7 @@
         line("ROAD SURVEILLANCE SYSTEM (RSS) - PROPOSAL SUMMARY", 15, "bold");
         line("KNBP, KEE and Entebbe Airport Dual | Ministry of Works & Transport", 11);
         y += 2;
-        line("Budget: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX grand total (CAPEX + 10% contingency + 18% VAT) against a 7,000,000,000 UGX cap. Headroom: " + Number(bud.budgetHeadroomUgx || 0).toLocaleString() + " UGX.", 10);
+        line("Budget: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX grand total (CAPEX + 10% contingency + 18% VAT). Single deployment; corridor fibre backbone already laid (site drops only).", 10);
         line("Safety basis: " + accidentData.length + " recorded crashes (2021-26) with " + accidentData.reduce((s, r) => s + (r.fatality || 0), 0) + " fatalities; components are placed at the measured hotspots (km 21-22, 9-13, 2-5, 17-18) and slow-response zones (km 5, 16, 23-24).", 10);
         line("WIM sites: HS-WIM 1 Busega Entry km 1.2 | SWIM/Enforcement Kajjansi km 12.07 | HS-WIM 2 Mpala Entry km 24.2 - each with WIM-integrated ANPR.", 10);
         y += 2;
