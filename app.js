@@ -780,31 +780,31 @@
     }
 
     const TYPE_BUDGET_CATEGORY = {
-        ANPR: "Weigh-in-Motion: 3 sites with ANPR",
+        ANPR: "WIM: existing static plaza WIM enhancement + ANPR integration (3 sites)",
         AVIDS: "PTZ / TMCS traffic monitoring with AI-ML analytics",
         CCTV: "PTZ / TMCS traffic monitoring with AI-ML analytics",
         Comms: "Site backhaul drops (existing fibre backbone - backbone NOT priced)",
         ECB: "Central database, automated analytics & dissemination",
         RSU: "PTZ / TMCS traffic monitoring with AI-ML analytics",
-        RWIS: "Weather communication sensors",
+        RWIS: "Weather intelligence - AI/ML & geospatial analytics (NO hardware)",
         TOC: "Traffic Control Centre - Kajjansi Toll Plaza",
-        VASD: "Variable Message Signs (fixed overhead carriageway display)",
-        VMS: "Variable Message Signs (fixed overhead carriageway display)",
-        WIM: "Weigh-in-Motion: 3 sites with ANPR"
+        VASD: "Variable Message Signs (8 fixed overhead, all corridor entries)",
+        VMS: "Variable Message Signs (8 fixed overhead, all corridor entries)",
+        WIM: "WIM: existing static plaza WIM enhancement + ANPR integration (3 sites)"
     };
 
     const TYPE_BUDGET_PATTERNS = {
-        ANPR: [/ANPR camera/i, /WIM-integrated/i],
+        ANPR: [/ANPR camera/i, /weigh-event trigger/i],
         AVIDS: [/AI\/ML processing/i, /TMCS PTZ/i],
         CCTV: [/TMCS PTZ/i, /AI\/ML processing/i],
         Comms: [/Field-site fibre drop/i],
         ECB: [/stakeholder notification/i, /public information/i],
         RSU: [/Road Side Unit for TMCS/i, /Road Side Unit/i],
-        RWIS: [/Geolocated weather communication/i],
+        RWIS: [/AI weather model/i, /weather-risk analytics/i],
         TOC: [/Central processing server/i, /Video wall/i],
         VASD: [/Fixed overhead VMS/i, /Variable Message/i],
         VMS: [/Fixed overhead VMS/i, /overhead VMS gantry/i, /full carriageway/i],
-        WIM: [/High-Speed WIM/i, /Static\/low-speed WIM/i, /Enforcement weighbridge/i]
+        WIM: [/existing static WIM/i, /SWIM/i, /WIM sites/i]
     };
 
     function fmtUgx(n) {
@@ -874,11 +874,11 @@
             definition: assetOrDefinition?.definition || assetOrDefinition?.purpose || "",
             category: assetOrDefinition?.category || dictionaryCategoryForAsset(assetOrDefinition)
         };
-        const image = dictionaryImageFor(definition);
+        const image = dictionaryDiagramFor(definition);
         return `
             <figure class="detail-media ${escapeAttr(className)}">
                 <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-                <figcaption>${escapeHtml(image.caption)} <span>Wikimedia Commons</span></figcaption>
+                <figcaption>${escapeHtml(image.caption)} <span>schematic</span></figcaption>
             </figure>
         `;
     }
@@ -956,6 +956,13 @@
 
         const budget = assetBudgetInfo(asset);
         const media = detailMediaHTML(asset);
+        const optionalRows = [
+            ["Mounting", asset.mounting],
+            ["Coverage", asset.spanCoverage],
+            ["Placement", asset.placement],
+            ["Pricing reference", asset.pricingCategory]
+        ].filter(([, value]) => value).map(([label, value]) => `
+                <span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong>`).join("");
         panel.innerHTML = `
             ${media}
             <div class="detail-grid">
@@ -975,6 +982,7 @@
                 <span>Power</span><strong>${escapeHtml(asset.power)}</strong>
                 <span>Comms</span><strong>${escapeHtml(asset.comms)}</strong>
                 <span>Dependency</span><strong>${escapeHtml(asset.dependency)}</strong>
+                ${optionalRows}
                 <span>Purpose</span><strong>${escapeHtml(asset.purpose)}</strong>
             </div>
             <p class="detail-note">All pricing is drawn from the RSS budget model built from the TTRS tender-rate workbook and the rebuilt RSS specification.</p>
@@ -1112,6 +1120,27 @@
         }));
     }
 
+    function specRowHTML(c, i, term) {
+        return `<tr>
+            <td class="col-idx">${i}</td>
+            <td>${escapeHtml(c.code || "-")}</td>
+            <td class="col-name">${highlightText(c.name, term)}</td>
+            <td><span class="cat-tag">${escapeHtml(catLabel(c.category))}</span></td>
+            <td class="col-desc">${highlightText(c.description || c.name, term)}</td>
+            <td>${highlightText(c.make || "-", term)}</td>
+            <td class="num">${escapeHtml(c.qty || "-")}</td>
+            <td>${escapeHtml(c.unit || "-")}</td>
+            <td>${escapeHtml(c.subsystem || "-")}</td>
+            <td>${escapeHtml(c.location || "-")}</td>
+            <td>${escapeHtml(c.source || "-")}</td>
+            <td class="link-cell">
+                <button class="mini-link" type="button" data-spec-link="map" data-term="${escapeAttr(mapTermForCategory(c.category, c.name))}" title="Filter map"><i class="fa-solid fa-map-location-dot"></i></button>
+                <button class="mini-link" type="button" data-spec-link="boq" data-term="${escapeAttr(mapTermForCategory(c.category, c.name))}" title="Find BOQ rows"><i class="fa-solid fa-file-invoice-dollar"></i></button>
+                <button class="mini-link" type="button" data-spec-link="dict" data-term="${escapeAttr(c.name)}" data-cat="${escapeAttr(c.category)}" title="Open dictionary"><i class="fa-solid fa-book"></i></button>
+            </td>
+        </tr>`;
+    }
+
     function renderSpecMasterTable() {
         const body = $("#specsTableBody");
         if (!body) return;
@@ -1124,6 +1153,23 @@
         if (!all.length) {
             body.innerHTML = `<tr><td colspan="12"><div class="empty-state compact"><i class="fa-solid fa-magnifying-glass"></i><h4>No components</h4><p>Try another search or element type.</p></div></td></tr>`;
         } else {
+            // group into major RSS sections, in engineering order
+            const SECTION_ORDER = ["cctv", "avids", "anpr", "wim", "avc", "vms", "vasd", "weather", "rfid", "barrier", "signal", "payment", "printer", "scanner", "network", "comms", "power", "server", "console", "software", "civil", "enforcement", "services", "other"];
+            const groups = new Map();
+            shown.forEach((c) => {
+                const k = c.category || "other";
+                if (!groups.has(k)) groups.set(k, []);
+                groups.get(k).push(c);
+            });
+            const ordered = SECTION_ORDER.filter((k) => groups.has(k)).concat([...groups.keys()].filter((k) => !SECTION_ORDER.includes(k)));
+            let idx = 0;
+            body.innerHTML = ordered.map((k) => {
+                const rows = groups.get(k);
+                const head = `<tr class="spec-section"><td colspan="12"><i class="fa-solid fa-layer-group"></i> ${escapeHtml(catLabel(k))} <span class="pill">${rows.length}</span></td></tr>`;
+                return head + rows.map((c) => { idx += 1; return specRowHTML(c, idx, term); }).join("");
+            }).join("");
+        }
+        if (false) {
             body.innerHTML = shown.map((c, i) => `
                 <tr>
                     <td class="col-idx">${i + 1}</td>
@@ -1177,7 +1223,7 @@
     function renderSpecTopicChips() {
         const rail = $("#specTopicChips");
         if (!rail) return;
-        const topics = ["RSS", "WIM", "ANPR", "CCTV", "VMS", "AVIDS", "RWIS", "Cybersecurity", "Testing"];
+        const topics = ["RSS", "WIM", "ANPR", "CCTV", "VMS", "AVIDS", "Weather AI", "Cybersecurity", "Testing"];
         rail.innerHTML = topics.map((topic) => `<button class="chip" type="button" data-topic="${topic}"><span>${topic}</span></button>`).join("");
         $$("#specTopicChips .chip").forEach((chip) => {
             chip.addEventListener("click", () => {
@@ -1384,6 +1430,78 @@
         other: { file: "E-ZPass Toll Plaza - Spaulding Turnpike.jpg", alt: "Integrated toll and RSS roadway equipment", caption: "Integrated RSS equipment" }
     };
 
+    // Accurate schematic diagram per component kind (self-contained SVG, never wrong/broken)
+    function componentKeyFor(text, category) {
+        const t = String(text).toLowerCase();
+        if (/anpr|alpr|ocr|number plate|licen[cs]e plate/.test(t)) return "anpr";
+        if (/weigh|\bwim\b|weighbridge|axle load/.test(t)) return "wim";
+        if (/vms|variable message|message sign|lane status|display board/.test(t)) return "vms";
+        if (/radar|speed display|vasd/.test(t)) return "vasd";
+        if (/weather|rwis|fog|flood|visibility|rain/.test(t)) return "weather";
+        if (/camera|cctv|ptz|surveillance|video|avids/.test(t)) return "cctv";
+        if (/barrier|boom|\balb\b/.test(t)) return "barrier";
+        if (/rfid|dsrc|\btag\b|transponder|antenna/.test(t)) return "rfid";
+        if (/classif|\bavc\b|axle count|loop|photocell/.test(t)) return "avc";
+        if (/payment|cash|drawer|pos|card/.test(t)) return "payment";
+        if (/printer|receipt|thermal/.test(t)) return "printer";
+        if (/scanner|barcode/.test(t)) return "scanner";
+        if (/ups|battery|solar|power|surge|earthing|stabilizer|generator/.test(t)) return "power";
+        if (/switch|router|firewall|fibre|fiber|\bofc\b|network|lan|sfp|media converter|duct|chamber/.test(t)) return "network";
+        if (/server|storage|nas|nvr|recording|database|rack/.test(t)) return "server";
+        if (/radio|repeater|intercom|voip|telephone|handheld|base station|tower/.test(t)) return "comms";
+        if (/workstation|console|monitor|keyboard|joystick|video wall|operator/.test(t)) return "console";
+        if (/software|licen[cs]e|analytics|application|module|dashboard|nms|vams|helpdesk|ai|ml/.test(t)) return "software";
+        if (/pole|gantry|civil|foundation|cabinet|enclosure|structure|building|mast/.test(t)) return "civil";
+        if (/install|testing|commission|training|documentation|maintenance|amc|warranty/.test(t)) return "services";
+        return category || "other";
+    }
+
+    const DIAGRAMS = {
+        cctv:    { c: "#38bdf8", label: "PTZ / TMCS camera", body: "<rect x='150' y='60' width='8' height='110' fill='#64748b'/><ellipse cx='154' cy='172' rx='26' ry='6' fill='#475569'/><rect x='128' y='38' width='52' height='26' rx='6' fill='#38bdf8'/><circle cx='170' cy='51' r='7' fill='#0b0f19'/><path d='M180 51 L260 24 L260 78 Z' fill='#38bdf8' opacity='0.18'/><rect x='60' y='34' width='46' height='20' rx='4' fill='#14532d'/><text x='83' y='48' font-size='11' fill='#86efac' text-anchor='middle' font-family='monospace'>AI/ML</text><line x1='106' y1='44' x2='128' y2='48' stroke='#86efac' stroke-dasharray='3 3'/>" },
+        anpr:    { c: "#1d4ed8", label: "ANPR camera", body: "<rect x='120' y='40' width='60' height='34' rx='6' fill='#3b82f6'/><circle cx='168' cy='57' r='8' fill='#0b0f19'/><rect x='128' y='46' width='14' height='10' rx='2' fill='#fbbf24'/><path d='M176 66 L230 116 L196 130 Z' fill='#3b82f6' opacity='0.2'/><rect x='96' y='120' width='128' height='34' rx='5' fill='#f8fafc'/><text x='160' y='143' font-size='18' fill='#0b0f19' text-anchor='middle' font-family='monospace' font-weight='bold'>UBJ 314K</text>" },
+        vms:     { c: "#f59e0b", label: "Overhead VMS gantry", body: "<rect x='52' y='60' width='10' height='106' fill='#64748b'/><rect x='258' y='60' width='10' height='106' fill='#64748b'/><rect x='52' y='52' width='216' height='12' fill='#475569'/><rect x='84' y='68' width='152' height='44' rx='4' fill='#0b0f19' stroke='#f59e0b'/><text x='160' y='89' font-size='12' fill='#fbbf24' text-anchor='middle' font-family='monospace'>FOG AHEAD</text><text x='160' y='104' font-size='12' fill='#fbbf24' text-anchor='middle' font-family='monospace'>SLOW - 60</text><rect x='40' y='166' width='240' height='8' fill='#334155'/>" },
+        vasd:    { c: "#a78bfa", label: "Speed display + radar", body: "<rect x='150' y='70' width='8' height='96' fill='#64748b'/><rect x='120' y='40' width='68' height='42' rx='6' fill='#0b0f19' stroke='#a78bfa'/><text x='154' y='70' font-size='24' fill='#a78bfa' text-anchor='middle' font-family='monospace' font-weight='bold'>57</text><path d='M196 56 L262 34 L262 82 Z' fill='#a78bfa' opacity='0.2'/>" },
+        wim:     { c: "#be123c", label: "Weigh-in-Motion site", body: "<rect x='30' y='120' width='260' height='40' fill='#334155'/><rect x='110' y='120' width='16' height='40' fill='#f43f5e'/><rect x='190' y='120' width='16' height='40' fill='#f43f5e'/><rect x='60' y='70' width='96' height='40' rx='4' fill='#64748b'/><rect x='68' y='56' width='44' height='22' rx='3' fill='#94a3b8'/><circle cx='84' cy='114' r='10' fill='#1e293b'/><circle cx='128' cy='114' r='10' fill='#1e293b'/><text x='226' y='96' font-size='12' fill='#fda4af' font-family='monospace'>38.4 t &#9888;</text>" },
+        weather: { c: "#22d3ee", label: "AI weather intelligence (no hardware)", body: "<path d='M96 96 a26 26 0 1 1 6 -50 a32 32 0 0 1 62 8 a22 22 0 0 1 -6 42 Z' fill='#475569'/><line x1='92' y1='108' x2='84' y2='128' stroke='#38bdf8' stroke-width='3'/><line x1='116' y1='108' x2='108' y2='128' stroke='#38bdf8' stroke-width='3'/><line x1='140' y1='108' x2='132' y2='128' stroke='#38bdf8' stroke-width='3'/><rect x='188' y='52' width='72' height='52' rx='8' fill='#14532d'/><text x='224' y='74' font-size='12' fill='#86efac' text-anchor='middle' font-family='monospace'>AI MODEL</text><text x='224' y='92' font-size='9' fill='#86efac' text-anchor='middle' font-family='monospace'>ext. sources</text><line x1='150' y1='76' x2='188' y2='76' stroke='#86efac' stroke-dasharray='4 3'/><text x='160' y='158' font-size='11' fill='#94a3b8' text-anchor='middle'>fog / flood detection from PTZ video</text>" },
+        barrier: { c: "#fb7185", label: "Lane barrier", body: "<rect x='70' y='90' width='18' height='76' fill='#64748b'/><g transform='rotate(-28 88 96)'><rect x='88' y='88' width='170' height='14' rx='6' fill='#f8fafc'/><rect x='96' y='88' width='24' height='14' fill='#ef4444'/><rect x='144' y='88' width='24' height='14' fill='#ef4444'/><rect x='192' y='88' width='24' height='14' fill='#ef4444'/></g>" },
+        rfid:    { c: "#22d3ee", label: "RFID / DSRC", body: "<rect x='84' y='84' width='70' height='44' rx='6' fill='#0e7490'/><text x='119' y='111' font-size='12' fill='#a5f3fc' text-anchor='middle' font-family='monospace'>TAG</text><path d='M170 106 q20 -22 40 0' stroke='#22d3ee' fill='none' stroke-width='3'/><path d='M178 106 q12 -13 24 0' stroke='#22d3ee' fill='none' stroke-width='3'/><rect x='226' y='64' width='16' height='90' fill='#64748b'/><rect x='214' y='50' width='40' height='20' rx='4' fill='#22d3ee'/>" },
+        avc:     { c: "#a78bfa", label: "Vehicle classification", body: "<rect x='60' y='70' width='120' height='44' rx='6' fill='#64748b'/><rect x='180' y='84' width='60' height='30' rx='4' fill='#64748b'/><circle cx='92' cy='122' r='12' fill='#1e293b'/><circle cx='150' cy='122' r='12' fill='#1e293b'/><circle cx='210' cy='122' r='12' fill='#1e293b'/><rect x='50' y='140' width='220' height='10' fill='#334155'/><rect x='70' y='152' width='80' height='16' rx='4' fill='none' stroke='#a78bfa' stroke-dasharray='5 3'/><text x='160' y='180' font-size='11' fill='#94a3b8' text-anchor='middle'>axle count + class</text>" },
+        payment: { c: "#4ade80", label: "Payment equipment", body: "<rect x='90' y='70' width='140' height='90' rx='8' fill='#334155'/><rect x='102' y='84' width='116' height='24' rx='4' fill='#0b0f19'/><text x='160' y='101' font-size='12' fill='#4ade80' text-anchor='middle' font-family='monospace'>UGX 10,000</text><rect x='102' y='118' width='56' height='34' rx='4' fill='#475569'/><rect x='166' y='118' width='52' height='34' rx='4' fill='#4ade80' opacity='0.7'/>" },
+        printer: { c: "#94a3b8", label: "Receipt printer", body: "<rect x='100' y='90' width='120' height='60' rx='8' fill='#475569'/><rect x='118' y='60' width='84' height='36' rx='4' fill='#f8fafc'/><line x1='128' y1='72' x2='192' y2='72' stroke='#94a3b8'/><line x1='128' y1='82' x2='176' y2='82' stroke='#94a3b8'/>" },
+        scanner: { c: "#5eead4", label: "Scanner", body: "<rect x='96' y='120' width='128' height='30' rx='6' fill='#475569'/><g stroke='#f8fafc'><line x1='116' y1='70' x2='116' y2='108'/><line x1='126' y1='70' x2='126' y2='108' stroke-width='3'/><line x1='138' y1='70' x2='138' y2='108'/><line x1='150' y1='70' x2='150' y2='108' stroke-width='4'/><line x1='164' y1='70' x2='164' y2='108'/><line x1='176' y1='70' x2='176' y2='108' stroke-width='2'/><line x1='190' y1='70' x2='190' y2='108' stroke-width='3'/><line x1='202' y1='70' x2='202' y2='108'/></g><line x1='96' y1='90' x2='224' y2='90' stroke='#ef4444' stroke-width='2'/>" },
+        power:   { c: "#facc15", label: "Solar-hybrid power / UPS", body: "<g transform='rotate(-18 96 84)'><rect x='58' y='58' width='76' height='52' rx='4' fill='#1e40af' stroke='#93c5fd'/><line x1='58' y1='76' x2='134' y2='76' stroke='#93c5fd'/><line x1='58' y1='94' x2='134' y2='94' stroke='#93c5fd'/><line x1='84' y1='58' x2='84' y2='110' stroke='#93c5fd'/><line x1='110' y1='58' x2='110' y2='110' stroke='#93c5fd'/></g><rect x='170' y='84' width='90' height='72' rx='8' fill='#475569'/><path d='M212 96 L198 124 L212 124 L204 148 L226 116 L210 116 Z' fill='#facc15'/>" },
+        network: { c: "#2dd4bf", label: "Fibre network", body: "<rect x='80' y='84' width='160' height='40' rx='6' fill='#334155'/><g fill='#2dd4bf'><rect x='92' y='96' width='12' height='16' rx='2'/><rect x='112' y='96' width='12' height='16' rx='2'/><rect x='132' y='96' width='12' height='16' rx='2'/><rect x='152' y='96' width='12' height='16' rx='2'/></g><path d='M60 150 q50 -18 100 0 t100 0' stroke='#2dd4bf' fill='none' stroke-width='3'/><path d='M60 160 q50 -18 100 0 t100 0' stroke='#f59e0b' fill='none' stroke-width='3'/>" },
+        server:  { c: "#818cf8", label: "Servers / storage", body: "<rect x='110' y='44' width='100' height='128' rx='8' fill='#334155'/><g><rect x='120' y='56' width='80' height='22' rx='3' fill='#475569'/><rect x='120' y='86' width='80' height='22' rx='3' fill='#475569'/><rect x='120' y='116' width='80' height='22' rx='3' fill='#475569'/><rect x='120' y='146' width='80' height='16' rx='3' fill='#475569'/></g><g fill='#4ade80'><circle cx='190' cy='67' r='4'/><circle cx='190' cy='97' r='4'/><circle cx='190' cy='127' r='4'/></g>" },
+        comms:   { c: "#4ade80", label: "Radio / voice comms", body: "<path d='M160 60 L140 166 L180 166 Z' fill='#64748b'/><line x1='146' y1='120' x2='174' y2='120' stroke='#94a3b8' stroke-width='3'/><line x1='150' y1='96' x2='170' y2='96' stroke='#94a3b8' stroke-width='3'/><circle cx='160' cy='52' r='7' fill='#4ade80'/><path d='M176 44 q18 10 0 22' stroke='#4ade80' fill='none' stroke-width='3'/><path d='M144 44 q-18 10 0 22' stroke='#4ade80' fill='none' stroke-width='3'/>" },
+        console: { c: "#c084fc", label: "Operator console", body: "<rect x='84' y='56' width='152' height='84' rx='6' fill='#0b0f19' stroke='#c084fc'/><rect x='94' y='66' width='64' height='30' fill='#1e293b'/><rect x='166' y='66' width='60' height='30' fill='#1e293b'/><rect x='94' y='102' width='132' height='28' fill='#1e293b'/><rect x='140' y='142' width='40' height='8' fill='#475569'/><rect x='104' y='154' width='112' height='12' rx='4' fill='#475569'/>" },
+        software:{ c: "#a78bfa", label: "Software / analytics", body: "<rect x='84' y='52' width='152' height='108' rx='8' fill='#1e293b' stroke='#a78bfa'/><circle cx='100' cy='66' r='4' fill='#f87171'/><circle cx='114' cy='66' r='4' fill='#fbbf24'/><circle cx='128' cy='66' r='4' fill='#4ade80'/><text x='104' y='102' font-size='20' fill='#a78bfa' font-family='monospace'>&#123;&#8226;&#125;</text><rect x='104' y='116' width='80' height='7' rx='3' fill='#475569'/><rect x='104' y='130' width='104' height='7' rx='3' fill='#475569'/>" },
+        civil:   { c: "#a3a3a3", label: "Structure / civils", body: "<rect x='70' y='56' width='12' height='100' fill='#64748b'/><rect x='238' y='56' width='12' height='100' fill='#64748b'/><rect x='70' y='48' width='180' height='12' fill='#475569'/><rect x='54' y='156' width='44' height='14' fill='#334155'/><rect x='222' y='156' width='44' height='14' fill='#334155'/><path d='M54 170 h44 M58 176 h36' stroke='#64748b'/>" },
+        services:{ c: "#cbd5e1", label: "Installation & services", body: "<g transform='rotate(38 160 106)'><rect x='150' y='48' width='20' height='96' rx='6' fill='#94a3b8'/><path d='M146 48 a18 18 0 1 1 28 0 l-6 10 h-16 Z' fill='#64748b'/></g><g transform='rotate(-38 160 106)'><rect x='152' y='60' width='16' height='84' rx='5' fill='#64748b'/><rect x='148' y='44' width='24' height='20' rx='3' fill='#94a3b8'/></g>" },
+        other:   { c: "#94a3b8", label: "RSS component", body: "<path d='M160 44 L214 76 L214 136 L160 168 L106 136 L106 76 Z' fill='#334155' stroke='#94a3b8'/><circle cx='160' cy='106' r='22' fill='#0b0f19' stroke='#94a3b8'/><circle cx='160' cy='106' r='7' fill='#94a3b8'/>" }
+    };
+    DIAGRAMS.avids = DIAGRAMS.cctv;
+    DIAGRAMS.enforcement = DIAGRAMS.anpr;
+    DIAGRAMS.signal = DIAGRAMS.barrier;
+    const _diagCache = {};
+
+    function componentDiagram(key) {
+        if (_diagCache[key]) return _diagCache[key];
+        const d = DIAGRAMS[key] || DIAGRAMS.other;
+        const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 200'>" +
+            "<rect width='320' height='200' fill='#0b0f19'/>" +
+            "<rect width='320' height='200' fill='none' stroke='" + d.c + "' stroke-opacity='0.35'/>" +
+            d.body +
+            "<text x='12' y='190' font-size='10' fill='" + d.c + "' font-family='monospace'>" + d.label + "</text></svg>";
+        _diagCache[key] = "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+        return _diagCache[key];
+    }
+
+    function dictionaryDiagramFor(definition) {
+        const key = componentKeyFor(`${definition.name || ""} ${definition.definition || definition.description || ""}`, definition.category);
+        const d = DIAGRAMS[key] || DIAGRAMS.other;
+        return { url: componentDiagram(key), alt: d.label + " schematic", caption: d.label };
+    }
+
     function dictionaryImageFor(definition) {
         const text = `${definition.name || ""} ${definition.definition || ""}`.toLowerCase();
         let key = definition.category || "other";
@@ -1413,8 +1531,10 @@
 
     function buildDefinitions() {
         if (dictDefs) return dictDefs;
+        const rank = (e) => (e.source && /ATMS|glossary|acronym/i.test(e.source) ? 3 : 0) + Math.min(2, String(e.description || "").length / 200);
+        const sorted = [...dictionaryData].sort((a, b) => rank(b) - rank(a));
         const seen = new Map();
-        dictionaryData.forEach((c) => {
+        sorted.forEach((c) => {
             const key = String(c.name || "").toLowerCase().trim();
             if (!key || seen.has(key)) return;
             seen.set(key, {
@@ -1479,12 +1599,12 @@
             list.innerHTML = shown.map((d) => {
                 const attrs = [d.make, d.unit].filter(Boolean).join(" | ");
                 const mapTerm = mapTermForCategory(d.category, d.name);
-                const image = dictionaryImageFor(d);
+                const image = dictionaryDiagramFor(d);
                 return `
                     <article class="def-item">
                         <figure class="def-media">
                             <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-                            <figcaption>${escapeHtml(image.caption)} <span>Wikimedia Commons</span></figcaption>
+                            <figcaption>${escapeHtml(image.caption)} <span>schematic</span></figcaption>
                         </figure>
                         <div class="def-term">
                             <h4>${highlightText(d.name, term)}</h4>
@@ -1933,26 +2053,47 @@
 
     function renderBOQTable() {
         const tbody = $("#boqTableBody");
-        if (!tbody || !window.BOQ_DATA) return;
-
+        if (!tbody) return;
+        const bud = rssBudget || {};
+        if (!Array.isArray(bud.categories) || !bud.categories.length) {
+            tbody.innerHTML = `<tr><td colspan="6">Budget data unavailable.</td></tr>`;
+            return;
+        }
         let html = "";
-        window.BOQ_DATA.forEach(row => {
-            // Apply a bold style for parent items
-            const isParent = !row["RATE (USD)"];
-            const style = isParent ? "font-weight: 700; color: #f8fafc; background: rgba(255,255,255,0.02);" : "";
-            
-            html += `<tr style="${style}">
-                <td>${escapeHtml(row["ITEM"])}</td>
-                <td>${escapeHtml(row["DESCRIPTION"])}</td>
-                <td>${escapeHtml(row["UNIT"])}</td>
-                <td>${escapeHtml(row["QUANTITY"])}</td>
-                <td class="num-col">${escapeHtml(row["RATE (USD)"])}</td>
-                <td class="num-col">${escapeHtml(row["AMOUNT (USD)"])}</td>
-                <td class="num-col highlight-col">${escapeHtml(row["RATE (UGX)"])}</td>
-                <td class="num-col highlight-col">${escapeHtml(row["AMOUNT (UGX)"])}</td>
-            </tr>`;
+        bud.categories.forEach((c) => {
+            html += `<tr class="bt-cat"><td colspan="4">${escapeHtml(c.category)}</td>
+                <td class="num-col">${Number(c.subtotal_ugx).toLocaleString()}</td><td></td></tr>`;
+            c.items.forEach((it) => {
+                const term = mapTermForText(it.item);
+                html += `<tr>
+                    <td>${escapeHtml(it.item)}</td>
+                    <td class="num-col">${escapeHtml(String(it.qty))}</td>
+                    <td>${escapeHtml(it.unit)}</td>
+                    <td class="num-col">${Number(it.rate_ugx).toLocaleString()}</td>
+                    <td class="num-col highlight-col">${Number(it.amount_ugx).toLocaleString()}</td>
+                    <td class="link-cell">
+                        <button class="mini-link" type="button" data-boq-link="map" data-term="${escapeAttr(term)}" title="Show on map"><i class="fa-solid fa-map-location-dot"></i></button>
+                        <button class="mini-link" type="button" data-boq-link="specs" data-term="${escapeAttr(it.item.split(",")[0].slice(0, 40))}" title="Open specs"><i class="fa-solid fa-table-list"></i></button>
+                        <button class="mini-link" type="button" data-boq-link="dict" data-term="${escapeAttr(it.item.split(",")[0].slice(0, 40))}" title="Open dictionary"><i class="fa-solid fa-book"></i></button>
+                    </td>
+                </tr>`;
+            });
         });
+        html += `<tr class="bt-cat"><td colspan="4">SUB-TOTAL (CAPEX)</td><td class="num-col">${Number(bud.subtotalUgx).toLocaleString()}</td><td></td></tr>`;
+        html += `<tr class="bt-cat"><td colspan="4">Contingencies (10%)</td><td class="num-col">${Number(bud.contingencyUgx).toLocaleString()}</td><td></td></tr>`;
+        html += `<tr class="bt-cat"><td colspan="4">VAT (18%)</td><td class="num-col">${Number(bud.vatUgx).toLocaleString()}</td><td></td></tr>`;
+        html += `<tr class="bt-cat bt-grand"><td colspan="4">GRAND TOTAL</td><td class="num-col">${Number(bud.grandTotalUgx).toLocaleString()}</td><td></td></tr>`;
         tbody.innerHTML = html;
+
+        $$("#boqTableBody .mini-link").forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.stopPropagation();
+                const action = button.dataset.boqLink;
+                if (action === "map") openMapForTerm(button.dataset.term);
+                if (action === "specs") openSpecsForTerm(button.dataset.term);
+                if (action === "dict") openDictionaryForTerm(button.dataset.term);
+            });
+        });
     }
 
     // ---- Analytics: numerical + categorical summaries across every data source ----
@@ -1974,7 +2115,7 @@
             ["fa-tower-cell", assets.length.toLocaleString(), "RSS components", "Single deployment along the scope"],
             ["fa-road", `${Math.round(scopeKm)} km`, "Project scope", "KNBP + KEE + Entebbe dual"],
             ["fa-video", String(ptzCount), "PTZ / TMCS cameras", "AI-ML traffic + incident monitoring"],
-            ["fa-weight-hanging", String(wimSiteCount), "WIM sites (with ANPR)", "Busega, Kajjansi, Mpala"],
+            ["fa-weight-hanging", String(wimSiteCount), "Existing static WIM + ANPR", "Busega, Kajjansi, Mpala plazas"],
             ["fa-sack-dollar", `${ugxB(grand)} UGX`, "RSS package total", "CAPEX incl. 10% cont. + 18% VAT"],
             ["fa-coins", `${ugxB(bud.subtotalUgx || 0)} UGX`, "CAPEX sub-total", "Equipment, structures, software, install"],
             ["fa-gauge-high", `${ugxB(costPerKm)} UGX`, "Cost per km", "Package total / scope length"],
@@ -2060,8 +2201,8 @@
                 <div class="schem-band field-band">
                     <div class="schem-title">Field layer &mdash; monitoring &amp; display</div>
                     <div class="schem-node"><i class="fa-solid fa-video"></i><strong>PTZ / TMCS with AI-ML</strong><span>21 cameras: all traffic + incident monitoring, auto-detection</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>WIM x3 with ANPR</strong><span>HS-WIM Busega + Mpala, SWIM Kajjansi</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>Overhead VMS + weather comm</strong><span>5 fixed gantry signs covering the carriageway + 2 geolocated weather feeds</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>Existing static WIM x3 + ANPR</strong><span>Busega, Kajjansi and Mpala plaza WIMs enhanced and integrated into RSS</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>Overhead VMS x8</strong><span>Fixed gantry signs at corridor entries and decision points, clear of bridges and interchanges</span></div>
                 </div>
                 <div class="schem-link"><span>13 site drops onto the EXISTING fibre backbone (backbone not priced)</span></div>
                 <div class="schem-band comms-band">
@@ -2329,11 +2470,11 @@
         }).join("");
         const placements = [
             ["km 21-22 (worst hotspot, risk 98.6, 2 fatal)", "PTZ with AI-ML at km 21.5 - automatic incident detection and notification"],
-            ["km 9-13 cluster (111 crashes)", "PTZ km 9.5 & 11.5, overhead VMS full-carriageway warning km 7.5, SWIM + TCC Kajjansi km 12.1"],
-            ["km 2-5 cluster (89 crashes)", "PTZ km 2.5 & 4.5, HS-WIM + ANPR Busega km 1.2"],
+            ["km 9-13 cluster (111 crashes)", "PTZ km 9.5 & 11.5, overhead VMS full-carriageway warning km 7.5, existing Kajjansi SWIM + TCC km 12.1"],
+            ["km 2-5 cluster (89 crashes)", "PTZ km 2.5 & 4.5, existing Busega static WIM + ANPR km 1.2"],
             ["km 17-18 and 19-20 hotspots", "PTZ km 17.5 and 19.5"],
             ["Slow response km 5 / 16 / 23-24 (68-79 min avg)", "PTZ AI detection triggers immediate stakeholder notification - no wait for road-user reports"],
-            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, HS-WIM + ANPR Mpala km 24.2, overhead VMS full-carriageway warning km 19"],
+            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, existing Mpala static WIM + ANPR km 24.2, overhead VMS full-carriageway warning km 19"],
         ];
         return `<section class="panel an-panel safety-panel">
             <div class="an-panel-head"><h3>Safety analysis &mdash; KEE crash record 2021-26 drives the RSS placement</h3>
@@ -2505,7 +2646,7 @@
         y += 2;
         line("Budget: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX grand total (CAPEX + 10% contingency + 18% VAT). Single deployment; corridor fibre backbone already laid (site drops only).", 10);
         line("Safety basis: " + accidentData.length + " recorded crashes (2021-26) with " + accidentData.reduce((s, r) => s + (r.fatality || 0), 0) + " fatalities; components are placed at the measured hotspots (km 21-22, 9-13, 2-5, 17-18) and slow-response zones (km 5, 16, 23-24).", 10);
-        line("WIM sites: HS-WIM 1 Busega Entry km 1.2 | SWIM/Enforcement Kajjansi km 12.07 | HS-WIM 2 Mpala Entry km 24.2 - each with WIM-integrated ANPR.", 10);
+        line("WIM sites: existing static SWIM at Busega km 1.2, Kajjansi km 12.07 and Mpala km 24.2 - enhanced, integrated into RSS and paired with ANPR.", 10);
         y += 2;
         line("COSTED BILL OF QUANTITIES (UGX)", 12, "bold");
         (bud.categories || []).forEach((c) => {
