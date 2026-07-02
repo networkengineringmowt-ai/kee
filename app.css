@@ -3035,3 +3035,70 @@ body.map-fullscreen-active .map-stage .map-control-overlay,
 .sum-row:last-child { border-bottom: none; }
 .sum-row span { color: var(--soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sum-row strong { color: var(--text); font-variant-numeric: tabular-nums; flex: none; }
+
+/* ============ Animated 3D RSS schematic ============ */
+.schem3d-stage { perspective: 1100px; padding: 8px 0 4px; overflow: hidden; }
+.schem3d { position: relative; transform-style: preserve-3d; transform: rotateX(48deg) rotateZ(-6deg); margin: 0 auto; max-width: 860px; }
+.s3d-layer {
+    position: relative;
+    margin: 26px auto;
+    padding: 14px 16px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--lc);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--lc) 22%, transparent), rgba(11, 15, 25, 0.9));
+    box-shadow: 0 24px 40px rgba(0,0,0,.45), inset 0 0 34px color-mix(in srgb, var(--lc) 12%, transparent);
+    transform: translateZ(calc(var(--i) * -46px));
+    animation: s3dFloat 5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * -1.2s);
+}
+@keyframes s3dFloat { 0%,100% { transform: translateZ(calc(var(--i) * -46px)) translateY(0); } 50% { transform: translateZ(calc(var(--i) * -46px)) translateY(-6px); } }
+.s3d-title { font-family: Outfit, Inter, sans-serif; font-size: 0.72rem; font-weight: 800; letter-spacing: .1em; color: var(--lc); }
+.s3d-nodes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.s3d-node {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 12px; border-radius: 999px;
+    background: rgba(11, 15, 25, 0.75); border: 1px solid var(--lc);
+    font-size: 0.78rem; color: var(--text); white-space: nowrap;
+}
+.s3d-node i { color: var(--lc); }
+.s3d-node:hover { box-shadow: 0 0 14px var(--lc); transform: scale(1.04); transition: all .15s; }
+.s3d-flow {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: #34d399; box-shadow: 0 0 12px #34d399; left: 18%;
+    animation: flowUp 2.6s linear infinite;
+}
+.s3d-flow.f2 { left: 42%; animation-delay: .6s; }
+.s3d-flow.f3 { left: 64%; animation-delay: 1.2s; background: #fbbf24; box-shadow: 0 0 12px #fbbf24; }
+.s3d-flow.f4 { left: 84%; animation-delay: 1.8s; }
+.s3d-flow.up { background: #fb7185; box-shadow: 0 0 12px #fb7185; animation: flowDown 3s linear infinite; }
+.s3d-flow.u1 { left: 30%; animation-delay: .3s; }
+.s3d-flow.u2 { left: 74%; animation-delay: 1.6s; }
+@keyframes flowUp { 0% { bottom: 4%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { bottom: 94%; opacity: 0; } }
+@keyframes flowDown { 0% { top: 6%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 92%; opacity: 0; } }
+
+/* ============ Clustered column charts ============ */
+.cc-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 10px; font-size: 0.78rem; color: var(--soft); }
+.cc-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.cc-chart {
+    display: flex; align-items: flex-end; gap: 14px;
+    min-height: 190px; padding: 10px 8px 6px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: repeating-linear-gradient(to top, rgba(255,255,255,0.04) 0 1px, transparent 1px 38px);
+    overflow-x: auto;
+}
+.cc-cluster { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 56px; }
+.cc-cols { display: flex; align-items: flex-end; gap: 3px; height: 150px; }
+.cc-col {
+    width: 16px; height: var(--h); min-height: 2px;
+    background: linear-gradient(to top, var(--cc), color-mix(in srgb, var(--cc) 55%, white));
+    border-radius: 4px 4px 0 0; position: relative;
+    animation: colGrow .9s var(--ease) both;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--cc) 45%, transparent);
+}
+.cc-col:hover { filter: brightness(1.25); }
+.cc-col em {
+    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+    font-style: normal; font-size: 0.62rem; color: var(--text);
+}
+@keyframes colGrow { from { height: 0; } to { height: var(--h); } }
+.cc-label { font-size: 0.7rem; color: var(--muted); text-align: center; }

@@ -2113,7 +2113,7 @@
         let html = "";
         bud.categories.forEach((c) => {
             html += `<tr class="bt-cat"><td colspan="4">${escapeHtml(c.category)}</td>
-                <td class="num-col">${Number(c.subtotal_ugx).toLocaleString()}</td><td></td></tr>`;
+                <td class="num-col">${Number(c.subtotal_ugx).toLocaleString()}</td><td>&mdash;</td></tr>`;
             c.items.forEach((it) => {
                 const term = mapTermForText(it.item);
                 html += `<tr>
@@ -2130,10 +2130,10 @@
                 </tr>`;
             });
         });
-        html += `<tr class="bt-cat"><td colspan="4">SUB-TOTAL (CAPEX)</td><td class="num-col">${Number(bud.subtotalUgx).toLocaleString()}</td><td></td></tr>`;
-        html += `<tr class="bt-cat"><td colspan="4">Contingencies (10%)</td><td class="num-col">${Number(bud.contingencyUgx).toLocaleString()}</td><td></td></tr>`;
-        html += `<tr class="bt-cat"><td colspan="4">VAT (18%)</td><td class="num-col">${Number(bud.vatUgx).toLocaleString()}</td><td></td></tr>`;
-        html += `<tr class="bt-cat bt-grand"><td colspan="4">GRAND TOTAL</td><td class="num-col">${Number(bud.grandTotalUgx).toLocaleString()}</td><td></td></tr>`;
+        html += `<tr class="bt-cat"><td colspan="4">SUB-TOTAL (CAPEX)</td><td class="num-col">${Number(bud.subtotalUgx).toLocaleString()}</td><td>&mdash;</td></tr>`;
+        html += `<tr class="bt-cat"><td colspan="4">Contingencies (10%)</td><td class="num-col">${Number(bud.contingencyUgx).toLocaleString()}</td><td>&mdash;</td></tr>`;
+        html += `<tr class="bt-cat"><td colspan="4">VAT (18%)</td><td class="num-col">${Number(bud.vatUgx).toLocaleString()}</td><td>&mdash;</td></tr>`;
+        html += `<tr class="bt-cat bt-grand"><td colspan="4">GRAND TOTAL</td><td class="num-col">${Number(bud.grandTotalUgx).toLocaleString()}</td><td>&mdash;</td></tr>`;
         tbody.innerHTML = html;
 
         $$("#boqTableBody .mini-link").forEach((button) => {
@@ -2184,9 +2184,9 @@
                 </article>`).join("");
         }
 
-        // Deep component summaries (100+ numerical & categorical statistics)
+        // 3D schematic + clustered charts + deep component summaries
         const sumEl = $("#analyticsSummaries");
-        if (sumEl) sumEl.innerHTML = renderComponentSummaries();
+        if (sumEl) sumEl.innerHTML = renderRss3D() + renderClusteredCharts() + renderComponentSummaries();
 
         // Crash-record safety analysis (2021-26) driving the RSS placement
         const safetyEl = $("#analyticsSafety");
@@ -2366,6 +2366,98 @@
         </section>`;
     }
 
+    // ---- Animated 3D schematic of the RSS ------------------------------------------
+    function renderRss3D() {
+        const layers = [
+            { cls: "l-stake", title: "STAKEHOLDERS", color: "#fb7185", nodes: [
+                ["fa-car-on", "Patrol crews"], ["fa-scale-balanced", "Enforcement / UNBS"],
+                ["fa-truck-medical", "Ambulance & recovery"], ["fa-mobile-screen", "Road users (VMS)"]] },
+            { cls: "l-tcc", title: "TCC - KAJJANSI TOLL PLAZA", color: "#22d3ee", nodes: [
+                ["fa-database", "Central database"], ["fa-brain", "AI/ML analytics"],
+                ["fa-cloud-sun-rain", "AI weather model"], ["fa-bullhorn", "Auto notification engine"]] },
+            { cls: "l-net", title: "DATA BACKBONE (EXISTING FIBRE)", color: "#34d399", nodes: [
+                ["fa-network-wired", "13 site drops"], ["fa-box", "12 RSUs (solar-hybrid)"]] },
+            { cls: "l-field", title: "FIELD LAYER - 57.6 KM SCOPE", color: "#fbbf24", nodes: [
+                ["fa-video", "21 PTZ AI-ML cameras"], ["fa-signs-post", "8 overhead VMS"],
+                ["fa-weight-hanging", "5 WIM sites (2 HS + 3 SWIM)"], ["fa-camera", "5 WIM ANPR"]] },
+        ];
+        return `<section class="panel an-panel schem3d-panel">
+            <div class="an-panel-head"><h3>RSS live architecture &mdash; animated 3D schematic</h3>
+                <span class="pill">Data flows bottom-up &middot; notifications top-down</span></div>
+            <div class="schem3d-stage">
+                <div class="schem3d">
+                    ${layers.map((L, i) => `
+                        <div class="s3d-layer ${L.cls}" style="--i:${i};--lc:${L.color}">
+                            <span class="s3d-title">${L.title}</span>
+                            <div class="s3d-nodes">
+                                ${L.nodes.map(([ic, t]) => `<div class="s3d-node"><i class="fa-solid ${ic}"></i><span>${t}</span></div>`).join("")}
+                            </div>
+                        </div>`).join("")}
+                    <div class="s3d-flow f1"></div><div class="s3d-flow f2"></div>
+                    <div class="s3d-flow f3"></div><div class="s3d-flow f4"></div>
+                    <div class="s3d-flow up u1"></div><div class="s3d-flow up u2"></div>
+                </div>
+            </div>
+            <p class="panel-note">Field detections (video, weigh events) stream up the existing fibre into the central database; automated analytics push notifications and VMS messages back down &mdash; latest-practice event-driven architecture (edge AI, hot-standby core, publish/subscribe notification bus).</p>
+        </section>`;
+    }
+
+    // ---- Colourful clustered column charts ------------------------------------------
+    function clusteredChart(title, clusters, series, unitNote) {
+        // clusters: [{label, values:[...aligned to series]}] ; series: [{label,color}]
+        const maxV = Math.max(1, ...clusters.flatMap((c) => c.values));
+        return `<section class="panel an-panel cc-panel">
+            <div class="an-panel-head"><h3>${escapeHtml(title)}</h3><span class="pill">${escapeHtml(unitNote)}</span></div>
+            <div class="cc-legend">${series.map((sr) => `<span><i style="background:${sr.color}"></i>${escapeHtml(sr.label)}</span>`).join("")}</div>
+            <div class="cc-chart">
+                ${clusters.map((c) => `
+                    <div class="cc-cluster">
+                        <div class="cc-cols">
+                            ${c.values.map((v, i) => `<div class="cc-col" style="--h:${Math.round(v / maxV * 100)}%;--cc:${series[i].color}" title="${escapeAttr(c.label + " - " + series[i].label + ": " + v)}"><em>${v || ""}</em></div>`).join("")}
+                        </div>
+                        <span class="cc-label">${escapeHtml(c.label)}</span>
+                    </div>`).join("")}
+            </div>
+        </section>`;
+    }
+
+    function renderClusteredCharts() {
+        const assets = state.assets;
+        let html = "";
+        // Chart A: component type x corridor
+        const types = unique(assets.map((a) => a.type));
+        const corrSeries = [{ label: "KEE", color: "#34d399" }, { label: "KNBP", color: "#c084fc" }, { label: "EDC", color: "#fb7185" }];
+        html += clusteredChart("RSS components by type and corridor", types.map((t) => ({
+            label: t,
+            values: ["KEE", "KNBP", "EDC"].map((c) => assets.filter((a) => a.type === t && a.corridor === c).length)
+        })), corrSeries, assets.length + " components");
+        if (accidentData.length) {
+            // Chart B: crashes by year x severity
+            const sevSeries = [
+                { label: "Fatal", color: "#ef4444" }, { label: "Severe", color: "#f97316" },
+                { label: "Minor", color: "#fbbf24" }, { label: "Damage only", color: "#38bdf8" }];
+            const years = unique(accidentData.map((r) => r.year));
+            html += clusteredChart("KEE crashes by year and severity (2021-26)", years.map((y) => ({
+                label: String(y),
+                values: [
+                    accidentData.filter((r) => r.year === y && r.severity === "Fatal Crash").length,
+                    accidentData.filter((r) => r.year === y && r.severity === "Severe Injury").length,
+                    accidentData.filter((r) => r.year === y && r.severity === "Minor Injury").length,
+                    accidentData.filter((r) => r.year === y && r.severity === "Damage Only").length,
+                ]
+            })), sevSeries, accidentData.length + " crashes");
+            // Chart C: crashes by hour band x direction
+            const bands = unique(accidentData.map((r) => r.hour_band)).sort();
+            const dirs = unique(accidentData.map((r) => r.direction));
+            const dirColors = ["#22d3ee", "#a78bfa", "#4ade80", "#f59e0b"];
+            html += clusteredChart("KEE crashes by time of day and direction", bands.map((b) => ({
+                label: b,
+                values: dirs.map((d2) => accidentData.filter((r) => r.hour_band === b && r.direction === d2).length)
+            })), dirs.map((d2, i) => ({ label: "Direction " + d2, color: dirColors[i % dirColors.length] })), "hour bands");
+        }
+        return html;
+    }
+
     // ---- Component summaries engine: 100+ numerical & categorical statistics ------
     function renderComponentSummaries() {
         const assets = state.assets;
@@ -2459,6 +2551,39 @@
             sec("Crash record - by year", Object.entries(by("year")).sort().map(([k, v]) => ["Crashes " + k, v]));
             sec("Crash record - by severity", Object.entries(by("severity")).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, v]));
             sec("Crash record - by dominant vehicle", Object.entries(by("dominant_vehicle")).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, v]));
+            sec("Crash record - by month", Object.entries(by("month")).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, v]));
+            sec("Crash record - by weekday", Object.entries(by("weekday")).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, v]));
+            sec("Crash record - by hour band", Object.entries(by("hour_band")).sort().map(([k, v]) => [k + " hrs", v]));
+            sec("Crash record - by direction", Object.entries(by("direction")).map(([k, v]) => ["Direction " + k, v]));
+            sec("Crash record - by response band", Object.entries(by("response_band")).sort().map(([k, v]) => [k, v]));
+            sec("Vehicle involvement (2021-26)", [
+                ["Cars involved", accidentData.reduce((s2, r) => s2 + (r.car || 0), 0)],
+                ["Trucks involved", accidentData.reduce((s2, r) => s2 + (r.truck || 0), 0)],
+                ["Buses involved", accidentData.reduce((s2, r) => s2 + (r.bus || 0), 0)],
+                ["Motorbikes involved", accidentData.reduce((s2, r) => s2 + (r.motorbike || 0), 0)],
+                ["PSVs involved", accidentData.reduce((s2, r) => s2 + (r.psv || 0), 0)],
+                ["Total vehicles", accidentData.reduce((s2, r) => s2 + (r.vehicles || 0), 0)],
+                ["Total casualties", accidentData.reduce((s2, r) => s2 + (r.casualties || 0), 0)],
+                ["No-injury parties", accidentData.reduce((s2, r) => s2 + (r.no_injury || 0), 0)],
+                ["Avg vehicles per crash", num(accidentData.reduce((s2, r) => s2 + (r.vehicles || 0), 0) / accidentData.length, 2)],
+            ]);
+            const wims = assets.filter((a) => a.type === "WIM");
+            sec("WIM programme", [
+                ["Total WIM sites", wims.length],
+                ["New HS-WIM sites", wims.filter((a) => /HS-WIM/.test(a.site)).length],
+                ["Existing SWIM (enhance & integrate)", wims.filter((a) => /SWIM/.test(a.site)).length],
+                ["WIM sites with ANPR", assets.filter((a) => a.type === "ANPR" && /WIM|SWIM|HS-WIM/.test(a.site)).length],
+                ["First WIM chainage (km)", num(Math.min(...wims.map((a) => a.km)))],
+                ["Last WIM chainage (km)", num(Math.max(...wims.map((a) => a.km)))],
+            ]);
+            const vmsA = assets.filter((a) => a.type === "VMS");
+            sec("VMS programme", [
+                ["Total overhead VMS", vmsA.length],
+                ["Corridor entries covered", 4],
+                ["On KEE / KNBP / EDC", vmsA.filter((a)=>a.corridor==="KEE").length + " / " + vmsA.filter((a)=>a.corridor==="KNBP").length + " / " + vmsA.filter((a)=>a.corridor==="EDC").length],
+                ["Min clearance from interchanges", "0.6 km (design rule)"],
+                ["Signs on crash-cluster approaches", 2],
+            ]);
             const resp = accidentData.map((r) => r.response_min || 0);
             sec("Emergency response", [
                 ["Average response (min)", num(resp.reduce((s2, v) => s2 + v, 0) / resp.length)],
