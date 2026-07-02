@@ -693,6 +693,7 @@
         power: "Cabinet",
         printer: "Toll",
         rfid: "Toll",
+        rsu: "RSU",
         scanner: "Toll",
         server: "TOC",
         services: "RSS",
@@ -780,7 +781,7 @@
     }
 
     const TYPE_BUDGET_CATEGORY = {
-        ANPR: "WIM: existing static plaza WIM enhancement + ANPR integration (3 sites)",
+        ANPR: "WIM: 5 RSS sites with ANPR integration",
         AVIDS: "PTZ / TMCS traffic monitoring with AI-ML analytics",
         CCTV: "PTZ / TMCS traffic monitoring with AI-ML analytics",
         Comms: "Site backhaul drops (existing fibre backbone - backbone NOT priced)",
@@ -790,7 +791,7 @@
         TOC: "Traffic Control Centre - Kajjansi Toll Plaza",
         VASD: "Variable Message Signs (8 fixed overhead, all corridor entries)",
         VMS: "Variable Message Signs (8 fixed overhead, all corridor entries)",
-        WIM: "WIM: existing static plaza WIM enhancement + ANPR integration (3 sites)"
+        WIM: "WIM: 5 RSS sites with ANPR integration"
     };
 
     const TYPE_BUDGET_PATTERNS = {
@@ -804,7 +805,7 @@
         TOC: [/Central processing server/i, /Video wall/i],
         VASD: [/Fixed overhead VMS/i, /Variable Message/i],
         VMS: [/Fixed overhead VMS/i, /overhead VMS gantry/i, /full carriageway/i],
-        WIM: [/existing static WIM/i, /SWIM/i, /WIM sites/i]
+        WIM: [/existing static WIM/i, /New RSS WIM/i, /WIM sites/i]
     };
 
     function fmtUgx(n) {
@@ -868,25 +869,36 @@
         })[type] || "other";
     }
 
+    function dictionaryProductForAsset(asset) {
+        const category = dictionaryCategoryForAsset(asset);
+        const type = String(asset?.type || "").toUpperCase();
+        const siteText = `${asset?.site || ""} ${asset?.purpose || ""}`.toLowerCase();
+        const preferred = dictionaryData.find((entry) => entry.category === category && entry.imageUrl && siteText && String(entry.name || "").toLowerCase().includes(siteText.split(" ")[0]));
+        if (preferred) return preferred;
+        return dictionaryData.find((entry) => entry.category === category && entry.imageUrl) || null;
+    }
+
     function detailMediaHTML(assetOrDefinition, className = "") {
+        const product = assetOrDefinition?.imageUrl ? assetOrDefinition : dictionaryProductForAsset(assetOrDefinition);
         const definition = {
             name: assetOrDefinition?.name || `${assetOrDefinition?.type || ""} ${assetOrDefinition?.site || ""}`,
             definition: assetOrDefinition?.definition || assetOrDefinition?.purpose || "",
-            category: assetOrDefinition?.category || dictionaryCategoryForAsset(assetOrDefinition)
+            category: assetOrDefinition?.category || dictionaryCategoryForAsset(assetOrDefinition),
+            imageUrl: product?.imageUrl || "",
+            imageAlt: product?.imageAlt || "",
+            imageCaption: product?.imageCaption || ""
         };
-        const image = dictionaryDiagramFor(definition);
+        const image = dictionaryMediaFor(definition);
         return `
             <figure class="detail-media ${escapeAttr(className)}">
-                <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-                <figcaption>${escapeHtml(image.caption)} <span>schematic</span></figcaption>
+                <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback="${escapeAttr(image.fallbackUrl || "")}">
+                <figcaption>${escapeHtml(image.caption)} <span>${escapeHtml(image.badge)}</span></figcaption>
             </figure>
         `;
     }
 
     function bindDetailMediaFallback(panel) {
-        panel?.querySelectorAll(".detail-media img").forEach((img) => img.addEventListener("error", () => {
-            img.closest(".detail-media")?.classList.add("image-missing");
-        }, { once: true }));
+        bindImageFallbacks(panel);
     }
 
     const ROAD_CLASS_LABEL = { M: "Motorway (M)", A: "National A", B: "National B", C: "Community C" };
@@ -1154,7 +1166,7 @@
             body.innerHTML = `<tr><td colspan="12"><div class="empty-state compact"><i class="fa-solid fa-magnifying-glass"></i><h4>No components</h4><p>Try another search or element type.</p></div></td></tr>`;
         } else {
             // group into major RSS sections, in engineering order
-            const SECTION_ORDER = ["cctv", "avids", "anpr", "wim", "avc", "vms", "vasd", "weather", "rfid", "barrier", "signal", "payment", "printer", "scanner", "network", "comms", "power", "server", "console", "software", "civil", "enforcement", "services", "other"];
+            const SECTION_ORDER = ["cctv", "avids", "anpr", "wim", "avc", "vms", "vasd", "weather", "rsu", "rfid", "barrier", "signal", "payment", "printer", "scanner", "network", "comms", "power", "server", "console", "software", "civil", "enforcement", "services", "other"];
             const groups = new Map();
             shown.forEach((c) => {
                 const k = c.category || "other";
@@ -1396,7 +1408,7 @@
         });
     }
 
-    // ---- Dictionary: catalogue of component definitions with internet images ----
+    // ---- Dictionary: RSS component catalogue with product-sheet images ----
     const DICT_PAGE = 80;
     const dictState = { term: "", category: "All", limit: DICT_PAGE };
     let dictDefs = null;
@@ -1502,6 +1514,20 @@
         return { url: componentDiagram(key), alt: d.label + " schematic", caption: d.label };
     }
 
+    function dictionaryMediaFor(definition) {
+        const fallback = dictionaryDiagramFor(definition);
+        if (definition?.imageUrl) {
+            return {
+                url: definition.imageUrl,
+                fallbackUrl: fallback.url,
+                alt: definition.imageAlt || definition.name || fallback.alt,
+                caption: definition.imageCaption || definition.name || fallback.caption,
+                badge: "product image"
+            };
+        }
+        return { ...fallback, fallbackUrl: "", badge: "schematic" };
+    }
+
     function dictionaryImageFor(definition) {
         const text = `${definition.name || ""} ${definition.definition || ""}`.toLowerCase();
         let key = definition.category || "other";
@@ -1540,7 +1566,15 @@
             seen.set(key, {
                 name: c.name, category: c.category,
                 definition: c.description || c.name,
-                make: c.make || "", unit: c.unit || ""
+                make: c.make || "", unit: c.unit || "",
+                subsystem: c.subsystem || "",
+                sourceName: c.sourceName || c.source || "",
+                datasheetUrl: c.datasheetUrl || c.sourceUrl || "",
+                sourceUrl: c.sourceUrl || c.datasheetUrl || "",
+                imageUrl: c.imageUrl || "",
+                imageAlt: c.imageAlt || "",
+                imageCaption: c.imageCaption || "",
+                attributes: Array.isArray(c.attributes) ? c.attributes : []
             });
         });
         dictDefs = Array.from(seen.values()).sort((a, b) => a.name.localeCompare(b.name));
@@ -1590,7 +1624,7 @@
         dictState.term = $("#mediaSearchInput")?.value || "";
         const all = dictFiltered();
         const shown = all.slice(0, dictState.limit);
-        setText("#dictCountNote", `${buildDefinitions().length.toLocaleString()} defined components across ${dictionaryCategories.length} element types - showing ${shown.length.toLocaleString()} of ${all.length.toLocaleString()}`);
+        setText("#dictCountNote", `${buildDefinitions().length.toLocaleString()} RSS components and subcomponents across ${dictionaryCategories.length} element types - showing ${shown.length.toLocaleString()} of ${all.length.toLocaleString()}`);
 
         if (!all.length) {
             list.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h4>No definitions</h4><p>Try another search term or category.</p></div>`;
@@ -1598,13 +1632,14 @@
             const term = dictState.term.trim();
             list.innerHTML = shown.map((d) => {
                 const attrs = [d.make, d.unit].filter(Boolean).join(" | ");
+                const specAttrs = (d.attributes || []).slice(0, 4).join(" | ");
                 const mapTerm = mapTermForCategory(d.category, d.name);
-                const image = dictionaryDiagramFor(d);
+                const image = dictionaryMediaFor(d);
                 return `
                     <article class="def-item">
                         <figure class="def-media">
-                            <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-                            <figcaption>${escapeHtml(image.caption)} <span>schematic</span></figcaption>
+                            <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback="${escapeAttr(image.fallbackUrl || "")}">
+                            <figcaption>${escapeHtml(image.caption)} <span>${escapeHtml(image.badge)}</span></figcaption>
                         </figure>
                         <div class="def-term">
                             <h4>${highlightText(d.name, term)}</h4>
@@ -1612,13 +1647,17 @@
                         </div>
                         <p class="def-body">${highlightText(d.definition, term)}</p>
                         ${attrs ? `<p class="def-attrs"><i class="fa-solid fa-tag"></i> ${escapeHtml(attrs)}</p>` : ""}
+                        ${specAttrs ? `<p class="def-attrs"><i class="fa-solid fa-list-check"></i> ${escapeHtml(specAttrs)}</p>` : ""}
+                        ${d.sourceName ? `<p class="def-attrs"><i class="fa-solid fa-certificate"></i> ${escapeHtml(d.sourceName)}</p>` : ""}
                         <div class="def-actions">
                             <button class="def-link" type="button" data-dict-link="map" data-term="${escapeAttr(mapTerm)}"><i class="fa-solid fa-map-location-dot"></i> Map</button>
                             <button class="def-link" type="button" data-dict-link="specs" data-term="${escapeAttr(d.name)}" data-cat="${escapeAttr(d.category)}"><i class="fa-solid fa-table-list"></i> Specs</button>
                             <button class="def-link" type="button" data-dict-link="boq" data-term="${escapeAttr(mapTerm)}"><i class="fa-solid fa-file-invoice-dollar"></i> BOQ</button>
+                            ${d.datasheetUrl ? `<a class="def-link" href="${escapeAttr(d.datasheetUrl)}" target="_blank" rel="noopener"><i class="fa-solid fa-up-right-from-square"></i> Product sheet</a>` : ""}
                         </div>
                     </article>`;
             }).join("");
+            bindImageFallbacks(list);
 
             $$("#mediaGrid .cat-tag.linkable").forEach((btn) => btn.addEventListener("click", () => {
                 dictState.category = btn.dataset.cat;
@@ -1884,6 +1923,18 @@
         }
     }
 
+    function bindImageFallbacks(root = document) {
+        root.querySelectorAll("img[data-fallback]").forEach((img) => img.addEventListener("error", () => {
+            const fallback = img.getAttribute("data-fallback");
+            if (fallback && img.src !== fallback) {
+                img.src = fallback;
+                img.closest("figure")?.classList.add("image-fallback");
+            } else {
+                img.closest("figure")?.classList.add("image-missing");
+            }
+        }, { once: true }));
+    }
+
     function chartOptions(title, horizontal = false) {
         return {
             indexAxis: horizontal ? "y" : "x",
@@ -2115,7 +2166,7 @@
             ["fa-tower-cell", assets.length.toLocaleString(), "RSS components", "Single deployment along the scope"],
             ["fa-road", `${Math.round(scopeKm)} km`, "Project scope", "KNBP + KEE + Entebbe dual"],
             ["fa-video", String(ptzCount), "PTZ / TMCS cameras", "AI-ML traffic + incident monitoring"],
-            ["fa-weight-hanging", String(wimSiteCount), "Existing static WIM + ANPR", "Busega, Kajjansi, Mpala plazas"],
+            ["fa-weight-hanging", String(wimSiteCount), "WIM + ANPR sites", "3 existing plaza SWIM + KNBP + Airport Dual"],
             ["fa-sack-dollar", `${ugxB(grand)} UGX`, "RSS package total", "CAPEX incl. 10% cont. + 18% VAT"],
             ["fa-coins", `${ugxB(bud.subtotalUgx || 0)} UGX`, "CAPEX sub-total", "Equipment, structures, software, install"],
             ["fa-gauge-high", `${ugxB(costPerKm)} UGX`, "Cost per km", "Package total / scope length"],
@@ -2201,7 +2252,7 @@
                 <div class="schem-band field-band">
                     <div class="schem-title">Field layer &mdash; monitoring &amp; display</div>
                     <div class="schem-node"><i class="fa-solid fa-video"></i><strong>PTZ / TMCS with AI-ML</strong><span>21 cameras: all traffic + incident monitoring, auto-detection</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>Existing static WIM x3 + ANPR</strong><span>Busega, Kajjansi and Mpala plaza WIMs enhanced and integrated into RSS</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>WIM x5 + ANPR</strong><span>Three existing plaza SWIM sites plus KNBP and Airport Dual freight screens, all integrated into RSS</span></div>
                     <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>Overhead VMS x8</strong><span>Fixed gantry signs at corridor entries and decision points, clear of bridges and interchanges</span></div>
                 </div>
                 <div class="schem-link"><span>13 site drops onto the EXISTING fibre backbone (backbone not priced)</span></div>
@@ -2472,9 +2523,10 @@
             ["km 21-22 (worst hotspot, risk 98.6, 2 fatal)", "PTZ with AI-ML at km 21.5 - automatic incident detection and notification"],
             ["km 9-13 cluster (111 crashes)", "PTZ km 9.5 & 11.5, overhead VMS full-carriageway warning km 7.5, existing Kajjansi SWIM + TCC km 12.1"],
             ["km 2-5 cluster (89 crashes)", "PTZ km 2.5 & 4.5, existing Busega static WIM + ANPR km 1.2"],
+            ["KNBP west freight risk", "RSS WIM + ANPR at km 18.2 clear of interchange influence areas"],
             ["km 17-18 and 19-20 hotspots", "PTZ km 17.5 and 19.5"],
             ["Slow response km 5 / 16 / 23-24 (68-79 min avg)", "PTZ AI detection triggers immediate stakeholder notification - no wait for road-user reports"],
-            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, existing Mpala static WIM + ANPR km 24.2, overhead VMS full-carriageway warning km 19"],
+            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, existing Mpala static WIM + ANPR km 24.2, Airport Dual WIM + ANPR km 11.4, overhead VMS full-carriageway warning km 19"],
         ];
         return `<section class="panel an-panel safety-panel">
             <div class="an-panel-head"><h3>Safety analysis &mdash; KEE crash record 2021-26 drives the RSS placement</h3>
@@ -2646,7 +2698,7 @@
         y += 2;
         line("Budget: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX grand total (CAPEX + 10% contingency + 18% VAT). Single deployment; corridor fibre backbone already laid (site drops only).", 10);
         line("Safety basis: " + accidentData.length + " recorded crashes (2021-26) with " + accidentData.reduce((s, r) => s + (r.fatality || 0), 0) + " fatalities; components are placed at the measured hotspots (km 21-22, 9-13, 2-5, 17-18) and slow-response zones (km 5, 16, 23-24).", 10);
-        line("WIM sites: existing static SWIM at Busega km 1.2, Kajjansi km 12.07 and Mpala km 24.2 - enhanced, integrated into RSS and paired with ANPR.", 10);
+        line("WIM sites: Busega km 1.2, Kajjansi km 12.07, Mpala km 24.2, KNBP west km 18.2 and Airport Dual km 11.4 - all integrated into RSS and paired with ANPR.", 10);
         y += 2;
         line("COSTED BILL OF QUANTITIES (UGX)", 12, "bold");
         (bud.categories || []).forEach((c) => {
