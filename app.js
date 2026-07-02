@@ -14,6 +14,7 @@
     const projectScope = Array.isArray(window.PROJECT_SCOPE) ? window.PROJECT_SCOPE : [];
     const rssData = window.RSS_DATA || null;
     const rssBudget = window.RSS_BUDGET || null;
+    const accidentData = (window.ACCIDENT_DATA && Array.isArray(window.ACCIDENT_DATA.incidents)) ? window.ACCIDENT_DATA.incidents : [];
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -1992,11 +1993,17 @@
                 </article>`).join("");
         }
 
+        // Crash-record safety analysis (2021-26) driving the RSS placement
+        const safetyEl = $("#analyticsSafety");
+        if (safetyEl) safetyEl.innerHTML = renderSafetyAnalysis();
+
         // Full costed RSS Bill of Quantities (in-depth) + budget waterfall
         const budgetEl = $("#analyticsBudget");
         if (budgetEl) {
             budgetEl.innerHTML = renderRssSchematic() + renderBudgetSummary(bud) + renderWimSites(bud) + renderBudgetTable(bud) + renderSourceNotes(bud);
         }
+
+        setupExports();
 
         const costByCat = {};
         (bud.categories || []).forEach((c) => { costByCat[c.category] = c.subtotal_ugx; });
@@ -2167,6 +2174,223 @@
             <div class="an-panel-head"><h3>${escapeHtml(title)}</h3><span class="pill">${total.toLocaleString()}</span></div>
             ${rows || '<p class="panel-note">No data.</p>'}
         </section>`;
+    }
+
+    // ---- Safety analysis: 2021-26 crash record (KEE) drives the RSS placement ----
+    function crashBins() {
+        const bins = {};
+        accidentData.forEach((r) => {
+            const b = Math.floor(Number(r.chainage) || 0);
+            if (!bins[b]) bins[b] = { n: 0, fat: 0, sev: 0, wt: 0, resp: 0 };
+            bins[b].n += 1; bins[b].fat += r.fatality || 0; bins[b].sev += r.severe || 0;
+            bins[b].wt += (r.fatality || 0) * 5 + (r.severe || 0) * 3 + (r.minor || 0) + 0.2;
+            bins[b].resp += r.response_min || 0;
+        });
+        return bins;
+    }
+
+    function renderSafetyAnalysis() {
+        if (!accidentData.length) return "";
+        const n = accidentData.length;
+        const fat = accidentData.reduce((s, r) => s + (r.fatality || 0), 0);
+        const sev = accidentData.reduce((s, r) => s + (r.severe || 0), 0);
+        const avgResp = accidentData.reduce((s, r) => s + (r.response_min || 0), 0) / n;
+        const bins = crashBins();
+        const maxWt = Math.max(...Object.values(bins).map((b) => b.wt));
+        const bars = Object.keys(bins).map(Number).sort((a, b) => a - b).map((km) => {
+            const b = bins[km];
+            const pct = Math.round((b.wt / maxWt) * 100);
+            const hot = b.wt >= 55;
+            return `<div class="hs-col" title="km ${km}-${km + 1}: ${b.n} crashes, ${b.fat} fatal, risk ${b.wt.toFixed(1)}, avg response ${(b.resp / Math.max(b.n, 1)).toFixed(0)} min">
+                <div class="hs-bar${hot ? " hot" : ""}" style="height:${Math.max(pct, 4)}%"></div>
+                <span class="hs-km">${km}</span>
+            </div>`;
+        }).join("");
+        const placements = [
+            ["km 21-22 (worst hotspot, risk 98.6, 2 fatal)", "AVIDS gantry + twin ANPR at km 21.5"],
+            ["km 9-13 cluster (111 crashes)", "CCTV km 9.5 & 11.5, VASD km 9.5, VMS advance warning km 7.5, SWIM/TCC Kajjansi km 12.1"],
+            ["km 2-5 cluster (89 crashes)", "CCTV km 2.5 & 4.5, HS-WIM + ANPR Busega km 1.2"],
+            ["km 17-18 hotspot", "CCTV km 17.5"],
+            ["Slow response km 5 / 16 / 23-24 (68-79 min)", "ECBs at km 5, 16 and 23.5 for immediate SOS + dispatch"],
+            ["km 23-24 hotspot + Mpala entry", "HS-WIM + ANPR Mpala km 24.2"],
+        ];
+        return `<section class="panel an-panel safety-panel">
+            <div class="an-panel-head"><h3>Safety analysis &mdash; KEE crash record 2021-26 drives the RSS placement</h3>
+                <span class="pill">${n} crashes &middot; ${fat} fatalities</span></div>
+            <div class="safety-stats">
+                <div><span>Crashes analysed</span><strong>${n}</strong></div>
+                <div><span>Fatalities</span><strong>${fat}</strong></div>
+                <div><span>Severe injuries</span><strong>${sev}</strong></div>
+                <div><span>Avg emergency response</span><strong>${avgResp.toFixed(0)} min</strong></div>
+            </div>
+            <p class="panel-note">Crash risk by kilometre (fatal &times;5 + severe &times;3 + minor &times;1). Red bars are hotspots that received targeted RSS components.</p>
+            <div class="hotspot-chart">${bars}</div>
+            <div class="safety-map-table">
+                ${placements.map(([risk, resp]) => `<div class="smt-row"><span class="smt-risk"><i class="fa-solid fa-triangle-exclamation"></i> ${escapeHtml(risk)}</span><span class="smt-resp"><i class="fa-solid fa-arrow-right"></i> ${escapeHtml(resp)}</span></div>`).join("")}
+            </div>
+            <p class="panel-note">Source: ${escapeHtml((window.ACCIDENT_DATA && window.ACCIDENT_DATA.source) || "KEE accident storyboard")}</p>
+        </section>`;
+    }
+
+    // ---- Exports: CSV, Excel, KML, PNG, PDF --------------------------------------
+    function downloadBlob(name, blob) {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+    }
+
+    function exportRows() {
+        return state.assets.map((a) => ({
+            ID: a.id, Type: a.type, Site: a.site, Corridor: a.corridor, "Chainage (km)": a.km,
+            "Latitude (Y)": a.lat, "Longitude (X)": a.lon, Priority: a.priority, Phase: a.phase,
+            Status: a.status, Purpose: a.purpose
+        }));
+    }
+
+    function exportCSV() {
+        const rows = exportRows();
+        const heads = Object.keys(rows[0] || {});
+        const esc = (v) => { const s = String(v ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+        const csv = [heads.join(",")].concat(rows.map((r) => heads.map((h) => esc(r[h])).join(","))).join("\r\n");
+        downloadBlob("RSS_components_register.csv", new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" }));
+    }
+
+    function exportXLSX() {
+        if (typeof XLSX === "undefined") { exportCSV(); return; }
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(exportRows()), "RSS Components");
+        const bud = rssBudget || {};
+        const budRows = [];
+        (bud.categories || []).forEach((c) => {
+            budRows.push({ Item: c.category.toUpperCase(), Qty: "", Unit: "", "Rate (UGX)": "", "Amount (UGX)": c.subtotal_ugx });
+            c.items.forEach((it) => budRows.push({ Item: it.item, Qty: it.qty, Unit: it.unit, "Rate (UGX)": it.rate_ugx, "Amount (UGX)": it.amount_ugx }));
+        });
+        budRows.push({ Item: "SUB-TOTAL (CAPEX)", "Amount (UGX)": bud.subtotalUgx });
+        budRows.push({ Item: "Contingencies (10%)", "Amount (UGX)": bud.contingencyUgx });
+        budRows.push({ Item: "VAT (18%)", "Amount (UGX)": bud.vatUgx });
+        budRows.push({ Item: "GRAND TOTAL", "Amount (UGX)": bud.grandTotalUgx });
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(budRows), "RSS Budget (UGX)");
+        if (accidentData.length) {
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(accidentData), "Crash record 2021-26");
+        }
+        XLSX.writeFile(wb, "RSS_proposal_KNBP_KEE_EntebbeDual.xlsx");
+    }
+
+    function exportKML() {
+        const esc = escapeHtml;
+        let kml = `<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>RSS Components - KNBP, KEE, Entebbe Airport Dual</name>`;
+        const colors = { CCTV: "ff5bb4f5", AVIDS: "ff16a3f9", ANPR: "ffd8741d", VMS: "ff0ba3f5", ECB: "ff4444ef", WIM: "ff3c12be", RSU: "ffa68b14", RWIS: "ffb29108", Comms: "ffb977ec", TOC: "ff272711", VASD: "fffa5a60" };
+        Object.entries(colors).forEach(([t, c]) => {
+            kml += `<Style id="s${t}"><IconStyle><color>${c}</color><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle></Style>`;
+        });
+        state.assets.forEach((a) => {
+            kml += `<Placemark><name>${esc(a.site)}</name><styleUrl>#s${a.type}</styleUrl><description><![CDATA[${a.id} | ${a.type} | ${a.corridor} km ${a.km}<br>${a.purpose}]]></description><Point><coordinates>${a.lon},${a.lat},0</coordinates></Point></Placemark>`;
+        });
+        const net = actualNetworkData || window.ACTUAL_NETWORK;
+        if (net && Array.isArray(net.features)) {
+            kml += `<Folder><name>Project scope corridors</name>`;
+            net.features.filter((f) => f.properties && f.properties.scope).forEach((f) => {
+                const coords = f.geometry.coordinates.map((c) => `${c[0]},${c[1]},0`).join(" ");
+                kml += `<Placemark><name>${esc(f.properties.name || f.properties.lid)}</name><Style><LineStyle><color>ff99d334</color><width>3</width></LineStyle></Style><LineString><coordinates>${coords}</coordinates></LineString></Placemark>`;
+            });
+            kml += `</Folder>`;
+        }
+        kml += `</Document></kml>`;
+        downloadBlob("RSS_components_scope.kml", new Blob([kml], { type: "application/vnd.google-earth.kml+xml" }));
+    }
+
+    function exportPNG() {
+        // Corridor deployment schematic rendered to canvas (self-contained, no map tiles).
+        const W = 1600, H = 900, cv = document.createElement("canvas");
+        cv.width = W; cv.height = H;
+        const g = cv.getContext("2d");
+        g.fillStyle = "#0b0f19"; g.fillRect(0, 0, W, H);
+        g.fillStyle = "#f2f1ec"; g.font = "700 30px Arial";
+        g.fillText("RSS Deployment Schematic - KNBP, KEE & Entebbe Airport Dual", 40, 52);
+        g.font = "16px Arial"; g.fillStyle = "#a9aaa2";
+        g.fillText("Risk-weighted from the 2021-26 KEE crash record (503 crashes, 16 fatalities). Budget " + ugxB((rssBudget || {}).grandTotalUgx || 0) + " UGX < 7B cap.", 40, 80);
+        const corr = [["KEE", "Kampala-Entebbe Expressway (24.9 km)", "#34d399", 200],
+                      ["KNBP", "Kampala Northern Bypass (21 km)", "#c084fc", 460],
+                      ["EDC", "Entebbe Airport Dual (7.6 km)", "#fb7185", 720]];
+        const X0 = 90, X1 = W - 90;
+        const typeColor = { CCTV: "#3b82f6", AVIDS: "#f97316", ANPR: "#1d4ed8", VMS: "#f59e0b", ECB: "#ef4444", WIM: "#be123c", RSU: "#14b8a6", RWIS: "#0891b2", Comms: "#ec4899", TOC: "#111827", VASD: "#605afa" };
+        corr.forEach(([cid, label, color, y]) => {
+            const maxKm = Math.max(...state.assets.filter((a) => a.corridor === cid).map((a) => a.km), 1);
+            g.strokeStyle = color; g.lineWidth = 6; g.beginPath(); g.moveTo(X0, y); g.lineTo(X1, y); g.stroke();
+            g.fillStyle = "#f2f1ec"; g.font = "700 18px Arial"; g.fillText(label, X0, y - 58);
+            state.assets.filter((a) => a.corridor === cid).forEach((a) => {
+                const x = X0 + (a.km / maxKm) * (X1 - X0);
+                g.fillStyle = typeColor[a.type] || "#94a3b8";
+                g.beginPath(); g.arc(x, y, a.type === "WIM" || a.type === "TOC" ? 11 : 7, 0, Math.PI * 2); g.fill();
+                if (a.type === "WIM" || a.type === "TOC" || a.type === "AVIDS") {
+                    g.save(); g.translate(x, y - 20); g.rotate(-Math.PI / 5);
+                    g.fillStyle = "#f2f1ec"; g.font = "12px Arial"; g.fillText(a.site.slice(0, 34), 0, 0); g.restore();
+                }
+            });
+            g.fillStyle = "#a9aaa2"; g.font = "12px Arial";
+            for (let k = 0; k <= maxKm; k += 5) {
+                const x = X0 + (k / maxKm) * (X1 - X0);
+                g.fillText("km " + k, x - 12, y + 26);
+            }
+        });
+        let lx = X0, ly = H - 60;
+        g.font = "14px Arial";
+        Object.entries(typeColor).forEach(([t, c]) => {
+            g.fillStyle = c; g.beginPath(); g.arc(lx, ly, 7, 0, Math.PI * 2); g.fill();
+            g.fillStyle = "#d4d2c7"; g.fillText(t, lx + 12, ly + 5);
+            lx += 18 + g.measureText(t).width + 26;
+        });
+        cv.toBlob((b) => downloadBlob("RSS_deployment_schematic.png", b), "image/png");
+    }
+
+    function exportPDF() {
+        const JS = window.jspdf && window.jspdf.jsPDF;
+        if (!JS) { window.print(); return; }
+        const doc = new JS({ unit: "mm", format: "a4" });
+        const bud = rssBudget || {};
+        let y = 18;
+        const line = (txt, size = 10, style = "normal", color = [20, 20, 20]) => {
+            doc.setFont("helvetica", style); doc.setFontSize(size); doc.setTextColor(...color);
+            doc.splitTextToSize(txt, 180).forEach((t) => {
+                if (y > 282) { doc.addPage(); y = 18; }
+                doc.text(t, 15, y); y += size * 0.5;
+            });
+            y += 1.5;
+        };
+        line("ROAD SURVEILLANCE SYSTEM (RSS) - PROPOSAL SUMMARY", 15, "bold");
+        line("KNBP, KEE and Entebbe Airport Dual | Ministry of Works & Transport", 11);
+        y += 2;
+        line("Budget: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX grand total (CAPEX + 10% contingency + 18% VAT) against a 7,000,000,000 UGX cap. Headroom: " + Number(bud.budgetHeadroomUgx || 0).toLocaleString() + " UGX.", 10);
+        line("Safety basis: " + accidentData.length + " recorded crashes (2021-26) with " + accidentData.reduce((s, r) => s + (r.fatality || 0), 0) + " fatalities; components are placed at the measured hotspots (km 21-22, 9-13, 2-5, 17-18) and slow-response zones (km 5, 16, 23-24).", 10);
+        line("WIM sites: HS-WIM 1 Busega Entry km 1.2 | SWIM/Enforcement Kajjansi km 12.07 | HS-WIM 2 Mpala Entry km 24.2 - each with WIM-integrated ANPR.", 10);
+        y += 2;
+        line("COSTED BILL OF QUANTITIES (UGX)", 12, "bold");
+        (bud.categories || []).forEach((c) => {
+            line(c.category + "  -  " + Number(c.subtotal_ugx).toLocaleString(), 10, "bold", [10, 90, 60]);
+            c.items.forEach((it) => line("   " + it.item + "  | " + it.qty + " " + it.unit + " @ " + Number(it.rate_ugx).toLocaleString() + " = " + Number(it.amount_ugx).toLocaleString(), 8));
+        });
+        y += 2;
+        line("Sub-total (CAPEX): " + Number(bud.subtotalUgx || 0).toLocaleString() + " UGX", 10, "bold");
+        line("Contingencies (10%): " + Number(bud.contingencyUgx || 0).toLocaleString() + " UGX", 10, "bold");
+        line("VAT (18%): " + Number(bud.vatUgx || 0).toLocaleString() + " UGX", 10, "bold");
+        line("GRAND TOTAL: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX (~$" + Number(bud.grandTotalUsd || 0).toLocaleString() + ")", 11, "bold", [10, 90, 60]);
+        y += 2;
+        line("RSS COMPONENT REGISTER (" + state.assets.length + " components)", 12, "bold");
+        state.assets.forEach((a) => line("  " + a.id + " | " + a.type + " | " + a.site + " | " + a.corridor + " km " + a.km + " | Y " + a.lat + ", X " + a.lon, 8));
+        doc.save("RSS_proposal_KNBP_KEE_EntebbeDual.pdf");
+    }
+
+    function setupExports() {
+        if (state.exportsBound) return;
+        state.exportsBound = true;
+        $("#exportCsvBtn")?.addEventListener("click", exportCSV);
+        $("#exportXlsxBtn")?.addEventListener("click", exportXLSX);
+        $("#exportKmlBtn")?.addEventListener("click", exportKML);
+        $("#exportPngBtn")?.addEventListener("click", exportPNG);
+        $("#exportPdfBtn")?.addEventListener("click", exportPDF);
     }
 
     document.addEventListener("DOMContentLoaded", init);
