@@ -563,7 +563,7 @@
             if (t < 1) requestAnimationFrame(step); else { done = true; setFinal(); }
         };
         requestAnimationFrame(step);
-        // Fallback: rAF is throttled in background/non-painting contexts — guarantee the value.
+        // Fallback: rAF is throttled in background/non-painting contexts; guarantee the value.
         setTimeout(() => { if (!done) setFinal(); }, 650);
     }
 
@@ -780,31 +780,31 @@
     }
 
     const TYPE_BUDGET_CATEGORY = {
-        ANPR: "CCTV / AVIDS detection and monitoring",
-        AVIDS: "CCTV / AVIDS detection and monitoring",
-        CCTV: "CCTV / AVIDS detection and monitoring",
-        Comms: "Fibre drops and site backhaul",
-        ECB: "Emergency Call Boxes (ECB / SOS)",
-        RSU: "RSS field structures and enclosures",
-        RWIS: "Road Weather Information (RWIS)",
-        TOC: "Traffic Control Centre (lean)",
-        VASD: "Vehicle-actuated speed display (VASD)",
-        VMS: "Variable Message Signs (VMS)",
-        WIM: "WIM overload and freight management (3 RSS sites)"
+        ANPR: "Weigh-in-Motion: 3 sites with ANPR",
+        AVIDS: "PTZ / TMCS traffic monitoring with AI-ML analytics",
+        CCTV: "PTZ / TMCS traffic monitoring with AI-ML analytics",
+        Comms: "Site backhaul drops (existing fibre backbone - backbone NOT priced)",
+        ECB: "Central database, automated analytics & dissemination",
+        RSU: "PTZ / TMCS traffic monitoring with AI-ML analytics",
+        RWIS: "Weather communication sensors",
+        TOC: "Traffic Control Centre - Kajjansi Toll Plaza",
+        VASD: "Variable Message Signs (fixed overhead carriageway display)",
+        VMS: "Variable Message Signs (fixed overhead carriageway display)",
+        WIM: "Weigh-in-Motion: 3 sites with ANPR"
     };
 
     const TYPE_BUDGET_PATTERNS = {
-        ANPR: [/ANPR Camera, IR flasher/i, /ANPR/i],
-        AVIDS: [/AVIDS Overview/i, /Video Image Processing/i],
-        CCTV: [/TMCS PTZ Camera/i, /PTZ Camera/i],
-        Comms: [/Fibre drop/i, /Media converter/i],
-        ECB: [/ECB post/i, /ECB IP-based/i],
-        RSU: [/Ground-mounted equipment enclosure/i, /Roadside Unit/i],
-        RWIS: [/Roadside weather station/i],
-        TOC: [/Central Server/i, /Video Wall Controller/i],
-        VASD: [/speed-detection camera/i, /VASD outdoor/i],
-        VMS: [/L-Type compact fixed VMS/i, /Portable\/trolley VMS/i],
-        WIM: [/High-Speed WIM/i, /Static\/Low-Speed WIM/i, /Enforcement weighbridge/i]
+        ANPR: [/ANPR camera/i, /WIM-integrated/i],
+        AVIDS: [/AI\/ML processing/i, /TMCS PTZ/i],
+        CCTV: [/TMCS PTZ/i, /AI\/ML processing/i],
+        Comms: [/Field-site fibre drop/i],
+        ECB: [/stakeholder notification/i, /public information/i],
+        RSU: [/Road Side Unit for TMCS/i, /Road Side Unit/i],
+        RWIS: [/Geolocated weather communication/i],
+        TOC: [/Central processing server/i, /Video wall/i],
+        VASD: [/Fixed overhead VMS/i, /Variable Message/i],
+        VMS: [/Fixed overhead VMS/i, /overhead VMS gantry/i, /full carriageway/i],
+        WIM: [/High-Speed WIM/i, /Static\/low-speed WIM/i, /Enforcement weighbridge/i]
     };
 
     function fmtUgx(n) {
@@ -860,7 +860,7 @@
             Comms: "network",
             ECB: "comms",
             RSU: "power",
-            RWIS: "other",
+            RWIS: "weather",
             TOC: "server",
             VASD: "vasd",
             VMS: "vms",
@@ -1387,19 +1387,21 @@
     function dictionaryImageFor(definition) {
         const text = `${definition.name || ""} ${definition.definition || ""}`.toLowerCase();
         let key = definition.category || "other";
+        const componentSpecific = new Set(["anpr", "avids", "cctv", "vms", "vasd", "wim", "barrier", "rfid", "weather"]);
         if (/anpr|alpr|ocr|number plate|license plate|licence plate/.test(text)) key = "anpr";
         else if (/vms|variable message|message sign|lane status|display|ohls/.test(text)) key = "vms";
         else if (/radar|speed display|vasd/.test(text)) key = "vasd";
         else if (/weigh|wim|scale/.test(text)) key = "wim";
+        else if (/weather|rwis|rain|visibility|wind|water level|flood/.test(text)) key = "weather";
+        else if (/camera|cctv|ptz|surveillance|video/.test(text)) key = definition.category === "avids" ? "avids" : "cctv";
         else if (/barrier|boom|alb|gate/.test(text)) key = "barrier";
         else if (/rfid|dsrc|tag|toll plaza|toll lane|etc system/.test(text)) key = "rfid";
         else if (/payment|cash|drawer|pos|card|bank/.test(text)) key = "payment";
         else if (/printer|receipt|thermal/.test(text)) key = "printer";
         else if (/scanner|barcode|document scan/.test(text)) key = "scanner";
         else if (/ups|battery|solar|power|surge|earthing/.test(text)) key = "power";
-        else if (/server|database|back office|back-office|toc|control centre|control center/.test(text)) key = "server";
-        else if (/fibre|fiber|switch|router|network|liu|rack|patch/.test(text)) key = "network";
-        else if (/camera|cctv|ptz|surveillance|video/.test(text)) key = definition.category === "avids" ? "avids" : "cctv";
+        else if (!componentSpecific.has(key) && /server|database|back office|back-office|toc|control centre|control center/.test(text)) key = "server";
+        else if (!componentSpecific.has(key) && /fibre|fiber|switch|router|network|liu|rack|patch/.test(text)) key = "network";
 
         const image = dictionaryImages[key] || dictionaryImages.other;
         return { ...image, url: commonsImage(image.file) };
@@ -2055,7 +2057,7 @@
                     <div class="schem-title">Field layer &mdash; monitoring &amp; display</div>
                     <div class="schem-node"><i class="fa-solid fa-video"></i><strong>PTZ / TMCS with AI-ML</strong><span>21 cameras: all traffic + incident monitoring, auto-detection</span></div>
                     <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>WIM x3 with ANPR</strong><span>HS-WIM Busega + Mpala, SWIM Kajjansi</span></div>
-                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>VMS + weather comm</strong><span>5 signs (auto field display) + 2 geolocated weather feeds</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>Overhead VMS + weather comm</strong><span>5 fixed gantry signs covering the carriageway + 2 geolocated weather feeds</span></div>
                 </div>
                 <div class="schem-link"><span>13 site drops onto the EXISTING fibre backbone (backbone not priced)</span></div>
                 <div class="schem-band comms-band">
@@ -2200,11 +2202,11 @@
         }).join("");
         const placements = [
             ["km 21-22 (worst hotspot, risk 98.6, 2 fatal)", "PTZ with AI-ML at km 21.5 - automatic incident detection and notification"],
-            ["km 9-13 cluster (111 crashes)", "PTZ km 9.5 & 11.5, VMS advance warning km 7.5, SWIM + TCC Kajjansi km 12.1"],
+            ["km 9-13 cluster (111 crashes)", "PTZ km 9.5 & 11.5, overhead VMS full-carriageway warning km 7.5, SWIM + TCC Kajjansi km 12.1"],
             ["km 2-5 cluster (89 crashes)", "PTZ km 2.5 & 4.5, HS-WIM + ANPR Busega km 1.2"],
             ["km 17-18 and 19-20 hotspots", "PTZ km 17.5 and 19.5"],
             ["Slow response km 5 / 16 / 23-24 (68-79 min avg)", "PTZ AI detection triggers immediate stakeholder notification - no wait for road-user reports"],
-            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, HS-WIM + ANPR Mpala km 24.2, VMS warning km 19"],
+            ["km 23-24 hotspot + Mpala entry", "PTZ km 23.5, HS-WIM + ANPR Mpala km 24.2, overhead VMS full-carriageway warning km 19"],
         ];
         return `<section class="panel an-panel safety-panel">
             <div class="an-panel-head"><h3>Safety analysis &mdash; KEE crash record 2021-26 drives the RSS placement</h3>
@@ -2231,7 +2233,7 @@
             ["fa-database", "Log & analyse", "Every detection streams over the existing fibre backbone into the central database at the Kajjansi TCC, where automated analytics classify the event, locate it to the exact chainage and attach the video evidence."],
             ["fa-bell", "Notify stakeholders", "The database automatically pushes notifications to the affected stakeholders - patrol crews, police, ambulance, recovery, maintenance and the toll operator - each receiving only the events relevant to them."],
             ["fa-car-on", "Patrol acts", "Patrol crews are dispatched to a verified location with context (event type, lane, severity, live picture) instead of driving the corridor hoping to find incidents - cutting the measured 26-minute average response and eliminating blind patrol mileage."],
-            ["fa-signs-post", "Inform road users", "In parallel the database updates the VMS boards upstream of the event, warning approaching traffic and protecting both the scene and the responding patrol."],
+            ["fa-signs-post", "Inform road users", "In parallel the database updates fixed overhead VMS boards upstream of the event, warning the whole carriageway and protecting both the scene and the responding patrol."],
         ];
         return `<section class="panel an-panel patrol-panel">
             <div class="an-panel-head"><h3>Patrol operations &mdash; how the RSS triggers action</h3>
