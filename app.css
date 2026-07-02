@@ -3025,3 +3025,13 @@ body.map-fullscreen-active .map-stage .map-control-overlay,
 .ps-badge em { position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 50%; background: #34d399; color: #08120b; font-style: normal; font-size: 0.66rem; font-weight: 800; display: grid; place-items: center; }
 .patrol-step strong { color: var(--text); font-size: 0.9rem; }
 .patrol-step p { color: var(--soft); font-size: 0.82rem; line-height: 1.5; margin-top: 2px; }
+
+/* ---- Component summaries grid ---- */
+.analytics-summaries { display: grid; gap: 12px; margin-bottom: 16px; }
+.sum-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 12px; align-items: start; }
+.sum-group { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.sum-group h4 { font-size: 0.78rem; color: #22d3ee; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+.sum-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 3px 0; border-bottom: 1px dashed rgba(255,255,255,0.07); font-size: 0.8rem; }
+.sum-row:last-child { border-bottom: none; }
+.sum-row span { color: var(--soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sum-row strong { color: var(--text); font-variant-numeric: tabular-nums; flex: none; }

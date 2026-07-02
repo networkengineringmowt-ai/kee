@@ -1992,6 +1992,10 @@
                 </article>`).join("");
         }
 
+        // Deep component summaries (100+ numerical & categorical statistics)
+        const sumEl = $("#analyticsSummaries");
+        if (sumEl) sumEl.innerHTML = renderComponentSummaries();
+
         // Crash-record safety analysis (2021-26) driving the RSS placement
         const safetyEl = $("#analyticsSafety");
         if (safetyEl) safetyEl.innerHTML = renderSafetyAnalysis() + renderPatrolOps();
@@ -2168,6 +2172,129 @@
             <div class="an-panel-head"><h3>${escapeHtml(title)}</h3><span class="pill">${total.toLocaleString()}</span></div>
             ${rows || '<p class="panel-note">No data.</p>'}
         </section>`;
+    }
+
+    // ---- Component summaries engine: 100+ numerical & categorical statistics ------
+    function renderComponentSummaries() {
+        const assets = state.assets;
+        if (!assets.length) return "";
+        const bud = rssBudget || {};
+        const CORR_LEN = { KEE: 24.9, KNBP: 20.0, EDC: 12.7 };
+        const corridors = ["KEE", "KNBP", "EDC"];
+        const types = unique(assets.map((a) => a.type));
+        const bins = accidentData.length ? crashBins() : null;
+        const sections = [];
+        const sec = (title, stats) => sections.push({ title, stats: stats.filter((x) => x && x[1] !== undefined && x[1] !== null && x[1] !== "") });
+        const num = (v, d = 1) => Number(v).toLocaleString(undefined, { maximumFractionDigits: d });
+
+        sec("Fleet", [
+            ["Total RSS components", assets.length],
+            ["Component types", types.length],
+            ["Corridors covered", corridors.length],
+            ["Scope length (km)", num(CORR_LEN.KEE + CORR_LEN.KNBP + CORR_LEN.EDC)],
+            ["Overall density (comp/km)", num(assets.length / 57.6, 2)],
+            ["Critical-priority components", assets.filter((a) => a.priority === "Critical").length],
+            ["High-priority components", assets.filter((a) => a.priority === "High").length],
+            ["Existing installations (enhance & integrate)", assets.filter((a) => /existing/i.test(a.status)).length],
+            ["New installations", assets.filter((a) => !/existing/i.test(a.status)).length],
+            ["Northernmost latitude", num(Math.max(...assets.map((a) => a.lat)), 5)],
+            ["Southernmost latitude", num(Math.min(...assets.map((a) => a.lat)), 5)],
+            ["Westernmost longitude", num(Math.min(...assets.map((a) => a.lon)), 5)],
+            ["Easternmost longitude", num(Math.max(...assets.map((a) => a.lon)), 5)],
+        ]);
+
+        types.forEach((t) => {
+            const items = assets.filter((a) => a.type === t).sort((x, y) => x.km - y.km);
+            const kms = items.map((a) => a.km);
+            const gaps = [];
+            corridors.forEach((c) => {
+                const ck = items.filter((a) => a.corridor === c).map((a) => a.km).sort((a, b) => a - b);
+                for (let i = 1; i < ck.length; i++) gaps.push(ck[i] - ck[i - 1]);
+            });
+            const stats = [
+                ["Units deployed", items.length],
+                ["Share of fleet", num(items.length / assets.length * 100, 1) + "%"],
+                ["On KEE", items.filter((a) => a.corridor === "KEE").length],
+                ["On KNBP", items.filter((a) => a.corridor === "KNBP").length],
+                ["On EDC", items.filter((a) => a.corridor === "EDC").length],
+                ["First chainage (km)", kms.length ? num(Math.min(...kms)) : "-"],
+                ["Last chainage (km)", kms.length ? num(Math.max(...kms)) : "-"],
+                ["Mean chainage (km)", kms.length ? num(kms.reduce((s2, v) => s2 + v, 0) / kms.length) : "-"],
+                ["Critical / High priority", items.filter((a) => a.priority === "Critical").length + " / " + items.filter((a) => a.priority === "High").length],
+            ];
+            if (gaps.length) {
+                stats.push(["Min spacing (km)", num(Math.min(...gaps))]);
+                stats.push(["Avg spacing (km)", num(gaps.reduce((s2, v) => s2 + v, 0) / gaps.length)]);
+                stats.push(["Max spacing (km)", num(Math.max(...gaps))]);
+            }
+            if (bins && t === "CCTV") {
+                const covered = items.filter((a) => a.corridor === "KEE" && bins[Math.floor(a.km)] && bins[Math.floor(a.km)].wt >= 55).length;
+                stats.push(["Cameras on measured hotspots", covered]);
+            }
+            sec(catAssetLabel(t) + " (" + t + ")", stats);
+        });
+
+        corridors.forEach((c) => {
+            const items = assets.filter((a) => a.corridor === c);
+            const perType = {};
+            items.forEach((a) => { perType[a.type] = (perType[a.type] || 0) + 1; });
+            const stats = [
+                ["Components", items.length],
+                ["Corridor length (km)", num(CORR_LEN[c])],
+                ["Density (comp/km)", num(items.length / CORR_LEN[c], 2)],
+            ].concat(Object.entries(perType).sort((x, y) => y[1] - x[1]).map(([t, n]) => [t + " units", n]));
+            sec("Corridor " + c, stats);
+        });
+
+        if (Array.isArray(bud.categories) && bud.categories.length) {
+            const tot = bud.categories.reduce((s2, c) => s2 + c.subtotal_ugx, 0) || 1;
+            bud.categories.forEach((c) => {
+                sec("Cost - " + c.category.slice(0, 44), [
+                    ["Line items", c.items.length],
+                    ["Sub-total (UGX)", Number(c.subtotal_ugx).toLocaleString()],
+                    ["Share of CAPEX", num(c.subtotal_ugx / tot * 100, 1) + "%"],
+                    ["Largest line (UGX)", Number(Math.max(...c.items.map((i) => i.amount_ugx))).toLocaleString()],
+                ]);
+            });
+        }
+
+        if (accidentData.length) {
+            const by = (key) => {
+                const m = {};
+                accidentData.forEach((r) => { const k = r[key]; m[k] = (m[k] || 0) + 1; });
+                return m;
+            };
+            sec("Crash record - by year", Object.entries(by("year")).sort().map(([k, v]) => ["Crashes " + k, v]));
+            sec("Crash record - by severity", Object.entries(by("severity")).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, v]));
+            sec("Crash record - by dominant vehicle", Object.entries(by("dominant_vehicle")).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, v]));
+            const resp = accidentData.map((r) => r.response_min || 0);
+            sec("Emergency response", [
+                ["Average response (min)", num(resp.reduce((s2, v) => s2 + v, 0) / resp.length)],
+                ["Fastest response (min)", num(Math.min(...resp))],
+                ["Slowest response (min)", num(Math.max(...resp))],
+                ["Responses over 30 min", resp.filter((v) => v > 30).length],
+                ["Responses over 60 min", resp.filter((v) => v > 60).length],
+                ["Total fatalities", accidentData.reduce((s2, r) => s2 + (r.fatality || 0), 0)],
+                ["Total severe injuries", accidentData.reduce((s2, r) => s2 + (r.severe || 0), 0)],
+                ["Total minor injuries", accidentData.reduce((s2, r) => s2 + (r.minor || 0), 0)],
+                ["Hotspot kilometres (risk >= 55)", bins ? Object.values(bins).filter((b) => b.wt >= 55).length : 0],
+            ]);
+        }
+
+        const total = sections.reduce((s2, x) => s2 + x.stats.length, 0);
+        return `<section class="panel an-panel summaries-panel">
+            <div class="an-panel-head"><h3>RSS component summaries &mdash; in-depth</h3><span class="pill">${total} statistics</span></div>
+            <div class="sum-groups">
+                ${sections.map((g) => `<div class="sum-group"><h4>${escapeHtml(g.title)}</h4>
+                    ${g.stats.map(([k, v]) => `<div class="sum-row"><span>${escapeHtml(String(k))}</span><strong>${escapeHtml(String(v))}</strong></div>`).join("")}
+                </div>`).join("")}
+            </div>
+        </section>`;
+    }
+
+    function catAssetLabel(t) {
+        const at = (rawItsData && rawItsData.assetTypes || []).find((x) => x.id === t);
+        return at ? at.label : t;
     }
 
     // ---- Safety analysis: 2021-26 crash record (KEE) drives the RSS placement ----
