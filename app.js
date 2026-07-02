@@ -122,8 +122,8 @@
         if (!data || !Array.isArray(data.assetTypes)) return [];
         return data.assetTypes.map((type, index) => ({
             id: String(type.id || type.label || `Type ${index + 1}`),
-            short: String(type.short || type.id || "ITS").slice(0, 4),
-            label: String(type.label || type.id || "ITS asset"),
+            short: String(type.short || type.id || "RSS").slice(0, 4),
+            label: String(type.label || type.id || "RSS component"),
             color: type.color || palette[index % palette.length]
         }));
     }
@@ -134,9 +134,9 @@
         if (Array.isArray(data.installations)) {
             return data.installations
                 .map((asset, index) => ({
-                    id: String(asset.id || `ITS-${index + 1}`),
+                    id: String(asset.id || `RSS-${index + 1}`),
                     corridor: String(asset.corridor || asset.Corridor || "KEE"),
-                    type: String(asset.type || asset.Asset || "ITS"),
+                    type: String(asset.type || asset.Asset || "RSS"),
                     site: String(asset.site || asset.Site || asset.name || "Roadside site"),
                     lat: Number(asset.lat),
                     lon: Number(asset.lon),
@@ -158,9 +158,9 @@
                     const props = feature.properties || {};
                     const coords = feature.geometry?.coordinates || [];
                     return {
-                        id: String(props.ID || props.id || `ITS-${index + 1}`),
+                        id: String(props.ID || props.id || `RSS-${index + 1}`),
                         corridor: String(props.Corridor || props.corridor || "KEE"),
-                        type: String(props.Asset || props.type || "ITS"),
+                        type: String(props.Asset || props.type || "RSS"),
                         site: String(props.Site || props.site || props.name || "Roadside site"),
                         lat: Number(coords[1]),
                         lon: Number(coords[0]),
@@ -205,13 +205,13 @@
         bindMapControls();
         renderComponentChips();
         applyMapFilters();
-        // Draw the entire national road network immediately (always visible) and frame it.
-        drawActualNetwork().then(() => { if (state.map) { state.map.invalidateSize(); fitMapToNetwork(); } });
-        fitMapToNetwork();
+        // Draw the Uganda national network immediately, but frame the actual RSS scope.
+        drawActualNetwork().then(() => { if (state.map) { state.map.invalidateSize(); fitMapToProject(); } });
+        fitMapToProject();
 
         // Keep the map filling its container: recompute size once the layout settles,
         // when fonts/layout finish, and on any viewport resize (prevents cut-off tiles).
-        const refresh = () => { if (state.map) { state.map.invalidateSize(); fitMapToNetwork(); } };
+        const refresh = () => { if (state.map) { state.map.invalidateSize(); fitMapToProject(); } };
         [150, 400, 900].forEach((ms) => setTimeout(refresh, ms));
         window.addEventListener("load", refresh);
         window.addEventListener("resize", () => {
@@ -234,8 +234,8 @@
     // Colour the base national road network by surface type (network2026).
     function surfaceColor(surf) {
         const v = String(surf || "").toLowerCase();
-        if (v.startsWith("bitumin")) return "#0a0a0a";  // sealed / paved - bold black
-        if (v.startsWith("unseal")) return "#b45309";   // gravel / earth
+        if (v.startsWith("bitumin")) return "#0a0a0a";  // paved - bold black
+        if (v.startsWith("unseal")) return "#f59e0b";   // unpaved - orange/gold
         return "#94a3b8";
     }
     const SCOPE_MAINLINES = new Set(["M20", "M20N1", "M3_Link01", "M3N1_Link01", "A003N2_Link01"]);
@@ -265,7 +265,7 @@
     }
 
     // Plot the actual FY25-26 national road network (authoritative GIS geometry) as a
-    // muted context layer beneath the project corridors and ITS assets.
+    // muted context layer beneath the project corridors and RSS components.
     async function drawActualNetwork() {
         const network = await loadActualNetworkData();
         if (state.nationalNetworkDrawn || !network || !Array.isArray(network.features) || !state.nationalLayer) return false;
@@ -277,7 +277,7 @@
             renderer,
             style: (f) => {
                 const bit = String((f.properties && f.properties.surf) || "").toLowerCase().startsWith("bitumin");
-                return { color: surfaceColor(f.properties && f.properties.surf), weight: bit ? 2.6 : 1.3, opacity: bit ? 0.95 : 0.6, lineCap: "round", lineJoin: "round" };
+                return { color: surfaceColor(f.properties && f.properties.surf), weight: bit ? 3.4 : 1.2, opacity: bit ? 0.98 : 0.72, lineCap: "round", lineJoin: "round" };
             },
             onEachFeature: (feature, roadLayer) => {
                 roadLayer.on("click", (e) => { selectRoad(feature.properties || {}, e.latlng); });
@@ -454,7 +454,7 @@
         if (state.map) {
             setTimeout(() => {
                 state.map.invalidateSize();
-                fitMapToAssets();
+                fitMapToProject();
             }, 180);
         }
     }
@@ -520,6 +520,9 @@
         renderAssetTable();
         renderStatusBars();
         renderLegend();
+        if (state.map && state.filteredAssets.length) {
+            setTimeout(fitMapToAssets, 80);
+        }
     }
 
     function updateComponentChipState(type) {
@@ -593,8 +596,7 @@
             className: "asset-div-icon",
             html: `<div class="asset-marker${selected ? " selected" : ""}" style="--marker-color:${color};background:${color};">${short}</div>`,
             iconSize: selected ? [38, 38] : [32, 32],
-            iconAnchor: selected ? [19, 19] : [16, 16],
-            popupAnchor: [0, -14]
+            iconAnchor: selected ? [19, 19] : [16, 16]
         });
     }
 
@@ -603,17 +605,6 @@
             const asset = state.filteredAssets.find((item) => item.id === id);
             if (asset) marker.setIcon(createMarkerIcon(asset, id === state.selectedAssetId));
         });
-    }
-
-    function renderPopup(asset) {
-        return `
-            <div class="popup-card">
-                <h4>${escapeHtml(asset.site)}</h4>
-                <p><strong>${escapeHtml(asset.id)}</strong> | ${escapeHtml(asset.type)}</p>
-                <p>${escapeHtml(asset.purpose)}</p>
-                <p style="color:${getStatusColor(asset.status)}">${escapeHtml(asset.status)}</p>
-            </div>
-        `;
     }
 
     function renderAssetTable() {
@@ -683,6 +674,10 @@
         if (fly && state.map) state.map.flyTo([asset.lat, asset.lon], Math.max(state.map.getZoom(), 15), { duration: 0.85 });
     }
 
+    function rssScopeLengthKm() {
+        return Number(rssBudget?.scopeLengthKm) || 50;
+    }
+
     const categoryMapTerms = {
         anpr: "ANPR",
         avc: "ATC",
@@ -692,17 +687,17 @@
         comms: "Comms",
         console: "TOC",
         network: "Cabinet",
-        other: "ITS",
+        other: "RSS",
         payment: "Toll",
         power: "Cabinet",
         printer: "Toll",
         rfid: "Toll",
         scanner: "Toll",
         server: "TOC",
-        services: "ITS",
+        services: "RSS",
         signal: "Toll",
         software: "TOC",
-        vasd: "VMS",
+        vasd: "VASD",
         vms: "VMS",
         weather: "RWIS",
         wim: "WIM"
@@ -723,6 +718,7 @@
         if (/avc|classifier|classification|axle|counter|loop/.test(value)) return "ATC";
         if (/cctv|camera|ptz|video|incident|surveillance/.test(value)) return "CCTV";
         if (/vms|message sign|variable message|display|sign/.test(value)) return "VMS";
+        if (/vasd|speed display|radar speed|speed detection/.test(value)) return "VASD";
         if (/weather|rain|flood|rwis/.test(value)) return "RWIS";
         if (/fibre|fiber|switch|router|network|cabinet|ups|power/.test(value)) return "Cabinet";
         if (/toc|server|control|software|operator|console/.test(value)) return "TOC";
@@ -782,12 +778,115 @@
         setTimeout(fitMapToAssets, 90);
     }
 
-    // Planning-grade indicative unit costs (USD) per roadside/ITS component type.
-    const UNIT_COST_USD = {
-        TOC: 2500000, Toll: 850000, WIM: 120000, RWIS: 35000, VMS: 45000,
-        ANPR: 18000, Comms: 15000, ATC: 12000, Cabinet: 9000, RSU: 8000, CCTV: 6500
+    const TYPE_BUDGET_CATEGORY = {
+        ANPR: "CCTV / AVIDS detection and monitoring",
+        AVIDS: "CCTV / AVIDS detection and monitoring",
+        CCTV: "CCTV / AVIDS detection and monitoring",
+        Comms: "Fibre drops and site backhaul",
+        ECB: "Emergency Call Boxes (ECB / SOS)",
+        RSU: "RSS field structures and enclosures",
+        RWIS: "Road Weather Information (RWIS)",
+        TOC: "Traffic Control Centre (lean)",
+        VASD: "Vehicle-actuated speed display (VASD)",
+        VMS: "Variable Message Signs (VMS)",
+        WIM: "WIM overload and freight management (3 RSS sites)"
     };
-    function fmtUsd(n) { return "$" + Number(n).toLocaleString("en-US"); }
+
+    const TYPE_BUDGET_PATTERNS = {
+        ANPR: [/ANPR Camera, IR flasher/i, /ANPR/i],
+        AVIDS: [/AVIDS Overview/i, /Video Image Processing/i],
+        CCTV: [/TMCS PTZ Camera/i, /PTZ Camera/i],
+        Comms: [/Fibre drop/i, /Media converter/i],
+        ECB: [/ECB post/i, /ECB IP-based/i],
+        RSU: [/Ground-mounted equipment enclosure/i, /Roadside Unit/i],
+        RWIS: [/Roadside weather station/i],
+        TOC: [/Central Server/i, /Video Wall Controller/i],
+        VASD: [/speed-detection camera/i, /VASD outdoor/i],
+        VMS: [/L-Type compact fixed VMS/i, /Portable\/trolley VMS/i],
+        WIM: [/High-Speed WIM/i, /Static\/Low-Speed WIM/i, /Enforcement weighbridge/i]
+    };
+
+    function fmtUgx(n) {
+        return `${Number(n || 0).toLocaleString("en-UG", { maximumFractionDigits: 0 })} UGX`;
+    }
+
+    function budgetCategoryByName(name) {
+        return (rssBudget?.categories || []).find((category) => category.category === name) || null;
+    }
+
+    function budgetItemForType(type, category) {
+        const patterns = TYPE_BUDGET_PATTERNS[type] || [];
+        return (category?.items || []).find((item) => patterns.some((pattern) => pattern.test(item.item))) || null;
+    }
+
+    function assetTypesForBudgetCategory(categoryName) {
+        return Object.entries(TYPE_BUDGET_CATEGORY)
+            .filter(([, mapped]) => mapped === categoryName)
+            .map(([type]) => type);
+    }
+
+    function assetBudgetInfo(asset) {
+        const type = String(asset?.type || "");
+        const categoryName = TYPE_BUDGET_CATEGORY[type] || "";
+        const category = budgetCategoryByName(categoryName);
+        if (!category) {
+            return {
+                categoryName: "RSS package",
+                planningUnitUgx: 0,
+                categoryTotalUgx: 0,
+                source: rssBudget?.sourceWorkbook || "BOQ entailing tendered rates for TTRS .xlsx"
+            };
+        }
+        const item = budgetItemForType(type, category);
+        const relatedTypes = assetTypesForBudgetCategory(categoryName);
+        const relatedAssetCount = state.assets.filter((entry) => relatedTypes.includes(entry.type)).length || 1;
+        return {
+            categoryName,
+            itemName: item?.item || "Category average allocation",
+            itemRateUgx: Number(item?.rate_ugx) || 0,
+            planningUnitUgx: Math.round(Number(category.subtotal_ugx || 0) / relatedAssetCount),
+            categoryTotalUgx: Number(category.subtotal_ugx || 0),
+            source: rssBudget?.sourceWorkbook || "BOQ entailing tendered rates for TTRS .xlsx"
+        };
+    }
+
+    function dictionaryCategoryForAsset(asset) {
+        const type = String(asset?.type || "").toUpperCase();
+        return ({
+            ANPR: "anpr",
+            AVIDS: "avids",
+            CCTV: "cctv",
+            Comms: "network",
+            ECB: "comms",
+            RSU: "power",
+            RWIS: "other",
+            TOC: "server",
+            VASD: "vasd",
+            VMS: "vms",
+            WIM: "wim"
+        })[type] || "other";
+    }
+
+    function detailMediaHTML(assetOrDefinition, className = "") {
+        const definition = {
+            name: assetOrDefinition?.name || `${assetOrDefinition?.type || ""} ${assetOrDefinition?.site || ""}`,
+            definition: assetOrDefinition?.definition || assetOrDefinition?.purpose || "",
+            category: assetOrDefinition?.category || dictionaryCategoryForAsset(assetOrDefinition)
+        };
+        const image = dictionaryImageFor(definition);
+        return `
+            <figure class="detail-media ${escapeAttr(className)}">
+                <img src="${escapeAttr(image.url)}" alt="${escapeAttr(image.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                <figcaption>${escapeHtml(image.caption)} <span>Wikimedia Commons</span></figcaption>
+            </figure>
+        `;
+    }
+
+    function bindDetailMediaFallback(panel) {
+        panel?.querySelectorAll(".detail-media img").forEach((img) => img.addEventListener("error", () => {
+            img.closest(".detail-media")?.classList.add("image-missing");
+        }, { once: true }));
+    }
 
     const ROAD_CLASS_LABEL = { M: "Motorway (M)", A: "National A", B: "National B", C: "Community C" };
 
@@ -805,18 +904,29 @@
             pill.textContent = p.scope ? "Project scope" : "National road";
             pill.style.color = p.scope ? "#34d399" : "#7dd3fc";
         }
+        const scopeKm = rssScopeLengthKm();
+        const costPerKm = scopeKm && rssBudget?.grandTotalUgx ? Math.round(Number(rssBudget.grandTotalUgx) / scopeKm) : 0;
+        const media = detailMediaHTML({
+            name: `${p.scope ? "RSS project scope" : "Uganda national road network"} ${p.name || ""}`,
+            definition: `${p.surf || ""} ${p.road || ""} road surveillance corridor`,
+            category: p.scope ? "network" : "services"
+        });
         panel.className = "asset-detail";
         panel.innerHTML = `
+            ${media}
             <div class="detail-grid">
                 <span>Road No</span><strong>${escapeHtml(p.road || "-")}</strong>
                 <span>Link ID</span><strong>${escapeHtml(p.lid || "-")}</strong>
                 <span>Class</span><strong>${escapeHtml(ROAD_CLASS_LABEL[p.cls] || p.cls || "-")}</strong>
                 <span>Surface</span><strong>${escapeHtml(p.surf || "-")}</strong>
-                <span>In scope</span><strong>${p.scope ? "Yes — project corridor" : "No"}</strong>
-                <span>Latitude (Y)</span><strong>${latlng ? latlng.lat.toFixed(6) : "-"}</strong>
-                <span>Longitude (X)</span><strong>${latlng ? latlng.lng.toFixed(6) : "-"}</strong>
-                <span>Pricing</span><strong>Carriageway (civil) — ITS pricing applies to roadside components</strong>
-            </div>`;
+                <span>In RSS scope</span><strong>${p.scope ? "Yes - KNBP/KEE/EDC project corridor" : "No - national context layer"}</strong>
+                <span>X (Longitude)</span><strong>${latlng ? latlng.lng.toFixed(6) : "-"}</strong>
+                <span>Y (Latitude)</span><strong>${latlng ? latlng.lat.toFixed(6) : "-"}</strong>
+                <span>RSS cost/km</span><strong>${costPerKm ? fmtUgx(costPerKm) : "-"}</strong>
+                <span>Budget reference</span><strong>${p.scope ? "RSS CAPEX package applies by component placement" : "No RSS pricing allocated to context roads"}</strong>
+            </div>
+            <p class="detail-note">${escapeHtml(rssBudget?.scope || "KNBP, KEE and Entebbe Airport Dual RSS components only")}</p>`;
+        bindDetailMediaFallback(panel);
     }
 
     function renderSelectedAsset(asset) {
@@ -843,16 +953,23 @@
             statusPill.style.color = getStatusColor(asset.status);
         }
 
-        const cost = UNIT_COST_USD[asset.type];
+        const budget = assetBudgetInfo(asset);
+        const media = detailMediaHTML(asset);
         panel.innerHTML = `
+            ${media}
             <div class="detail-grid">
                 <span>ID</span><strong>${escapeHtml(asset.id)}</strong>
                 <span>Component</span><strong>${escapeHtml(asset.type)}</strong>
                 <span>Corridor</span><strong>${escapeHtml(asset.corridor)}</strong>
                 <span>Chainage</span><strong>${asset.km === null ? "-" : `${formatNumber(asset.km)} km`}</strong>
-                <span>Latitude (Y)</span><strong>${Number(asset.lat).toFixed(6)}</strong>
-                <span>Longitude (X)</span><strong>${Number(asset.lon).toFixed(6)}</strong>
-                <span>Unit price (est.)</span><strong>${cost ? fmtUsd(cost) : "&mdash;"}</strong>
+                <span>X (Longitude)</span><strong>${Number(asset.lon).toFixed(6)}</strong>
+                <span>Y (Latitude)</span><strong>${Number(asset.lat).toFixed(6)}</strong>
+                <span>Budget category</span><strong>${escapeHtml(budget.categoryName)}</strong>
+                <span>Primary BOQ line</span><strong>${escapeHtml(budget.itemName || "-")}</strong>
+                <span>Line rate</span><strong>${budget.itemRateUgx ? fmtUgx(budget.itemRateUgx) : "-"}</strong>
+                <span>Planning allocation</span><strong>${budget.planningUnitUgx ? fmtUgx(budget.planningUnitUgx) : "-"}</strong>
+                <span>Category total</span><strong>${budget.categoryTotalUgx ? fmtUgx(budget.categoryTotalUgx) : "-"}</strong>
+                <span>Rate source</span><strong>${escapeHtml(budget.source)}</strong>
                 <span>Priority</span><strong>${escapeHtml(asset.priority)}</strong>
                 <span>Phase</span><strong>${escapeHtml(asset.phase)}</strong>
                 <span>Power</span><strong>${escapeHtml(asset.power)}</strong>
@@ -860,12 +977,14 @@
                 <span>Dependency</span><strong>${escapeHtml(asset.dependency)}</strong>
                 <span>Purpose</span><strong>${escapeHtml(asset.purpose)}</strong>
             </div>
+            <p class="detail-note">All pricing is drawn from the RSS budget model built from the TTRS tender-rate workbook and the rebuilt RSS specification.</p>
             <div class="detail-actions triple">
                 <button class="btn-analyze" type="button" id="selectedReadSpecBtn"><i class="fa-solid fa-table-list"></i> Specs</button>
                 <button class="btn-analyze" type="button" id="selectedBOQBtn"><i class="fa-solid fa-file-invoice-dollar"></i> BOQ</button>
                 <button class="btn-analyze" type="button" id="selectedDictBtn"><i class="fa-solid fa-book"></i> Dictionary</button>
             </div>
         `;
+        bindDetailMediaFallback(panel);
 
         $("#selectedReadSpecBtn")?.addEventListener("click", () => {
             openSpecsForTerm(assetLinkTerm(asset));
@@ -912,7 +1031,7 @@
         }
     }
 
-    // Frame the project scope from the ITS assets plus the declared corridor
+    // Frame the project scope from the RSS components plus the declared corridor
     // centrelines. The raw road_network geometry is intentionally excluded: those
     // national road numbers run far beyond the project and would over-zoom the map.
     function computeProjectBounds() {
@@ -1058,7 +1177,7 @@
     function renderSpecTopicChips() {
         const rail = $("#specTopicChips");
         if (!rail) return;
-        const topics = ["ETC", "RFID", "ANPR", "AVC", "CCTV", "VMS", "ATCC", "HCI", "Cybersecurity", "Testing"];
+        const topics = ["RSS", "WIM", "ANPR", "CCTV", "VMS", "AVIDS", "RWIS", "Cybersecurity", "Testing"];
         rail.innerHTML = topics.map((topic) => `<button class="chip" type="button" data-topic="${topic}"><span>${topic}</span></button>`).join("");
         $$("#specTopicChips .chip").forEach((chip) => {
             chip.addEventListener("click", () => {
@@ -1261,8 +1380,8 @@
         avc: { file: "Pneumatic road tube counter.jpg", alt: "Pneumatic road tube traffic counter", caption: "Vehicle counter / classifier" },
         vasd: { file: "Solar radar speed sign.jpg", alt: "Solar radar speed display sign", caption: "Radar speed display" },
         wim: { file: "SB US 1 Palm Coast Weigh Station; Scales.jpg", alt: "Truck weigh station scales", caption: "Weigh-in-motion / scale system" },
-        services: { file: "Autostrada A1 - Centura Arad.jpg", alt: "Roadside ITS installation work for variable message sign", caption: "Installation and commissioning" },
-        other: { file: "E-ZPass Toll Plaza - Spaulding Turnpike.jpg", alt: "Integrated toll and ITS roadway equipment", caption: "Integrated ITS equipment" }
+        services: { file: "Autostrada A1 - Centura Arad.jpg", alt: "Roadside RSS installation work for variable message sign", caption: "Installation and commissioning" },
+        other: { file: "E-ZPass Toll Plaza - Spaulding Turnpike.jpg", alt: "Integrated toll and RSS roadway equipment", caption: "Integrated RSS equipment" }
     };
 
     function dictionaryImageFor(definition) {
@@ -1583,7 +1702,7 @@
         const boqItems = Number(masterData?.total_boq_items) || 0;
 
         grid.innerHTML = `
-            ${summaryCard("fa-list-check", "ITS assets", state.assets.length.toLocaleString(), "Field installation register")}
+            ${summaryCard("fa-list-check", "RSS assets", state.assets.length.toLocaleString(), "Field installation register")}
             ${summaryCard("fa-folder-open", "Documents", metadata.length.toLocaleString(), `${dataSourceCount} analyzable sources`)}
             ${summaryCard("fa-sack-dollar", "Financial value", formatCurrencyAbbr(estimatedValue) + " UGX", "Incl. taxes and contingencies")}
             ${summaryCard("fa-table-list", "BOQ rows", boqItems.toLocaleString(), "Line items detected")}
@@ -1672,7 +1791,7 @@
     function getTypeShort(type) {
         const match = state.assetTypes.find((item) => item.id === type || item.label === type);
         if (match) return match.short;
-        return String(type || "ITS").replace(/[^a-z0-9]/gi, "").slice(0, 3).toUpperCase() || "ITS";
+        return String(type || "RSS").replace(/[^a-z0-9]/gi, "").slice(0, 3).toUpperCase() || "RSS";
     }
 
     function getStatusColor(status) {
@@ -1843,16 +1962,18 @@
         const assets = state.assets;                 // budgeted RSS components on the scope
         const rss = rssData || {};
         const bud = rssBudget || {};
-        const scopeKm = projectScope.reduce((s, r) => s + (Number(r.length_km) || 0), 0);
+        const scopeKm = rssScopeLengthKm();
         const grand = Number(bud.grandTotalUgx) || 0;
         const cap = Number(bud.budgetCapUgx) || 7e9;
         const headroom = cap - grand;
         const costPerKm = scopeKm ? grand / scopeKm : 0;
+        const wimSiteCount = Array.isArray(bud.wimSites) ? bud.wimSites.length : assets.filter((a) => a.type === "WIM").length;
 
         const cards = [
             ["fa-tower-cell", assets.length.toLocaleString(), "RSS components", "Deployed along the scope"],
             ["fa-road", `${Math.round(scopeKm)} km`, "Project scope", "KNBP + KEE + Entebbe dual"],
             ["fa-sitemap", String(unique(assets.map((a) => a.corridor)).length), "Scope corridors", "KNBP / KEE / EDC"],
+            ["fa-weight-hanging", String(wimSiteCount), "WIM sites", "2 high-speed + 1 enforcement site"],
             ["fa-sack-dollar", `${ugxB(grand)} UGX`, "RSS package total", "CAPEX incl. 10% cont. + 18% VAT"],
             ["fa-piggy-bank", `${ugxB(cap)} UGX`, "Budget cap", `Headroom ${ugxB(headroom)} UGX`],
             ["fa-coins", `${ugxB(bud.subtotalUgx || 0)} UGX`, "CAPEX sub-total", "Equipment, structures, software, install"],
@@ -1873,7 +1994,9 @@
 
         // Full costed RSS Bill of Quantities (in-depth) + budget waterfall
         const budgetEl = $("#analyticsBudget");
-        if (budgetEl) budgetEl.innerHTML = renderBudgetSummary(bud) + renderBudgetTable(bud);
+        if (budgetEl) {
+            budgetEl.innerHTML = renderRssSchematic() + renderBudgetSummary(bud) + renderWimSites(bud) + renderBudgetTable(bud) + renderSourceNotes(bud);
+        }
 
         const costByCat = {};
         (bud.categories || []).forEach((c) => { costByCat[c.category] = c.subtotal_ugx; });
@@ -1883,6 +2006,7 @@
             ["RSS components by type", countBy(assets, "type")],
             ["RSS components by corridor", countBy(assets, "corridor")],
             ["RSS components by priority", countBy(assets, "priority")],
+            ["WIM sites by corridor", countBy((bud.wimSites || []), "corridor")],
             ["Project scope by road number", countBy(projectScope, "road_no")],
             ["RSS specification parameters by category", countBy((rss.parameters || []), "cat")],
         ];
@@ -1920,6 +2044,66 @@
         </section>`;
     }
 
+    function renderRssSchematic() {
+        return `<section class="panel an-panel rss-schematic-panel">
+            <div class="an-panel-head">
+                <h3>Detailed RSS schematic - field, communications, TCC and enforcement interfaces</h3>
+                <span class="pill">Scope only</span>
+            </div>
+            <div class="rss-schematic" aria-label="RSS schematic architecture">
+                <div class="schem-band field-band">
+                    <div class="schem-title">Field layer</div>
+                    <div class="schem-node"><i class="fa-solid fa-video"></i><strong>CCTV / AVIDS</strong><span>12 PTZ, 3 AVIDS, 6 ANPR</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-weight-hanging"></i><strong>WIM enforcement</strong><span>2 HS-WIM + 1 SWIM / weighbridge</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-signs-post"></i><strong>VMS / VASD / ECB / RWIS</strong><span>Traveller information, speed feedback, SOS and weather</span></div>
+                </div>
+                <div class="schem-link"><span>13 fibre drops + cellular fallback</span></div>
+                <div class="schem-band comms-band">
+                    <div class="schem-title">Roadside communications</div>
+                    <div class="schem-node"><i class="fa-solid fa-box"></i><strong>RSU cabinets</strong><span>UPS, edge controller, media conversion</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-network-wired"></i><strong>OFC backbone</strong><span>Field aggregation, NMS monitoring, secure routing</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-tower-broadcast"></i><strong>Radio comms</strong><span>Base station, repeater, patrol vehicle and handheld radios</span></div>
+                </div>
+                <div class="schem-link"><span>Encrypted video, event and overload records</span></div>
+                <div class="schem-band tcc-band">
+                    <div class="schem-title">Traffic Control Centre</div>
+                    <div class="schem-node"><i class="fa-solid fa-display"></i><strong>Video wall + operators</strong><span>Incident verification and dispatch</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-server"></i><strong>Servers + storage</strong><span>VAMS, NMS, NAS, analytics and reporting</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-map-location-dot"></i><strong>Unified RSS platform</strong><span>GIS dashboard, AI analytics, public feed</span></div>
+                </div>
+                <div class="schem-link"><span>Controlled data exchange</span></div>
+                <div class="schem-band stakeholder-band">
+                    <div class="schem-title">Interfaces</div>
+                    <div class="schem-node"><i class="fa-solid fa-scale-balanced"></i><strong>GOU enforcement / UNBS</strong><span>WIM violations, calibration and evidence</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-shield-halved"></i><strong>Police / emergency response</strong><span>Incident records, live/recorded video and dispatch</span></div>
+                    <div class="schem-node"><i class="fa-solid fa-mobile-screen"></i><strong>Public information</strong><span>VMS messages, travel warnings and anonymised status feeds</span></div>
+                </div>
+            </div>
+        </section>`;
+    }
+
+    function renderWimSites(bud) {
+        const sites = bud?.wimSites || [];
+        if (!sites.length) return "";
+        return `<section class="panel an-panel wim-sites-panel">
+            <div class="an-panel-head"><h3>RSS WIM site setup</h3><span class="pill">${sites.length} sites</span></div>
+            <div class="table-wrap budget-table-wrap compact">
+                <table class="dense-table budget-table">
+                    <thead><tr><th>Site</th><th>Corridor</th><th class="num">Km</th><th class="num">X</th><th class="num">Y</th><th>Configuration</th><th>Purpose</th></tr></thead>
+                    <tbody>${sites.map((site) => `<tr>
+                        <td>${escapeHtml(site.site)}</td>
+                        <td>${escapeHtml(site.corridor)}</td>
+                        <td class="num">${formatNumber(site.chainageKm)}</td>
+                        <td class="num">${Number(site.lon).toFixed(5)}</td>
+                        <td class="num">${Number(site.lat).toFixed(5)}</td>
+                        <td>${escapeHtml(site.configuration)}</td>
+                        <td>${escapeHtml(site.purpose)}</td>
+                    </tr>`).join("")}</tbody>
+                </table>
+            </div>
+        </section>`;
+    }
+
     function renderBudgetTable(bud) {
         if (!bud || !Array.isArray(bud.categories)) return "";
         const body = bud.categories.map((c) => {
@@ -1939,6 +2123,21 @@
                     <thead><tr><th>Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate (UGX)</th><th class="num">Amount (UGX)</th></tr></thead>
                     <tbody>${body}</tbody>
                 </table>
+            </div>
+        </section>`;
+    }
+
+    function renderSourceNotes(bud) {
+        const notes = bud?.rateSourceNotes || [];
+        if (!notes.length) return "";
+        return `<section class="panel an-panel source-notes-panel">
+            <div class="an-panel-head"><h3>Price assumptions and source basis</h3><span class="pill">${escapeHtml(bud.sourceWorkbook || "BOQ")}</span></div>
+            <div class="source-note-grid">
+                ${notes.map((note) => `<article class="source-note">
+                    <strong>${escapeHtml(note.source)}</strong>
+                    <span>${escapeHtml([note.sheet, note.rows, note.section].filter(Boolean).join(" | "))}</span>
+                    <p>${escapeHtml(note.note)}</p>
+                </article>`).join("")}
             </div>
         </section>`;
     }
