@@ -257,8 +257,7 @@
                 opacity: 0.95, lineCap: "round", lineJoin: "round"
             }),
             onEachFeature: (f, lyr) => {
-                const p = f.properties || {};
-                lyr.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "Project scope link")}</h4><p><strong>${escapeHtml(p.road || "")}</strong> &middot; ${escapeHtml(p.lid || "")}</p><p>Project scope corridor</p></div>`);
+                lyr.on("click", (e) => { selectRoad(f.properties || {}, e.latlng); });
             }
         }).addTo(state.routeLayer);
         state.scopeBounds = layer.getBounds();
@@ -280,8 +279,7 @@
                 return { color: surfaceColor(f.properties && f.properties.surf), weight: bit ? 2.6 : 1.3, opacity: bit ? 0.95 : 0.6, lineCap: "round", lineJoin: "round" };
             },
             onEachFeature: (feature, roadLayer) => {
-                const p = feature.properties || {};
-                roadLayer.bindPopup(`<div class="popup-card"><h4>${escapeHtml(p.name || "National road")}</h4><p><strong>${escapeHtml(p.road || "")}</strong> &middot; ${escapeHtml(p.surf || "")}</p><p>Actual national road network (network2026)</p></div>`);
+                roadLayer.on("click", (e) => { selectRoad(feature.properties || {}, e.latlng); });
             }
         }).addTo(state.nationalLayer);
         state.nationalBounds = layer.getBounds();
@@ -353,13 +351,7 @@
                     opacity: 0.92,
                     lineCap: "round",
                     lineJoin: "round"
-                }).bindPopup(`
-                    <div class="popup-card">
-                        <h4>${escapeHtml(path.name || corridor.name)}</h4>
-                        <p>${escapeHtml(corridor.name)}</p>
-                        <p>${escapeHtml(corridor.note || corridor.status)}</p>
-                    </div>
-                `).addTo(state.routeLayer);
+                }).addTo(state.routeLayer);
             });
         });
     }
@@ -582,7 +574,6 @@
                 riseOnHover: true
             });
 
-            marker.bindPopup(renderPopup(asset));
             marker.on("click", () => selectAsset(asset.id, true));
             marker.addTo(state.markerLayer);
             state.markers.set(asset.id, marker);
@@ -688,9 +679,7 @@
         refreshMarkerStyles();
         renderAssetTable();
 
-        const marker = state.markers.get(asset.id);
         if (fly && state.map) state.map.flyTo([asset.lat, asset.lon], Math.max(state.map.getZoom(), 15), { duration: 0.85 });
-        if (marker) marker.openPopup();
     }
 
     const categoryMapTerms = {
@@ -792,6 +781,43 @@
         setTimeout(fitMapToAssets, 90);
     }
 
+    // Planning-grade indicative unit costs (USD) per roadside/ITS component type.
+    const UNIT_COST_USD = {
+        TOC: 2500000, Toll: 850000, WIM: 120000, RWIS: 35000, VMS: 45000,
+        ANPR: 18000, Comms: 15000, ATC: 12000, Cabinet: 9000, RSU: 8000, CCTV: 6500
+    };
+    function fmtUsd(n) { return "$" + Number(n).toLocaleString("en-US"); }
+
+    const ROAD_CLASS_LABEL = { M: "Motorway (M)", A: "National A", B: "National B", C: "Community C" };
+
+    // Show a clicked road link's details in the right-hand pane (no popup).
+    function selectRoad(props, latlng) {
+        const panel = $("#mapDetailPanel");
+        if (!panel) return;
+        state.selectedAssetId = null;
+        refreshMarkerStyles();
+        renderAssetTable();
+        const p = props || {};
+        setText("#selectedAssetTitle", p.name || p.lid || "Road link");
+        const pill = $("#selectedAssetStatus");
+        if (pill) {
+            pill.textContent = p.scope ? "Project scope" : "National road";
+            pill.style.color = p.scope ? "#34d399" : "#7dd3fc";
+        }
+        panel.className = "asset-detail";
+        panel.innerHTML = `
+            <div class="detail-grid">
+                <span>Road No</span><strong>${escapeHtml(p.road || "-")}</strong>
+                <span>Link ID</span><strong>${escapeHtml(p.lid || "-")}</strong>
+                <span>Class</span><strong>${escapeHtml(ROAD_CLASS_LABEL[p.cls] || p.cls || "-")}</strong>
+                <span>Surface</span><strong>${escapeHtml(p.surf || "-")}</strong>
+                <span>In scope</span><strong>${p.scope ? "Yes — project corridor" : "No"}</strong>
+                <span>Latitude (Y)</span><strong>${latlng ? latlng.lat.toFixed(6) : "-"}</strong>
+                <span>Longitude (X)</span><strong>${latlng ? latlng.lng.toFixed(6) : "-"}</strong>
+                <span>Pricing</span><strong>Carriageway (civil) — ITS pricing applies to roadside components</strong>
+            </div>`;
+    }
+
     function renderSelectedAsset(asset) {
         const panel = $("#mapDetailPanel");
         if (!panel) return;
@@ -816,12 +842,16 @@
             statusPill.style.color = getStatusColor(asset.status);
         }
 
+        const cost = UNIT_COST_USD[asset.type];
         panel.innerHTML = `
             <div class="detail-grid">
                 <span>ID</span><strong>${escapeHtml(asset.id)}</strong>
                 <span>Component</span><strong>${escapeHtml(asset.type)}</strong>
                 <span>Corridor</span><strong>${escapeHtml(asset.corridor)}</strong>
                 <span>Chainage</span><strong>${asset.km === null ? "-" : `${formatNumber(asset.km)} km`}</strong>
+                <span>Latitude (Y)</span><strong>${Number(asset.lat).toFixed(6)}</strong>
+                <span>Longitude (X)</span><strong>${Number(asset.lon).toFixed(6)}</strong>
+                <span>Unit price (est.)</span><strong>${cost ? fmtUsd(cost) : "&mdash;"}</strong>
                 <span>Priority</span><strong>${escapeHtml(asset.priority)}</strong>
                 <span>Phase</span><strong>${escapeHtml(asset.phase)}</strong>
                 <span>Power</span><strong>${escapeHtml(asset.power)}</strong>
