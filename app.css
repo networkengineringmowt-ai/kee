@@ -2609,3 +2609,26 @@ body.map-fullscreen-active .map-stage .unified-map {
 .an-row-top strong { color: var(--text); font-variant-numeric: tabular-nums; flex: none; }
 .an-bar { height: 6px; margin-top: 4px; border-radius: 4px; background: rgba(255,255,255,0.07); overflow: hidden; }
 .an-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #22d3ee, #34d399); transition: width .5s var(--ease); }
+
+/* ============ Analytics: RSS budget summary + costed BOQ ============ */
+.analytics-budget { display: grid; gap: 12px; margin-bottom: 16px; }
+.budget-summary .budget-bar {
+    position: relative; height: 16px; border-radius: 8px; margin: 4px 0 14px;
+    background: rgba(255,255,255,0.08); overflow: hidden;
+}
+.budget-summary .budget-fill { height: 100%; background: linear-gradient(90deg, #34d399, #22d3ee); border-radius: 8px; }
+.budget-summary .budget-cap { position: absolute; right: 8px; top: 0; font-size: 0.66rem; line-height: 16px; color: var(--text); }
+.budget-rows { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 6px 18px; }
+.budget-rows > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 0.84rem; border-bottom: 1px dashed var(--line); padding: 4px 0; }
+.budget-rows > div span { color: var(--soft); }
+.budget-rows > div strong { color: var(--text); font-variant-numeric: tabular-nums; }
+.budget-rows .budget-grand { border-bottom: none; }
+.budget-rows .budget-grand span, .budget-rows .budget-grand strong { color: #34d399; font-size: 0.95rem; font-weight: 800; }
+
+.budget-table-wrap { max-height: 460px; overflow: auto; }
+.budget-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.budget-table thead th { position: sticky; top: 0; z-index: 3; background: #0b0f19; color: var(--soft); text-align: left; padding: 8px 10px; white-space: nowrap; border-bottom: 1px solid var(--line-strong); }
+.budget-table td { padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.budget-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.budget-table .col-desc { color: var(--soft); }
+.budget-table .bt-cat td { background: rgba(52,211,153,0.10); color: var(--text); font-weight: 700; }

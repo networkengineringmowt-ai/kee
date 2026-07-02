@@ -13,6 +13,7 @@
     const dictionaryCategories = Array.isArray(window.DICTIONARY_CATEGORIES) ? window.DICTIONARY_CATEGORIES : [];
     const projectScope = Array.isArray(window.PROJECT_SCOPE) ? window.PROJECT_SCOPE : [];
     const rssData = window.RSS_DATA || null;
+    const rssBudget = window.RSS_BUDGET || null;
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -1839,23 +1840,24 @@
         const bdEl = $("#analyticsBreakdowns");
         if (!cardsEl && !bdEl) return;
 
-        const assets = state.assets;
-        const net = ((actualNetworkData || window.ACTUAL_NETWORK || {}).features) || [];
-        const boq = Array.isArray(window.BOQ_DATA) ? window.BOQ_DATA : [];
+        const assets = state.assets;                 // budgeted RSS components on the scope
         const rss = rssData || {};
+        const bud = rssBudget || {};
         const scopeKm = projectScope.reduce((s, r) => s + (Number(r.length_km) || 0), 0);
-        const critical = assets.filter((a) => String(a.priority).toLowerCase().includes("critical")).length;
-        const glossaryCount = (rss.glossary || []).length + (rss.acronyms || []).length;
+        const grand = Number(bud.grandTotalUgx) || 0;
+        const cap = Number(bud.budgetCapUgx) || 7e9;
+        const headroom = cap - grand;
+        const costPerKm = scopeKm ? grand / scopeKm : 0;
 
         const cards = [
-            ["fa-tower-cell", assets.length.toLocaleString(), "ITS / RSS assets", "Distributed field devices"],
-            ["fa-road", `${Math.round(scopeKm)} km`, "Project scope length", `${projectScope.length} links`],
-            ["fa-diagram-project", net.length.toLocaleString(), "Road network links", "network2026 (WGS84)"],
-            ["fa-book", dictionaryData.length.toLocaleString(), "Component dictionary", `${dictionaryCategories.length} element types`],
-            ["fa-file-invoice-dollar", boq.length.toLocaleString(), "BOQ line items", `${tollComponentData.length} register items`],
-            ["fa-list-check", (rss.parameters || []).length.toLocaleString(), "RSS parameters", `${(rss.techSpecs || []).length} technical specs`],
-            ["fa-spell-check", glossaryCount.toLocaleString(), "Glossary & acronyms", "RSS specification"],
-            ["fa-triangle-exclamation", critical.toLocaleString(), "Critical assets", "Priority ETC / control"],
+            ["fa-tower-cell", assets.length.toLocaleString(), "RSS components", "Deployed along the scope"],
+            ["fa-road", `${Math.round(scopeKm)} km`, "Project scope", "KNBP + KEE + Entebbe dual"],
+            ["fa-sitemap", String(unique(assets.map((a) => a.corridor)).length), "Scope corridors", "KNBP / KEE / EDC"],
+            ["fa-sack-dollar", `${ugxB(grand)} UGX`, "RSS package total", "CAPEX incl. 10% cont. + 18% VAT"],
+            ["fa-piggy-bank", `${ugxB(cap)} UGX`, "Budget cap", `Headroom ${ugxB(headroom)} UGX`],
+            ["fa-coins", `${ugxB(bud.subtotalUgx || 0)} UGX`, "CAPEX sub-total", "Equipment, structures, software, install"],
+            ["fa-gauge-high", `${ugxB(costPerKm)} UGX`, "Cost per km", "Package total / scope length"],
+            ["fa-list-check", (rss.parameters || []).length.toLocaleString(), "RSS spec parameters", `${(rss.techSpecs || []).length} technical specs`],
         ];
         if (cardsEl) {
             cardsEl.innerHTML = cards.map(([ic, val, label, sub]) => `
@@ -1869,22 +1871,87 @@
                 </article>`).join("");
         }
 
-        const dictByCat = {};
-        dictionaryData.forEach((x) => { const l = catLabel(x.category); dictByCat[l] = (dictByCat[l] || 0) + 1; });
-        const props = net.map((f) => f.properties || {});
+        // Full costed RSS Bill of Quantities (in-depth) + budget waterfall
+        const budgetEl = $("#analyticsBudget");
+        if (budgetEl) budgetEl.innerHTML = renderBudgetSummary(bud) + renderBudgetTable(bud);
 
+        const costByCat = {};
+        (bud.categories || []).forEach((c) => { costByCat[c.category] = c.subtotal_ugx; });
+
+        let html = renderCostBreakdown("RSS package cost by category (UGX)", costByCat);
         const breakdowns = [
-            ["ITS / RSS assets by component type", countBy(assets, "type")],
-            ["ITS / RSS assets by corridor", countBy(assets, "corridor")],
-            ["ITS / RSS assets by status", countBy(assets, "status")],
-            ["ITS / RSS assets by priority", countBy(assets, "priority")],
-            ["Road network by surface type", countBy(props, "surf")],
-            ["Road network by class", countBy(props, "cls")],
+            ["RSS components by type", countBy(assets, "type")],
+            ["RSS components by corridor", countBy(assets, "corridor")],
+            ["RSS components by priority", countBy(assets, "priority")],
             ["Project scope by road number", countBy(projectScope, "road_no")],
-            ["Dictionary components by category", dictByCat],
             ["RSS specification parameters by category", countBy((rss.parameters || []), "cat")],
         ];
-        if (bdEl) bdEl.innerHTML = breakdowns.map(([title, counts]) => renderBreakdownHTML(title, counts)).join("");
+        html += breakdowns.map(([title, counts]) => renderBreakdownHTML(title, counts)).join("");
+        if (bdEl) bdEl.innerHTML = html;
+    }
+
+    function ugxB(n) {
+        n = Number(n) || 0;
+        if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";
+        if (n >= 1e6) return (n / 1e6).toFixed(0) + "M";
+        return n.toLocaleString();
+    }
+
+    function renderBudgetSummary(bud) {
+        if (!bud || !bud.grandTotalUgx) return "";
+        const cap = Number(bud.budgetCapUgx) || 7e9;
+        const grand = Number(bud.grandTotalUgx);
+        const pct = Math.min(100, Math.round((grand / cap) * 100));
+        const rows = [
+            ["CAPEX sub-total", bud.subtotalUgx],
+            ["Contingencies (10%)", bud.contingencyUgx],
+            ["VAT (18%)", bud.vatUgx],
+            ["GRAND TOTAL", bud.grandTotalUgx],
+        ];
+        return `<section class="panel an-panel budget-summary">
+            <div class="an-panel-head"><h3>RSS package budget &mdash; within 7,000,000,000 UGX</h3>
+                <span class="pill" style="color:${grand < cap ? "#34d399" : "#fb7185"}">${grand < cap ? "WITHIN BUDGET" : "OVER"}</span></div>
+            <div class="budget-bar"><div class="budget-fill" style="width:${pct}%"></div><span class="budget-cap">Cap 7.00B UGX</span></div>
+            <div class="budget-rows">
+                ${rows.map(([k, v], i) => `<div class="${i === rows.length - 1 ? "budget-grand" : ""}"><span>${escapeHtml(k)}</span><strong>${Number(v).toLocaleString()} UGX</strong></div>`).join("")}
+                <div><span>Headroom under cap</span><strong>${(cap - grand).toLocaleString()} UGX</strong></div>
+                <div><span>Approx. USD (@ ${bud.currencyRate}/USD)</span><strong>$${Number(bud.grandTotalUsd).toLocaleString()}</strong></div>
+            </div>
+        </section>`;
+    }
+
+    function renderBudgetTable(bud) {
+        if (!bud || !Array.isArray(bud.categories)) return "";
+        const body = bud.categories.map((c) => {
+            const head = `<tr class="bt-cat"><td colspan="4">${escapeHtml(c.category)}</td><td class="num">${Number(c.subtotal_ugx).toLocaleString()}</td></tr>`;
+            const items = c.items.map((it) => `<tr>
+                <td class="col-desc">${escapeHtml(it.item)}</td>
+                <td class="num">${escapeHtml(String(it.qty))}</td>
+                <td>${escapeHtml(it.unit)}</td>
+                <td class="num">${Number(it.rate_ugx).toLocaleString()}</td>
+                <td class="num">${Number(it.amount_ugx).toLocaleString()}</td></tr>`).join("");
+            return head + items;
+        }).join("");
+        return `<section class="panel an-panel budget-table-panel">
+            <div class="an-panel-head"><h3>Costed RSS Bill of Quantities (Phase-1, &lt; 7B UGX)</h3></div>
+            <div class="table-wrap budget-table-wrap">
+                <table class="dense-table budget-table">
+                    <thead><tr><th>Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate (UGX)</th><th class="num">Amount (UGX)</th></tr></thead>
+                    <tbody>${body}</tbody>
+                </table>
+            </div>
+        </section>`;
+    }
+
+    function renderCostBreakdown(title, amounts) {
+        const entries = Object.entries(amounts || {}).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
+        const max = entries.reduce((m, [, v]) => Math.max(m, v), 0) || 1;
+        const total = entries.reduce((s, [, v]) => s + v, 0);
+        const rows = entries.map(([k, v]) => {
+            const pct = Math.round((v / max) * 100);
+            return `<div class="an-row"><div class="an-row-top"><span title="${escapeAttr(k)}">${escapeHtml(k)}</span><strong>${ugxB(v)}</strong></div><div class="an-bar"><div class="an-fill" style="width:${pct}%"></div></div></div>`;
+        }).join("");
+        return `<section class="panel an-panel"><div class="an-panel-head"><h3>${escapeHtml(title)}</h3><span class="pill">${ugxB(total)} UGX</span></div>${rows}</section>`;
     }
 
     function renderBreakdownHTML(title, counts) {
