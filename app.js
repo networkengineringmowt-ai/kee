@@ -370,7 +370,6 @@
     function populateMapControls() {
         populateSelect($("#mapCorridorFilter"), unique(state.assets.map((asset) => asset.corridor)), "All corridors");
         populateSelect($("#mapTypeFilter"), unique(state.assets.map((asset) => asset.type)), "All components");
-        populateSelect($("#mapStatusFilter"), unique(state.assets.map((asset) => asset.status)), "All statuses");
         populateSelect($("#mapPriorityFilter"), unique(state.assets.map((asset) => asset.priority)), "All priorities");
     }
 
@@ -386,13 +385,13 @@
     }
 
     function bindMapControls() {
-        ["mapCorridorFilter", "mapTypeFilter", "mapStatusFilter", "mapPriorityFilter", "mapSearchInput"].forEach((id) => {
+        ["mapCorridorFilter", "mapTypeFilter", "mapPriorityFilter", "mapSearchInput"].forEach((id) => {
             $(`#${id}`)?.addEventListener("input", applyMapFilters);
             $(`#${id}`)?.addEventListener("change", applyMapFilters);
         });
 
         $("#mapResetBtn")?.addEventListener("click", () => {
-            ["mapCorridorFilter", "mapTypeFilter", "mapStatusFilter", "mapPriorityFilter"].forEach((id) => {
+            ["mapCorridorFilter", "mapTypeFilter", "mapPriorityFilter"].forEach((id) => {
                 const el = $(`#${id}`);
                 if (el) el.value = "All";
             });
@@ -503,7 +502,6 @@
 
         const corridor = $("#mapCorridorFilter")?.value || "All";
         const type = $("#mapTypeFilter")?.value || "All";
-        const status = $("#mapStatusFilter")?.value || "All";
         const priority = $("#mapPriorityFilter")?.value || "All";
         const term = ($("#mapSearchInput")?.value || "").trim().toLowerCase();
 
@@ -511,7 +509,6 @@
             const text = `${asset.id} ${asset.site} ${asset.type} ${asset.status} ${asset.priority} ${asset.purpose} ${asset.corridor}`.toLowerCase();
             return (corridor === "All" || asset.corridor === corridor)
                 && (type === "All" || asset.type === type)
-                && (status === "All" || asset.status === status)
                 && (priority === "All" || asset.priority === priority)
                 && (!term || text.includes(term));
         });
@@ -520,7 +517,6 @@
         renderMapMetrics();
         renderMarkers();
         renderAssetTable();
-        renderStatusBars();
         renderLegend();
         if (state.map && state.filteredAssets.length) {
             setTimeout(fitMapToAssets, 80);
@@ -532,9 +528,10 @@
     }
 
     function renderEmptyMap() {
-        $("#mapAssetTable").innerHTML = "";
-        $("#statusBars").innerHTML = "";
-        $("#mapResultCount").textContent = "0";
+        const tb = $("#mapAssetTable");
+        if (tb) tb.innerHTML = "";
+        const rc = $("#mapResultCount");
+        if (rc) rc.textContent = "0";
     }
 
     function renderMapMetrics() {
@@ -630,34 +627,11 @@
             row.innerHTML = `
                 <td>${escapeHtml(asset.id)}</td>
                 <td>${escapeHtml(asset.site)}<br><small>${escapeHtml(asset.type)} | ${escapeHtml(asset.corridor)}</small></td>
-                <td><span class="status-badge" style="color:${getStatusColor(asset.status)}">${escapeHtml(asset.status)}</span></td>
+                <td class="num">${escapeHtml(String(asset.km))} km</td>
             `;
             row.addEventListener("click", () => selectAsset(asset.id, true));
             tableBody.appendChild(row);
         });
-    }
-
-    function renderStatusBars() {
-        const container = $("#statusBars");
-        if (!container) return;
-
-        const counts = countBy(state.filteredAssets, "status");
-        const total = Math.max(state.filteredAssets.length, 1);
-
-        container.innerHTML = Object.entries(counts)
-            .sort((a, b) => b[1] - a[1])
-            .map(([status, count]) => {
-                const width = Math.round((count / total) * 100);
-                return `
-                    <div class="status-row">
-                        <div class="status-row-top">
-                            <span>${escapeHtml(status)}</span>
-                            <strong>${count}</strong>
-                        </div>
-                        <div class="bar-track"><div class="bar-fill" style="width:${width}%;background:${getStatusColor(status)}"></div></div>
-                    </div>
-                `;
-            }).join("");
     }
 
     function renderLegend() {
@@ -913,11 +887,6 @@
         renderAssetTable();
         const p = props || {};
         setText("#selectedAssetTitle", p.name || p.lid || "Road link");
-        const pill = $("#selectedAssetStatus");
-        if (pill) {
-            pill.textContent = p.scope ? "Project scope" : "National road";
-            pill.style.color = p.scope ? "#34d399" : "#7dd3fc";
-        }
         const scopeKm = rssScopeLengthKm();
         const costPerKm = scopeKm && rssBudget?.grandTotalUgx ? Math.round(Number(rssBudget.grandTotalUgx) / scopeKm) : 0;
         const media = detailMediaHTML({
@@ -955,17 +924,11 @@
                 <p>Choose any installation point from the map or table.</p>
             `;
             setText("#selectedAssetTitle", "Operations focus");
-            setText("#selectedAssetStatus", "Ready");
             return;
         }
 
         panel.className = "asset-detail";
         setText("#selectedAssetTitle", asset.site);
-        const statusPill = $("#selectedAssetStatus");
-        if (statusPill) {
-            statusPill.textContent = asset.status;
-            statusPill.style.color = getStatusColor(asset.status);
-        }
 
         const budget = assetBudgetInfo(asset);
         const media = detailMediaHTML(asset);
@@ -982,7 +945,7 @@
                 <span>ID</span><strong>${escapeHtml(asset.id)}</strong>
                 <span>Component</span><strong>${escapeHtml(asset.type)}</strong>
                 <span>Corridor</span><strong>${escapeHtml(asset.corridor)}</strong>
-                <span>Chainage</span><strong>${asset.km === null ? "-" : `${formatNumber(asset.km)} km`}</strong>
+                <span>Chainage (from corridor start)</span><strong>${asset.km === null ? "-" : `${formatNumber(asset.km)} km`}</strong>
                 <span>X (Longitude)</span><strong>${Number(asset.lon).toFixed(6)}</strong>
                 <span>Y (Latitude)</span><strong>${Number(asset.lat).toFixed(6)}</strong>
                 <span>Budget category</span><strong>${escapeHtml(budget.categoryName)}</strong>
@@ -2706,7 +2669,6 @@
             <td class="num">${escapeHtml(String(a.km))}</td>
             <td class="num">${Number(a.lat).toFixed(6)}</td>
             <td class="num">${Number(a.lon).toFixed(6)}</td>
-            <td>${escapeHtml(a.status)}</td>
             <td class="col-just">${escapeHtml(just(a))}</td>
         </tr>`).join("");
         return `<section class="panel an-panel geocat-panel">
@@ -2715,12 +2677,12 @@
             <div class="table-wrap geocat-wrap">
                 <table class="dense-table geocat-table">
                     <thead><tr><th>#</th><th>ID</th><th>Type</th><th>Component / site</th><th>Corridor</th>
-                        <th class="num">Chainage (km)</th><th class="num">Latitude (Y)</th><th class="num">Longitude (X)</th>
-                        <th>Status</th><th>Justification for location</th></tr></thead>
+                        <th class="num">Chainage (km from corridor start)</th><th class="num">Latitude (Y)</th><th class="num">Longitude (X)</th>
+                        <th>Justification for location</th></tr></thead>
                     <tbody>${rows}</tbody>
                 </table>
             </div>
-            <p class="panel-note">Coordinates are planning-grade, snapped to the network2026 centreline geometry (WGS84); to be confirmed by detailed site survey before construction.</p>
+            <p class="panel-note">Chainage is measured from the beginning of each individual road (KEE from Busega, KNBP from Namboole, Airport Dual from the airport end). Coordinates are planning-grade WGS84 on the network2026 centreline; to be confirmed by detailed site survey.</p>
         </section>`;
     }
 
@@ -3045,9 +3007,8 @@
 
     function exportRows() {
         return state.assets.map((a) => ({
-            ID: a.id, Type: a.type, Site: a.site, Corridor: a.corridor, "Chainage (km)": a.km,
-            "Latitude (Y)": a.lat, "Longitude (X)": a.lon, Priority: a.priority,
-            Status: a.status, Purpose: a.purpose
+            ID: a.id, Type: a.type, Site: a.site, Corridor: a.corridor, "Chainage (km from corridor start)": a.km,
+            "Latitude (Y)": a.lat, "Longitude (X)": a.lon, Priority: a.priority, Purpose: a.purpose
         }));
     }
 
@@ -3114,8 +3075,8 @@
         g.font = "16px Arial"; g.fillStyle = "#a9aaa2";
         g.fillText("Risk-weighted from the 2021-26 KEE crash record (503 crashes, 16 fatalities). Package total " + ugxB((rssBudget || {}).grandTotalUgx || 0) + " UGX.", 40, 80);
         const corr = [["KEE", "Kampala-Entebbe Expressway (24.9 km)", "#34d399", 200],
-                      ["KNBP", "Kampala Northern Bypass (21 km)", "#c084fc", 460],
-                      ["EDC", "Entebbe Airport Dual (7.6 km)", "#fb7185", 720]];
+                      ["KNBP", "Kampala Northern Bypass (20.0 km)", "#c084fc", 460],
+                      ["EDC", "Entebbe Airport Dual (12.7 km)", "#fb7185", 720]];
         const X0 = 90, X1 = W - 90;
         const typeColor = { CCTV: "#3b82f6", AVIDS: "#f97316", ANPR: "#1d4ed8", VMS: "#f59e0b", ECB: "#ef4444", WIM: "#be123c", RSU: "#14b8a6", RWIS: "#0891b2", Comms: "#ec4899", TOC: "#111827", VASD: "#605afa" };
         corr.forEach(([cid, label, color, y]) => {
@@ -3150,37 +3111,101 @@
     function exportPDF() {
         const JS = window.jspdf && window.jspdf.jsPDF;
         if (!JS) { window.print(); return; }
-        const doc = new JS({ unit: "mm", format: "a4" });
-        const bud = rssBudget || {};
-        let y = 18;
-        const line = (txt, size = 10, style = "normal", color = [20, 20, 20]) => {
-            doc.setFont("helvetica", style); doc.setFontSize(size); doc.setTextColor(...color);
-            doc.splitTextToSize(txt, 180).forEach((t) => {
-                if (y > 282) { doc.addPage(); y = 18; }
-                doc.text(t, 15, y); y += size * 0.5;
-            });
-            y += 1.5;
+        const doc = new JS({ unit: "mm", format: "a4", orientation: "landscape" });
+        const PW = 297, PH = 210, M = 10;
+        let y = M;
+
+        const header = (title, sub) => {
+            doc.setFillColor(11, 15, 25); doc.rect(0, 0, PW, 24, "F");
+            doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
+            doc.text(title, M, 10);
+            doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); doc.setTextColor(200, 205, 215);
+            doc.text(sub, M, 17);
+            y = 30;
         };
-        line("ROAD SURVEILLANCE SYSTEM (RSS) - PROPOSAL SUMMARY", 15, "bold");
-        line("KNBP, KEE and Entebbe Airport Dual | Ministry of Works & Transport", 11);
-        y += 2;
-        line("Budget: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX grand total (CAPEX + 10% contingency + 18% VAT). Single deployment; corridor fibre backbone already laid (site drops only).", 10);
-        line("Safety basis: " + accidentData.length + " recorded crashes (2021-26) with " + accidentData.reduce((s, r) => s + (r.fatality || 0), 0) + " fatalities; components are placed at the measured hotspots (km 21-22, 9-13, 2-5, 17-18) and slow-response zones (km 5, 16, 23-24).", 10);
-        line("WIM sites: existing Busega Main Toll Plaza km 2.4, Kajjansi km 12.07 and Mpala km 24.65 static WIM enhanced and integrated, plus new KEE high-speed WIM at Busega Entry km 0.5 and Mpala Entry km 24.0; all paired with ANPR.", 10);
-        y += 2;
-        line("COSTED BILL OF QUANTITIES (UGX)", 12, "bold");
+        const newPage = (title, sub) => { doc.addPage(); header(title, sub); };
+
+        // ruled table with grid lines, header fill, wrapping and page breaks
+        const table = (title, heads, rows, widths, opts = {}) => {
+            const totalW = widths.reduce((a, b) => a + b, 0);
+            const x0 = M;
+            doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(20, 20, 20);
+            if (y + 16 > PH - M) newPage(opts.pageTitle || "RSS Proposal", opts.pageSub || "");
+            doc.text(title, x0, y); y += 4;
+            const drawHead = () => {
+                doc.setFillColor(230, 236, 245);
+                doc.setDrawColor(120, 130, 145); doc.setLineWidth(0.25);
+                doc.rect(x0, y, totalW, 7, "FD");
+                let cx = x0;
+                doc.setFont("helvetica", "bold"); doc.setFontSize(7.5); doc.setTextColor(25, 35, 50);
+                heads.forEach((hd, i) => {
+                    doc.rect(cx, y, widths[i], 7);
+                    doc.text(String(hd), cx + 1.5, y + 4.6, { maxWidth: widths[i] - 3 });
+                    cx += widths[i];
+                });
+                y += 7;
+            };
+            drawHead();
+            doc.setFont("helvetica", "normal"); doc.setFontSize(7); doc.setTextColor(30, 30, 30);
+            rows.forEach((row, ri) => {
+                const wrapped = row.map((cell, i) => doc.splitTextToSize(String(cell ?? ""), widths[i] - 3));
+                const lines = Math.max(...wrapped.map((w) => w.length));
+                const rh = Math.max(5, lines * 3.1 + 1.8);
+                if (y + rh > PH - M) { newPage(opts.pageTitle || "RSS Proposal", opts.pageSub || ""); drawHead(); doc.setFont("helvetica", "normal"); doc.setFontSize(7); doc.setTextColor(30, 30, 30); }
+                if (ri % 2 === 1) { doc.setFillColor(245, 247, 250); doc.rect(x0, y, totalW, rh, "F"); }
+                let cx = x0;
+                doc.setDrawColor(160, 168, 180); doc.setLineWidth(0.15);
+                row.forEach((cell, i) => {
+                    doc.rect(cx, y, widths[i], rh);
+                    doc.text(wrapped[i], cx + 1.5, y + 3.4);
+                    cx += widths[i];
+                });
+                y += rh;
+            });
+            y += 6;
+        };
+
+        const bud = rssBudget || {};
+        header("ROAD SURVEILLANCE SYSTEM (RSS) - PROPOSAL", "KNBP + KEE + Entebbe Airport Dual | Ministry of Works & Transport | " + state.assets.length + " components | chainage measured from the beginning of each road");
+
+        // Budget summary
+        table("Budget summary (UGX)", ["Line", "Amount (UGX)", "Amount (USD)"], [
+            ["CAPEX sub-total", Number(bud.subtotalUgx || 0).toLocaleString(), Number((bud.subtotalUgx || 0) / (bud.currencyRate || 3700)).toLocaleString(undefined, { maximumFractionDigits: 0 })],
+            ["Contingencies (10%)", Number(bud.contingencyUgx || 0).toLocaleString(), Number((bud.contingencyUgx || 0) / (bud.currencyRate || 3700)).toLocaleString(undefined, { maximumFractionDigits: 0 })],
+            ["Total before VAT", Number(bud.beforeVatUgx || 0).toLocaleString(), Number((bud.beforeVatUgx || 0) / (bud.currencyRate || 3700)).toLocaleString(undefined, { maximumFractionDigits: 0 })],
+            ["VAT (18%)", Number(bud.vatUgx || 0).toLocaleString(), Number((bud.vatUgx || 0) / (bud.currencyRate || 3700)).toLocaleString(undefined, { maximumFractionDigits: 0 })],
+            ["GRAND TOTAL (incl. VAT)", Number(bud.grandTotalUgx || 0).toLocaleString(), "$" + Number(bud.grandTotalUsd || 0).toLocaleString()],
+        ], [90, 60, 50], { pageTitle: "RSS Proposal - Budget", pageSub: "All rates carry unit-price assumptions (see BOQ)" });
+
+        // BOQ with assumptions
+        const boqRows = [];
         (bud.categories || []).forEach((c) => {
-            line(c.category + "  -  " + Number(c.subtotal_ugx).toLocaleString(), 10, "bold", [10, 90, 60]);
-            c.items.forEach((it) => line("   " + it.item + "  | " + it.qty + " " + it.unit + " @ " + Number(it.rate_ugx).toLocaleString() + " = " + Number(it.amount_ugx).toLocaleString(), 8));
+            boqRows.push([c.category.toUpperCase(), "", "", "", Number(c.subtotal_ugx).toLocaleString(), ""]);
+            c.items.forEach((it) => boqRows.push([it.item, String(it.qty), it.unit, Number(it.rate_ugx).toLocaleString(), Number(it.amount_ugx).toLocaleString(), it.assumption || ""]));
         });
-        y += 2;
-        line("Sub-total (CAPEX): " + Number(bud.subtotalUgx || 0).toLocaleString() + " UGX", 10, "bold");
-        line("Contingencies (10%): " + Number(bud.contingencyUgx || 0).toLocaleString() + " UGX", 10, "bold");
-        line("VAT (18%): " + Number(bud.vatUgx || 0).toLocaleString() + " UGX", 10, "bold");
-        line("GRAND TOTAL: " + Number(bud.grandTotalUgx || 0).toLocaleString() + " UGX (~$" + Number(bud.grandTotalUsd || 0).toLocaleString() + ")", 11, "bold", [10, 90, 60]);
-        y += 2;
-        line("RSS COMPONENT REGISTER (" + state.assets.length + " components)", 12, "bold");
-        state.assets.forEach((a) => line("  " + a.id + " | " + a.type + " | " + a.site + " | " + a.corridor + " km " + a.km + " | Y " + a.lat + ", X " + a.lon, 8));
+        newPage("RSS Proposal - Bill of Quantities", "Every rate carries its unit-price assumption | UGX at " + (bud.currencyRate || 3700) + "/USD");
+        table("Costed Bill of Quantities", ["Item", "Qty", "Unit", "Rate (UGX)", "Amount (UGX)", "Unit price assumption"], boqRows, [92, 12, 14, 26, 30, 103], { pageTitle: "RSS Proposal - Bill of Quantities", pageSub: "continued" });
+
+        // Georeferenced catalogue
+        newPage("RSS Proposal - Georeferenced Component Catalogue", "WGS84 | chainage from the beginning of each individual road | planning-grade, to be confirmed by site survey");
+        const geoRows = state.assets.map((a) => [a.id, a.type, a.site, a.corridor, String(a.km), Number(a.lat).toFixed(6), Number(a.lon).toFixed(6)]);
+        table("Component locations", ["ID", "Type", "Component / site", "Corridor", "Chainage (km)", "Latitude (Y)", "Longitude (X)"], geoRows, [26, 16, 116, 20, 24, 38, 37], { pageTitle: "RSS Proposal - Georeferenced Component Catalogue", pageSub: "continued" });
+
+        // Traffic snapshot
+        if (trafficData.length) {
+            newPage("RSS Proposal - Traffic Evidence", "Measured KEE tolling data, KNBP classified counts, EDC 2025 estimate");
+            const latest = trafficData[trafficData.length - 1];
+            const rows2 = [
+                ["KEE latest ADT (" + latest.month + ")", Math.round(latest.adt).toLocaleString()],
+                ["KEE average ADT (40 months)", Math.round(trafficData.reduce((a, m2) => a + m2.adt, 0) / trafficData.length).toLocaleString()],
+                ["KEE heavy vehicles/day", Math.round(trafficData.reduce((a, m2) => a + (m2.c3 + m2.c4a + m2.c4b), 0) / trafficData.length).toLocaleString()],
+            ];
+            const kn = (window.TRAFFIC_DATA && window.TRAFFIC_DATA.knbpSections && window.TRAFFIC_DATA.knbpSections.sections) || [];
+            kn.forEach((x) => rows2.push(["KNBP " + x.name + " ADT", Math.round(x.adt || x.adtInclMotorcycles || 0).toLocaleString()]));
+            const e2 = window.TRAFFIC_DATA && window.TRAFFIC_DATA.edc2025;
+            if (e2) rows2.push(["Airport Dual 2025 ADT (estimate)", Math.round(e2.adt).toLocaleString()]);
+            table("Traffic summary", ["Measure", "Value"], rows2, [140, 60], { pageTitle: "RSS Proposal - Traffic Evidence", pageSub: "" });
+        }
         doc.save("RSS_proposal_KNBP_KEE_EntebbeDual.pdf");
     }
 
