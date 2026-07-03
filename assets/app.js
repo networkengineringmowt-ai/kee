@@ -446,6 +446,104 @@ function setupSpecs() {
 })();
 
 
+
+// ═══ Georeferenced RSS Catalogue ═══
+window.RSS_CATALOGUE = [
+    {
+        component: "High-Speed Weigh-In-Motion (HS-WIM)",
+        subcomponents: ["PTZ Cameras", "Data Logger Cabinet", "ANPR System"],
+        location: "KNBP: Namboole - Gayaza (Km 12+400)",
+        lat: 0.3541,
+        lon: 32.6122,
+        justification: "Critical deployment. AADT: 27,000 | Heavy M-Class Freight: 4,800. Required to prevent rapid pavement degradation."
+    },
+    {
+        component: "Automatic Traffic Counter (ATC)",
+        subcomponents: ["PTZ Surveillance Camera", "Microwave Radar Sensor", "Solar Power Array", "4G LTE Modem"],
+        location: "KNBP: Gayaza - Hoima (Km 18+200)",
+        lat: 0.3421,
+        lon: 32.5518,
+        justification: "Peak congestion zone. AADT: 30,000 | Heavy M-Class: 4,500. Needed for dynamic flow analysis."
+    },
+    {
+        component: "Road Weather Information System (RWIS)",
+        subcomponents: ["PTZ Monitoring Camera", "Anemometer", "Pavement Surface Temp Sensor", "Visibility Sensor (Fog)"],
+        location: "KNBP: Hoima - Busega (Km 28+500)",
+        lat: 0.3155,
+        lon: 32.5188,
+        justification: "High volume + low visibility risk. AADT: 32,000 | Heavy M-Class: 5,500."
+    },
+    {
+        component: "Low-Speed Weigh-In-Motion (LS-WIM)",
+        subcomponents: ["PTZ Validation Camera", "Load Cells", "Variable Message Sign (VMS)", "Classification Scanner"],
+        location: "KEE: Busega Interchange Slip",
+        lat: 0.3094,
+        lon: 32.5152,
+        justification: "Major freight choke point transferring to KEE. Heavy M-Class validation."
+    },
+    {
+        component: "Multi-Lane Free Flow (MLFF) Sensor Array",
+        subcomponents: ["PTZ Verification Camera", "ETC Antennas", "Laser Profiler", "Front/Rear ANPR"],
+        location: "KEE: Munyonyo Spur (Km 4+100)",
+        lat: 0.2589,
+        lon: 32.6111,
+        justification: "Toll validation and traffic profiling."
+    }
+];
+
+function renderRSSCatalogue(query = '') {
+    const tbody = document.getElementById('rssTableBody');
+    if (!tbody || !window.RSS_CATALOGUE) return;
+    
+    tbody.innerHTML = '';
+    const q = query.toLowerCase();
+    
+    const items = window.RSS_CATALOGUE.filter(row => {
+        if (!q) return true;
+        return (row.component && row.component.toLowerCase().includes(q)) || 
+               (row.location && row.location.toLowerCase().includes(q)) ||
+               (row.justification && row.justification.toLowerCase().includes(q));
+    });
+    
+    items.forEach((row, idx) => {
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        tr.style.background = idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)';
+        
+        let subcompHtml = '<div style="margin-top:6px; display:flex; gap:4px; flex-wrap:wrap;">';
+        row.subcomponents.forEach(sc => {
+            subcompHtml += `<span style="background:rgba(234, 179, 8, 0.1); color:#eab308; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid rgba(234,179,8,0.2);">${sc}</span>`;
+        });
+        subcompHtml += '</div>';
+        
+        const safeComponent = String(row.component).replace(/'/g, "\'");
+        
+        tr.innerHTML = `
+            <td style="padding: 1rem 1.5rem; vertical-align: top;">
+                <div style="font-weight: 600; font-size: 0.95rem; color: #38bdf8;">${row.component}</div>
+                ${subcompHtml}
+            </td>
+            <td style="padding: 1rem 1.5rem; vertical-align: top; color: #cbd5e1; font-size: 0.85rem;">
+                <i class="fa-solid fa-map-pin" style="color:#facc15;"></i> ${row.location}
+            </td>
+            <td style="padding: 1rem 1.5rem; vertical-align: top; text-align: right; font-family: monospace; color: #94a3b8; font-size: 0.8rem;">
+                ${row.lat.toFixed(4)}, ${row.lon.toFixed(4)}
+            </td>
+            <td style="padding: 1rem 1.5rem; vertical-align: top; font-size: 0.85rem; color: #cbd5e1; max-width: 300px; white-space: normal; line-height: 1.4;">
+                ${row.justification}
+            </td>
+            <td style="padding: 1rem 1.5rem; vertical-align: top; text-align: center;">
+                <button onclick="navigateToTab('map', '${safeComponent}')" title="View on Map" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 4px; padding: 6px 10px; cursor: pointer;">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+const rssSearchInput = document.getElementById('rssSearch');
+if (rssSearchInput) rssSearchInput.addEventListener('input', e => renderRSSCatalogue(e.target.value));
+
 function renderBOQ() {
     const tbody = document.getElementById('boqTableBody');
     const totalEl = document.getElementById('boqTotalSum');
@@ -658,6 +756,7 @@ function renderBOQ() {
 
 }
 renderBOQ();
+renderRSSCatalogue();
 
 // ═══ Data Dictionary ═══
 function renderDictionary(query = '') {
@@ -719,6 +818,7 @@ function renderDictionary(query = '') {
         more.innerHTML = `Showing 100 of ${filtered.length} components. Use search to find specific items.`;
         grid.appendChild(more);
 renderBOQ();
+renderRSSCatalogue();
 
 // ═══ Data Dictionary ═══
 function renderDictionary(query = '') {
