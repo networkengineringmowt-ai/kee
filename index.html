@@ -63,10 +63,7 @@
                     <i class="fa-solid fa-book-open-reader"></i>
                     <span>Tech Specs & Ops</span>
                 </li>
-                <li class="nav-item" data-view="dictionary">
-                    <i class="fa-solid fa-book-atlas"></i>
-                    <span>Data Dictionary</span>
-                </li>
+                
             </ul>
             
             <div class="top-nav-right">
@@ -80,26 +77,7 @@
         <!-- Main Content -->
         <main class="main-content">
 
-            <!-- ═══ Data Dictionary View ═══ -->
-            <section id="dictionary-view" class="view-section">
-                <header class="section-header">
-                    <div class="header-titles">
-                        <span class="eyebrow">ITS Encyclopedia</span>
-                        <h1>Data Dictionary (1000+ Components)</h1>
-                    </div>
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <i class="fa-solid fa-search"></i>
-                            <input type="text" id="dictSearch" placeholder="Search components, specs, categories...">
-                        </div>
-                    </div>
-                </header>
-                <div class="dictionary-grid-wrapper">
-                    <div class="dictionary-grid" id="dictionaryGrid">
-                        <!-- Cards will be dynamically populated here -->
-                    </div>
-                </div>
-            </section>
+            
 
             <!-- ═══ Map View ═══ -->
             <section id="map-view" class="view-section active">
@@ -151,7 +129,17 @@
                                 
                                 <div class="summary-grid" id="mapSummaryGrid"></div>
                                 
-                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                                
+                                
+                                <label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0.5rem 0;">
+                                    <span style="font-size: 0.85rem; color: #cbd5e1;"><i class="fa-solid fa-road" style="color:#38bdf8; width:20px;"></i> Physical Road Network</span>
+                                    <input type="checkbox" id="toggleNetwork" style="accent-color: #38bdf8;" checked>
+                                </label>
+<label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0.5rem 0;">
+                                    <span style="font-size: 0.85rem; color: #cbd5e1;"><i class="fa-solid fa-car-burst" style="color:#ef4444; width:20px;"></i> Historical Accidents</span>
+                                    <input type="checkbox" id="toggleAccidents" style="accent-color: #ef4444;">
+                                </label>
+<div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
                                     <h4 style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-bar"></i> Geographical Distribution</h4>
                                     <div style="height: 150px; position: relative;"><canvas id="geoCorridorChart"></canvas></div>
                                 </div>
@@ -230,6 +218,11 @@
                         <div style="flex: 1; min-width: 400px; height: 300px; position: relative;">
                             <canvas id="boqBarChart"></canvas>
                         </div>
+
+                        <div style="flex: 1; min-width: 400px; height: 300px; position: relative;">
+                            <canvas id="trafficLineChart"></canvas>
+                        </div>
+
                     </div>
                 </div>
 
@@ -269,6 +262,32 @@
                         <input type="text" id="specsSearchInput" placeholder="Search components, procedures...">
                     </div>
                 </header>
+
+                <!-- Data Dictionary Table inside Specs -->
+                <div class="glass-panel" style="margin: 1.5rem; height: 350px; display: flex; flex-direction: column;">
+                    <div class="panel-head" style="padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin:0; font-family: Outfit; font-weight: 500; font-size: 1.2rem;"><i class="fa-solid fa-book-open"></i> Component Definitions & Specifications Table</h3>
+                        <div class="search-box">
+                            <i class="fa-solid fa-search"></i>
+                            <input type="text" id="specsDictSearch" placeholder="Filter definitions...">
+                        </div>
+                    </div>
+                    <div class="table-wrap" style="flex: 1; overflow: auto; padding: 0;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 10; text-align: left;">
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Component Category</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Definition & Purpose</th>
+                                    <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; text-align: center;">Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody id="specsDictTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 
                 <div class="specs-layout" style="height: calc(100vh - 180px); margin: 1.5rem;">
                     <!-- Bottom Half: Document Reader -->
@@ -299,6 +318,7 @@
     <script src="data/its-data.js"></script>
     <script src="data/boq-data.js"></script>
     <script src="data/docs-content.js"></script>
+    <script src="data/accident-data.js"></script>
     
     <!-- App Logic -->
     <script src="assets/app.js"></script>

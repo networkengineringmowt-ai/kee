@@ -312,7 +312,7 @@ function dlFile(name, content, mime) { const a = document.createElement('a'); a.
 document.getElementById('exportGeojson').addEventListener('click', () => dlFile('its-plan.geojson', JSON.stringify(toGeoJson(filtered()), null, 2), 'application/geo+json'));
 document.getElementById('exportCsv').addEventListener('click', () => {
     const h = ['id','corridor','type','site','km','lat','lon','status','phase','priority','purpose','power','comms','dependency'];
-    const esc = v => { const s = String(v ?? ''); return /[",\n]/.test(s) ? `"${s.replaceAll('"','""')}"` : s; };
+    const esc = v => { const s = String(v !== null && v !== undefined ? v : ''); return /[",\n]/.test(s) ? `"${s.replace(/"/g,'""')}"` : s; };
     dlFile('its-plan.csv', [h.join(','), ...filtered().map(i => h.map(k => esc(i[k])).join(','))].join('\n'), 'text/csv');
 });
 
@@ -324,7 +324,71 @@ setTimeout(() => { map.invalidateSize(); fitBounds(); }, 300);
 setTimeout(() => { map.invalidateSize(); fitBounds(); }, 1500);
 
 // â•â•â• Specs Module â•â•â•
-(function setupSpecs() {
+(
+// ═══ Dictionary Table in Specs ═══
+function renderSpecsDictTable(query = '') {
+    const tbody = document.getElementById('specsDictTableBody');
+    if (!tbody || !window.DICTIONARY_DATA) return;
+    
+    tbody.innerHTML = '';
+    const q = query.toLowerCase();
+    
+    const items = window.DICTIONARY_DATA.filter(row => {
+        if (!q) return true;
+        return (row.name && String(row.name).toLowerCase().includes(q)) || 
+               (row.definition && String(row.definition).toLowerCase().includes(q)) ||
+               (row.category && String(row.category).toLowerCase().includes(q));
+    });
+    
+    items.forEach((row, idx) => {
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        tr.style.background = idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)';
+        
+        // Extract tags
+        let tagsHtml = '';
+        if (row.tags && row.tags.length) {
+            tagsHtml = '<div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">' + 
+                row.tags.map(t => `<span style="background:rgba(56,189,248,0.1); color:#38bdf8; font-size:10px; padding:2px 6px; border-radius:10px;">${t}</span>`).join('') + 
+                '</div>';
+        }
+        
+        // Find if spec doc exists
+        let hasSpecDoc = false;
+        const rc = String(row.name).toLowerCase();
+        if (window.DOCS_CONTENT) {
+            for (let docKey in window.DOCS_CONTENT) {
+                const found = window.DOCS_CONTENT[docKey].find(s => {
+                    const st = s.title ? String(s.title).toLowerCase() : '';
+                    return st && (st.includes(rc) || rc.includes(st));
+                });
+                if (hasSpecDoc) break;
+            }
+        }
+        
+        tr.innerHTML = `
+            <td style="padding: 1rem 1.5rem; vertical-align: top;">
+                <div style="font-weight: 600; font-size: 0.95rem; color: #facc15;">${row.name || 'Unknown'}</div>
+                <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;">Category: ${row.category || 'N/A'}</div>
+                ${tagsHtml}
+            </td>
+            <td style="padding: 1rem 1.5rem; font-size: 0.85rem; color: #cbd5e1; max-width: 500px; white-space: normal; line-height: 1.5; vertical-align: top;">
+                ${row.definition || 'No definition provided.'}
+                ${row.purpose ? `<div style="margin-top:6px;"><strong style="color:#a78bfa;">Purpose:</strong> ${row.purpose}</div>` : ''}
+            </td>
+            <td style="padding: 1rem 1.5rem; text-align: center; vertical-align: top;">
+                <button title="View in Specs" style="background: rgba(234, 179, 8, 0.1); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.2); border-radius: 4px; padding: 6px 10px; cursor: pointer;">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+const dictSearch = document.getElementById('specsDictSearch');
+if (dictSearch) dictSearch.addEventListener('input', e => renderSpecsDictTable(e.target.value));
+
+function setupSpecs() {
     const tocContainer = document.getElementById('specsTocContainer');
     const searchInput = document.getElementById('specsSearchInput');
     if (!tocContainer || !docsContent || Object.keys(docsContent).length === 0) return;
@@ -442,7 +506,6 @@ function renderBOQ() {
         const quantities = {};
         window.BOQ_DATA.forEach(row => {
             if (!row.is_header && row.unit_cost_usd) {
-                // Group by spec category (rough heuristic) or just general category
                 let cat = "Other";
                 if (row.component.includes("CCTV") || row.component.includes("Camera")) cat = "Surveillance";
                 else if (row.component.includes("Cable") || row.component.includes("Fiber")) cat = "Fiber & Comms";
@@ -459,7 +522,19 @@ function renderBOQ() {
 
         const ctxD = document.getElementById('boqDoughnutChart');
         const ctxB = document.getElementById('boqBarChart');
+        const ctxL = document.getElementById('trafficLineChart');
         
+        // Vibrant Glassmorphism Colors
+        const vibrantColors = [
+            'hsl(330, 100%, 65%)', // Pink
+            'hsl(280, 100%, 65%)', // Purple
+            'hsl(190, 100%, 55%)', // Cyan
+            'hsl(150, 100%, 50%)', // Green
+            'hsl(45, 100%, 55%)',  // Yellow
+            'hsl(10, 100%, 60%)',  // Orange
+            'hsl(220, 100%, 70%)'  // Blue
+        ];
+
         if (ctxD && window.Chart && !window._boqChartD) {
             window._boqChartD = new Chart(ctxD, {
                 type: 'doughnut',
@@ -467,15 +542,17 @@ function renderBOQ() {
                     labels: Object.keys(categories),
                     datasets: [{
                         data: Object.values(categories),
-                        backgroundColor: ['#38bdf8', '#fb923c', '#818cf8', '#34d399', '#f87171', '#c084fc', '#94a3b8'],
-                        borderWidth: 0, hoverOffset: 4
+                        backgroundColor: vibrantColors,
+                        borderWidth: 2,
+                        borderColor: '#0f172a',
+                        hoverOffset: 10
                     }]
                 },
                 options: { 
                     responsive: true, maintainAspectRatio: false,
                     plugins: { 
-                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { family: 'Inter' } } },
-                        title: { display: true, text: 'Budget Distribution ($)', color: '#fff', font: { size: 14 } }
+                        legend: { position: 'bottom', labels: { color: '#e2e8f0', font: { family: 'Inter', size: 11 }, padding: 15 } },
+                        title: { display: true, text: 'Budget Distribution ($)', color: '#fff', font: { size: 16, weight: '600' }, padding: {bottom: 20} }
                     }
                 }
             });
@@ -493,19 +570,34 @@ function renderBOQ() {
                     datasets: [{
                         label: 'Component Quantity',
                         data: Object.values(quantities),
-                        backgroundColor: '#38bdf8',
-                        borderRadius: 4
+                        backgroundColor: 'hsl(190, 100%, 55%)',
+                        borderColor: 'hsl(190, 100%, 75%)',
+                        borderWidth: 1,
+                        borderRadius: 6
                     }]
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     scales: {
-                        y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                        x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+                        y: { 
+                            ticks: { color: '#cbd5e1', font: {family:'Inter'} }, 
+                            grid: { color: 'rgba(255,255,255,0.08)' },
+                            beginAtZero: true
+                        },
+                        x: { 
+                            ticks: { 
+                                color: '#cbd5e1', 
+                                font: {family:'Inter'},
+                                autoSkip: false,
+                                maxRotation: 45,
+                                minRotation: 45
+                            }, 
+                            grid: { display: false } 
+                        }
                     },
                     plugins: {
                         legend: { display: false },
-                        title: { display: true, text: 'Asset Quantity Distribution', color: '#fff', font: { size: 14 } }
+                        title: { display: true, text: 'Asset Quantity Distribution', color: '#fff', font: { size: 16, weight: '600' }, padding: {bottom: 20} }
                     }
                 }
             });
@@ -514,7 +606,55 @@ function renderBOQ() {
             window._boqChartB.data.datasets[0].data = Object.values(quantities);
             window._boqChartB.update();
         }
+
+        if (ctxL && window.Chart && !window._boqChartL) {
+            window._boqChartL = new Chart(ctxL, {
+                type: 'line',
+                data: {
+                    labels: ['Namboole-Gayaza', 'Gayaza-Hoima', 'Hoima-Busega'],
+                    datasets: [
+                        {
+                            label: 'Total AADT',
+                            data: [27000, 30000, 32000],
+                            borderColor: 'hsl(330, 100%, 65%)',
+                            backgroundColor: 'rgba(255, 51, 153, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'M-Class (Heavy/Freight)',
+                            data: [4800, 4500, 5500],
+                            borderColor: 'hsl(45, 100%, 55%)',
+                            backgroundColor: 'rgba(255, 204, 0, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: { 
+                            ticks: { color: '#cbd5e1', font: {family:'Inter'} }, 
+                            grid: { color: 'rgba(255,255,255,0.08)' } 
+                        },
+                        x: { 
+                            ticks: { color: '#cbd5e1', font: {family:'Inter'} }, 
+                            grid: { display: false } 
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#e2e8f0' } },
+                        title: { display: true, text: 'M-Class Traffic Demand (RSS Justification)', color: '#fff', font: { size: 16, weight: '600' }, padding: {bottom: 20} }
+                    }
+                }
+            });
+        }
     }, 100);
+
 
 }
 renderBOQ();
@@ -780,3 +920,131 @@ const procSearch = document.getElementById('procurementSearch');
 if (procSearch) procSearch.addEventListener('input', e => renderProcurementTable(e.target.value));
 
 renderProcurementTable();
+renderSpecsDictTable();
+
+}
+}
+
+
+// ═══ Accident Hotspot Layer ═══
+let accidentLayer = null;
+const accToggle = document.getElementById('toggleAccidents');
+
+function renderAccidents() {
+    if (accidentLayer) { map.removeLayer(accidentLayer); accidentLayer = null; }
+    if (!accToggle || !accToggle.checked || !window.ACCIDENT_DATA) return;
+    
+    accidentLayer = L.featureGroup().addTo(map);
+    window.ACCIDENT_DATA.incidents.forEach(acc => {
+        if (!acc.lat || !acc.lon) return;
+        
+        let color = '#fb923c'; // Minor
+        let radius = 4;
+        if (acc.severity === 'Damage Only') { color = '#facc15'; radius = 3; }
+        if (acc.severity === 'Severe Injury') { color = '#ef4444'; radius = 6; }
+        if (acc.severity === 'Fatal') { color = '#a855f7'; radius = 8; }
+        
+        const circle = L.circleMarker([acc.lat, acc.lon], {
+            radius: radius,
+            fillColor: color,
+            color: '#fff',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        });
+        
+        const content = `
+            <div style="font-family:Inter; min-width:200px;">
+                <div style="font-weight:700; color:${color}; font-size:14px; margin-bottom:4px;"><i class="fa-solid fa-car-burst"></i> ${acc.severity}</div>
+                <div style="font-size:12px; color:#94a3b8; margin-bottom:8px;">${acc.date} | ${acc.hour_band} | Chainage: ${acc.chainage}</div>
+                <div style="font-size:12px; margin-bottom:4px;"><strong>Vehicles:</strong> ${acc.dominant_vehicle} (${acc.vehicles})</div>
+                <div style="font-size:12px; margin-bottom:4px;"><strong>Casualties:</strong> ${acc.casualties}</div>
+                <div style="font-size:12px; margin-bottom:8px;"><strong>Response Time:</strong> ${acc.response_band}</div>
+                <div style="background:rgba(255,255,255,0.05); padding:6px; border-radius:4px; font-size:11px; color:#cbd5e1;">
+                    <em>Justification:</em> High accident frequency at this chainage strongly validates the requirement for CCTV coverage and VMS warning systems to improve incident response times.
+                </div>
+            </div>
+        `;
+        circle.bindPopup(content, {className: 'glass-popup'});
+        circle.addTo(accidentLayer);
+    });
+}
+
+if (accToggle) {
+    accToggle.addEventListener('change', renderAccidents);
+}
+
+// Hook into existing render
+const originalRender = render;
+render = function() {
+    originalRender();
+    renderAccidents();
+};
+
+
+
+// ═══ Physical Road Network Layer ═══
+let networkLayer = null;
+const netToggle = document.getElementById('toggleNetwork');
+
+function renderNetwork() {
+    if (networkLayer) { map.removeLayer(networkLayer); networkLayer = null; }
+    if (!netToggle || !netToggle.checked || !window.ROAD_NETWORK) return;
+    
+    networkLayer = L.geoJSON(window.ROAD_NETWORK, {
+        style: function (feature) {
+            return {
+                color: '#38bdf8',
+                weight: 6,
+                opacity: 0.6,
+                className: 'route-line'
+            };
+        },
+        onEachFeature: function (feature, layer) {
+            if (feature.properties && feature.properties.Link_Name) {
+                let statsHtml = '';
+                if (feature.properties.User_Stats) {
+                    statsHtml = `
+                    <div style="margin-top:8px; border-top:1px solid rgba(255,255,255,0.1); padding-top:8px; font-size:11px; color:#cbd5e1;">
+                        <strong style="color:#facc15;"><i class="fa-solid fa-satellite-dish"></i> RSS Placement Justification</strong><br>
+                        <em>Traffic Volumes (AADT):</em><br>
+                        • Namboole-Gayaza: 27k, 4.8k, 5.1k<br>
+                        • Gayaza-Hoima: 30k, 4.5k, 4.7k<br>
+                        • Hoima-Busega: Pending<br>
+                        <br>
+                        <span style="color:#94a3b8;">High traffic volumes along the KNBP corridor directly justify the strategic placement of Road Sensor System (RSS) components to optimize traffic monitoring and weight compliance.</span>
+                    </div>`;
+                }
+                layer.bindPopup(`<div style="font-family:Inter; font-weight:700; color:#38bdf8;">${feature.properties.Link_Name}</div><div style="font-size:12px; color:#94a3b8;">Physical ArcGIS Road Segment</div>${statsHtml}`, {className: 'glass-popup'});
+            }
+        }
+    }).addTo(map);
+    
+    // Create a drop shadow effect (underlay)
+    const shadowLayer = L.geoJSON(window.ROAD_NETWORK, {
+        style: function (feature) {
+            return {
+                color: '#070e18',
+                weight: 12,
+                opacity: 0.3,
+                className: 'route-shadow'
+            };
+        },
+        interactive: false
+    });
+    
+    // Group them
+    networkLayer = L.layerGroup([shadowLayer, networkLayer]).addTo(map);
+}
+
+if (netToggle) {
+    netToggle.addEventListener('change', renderNetwork);
+}
+
+// Hook into existing render
+const originalRender2 = render;
+render = function() {
+    originalRender2();
+    renderNetwork();
+};
+
