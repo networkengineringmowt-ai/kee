@@ -13,7 +13,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 
-    <link rel="stylesheet" href="app.css?v=20260703-restore">
+    <link rel="stylesheet" href="app.css?v=20260703-geocat">
 </head>
 <body>
     <div class="app-shell">
@@ -38,10 +38,6 @@
                 <button class="nav-item" type="button" data-view="boq">
                     <i class="fa-solid fa-file-invoice-dollar"></i>
                     <span>BOQ</span>
-                </button>
-                <button class="nav-item" type="button" data-view="explorer">
-                    <i class="fa-solid fa-book-journal-whills"></i>
-                    <span>Dictionary</span>
                 </button>
                 <button class="nav-item" type="button" data-view="analytics">
                     <i class="fa-solid fa-chart-pie"></i>
@@ -255,26 +251,6 @@
                 </div>
             </section>
 
-            <section id="explorer-view" class="view-section" aria-labelledby="docsTitle">
-                <div class="view-header slim">
-                    <div>
-                        <p class="eyebrow">Reference glossary</p>
-                        <h3 id="docsTitle">RSS Component Dictionary</h3>
-                        <p class="panel-note" id="dictCountNote">Loading definitions...</p>
-                    </div>
-                    <label class="search-field view-search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" id="mediaSearchInput" placeholder="Search component definitions...">
-                    </label>
-                </div>
-
-                <div class="dict-category-rail" id="dictCategoryRail"></div>
-                <div class="definition-list" id="mediaGrid"></div>
-                <div class="dict-more">
-                    <button class="ghost-btn" type="button" id="dictLoadMore"><i class="fa-solid fa-plus"></i><span>Load more definitions</span></button>
-                </div>
-            </section>
-
             <section id="analytics-view" class="view-section" aria-labelledby="analyticsTitle">
                 <div class="view-header slim">
                     <div>
@@ -304,17 +280,17 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <script src="data/actual_network.js?v=20260702-wim5-rssdict2"></script>
-    <script src="data/its-data.js?v=20260703-restore"></script>
+    <script src="data/its-data.js?v=20260703-geocat"></script>
     <script src="data/boq_data.js?v=20260702-wim5-rssdict2"></script>
     <script src="data/toll_components.js?v=20260702-wim5-rssdict2"></script>
     <script src="data/dictionary_data.js?v=20260703-restore2"></script>
     <script src="data/project_scope.js?v=20260702-wim5-rssdict2"></script>
     <script src="data/rss_data.js?v=20260702-wim5-rssdict2"></script>
-    <script src="data/rss_budget.js?v=20260703-rss-traffic2"></script>
+    <script src="data/rss_budget.js?v=20260703-geocat"></script>
     <script src="data/traffic_data.js?v=20260703-restore"></script>
     <script src="data/accident_data.js?v=20260702-3d-live"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
-    <script src="app.js?v=20260703-restore"></script>
+    <script src="app.js?v=20260703-geocat"></script>
 </body>
 </html>

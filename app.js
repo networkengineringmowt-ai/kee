@@ -70,7 +70,6 @@
         setupMap();
         setupSpecs();
         setupBOQ();
-        setupExplorer();
         setupAnalyticsDash();
 
         switchView("map");
@@ -764,17 +763,8 @@
     }
 
     function openDictionaryForTerm(term, category = "") {
-        switchView("explorer");
-        if (category && typeof dictState !== "undefined") {
-            dictState.category = category;
-            dictState.limit = DICT_PAGE;
-            renderDictCategoryRail();
-        }
-        const search = $("#mediaSearchInput");
-        if (search) {
-            search.value = term || "";
-            search.dispatchEvent(new Event("input"));
-        }
+        // Definitions now live in the Specs table.
+        openSpecsForTerm(term, category);
     }
 
     function openMapForTerm(term) {
@@ -2220,7 +2210,7 @@
         // 3D schematic + clustered charts + deep component summaries
         const sumEl = $("#analyticsSummaries");
         if (sumEl) {
-            sumEl.innerHTML = renderRss3D() + renderClusteredCharts() + renderComponentSummaries();
+            sumEl.innerHTML = renderRss3D() + renderClusteredCharts() + renderGeoCatalogue() + renderComponentSummaries();
             // Interactive: clicking a component column jumps to the map filtered to it
             ((p)=>p?p.querySelectorAll(".cc-col"):[])(sumEl.querySelector(".cc-panel")).forEach((col) => {
                 col.classList.add("clickable");
@@ -2670,7 +2660,68 @@
                 note: "Class totals are reconciled to the reported monthly ADT where the source table contains an obvious class-entry typo.",
             });
         }
+        if (accidentData.length) {
+            const bands = unique(accidentData.map((r) => r.response_band)).sort();
+            html += clusteredChart("Emergency response time distribution (2021-26 crash record)", bands.map((b) => ({
+                label: b,
+                values: [accidentData.filter((r) => r.response_band === b).length]
+            })), [{ label: "Crashes", color: "#f97316" }], accidentData.length + " crashes", {
+                yAxis: "Crashes", note: "Slow response bands justify AI auto-detection: notification fires the moment the PTZ model confirms an incident."
+            });
+        }
+        if (rssBudget && Array.isArray(rssBudget.categories)) {
+            html += clusteredChart("RSS budget by package category (UGX millions, before VAT)", rssBudget.categories.map((c) => ({
+                label: c.category.split(" ")[0].replace(":", "").slice(0, 12),
+                values: [Math.round(c.subtotal_ugx / 1e6)]
+            })), [{ label: "Category sub-total (M UGX)", color: "#a78bfa" }], ugxB(rssBudget.subtotalUgx) + " UGX CAPEX", {
+                yAxis: "M UGX", note: "Full category names and line items are in the BOQ tab; every rate carries its unit-price assumption."
+            });
+        }
         return html;
+    }
+
+    // Fully georeferenced RSS component catalogue with placement justification
+    function renderGeoCatalogue() {
+        const assets = [...state.assets].sort((a, b) => (a.corridor + a.type + a.km).toString().localeCompare((b.corridor + b.type + b.km).toString()));
+        if (!assets.length) return "";
+        const just = (a) => {
+            const siteInfo = String(a.site || "");
+            const m = siteInfo.match(/\(([^)]+)\)/);
+            if (/hotspot|crash|fatal|slow response/i.test(siteInfo)) return siteInfo.replace(/^[A-Za-z ]*- /, "");
+            if (a.type === "WIM") return /HS-WIM/.test(siteInfo) ? "New high-speed freight screening at corridor entry" : "Existing plaza static WIM - enhance & integrate";
+            if (a.type === "ANPR") return "Plate capture synchronised to WIM weigh events";
+            if (a.type === "TOC") return "Specified TCC location - Kajjansi Toll Plaza compound";
+            if (a.type === "VMS") return /entry/i.test(siteInfo) ? "Corridor entry information display, >=0.6 km clear of interchanges" : "Advance warning of measured crash clusters / mid-corridor coverage";
+            if (a.type === "CCTV") return /ADT|measured/i.test(siteInfo) ? "Placed by measured traffic volume" : "AI-ML monitoring coverage of the corridor";
+            if (a.type === "RSU") return "Field aggregation and power for adjacent devices";
+            if (a.type === "Comms") return "Backhaul drop onto the existing fibre backbone";
+            return m ? m[1] : "Corridor coverage";
+        };
+        const rows = assets.map((a, i) => `<tr>
+            <td>${i + 1}</td>
+            <td>${escapeHtml(a.id)}</td>
+            <td>${escapeHtml(a.type)}</td>
+            <td>${escapeHtml(a.site)}</td>
+            <td>${escapeHtml(a.corridor)}</td>
+            <td class="num">${escapeHtml(String(a.km))}</td>
+            <td class="num">${Number(a.lat).toFixed(6)}</td>
+            <td class="num">${Number(a.lon).toFixed(6)}</td>
+            <td>${escapeHtml(a.status)}</td>
+            <td class="col-just">${escapeHtml(just(a))}</td>
+        </tr>`).join("");
+        return `<section class="panel an-panel geocat-panel">
+            <div class="an-panel-head"><h3>Georeferenced RSS component catalogue &mdash; proposed locations and justification</h3>
+                <span class="pill">${assets.length} components &middot; WGS84</span></div>
+            <div class="table-wrap geocat-wrap">
+                <table class="dense-table geocat-table">
+                    <thead><tr><th>#</th><th>ID</th><th>Type</th><th>Component / site</th><th>Corridor</th>
+                        <th class="num">Chainage (km)</th><th class="num">Latitude (Y)</th><th class="num">Longitude (X)</th>
+                        <th>Status</th><th>Justification for location</th></tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
+            <p class="panel-note">Coordinates are planning-grade, snapped to the network2026 centreline geometry (WGS84); to be confirmed by detailed site survey before construction.</p>
+        </section>`;
     }
 
     // ---- Component summaries engine: 100+ numerical & categorical statistics ------
