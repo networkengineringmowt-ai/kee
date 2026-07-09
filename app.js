@@ -601,9 +601,9 @@
         if (asset.type === "Airport Entrance") {
             return L.divIcon({
                 className: "asset-div-icon",
-                html: `<div class="asset-marker airport-marker${selected ? " selected" : ""}" style="background-color: #0b5394; color: white; border-radius: 50%; border: 2px solid white;"><i class="fa-solid fa-plane-departure" style="font-size: 16px;"></i></div>`,
-                iconSize: selected ? [38, 38] : [34, 34],
-                iconAnchor: selected ? [19, 19] : [17, 17]
+                html: `<div class="asset-marker airport-marker${selected ? " selected" : ""}" style="background-color: #1a1a1a; color: #00d2ff; border-radius: 4px; border: 1px solid #00d2ff; padding: 4px; box-shadow: 0 0 8px rgba(0,210,255,0.5);"><i class="fa-solid fa-plane" style="font-size: 14px;"></i></div>`,
+                iconSize: selected ? [32, 32] : [28, 28],
+                iconAnchor: selected ? [16, 16] : [14, 14]
             });
         }
         const isPol = asset.type === "Existing Police Camera";
