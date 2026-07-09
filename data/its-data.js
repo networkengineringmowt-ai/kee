@@ -1634,7 +1634,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "color": "#111827"
         },
         {
-            "id": "CCTV",
+            "id": "PTZ",
             "short": "CAM",
             "label": "PTZ / TMCS (AI-ML)",
             "color": "#3b82f6"
@@ -1670,9 +1670,9 @@ window.ITS_GEOSPATIAL_DATA = {
             "color": "#14b8a6"
         },
         {
-            "id": "Police Camera",
+            "id": "Regular Camera",
             "short": "POL",
-            "label": "Police Camera",
+            "label": "Regular Camera",
             "color": "#ff006e"
         },
         {
@@ -1686,7 +1686,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-001",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - Busega entry",
             "lat": 0.308533,
             "lon": 32.513525,
@@ -1702,7 +1702,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-002",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 2-3 hotspot (45 crashes)",
             "lat": 0.295204,
             "lon": 32.512326,
@@ -1718,7 +1718,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-003",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 4-5 hotspot (26 crashes)",
             "lat": 0.278438,
             "lon": 32.515513,
@@ -1734,7 +1734,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-004",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 6-7 (2 fatal)",
             "lat": 0.261925,
             "lon": 32.520675,
@@ -1750,7 +1750,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-005",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 8 (Kajjansi approach)",
             "lat": 0.248855,
             "lon": 32.522711,
@@ -1766,7 +1766,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-006",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 9-10 hotspot (35 crashes, 2 fatal)",
             "lat": 0.235498,
             "lon": 32.523622,
@@ -1782,7 +1782,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-007",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 11-12 hotspot (46 crashes)",
             "lat": 0.219322,
             "lon": 32.530556,
@@ -1798,7 +1798,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-008",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 13 (SWIM approach)",
             "lat": 0.20634,
             "lon": 32.528676,
@@ -1814,7 +1814,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-009",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 14 mid-corridor",
             "lat": 0.197708,
             "lon": 32.526248,
@@ -1830,7 +1830,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-010",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 16 (slow response: 68 min avg)",
             "lat": 0.181024,
             "lon": 32.52073,
@@ -1846,7 +1846,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-011",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 17-18 hotspot (19 crashes)",
             "lat": 0.169159,
             "lon": 32.51459,
@@ -1862,7 +1862,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-012",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 19-20 (2 fatal)",
             "lat": 0.151546,
             "lon": 32.51101,
@@ -1878,7 +1878,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-013",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 20-21 approach",
             "lat": 0.142584,
             "lon": 32.510263,
@@ -1894,7 +1894,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-014",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 21-22 worst hotspot (risk 98.6, 2 fatal)",
             "lat": 0.133636,
             "lon": 32.510712,
@@ -1910,7 +1910,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KEE-015",
             "corridor": "KEE",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 23-24 hotspot (slow response: 72 min avg)",
             "lat": 0.115751,
             "lon": 32.512276,
@@ -2214,7 +2214,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-033",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - Namboole section (22,437 ADT measured)",
             "lat": 0.364703,
             "lon": 32.647048,
@@ -2230,7 +2230,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-034",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 6.2 (Naalya-Kisaasi)",
             "lat": 0.368654,
             "lon": 32.616065,
@@ -2246,7 +2246,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-035",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 10.4 (Kyebando)",
             "lat": 0.349873,
             "lon": 32.58692,
@@ -2262,7 +2262,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-036",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 13.7 (Gayaza-Hoima: 47,998 ADT, busiest)",
             "lat": 0.348752,
             "lon": 32.55911,
@@ -2278,7 +2278,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-037",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 14.9 (Gayaza-Hoima: 47,998 ADT, busiest)",
             "lat": 0.346412,
             "lon": 32.548714,
@@ -2294,7 +2294,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-038",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 16.5 (Hoima-Busega: 37,220 ADT)",
             "lat": 0.341759,
             "lon": 32.535338,
@@ -2310,7 +2310,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-039",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 18.4 (Hoima-Busega section)",
             "lat": 0.328319,
             "lon": 32.52489,
@@ -2326,7 +2326,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-KNBP-040",
             "corridor": "KNBP",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "PTZ - km 19.4 (Busega approach)",
             "lat": 0.319772,
             "lon": 32.522145,
@@ -2342,7 +2342,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-EDC-041",
             "corridor": "EDC",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "CCTV - EDC 1",
             "lat": 0.036928,
             "lon": 32.451516,
@@ -2358,7 +2358,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-EDC-042",
             "corridor": "EDC",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "CCTV - EDC 2",
             "lat": 0.051839,
             "lon": 32.456998,
@@ -2374,7 +2374,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-EDC-043",
             "corridor": "EDC",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "CCTV - EDC 3",
             "lat": 0.062844,
             "lon": 32.472904,
@@ -2390,7 +2390,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-EDC-044",
             "corridor": "EDC",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "CCTV - EDC 4",
             "lat": 0.083691,
             "lon": 32.482971,
@@ -2406,7 +2406,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "CCT-EDC-045",
             "corridor": "EDC",
-            "type": "CCTV",
+            "type": "PTZ",
             "site": "CCTV - EDC 5",
             "lat": 0.094684,
             "lon": 32.50177,
@@ -2914,7 +2914,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-001",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 1",
             "lat": 0.349155,
             "lon": 32.654303,
@@ -2930,7 +2930,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-002",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 2",
             "lat": 0.348029,
             "lon": 32.65415,
@@ -2946,7 +2946,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-003",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 3",
             "lat": 0.350997,
             "lon": 32.652949,
@@ -2962,7 +2962,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-004",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 4",
             "lat": 0.357831,
             "lon": 32.593433,
@@ -2978,7 +2978,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-005",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 5",
             "lat": 0.347781,
             "lon": 32.570773,
@@ -2994,7 +2994,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-006",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 6",
             "lat": 0.350868,
             "lon": 32.564552,
@@ -3010,7 +3010,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-007",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 7",
             "lat": 0.348574,
             "lon": 32.564414,
@@ -3026,7 +3026,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-008",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 8",
             "lat": 0.348873,
             "lon": 32.563341,
@@ -3042,7 +3042,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-009",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 9",
             "lat": 0.35019,
             "lon": 32.562921,
@@ -3058,7 +3058,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-010",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 10",
             "lat": 0.347735,
             "lon": 32.55742,
@@ -3074,7 +3074,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-011",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 11",
             "lat": 0.347343,
             "lon": 32.555452,
@@ -3090,7 +3090,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-012",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 12",
             "lat": 0.344569,
             "lon": 32.542886,
@@ -3106,7 +3106,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-013",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 13",
             "lat": 0.345424,
             "lon": 32.542084,
@@ -3122,7 +3122,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-014",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 14",
             "lat": 0.332189,
             "lon": 32.527762,
@@ -3138,7 +3138,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-015",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 15",
             "lat": 0.331977,
             "lon": 32.526585,
@@ -3154,7 +3154,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-016",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 16",
             "lat": 0.325971,
             "lon": 32.523868,
@@ -3170,7 +3170,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-017",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 17",
             "lat": 0.321487,
             "lon": 32.522614,
@@ -3186,7 +3186,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-018",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 18",
             "lat": 0.314535,
             "lon": 32.517582,
@@ -3202,7 +3202,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-019",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 19",
             "lat": 0.311701,
             "lon": 32.513958,
@@ -3218,7 +3218,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-020",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 20",
             "lat": 0.310081,
             "lon": 32.515096,
@@ -3234,7 +3234,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-021",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 21",
             "lat": 0.297007,
             "lon": 32.512717,
@@ -3250,7 +3250,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-022",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 22",
             "lat": 0.281918,
             "lon": 32.513138,
@@ -3266,7 +3266,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-023",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 23",
             "lat": 0.278455,
             "lon": 32.515612,
@@ -3282,7 +3282,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-024",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 24",
             "lat": 0.271154,
             "lon": 32.520174,
@@ -3298,7 +3298,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-025",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 25",
             "lat": 0.212727,
             "lon": 32.541929,
@@ -3314,7 +3314,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-026",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 26",
             "lat": 0.215195,
             "lon": 32.534592,
@@ -3330,7 +3330,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-027",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 27",
             "lat": 0.208962,
             "lon": 32.529661,
@@ -3346,7 +3346,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-028",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 28",
             "lat": 0.205728,
             "lon": 32.528507,
@@ -3362,7 +3362,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-029",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 29",
             "lat": 0.197971,
             "lon": 32.526316,
@@ -3378,7 +3378,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-030",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 30",
             "lat": 0.185071,
             "lon": 32.523616,
@@ -3394,7 +3394,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-031",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 31",
             "lat": 0.17658,
             "lon": 32.517606,
@@ -3410,7 +3410,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-032",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 32",
             "lat": 0.160118,
             "lon": 32.512634,
@@ -3426,7 +3426,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-033",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 33",
             "lat": 0.145127,
             "lon": 32.510614,
@@ -3442,7 +3442,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-034",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 34",
             "lat": 0.132418,
             "lon": 32.510982,
@@ -3458,7 +3458,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-035",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 35",
             "lat": 0.117612,
             "lon": 32.511916,
@@ -3474,7 +3474,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-036",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 36",
             "lat": 0.113693,
             "lon": 32.512835,
@@ -3490,7 +3490,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-037",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 37",
             "lat": 0.105168,
             "lon": 32.513031,
@@ -3506,7 +3506,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-038",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 38",
             "lat": 0.098352,
             "lon": 32.506023,
@@ -3522,7 +3522,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-039",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 39",
             "lat": 0.094981,
             "lon": 32.502325,
@@ -3538,7 +3538,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-040",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 40",
             "lat": 0.092267,
             "lon": 32.498811,
@@ -3554,7 +3554,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-041",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 41",
             "lat": 0.091029,
             "lon": 32.495434,
@@ -3570,7 +3570,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-042",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 42",
             "lat": 0.088949,
             "lon": 32.488959,
@@ -3586,7 +3586,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-043",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 43",
             "lat": 0.086294,
             "lon": 32.484585,
@@ -3602,7 +3602,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-044",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 44",
             "lat": 0.083848,
             "lon": 32.483199,
@@ -3618,7 +3618,7 @@ window.ITS_GEOSPATIAL_DATA = {
         {
             "id": "POL-045",
             "corridor": "KEE",
-            "type": "Police Camera",
+            "type": "Regular Camera",
             "site": "Police Camera 45",
             "lat": 0.081474,
             "lon": 32.482038,
