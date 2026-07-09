@@ -639,12 +639,16 @@
         if (!legend) return;
 
         const types = unique(state.filteredAssets.map((asset) => asset.type));
-        legend.innerHTML = types.map((type) => `
+        legend.innerHTML = types.map((type) => {
+            const match = state.assetTypes.find(item => item.id === type || item.label === type);
+            const label = match ? match.label : type;
+            return `
             <div class="legend-item">
                 <span class="legend-swatch" style="background:${getTypeColor(type)}"></span>
-                <span>${escapeHtml(type)}</span>
+                <span>${escapeHtml(label)}</span>
             </div>
-        `).join("");
+            `;
+        }).join("");
     }
 
     function selectAsset(assetId, fly = false) {
