@@ -1708,7 +1708,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Busega entry sign set 0.8 km clear of the Busega interchange influence area; final gantry foundation to avoid bridge/culvert conflict.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-KEE-017",
@@ -1729,7 +1729,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Advance warning sign upstream of the km 9-13 crash cluster, about 4.5 km clear of Kajjansi interchange and outside bridge influence zones.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-KEE-018",
@@ -1750,7 +1750,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Kajjansi-side decision sign at km 14.5, 2.4 km clear of the Kajjansi interchange influence area and downstream bridge structures.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-KEE-019",
@@ -1771,7 +1771,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Advance warning sign for the km 21-24 hotspots, about 5.6 km before Mpala interchange and clear of interchange weaving zones.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "RSU-KEE-020",
@@ -2000,7 +2000,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Eastern KNBP entry sign set 1.2 km clear of the Namboole interchange influence area.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-KNBP-053",
@@ -2021,7 +2021,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "KNBP intermediate sign set at km 5.9, at least 1.6 km clear of Naalya and Kisaasi interchange influence areas.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-KNBP-054",
@@ -2042,7 +2042,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "KNBP mid-bypass sign set more than 1.2 km clear of Kisaasi and Kyebando interchange influence areas.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-KNBP-055",
@@ -2063,7 +2063,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Western KNBP entry sign set more than 1.0 km clear of Masanafu and Busega interchange influence areas.",
             "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-EDC-056",
@@ -2083,7 +2083,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "mounting": "Fixed overhead gantry spanning the full carriageway with minimum 5.5 m vertical clearance and maintenance walkway.",
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Airport Dual airport-side entry sign set 0.8 km from the airport-end decision point; final survey to keep the gantry outside bridge, junction and terminal weaving influence zones.",
-            "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)"
+            "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-EDC-057",
@@ -2103,7 +2104,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "mounting": "Fixed overhead gantry spanning the full carriageway with minimum 5.5 m vertical clearance and maintenance walkway.",
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Overhead gantry set outside bridge and interchange influence zones; final position to be confirmed by site survey.",
-            "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)"
+            "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "VMS-EDC-058",
@@ -2123,7 +2125,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "mounting": "Fixed overhead gantry spanning the full carriageway with minimum 5.5 m vertical clearance and maintenance walkway.",
             "spanCoverage": "Entire carriageway, all approach lanes in the direction of travel.",
             "placement": "Airport Dual Mpala-side entry sign set 0.7 km clear of the Mpala junction influence area.",
-            "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)"
+            "pricingCategory": "Variable Message Signs (10 fixed overhead, full carriageway)",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "WIM-KEE-059",
@@ -2577,7 +2580,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "id": "CCT-KEE-001",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - Busega entry - Bridge mounted",
+            "site": "PTZ - Busega entry",
             "lat": 0.308533,
             "lon": 32.513525,
             "km": 1.0,
@@ -2588,13 +2591,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-003",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 4-5 hotspot (26 crashes) - Bridge mounted",
+            "site": "PTZ - km 4-5 hotspot (26 crashes)",
             "lat": 0.278438,
             "lon": 32.515513,
             "km": 4.5,
@@ -2605,13 +2608,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-004",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 6-7 (2 fatal) - Bridge mounted",
+            "site": "PTZ - km 6-7 (2 fatal)",
             "lat": 0.261925,
             "lon": 32.520675,
             "km": 6.5,
@@ -2622,13 +2625,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-006",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 9-10 hotspot (35 crashes, 2 fatal) - Bridge mounted",
+            "site": "PTZ - km 9-10 hotspot (35 crashes, 2 fatal)",
             "lat": 0.235498,
             "lon": 32.523622,
             "km": 9.5,
@@ -2639,13 +2642,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-007",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 11-12 hotspot (46 crashes) - Bridge mounted",
+            "site": "PTZ - km 11-12 hotspot (46 crashes)",
             "lat": 0.219322,
             "lon": 32.530556,
             "km": 11.5,
@@ -2656,13 +2659,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-009",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 14 mid-corridor - Bridge mounted",
+            "site": "PTZ - km 14 mid-corridor",
             "lat": 0.197708,
             "lon": 32.526248,
             "km": 14.0,
@@ -2673,13 +2676,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-010",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 16 (slow response: 68 min avg) - Bridge mounted",
+            "site": "PTZ - km 16 (slow response: 68 min avg)",
             "lat": 0.181024,
             "lon": 32.52073,
             "km": 16.0,
@@ -2690,13 +2693,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-012",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 19-20 (2 fatal) - Bridge mounted",
+            "site": "PTZ - km 19-20 (2 fatal)",
             "lat": 0.151546,
             "lon": 32.51101,
             "km": 19.5,
@@ -2707,13 +2710,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-014",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 21-22 worst hotspot (risk 98.6, 2 fatal) - Bridge mounted",
+            "site": "PTZ - km 21-22 worst hotspot (risk 98.6, 2 fatal)",
             "lat": 0.133636,
             "lon": 32.510712,
             "km": 21.5,
@@ -2724,13 +2727,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KEE-015",
             "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 23-24 hotspot (slow response: 72 min avg) - Bridge mounted",
+            "site": "PTZ - km 23-24 hotspot (slow response: 72 min avg)",
             "lat": 0.115751,
             "lon": 32.512276,
             "km": 23.5,
@@ -2741,13 +2744,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KNBP-033",
             "corridor": "KNBP",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - Namboole section (22,437 ADT measured) - Bridge mounted",
+            "site": "PTZ - Namboole section (22,437 ADT measured)",
             "lat": 0.364703,
             "lon": 32.647048,
             "km": 2.0,
@@ -2758,13 +2761,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KNBP-034",
             "corridor": "KNBP",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 6.2 (Naalya-Kisaasi) - Bridge mounted",
+            "site": "PTZ - km 6.2 (Naalya-Kisaasi)",
             "lat": 0.368654,
             "lon": 32.616065,
             "km": 6.2,
@@ -2775,13 +2778,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KNBP-035",
             "corridor": "KNBP",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 10.4 (Kyebando) - Bridge mounted",
+            "site": "PTZ - km 10.4 (Kyebando)",
             "lat": 0.349873,
             "lon": 32.58692,
             "km": 10.4,
@@ -2792,13 +2795,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KNBP-036",
             "corridor": "KNBP",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 13.7 (Gayaza-Hoima: 47,998 ADT, busiest) - Bridge mounted",
+            "site": "PTZ - km 13.7 (Gayaza-Hoima: 47,998 ADT, busiest)",
             "lat": 0.348752,
             "lon": 32.55911,
             "km": 13.7,
@@ -2809,13 +2812,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KNBP-038",
             "corridor": "KNBP",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 16.5 (Hoima-Busega: 37,220 ADT) - Bridge mounted",
+            "site": "PTZ - km 16.5 (Hoima-Busega: 37,220 ADT)",
             "lat": 0.341759,
             "lon": 32.535338,
             "km": 16.5,
@@ -2826,13 +2829,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-KNBP-039",
             "corridor": "KNBP",
             "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 18.4 (Hoima-Busega section) - Bridge mounted",
+            "site": "PTZ - km 18.4 (Hoima-Busega section)",
             "lat": 0.328319,
             "lon": 32.52489,
             "km": 18.4,
@@ -2843,7 +2846,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-EDC-041",
@@ -2859,7 +2862,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet"
+            "dependency": "Roadside cabinet",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-EDC-042",
@@ -2875,7 +2879,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet"
+            "dependency": "Roadside cabinet",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-EDC-043",
@@ -2891,7 +2896,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet"
+            "dependency": "Roadside cabinet",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-EDC-044",
@@ -2907,7 +2913,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet"
+            "dependency": "Roadside cabinet",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "CCT-EDC-045",
@@ -2923,13 +2930,14 @@ window.ITS_GEOSPATIAL_DATA = {
             "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet"
+            "dependency": "Roadside cabinet",
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-001",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 1 - Bridge mounted",
+            "site": "Police Camera 1",
             "lat": 0.349155,
             "lon": 32.654303,
             "km": 0,
@@ -2940,13 +2948,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-004",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 4 - Bridge mounted",
+            "site": "Police Camera 4",
             "lat": 0.357831,
             "lon": 32.593433,
             "km": 0,
@@ -2957,13 +2965,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-005",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 5 - Bridge mounted",
+            "site": "Police Camera 5",
             "lat": 0.347781,
             "lon": 32.570773,
             "km": 0,
@@ -2974,13 +2982,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-006",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 6 - Bridge mounted",
+            "site": "Police Camera 6",
             "lat": 0.350868,
             "lon": 32.564552,
             "km": 0,
@@ -2991,13 +2999,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-012",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 12 - Bridge mounted",
+            "site": "Police Camera 12",
             "lat": 0.344569,
             "lon": 32.542886,
             "km": 0,
@@ -3008,13 +3016,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-018",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 18 - Bridge mounted",
+            "site": "Police Camera 18",
             "lat": 0.314535,
             "lon": 32.517582,
             "km": 0,
@@ -3025,13 +3033,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-024",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 24 - Bridge mounted",
+            "site": "Police Camera 24",
             "lat": 0.271154,
             "lon": 32.520174,
             "km": 0,
@@ -3042,13 +3050,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-025",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 25 - Bridge mounted",
+            "site": "Police Camera 25",
             "lat": 0.212727,
             "lon": 32.541929,
             "km": 0,
@@ -3059,13 +3067,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-026",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 26 - Bridge mounted",
+            "site": "Police Camera 26",
             "lat": 0.214695,
             "lon": 32.534392000000004,
             "km": 0,
@@ -3076,13 +3084,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-031",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 31 - Bridge mounted",
+            "site": "Police Camera 31",
             "lat": 0.17658,
             "lon": 32.517606,
             "km": 0,
@@ -3093,13 +3101,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-032",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 32 - Bridge mounted",
+            "site": "Police Camera 32",
             "lat": 0.160118,
             "lon": 32.512634,
             "km": 0,
@@ -3110,13 +3118,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-037",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 37 - Bridge mounted",
+            "site": "Police Camera 37",
             "lat": 0.105168,
             "lon": 32.513031,
             "km": 0,
@@ -3127,13 +3135,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-038",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 38 - Bridge mounted",
+            "site": "Police Camera 38",
             "lat": 0.09849997739471912,
             "lon": 32.50645049025141,
             "km": 0,
@@ -3144,13 +3152,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-041",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 41 - Bridge mounted",
+            "site": "Police Camera 41",
             "lat": 0.09066634109344743,
             "lon": 32.49516154559306,
             "km": 0,
@@ -3161,13 +3169,13 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POL-042",
             "corridor": "KEE",
             "type": "Existing Police Camera",
-            "site": "Police Camera 42 - Bridge mounted",
+            "site": "Police Camera 42",
             "lat": 0.088949,
             "lon": 32.488959,
             "km": 0,
@@ -3178,7 +3186,7 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None",
-            "configuration": " (Mounted on existing overhead bridge/structure)"
+            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
             "id": "POI-ENT-001",
