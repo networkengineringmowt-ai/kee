@@ -62,132 +62,132 @@ window.RSS_BUDGET = {
             "items": [
                 {
                     "item": "TMCS PTZ camera, 4MP, 35x optical zoom, IR 500 m night vision",
-                    "qty": 17.316,
+                    "qty": 18.223,
                     "unit": "Nos.",
                     "rate_ugx": 2563952,
-                    "amount_ugx": 44397392.831999995,
+                    "amount_ugx": 46722897.296,
                     "rate_usd": 692.96,
-                    "amount_usd": 11999.29536,
+                    "amount_usd": 12627.81008,
                     "assumption": "Tecidel tendered PTZ rate USD 693 (TTRS workbook) at 3,700 UGX/USD"
                 },
                 {
                     "item": "Road Side Unit for TMCS, hybrid solar UPS, 6-hr backup, industrial fibre switch",
-                    "qty": 17.316,
+                    "qty": 18.223,
                     "unit": "Nos.",
                     "rate_ugx": 9805000,
-                    "amount_ugx": 169783380.0,
+                    "amount_ugx": 178676515.0,
                     "rate_usd": 2650.0,
-                    "amount_usd": 45887.399999999994,
+                    "amount_usd": 48290.95,
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 },
                 {
                     "item": "12 m galvanized iron (GI) pole with accessories",
-                    "qty": 14.018,
+                    "qty": 4.21,
                     "unit": "Nos.",
                     "rate_ugx": 22386998,
-                    "amount_ugx": 313820937.964,
+                    "amount_ugx": 94249261.58,
                     "rate_usd": 6050.54,
-                    "amount_usd": 84816.46972000001,
+                    "amount_usd": 25472.7734,
                     "assumption": "Tecidel tendered 12 m pole rate (TTRS workbook)"
                 },
                 {
                     "item": "Camera mounting on existing structures (5 shared sites)",
-                    "qty": 3.298,
+                    "qty": 17.891,
                     "unit": "Set",
                     "rate_ugx": 4500000,
-                    "amount_ugx": 14841000.0,
+                    "amount_ugx": 80509499.99999999,
                     "rate_usd": 1216.22,
-                    "amount_usd": 4011.0935600000003,
+                    "amount_usd": 21759.39202,
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 },
                 {
                     "item": "Civil works: M25 foundation, chamber, backfilling, per site",
-                    "qty": 17.316,
+                    "qty": 18.223,
                     "unit": "Set",
                     "rate_ugx": 3145000,
-                    "amount_ugx": 54458820.0,
+                    "amount_ugx": 57311335.0,
                     "rate_usd": 850.0,
-                    "amount_usd": 14718.599999999999,
+                    "amount_usd": 15489.55,
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 },
                 {
                     "item": "AI/ML processing units + video-analytics licences (incident & accident detection, all TMCS)",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 450000000,
-                    "amount_ugx": 371250000.0,
+                    "amount_ugx": 390600000.0,
                     "rate_usd": 121621.62,
-                    "amount_usd": 100337.83649999999,
+                    "amount_usd": 105567.56616,
                     "assumption": "Sized for 26 camera streams; measured traffic 24,059 ADT (KEE traffic data) drives event volumes"
                 },
                 {
                     "item": "Installation, testing & commissioning - TMCS",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 160000000,
-                    "amount_ugx": 132000000.0,
+                    "amount_ugx": 138880000.0,
                     "rate_usd": 43243.24,
-                    "amount_usd": 35675.672999999995,
+                    "amount_usd": 37535.13232,
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 }
             ],
-            "subtotal_ugx": 1100551530.796
+            "subtotal_ugx": 986949508.8759999
         },
         {
             "category": "Variable Message Signs (10 fixed overhead, full carriageway)",
             "items": [
                 {
                     "item": "Fixed overhead VMS sign face, full carriageway coverage",
-                    "qty": 9.07,
+                    "qty": 9.545,
                     "unit": "Nos.",
                     "rate_ugx": 53650000,
-                    "amount_ugx": 486605500.0,
+                    "amount_ugx": 512089250.0,
                     "rate_usd": 14500.0,
-                    "amount_usd": 131515.0,
+                    "amount_usd": 138402.5,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Certified overhead VMS gantry spanning carriageway with walkway and 5.5 m clearance",
-                    "qty": 9.07,
+                    "qty": 9.545,
                     "unit": "Nos.",
                     "rate_ugx": 46250000,
-                    "amount_ugx": 419487500.0,
+                    "amount_ugx": 441456250.0,
                     "rate_usd": 12500.0,
-                    "amount_usd": 113375.0,
+                    "amount_usd": 119312.5,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Road Side Unit for VMS, hybrid solar UPS backup",
-                    "qty": 9.07,
+                    "qty": 9.545,
                     "unit": "Nos.",
                     "rate_ugx": 9805000,
-                    "amount_ugx": 88931350.0,
+                    "amount_ugx": 93588725.0,
                     "rate_usd": 2650.0,
-                    "amount_usd": 24035.5,
+                    "amount_usd": 25294.25,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Civil works, overhead VMS gantry foundations and protection",
-                    "qty": 9.07,
+                    "qty": 9.545,
                     "unit": "Set",
                     "rate_ugx": 5550000,
-                    "amount_ugx": 50338500.0,
+                    "amount_ugx": 52974750.0,
                     "rate_usd": 1500.0,
-                    "amount_usd": 13605.0,
+                    "amount_usd": 14317.5,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Installation, testing & commissioning - VMS",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 80000000,
-                    "amount_ugx": 66000000.0,
+                    "amount_ugx": 69440000.0,
                     "rate_usd": 21621.62,
-                    "amount_usd": 17837.836499999998,
+                    "amount_usd": 18767.56616,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 }
             ],
-            "subtotal_ugx": 1111362850.0
+            "subtotal_ugx": 1169548975.0
         },
         {
             "category": "WIM: 5 RSS sites with ANPR integration",
@@ -260,36 +260,36 @@ window.RSS_BUDGET = {
             "items": [
                 {
                     "item": "AI weather model: ingestion of existing reliable weather sources, corridor-localised forecasts",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 65000000,
-                    "amount_ugx": 53625000.0,
+                    "amount_ugx": 56420000.0,
                     "rate_usd": 17567.57,
-                    "amount_usd": 14493.245249999998,
+                    "amount_usd": 15248.65076,
                     "assumption": "Software engineering estimate benchmarked to the RSS specification Annex A"
                 },
                 {
                     "item": "ML video analytics: weather-related incident detection from PTZ feeds (fog, flooding, visibility)",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 95000000,
-                    "amount_ugx": 78375000.0,
+                    "amount_ugx": 82460000.0,
                     "rate_usd": 25675.68,
-                    "amount_usd": 21182.435999999998,
+                    "amount_usd": 22286.49024,
                     "assumption": "Model licensing + training norm; validated against PTZ streams"
                 },
                 {
                     "item": "Geospatial weather-risk analytics layer + automated VMS advisories",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 55000000,
-                    "amount_ugx": 45375000.0,
+                    "amount_ugx": 47740000.0,
                     "rate_usd": 14864.86,
-                    "amount_usd": 12263.5095,
+                    "amount_usd": 12902.698480000001,
                     "assumption": "Software engineering estimate benchmarked to the RSS specification Annex A"
                 }
             ],
-            "subtotal_ugx": 177375000.0
+            "subtotal_ugx": 186620000.0
         },
         {
             "category": "Traffic Control Centre - Kajjansi Toll Plaza",
@@ -432,103 +432,103 @@ window.RSS_BUDGET = {
             "items": [
                 {
                     "item": "Centralised RSS software: database, automated analytics, stakeholder notification engine",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 400000000,
-                    "amount_ugx": 330000000.0,
+                    "amount_ugx": 347200000.0,
                     "rate_usd": 108108.11,
-                    "amount_usd": 89189.19075,
+                    "amount_usd": 93837.83948,
                     "assumption": "Platform development norm; handles 26,154 peak ADT event load (Apr-26 measured)"
                 },
                 {
                     "item": "Geospatial database (PostgreSQL/PostGIS) licensing and setup",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "Set",
                     "rate_ugx": 55500000,
-                    "amount_ugx": 45787500.0,
+                    "amount_ugx": 48174000.0,
                     "rate_usd": 15000.0,
-                    "amount_usd": 12375.0,
+                    "amount_usd": 13020.0,
                     "assumption": "Software development norm benchmarked to RSS specification Annex A platform lines"
                 },
                 {
                     "item": "Role-based dashboards, reporting and public information module",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "Set",
                     "rate_ugx": 140000000,
-                    "amount_ugx": 115500000.0,
+                    "amount_ugx": 121520000.0,
                     "rate_usd": 37837.84,
-                    "amount_usd": 31216.217999999997,
+                    "amount_usd": 32843.24512,
                     "assumption": "Software development norm benchmarked to RSS specification Annex A platform lines"
                 }
             ],
-            "subtotal_ugx": 491287500.0
+            "subtotal_ugx": 516894000.0
         },
         {
             "category": "Site backhaul drops (existing fibre backbone - backbone NOT priced)",
             "items": [
                 {
                     "item": "Field-site fibre drop: splice, media converter, LIU, testing",
-                    "qty": 14.842,
+                    "qty": 15.62,
                     "unit": "Nos.",
                     "rate_ugx": 6710000,
-                    "amount_ugx": 99589820.0,
+                    "amount_ugx": 104810200.0,
                     "rate_usd": 1813.51,
-                    "amount_usd": 26916.115420000002,
+                    "amount_usd": 28327.0262,
                     "assumption": "Market splice/termination rate per site; corridor OFC already laid (not priced)"
                 }
             ],
-            "subtotal_ugx": 99589820.0
+            "subtotal_ugx": 104810200.0
         },
         {
             "category": "Training, documentation, spares and warranty",
             "items": [
                 {
                     "item": "Operator and maintenance training programme",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 55000000,
-                    "amount_ugx": 44664044.0,
+                    "amount_ugx": 48183061.0,
                     "rate_usd": 14864.86,
-                    "amount_usd": 12263.5095,
+                    "amount_usd": 12902.698480000001,
                     "assumption": "RSS specification Annex A allowances; spares at ~3% of field CAPEX"
                 },
                 {
                     "item": "System documentation set (design, O&M, as-built)",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "Set",
                     "rate_ugx": 45000000,
-                    "amount_ugx": 37125000.0,
+                    "amount_ugx": 39060000.0,
                     "rate_usd": 12162.16,
-                    "amount_usd": 10033.782,
+                    "amount_usd": 10556.75488,
                     "assumption": "RSS specification Annex A allowances; spares at ~3% of field CAPEX"
                 },
                 {
                     "item": "Strategic spares and consumables holding (2 years)",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 110000000,
-                    "amount_ugx": 90750000.0,
+                    "amount_ugx": 95480000.0,
                     "rate_usd": 29729.73,
-                    "amount_usd": 24527.02725,
+                    "amount_usd": 25805.40564,
                     "assumption": "~3% of field equipment CAPEX, 2-year holding"
                 },
                 {
                     "item": "Extended warranty, year 2, all field equipment",
-                    "qty": 0.825,
+                    "qty": 0.868,
                     "unit": "LS",
                     "rate_ugx": 120000000,
-                    "amount_ugx": 99000000.0,
+                    "amount_ugx": 104160000.0,
                     "rate_usd": 32432.43,
-                    "amount_usd": 26756.75475,
+                    "amount_usd": 28151.34924,
                     "assumption": "OEM year-2 extension norm across field equipment"
                 }
             ],
-            "subtotal_ugx": 271539044.0
+            "subtotal_ugx": 286883061.0
         }
     ],
-    "subtotalUgx": 5392912172.796,
+    "subtotalUgx": 5392912172.875999,
     "subtotalUsd": 1711373.79,
-    "beforeVatUgx": 5932203389.796,
+    "beforeVatUgx": 5932203389.875999,
     "beforeVatUsd": 1882511.17,
     "targetBasis": "Total before VAT is the control figure (assumption basis)",
     "contingencyRate": 0.1,
