@@ -2062,8 +2062,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "corridor": "EDC",
             "type": "VMS",
             "site": "Overhead VMS - Airport Dual entry, airport side (km 0.8)",
-            "lat": 0.040272,
-            "lon": 32.448686,
+            "lat": 0.037272599999999996,
+            "lon": 32.4507274,
             "km": 0.8,
             "status": "Design",
             "phase": "Single deployment",
@@ -2426,8 +2426,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "corridor": "EDC",
             "type": "Comms",
             "site": "Comms - EDC 1",
-            "lat": 0.037903,
-            "lon": 32.458234,
+            "lat": 0.038191699999999995,
+            "lon": 32.4498083,
             "km": 2.1,
             "status": "Design",
             "phase": "Single deployment",
@@ -2826,8 +2826,8 @@ window.ITS_GEOSPATIAL_DATA = {
             "corridor": "EDC",
             "type": "Regular Overview Camera",
             "site": "CCTV - EDC 1",
-            "lat": 0.036928,
-            "lon": 32.451516,
+            "lat": 0.037908899999999995,
+            "lon": 32.4500911,
             "km": 1.3,
             "status": "Design",
             "phase": "Single deployment",
@@ -3140,6 +3140,16 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar",
             "comms": "Cellular",
             "dependency": "None"
+        },
+        {
+            "id": "POI-ENT-001",
+            "type": "Airport Entrance",
+            "corridor": "EDC",
+            "chainageKm": 0.0,
+            "lat": 0.036,
+            "lon": 32.452,
+            "configuration": "Airport Entrance point",
+            "purpose": "Marks the start of the corridor at Entebbe Airport."
         }
     ]
 };
