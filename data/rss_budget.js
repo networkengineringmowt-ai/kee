@@ -62,22 +62,22 @@ window.RSS_BUDGET = {
             "items": [
                 {
                     "item": "TMCS PTZ camera, 4MP, 35x optical zoom, IR 500 m night vision",
-                    "qty": 34,
+                    "qty": 36,
                     "unit": "Nos.",
                     "rate_ugx": 2563952,
-                    "amount_ugx": 87174368,
+                    "amount_ugx": 92302272,
                     "rate_usd": 692.96,
-                    "amount_usd": 23560.64,
+                    "amount_usd": 24946.56,
                     "assumption": "Tecidel tendered PTZ rate USD 693 (TTRS workbook) at 3,700 UGX/USD"
                 },
                 {
                     "item": "Road Side Unit for TMCS, hybrid solar UPS, 6-hr backup, industrial fibre switch",
-                    "qty": 34,
+                    "qty": 36,
                     "unit": "Nos.",
                     "rate_ugx": 9805000,
-                    "amount_ugx": 333370000,
+                    "amount_ugx": 352980000,
                     "rate_usd": 2650.0,
-                    "amount_usd": 90100.0,
+                    "amount_usd": 95400.0,
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 },
                 {
@@ -102,12 +102,12 @@ window.RSS_BUDGET = {
                 },
                 {
                     "item": "Civil works: M25 foundation, chamber, backfilling, per site",
-                    "qty": 34,
+                    "qty": 36,
                     "unit": "Set",
                     "rate_ugx": 3145000,
-                    "amount_ugx": 106930000,
+                    "amount_ugx": 113220000,
                     "rate_usd": 850.0,
-                    "amount_usd": 28900.0,
+                    "amount_usd": 30600.0,
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 },
                 {
@@ -131,49 +131,49 @@ window.RSS_BUDGET = {
                     "assumption": "Tecidel tendered rate (TTRS workbook), PTZ DS-2DE7A232IW at 3,700 UGX/USD"
                 }
             ],
-            "subtotal_ugx": 1410844348
+            "subtotal_ugx": 1441872252
         },
         {
             "category": "Variable Message Signs (10 fixed overhead, full carriageway)",
             "items": [
                 {
                     "item": "Fixed overhead VMS sign face, full carriageway coverage",
-                    "qty": 10,
+                    "qty": 11,
                     "unit": "Nos.",
                     "rate_ugx": 53650000,
-                    "amount_ugx": 536500000,
+                    "amount_ugx": 590150000,
                     "rate_usd": 14500.0,
-                    "amount_usd": 145000.0,
+                    "amount_usd": 159500.0,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Certified overhead VMS gantry spanning carriageway with walkway and 5.5 m clearance",
-                    "qty": 10,
+                    "qty": 11,
                     "unit": "Nos.",
                     "rate_ugx": 46250000,
-                    "amount_ugx": 462500000,
+                    "amount_ugx": 508750000,
                     "rate_usd": 12500.0,
-                    "amount_usd": 125000.0,
+                    "amount_usd": 137500.0,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Road Side Unit for VMS, hybrid solar UPS backup",
-                    "qty": 10,
+                    "qty": 11,
                     "unit": "Nos.",
                     "rate_ugx": 9805000,
-                    "amount_ugx": 98050000,
+                    "amount_ugx": 107855000,
                     "rate_usd": 2650.0,
-                    "amount_usd": 26500.0,
+                    "amount_usd": 29150.0,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
                     "item": "Civil works, overhead VMS gantry foundations and protection",
-                    "qty": 10,
+                    "qty": 11,
                     "unit": "Set",
                     "rate_ugx": 5550000,
-                    "amount_ugx": 55500000,
+                    "amount_ugx": 61050000,
                     "rate_usd": 1500.0,
-                    "amount_usd": 15000.0,
+                    "amount_usd": 16500.0,
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 },
                 {
@@ -187,7 +187,7 @@ window.RSS_BUDGET = {
                     "assumption": "Engineer's estimate benchmarked to TTRS tendered rates"
                 }
             ],
-            "subtotal_ugx": 1232550000
+            "subtotal_ugx": 1347805000
         },
         {
             "category": "WIM: 5 RSS sites with ANPR integration",
@@ -468,16 +468,16 @@ window.RSS_BUDGET = {
             "items": [
                 {
                     "item": "Field-site fibre drop: splice, media converter, LIU, testing",
-                    "qty": 61,
+                    "qty": 65,
                     "unit": "Nos.",
                     "rate_ugx": 6710000,
-                    "amount_ugx": 409310000,
+                    "amount_ugx": 436150000,
                     "rate_usd": 1813.51,
-                    "amount_usd": 110624.11,
+                    "amount_usd": 117878.15,
                     "assumption": "Market splice/termination rate per site; corridor OFC already laid (not priced)"
                 }
             ],
-            "subtotal_ugx": 409310000
+            "subtotal_ugx": 436150000
         },
         {
             "category": "Training, documentation, spares and warranty",
@@ -526,15 +526,15 @@ window.RSS_BUDGET = {
             "subtotal_ugx": 330000000
         }
     ],
-    "subtotalUgx": 6334410776,
+    "subtotalUgx": 6507533680,
     "subtotalUsd": 1711373.79,
-    "beforeVatUgx": 6967851854,
+    "beforeVatUgx": 7158287048,
     "beforeVatUsd": 1882511.17,
     "targetBasis": "Total before VAT is the control figure (assumption basis)",
     "contingencyRate": 0.1,
-    "contingencyUgx": 633441078,
+    "contingencyUgx": 650753368,
     "vatRate": 0.18,
-    "vatUgx": 32148146,
+    "vatUgx": -158287048,
     "grandTotalUgx": 7000000000,
     "grandTotalUsd": 2221363
 };
