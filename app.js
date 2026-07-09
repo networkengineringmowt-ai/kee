@@ -598,6 +598,14 @@
                 iconAnchor: selected ? [23, 23] : [21, 21]
             });
         }
+        if (asset.type === "Airport Entrance") {
+            return L.divIcon({
+                className: "asset-div-icon",
+                html: `<div class="asset-marker airport-marker${selected ? " selected" : ""}" style="background-color: #0b5394; color: white; border-radius: 50%; border: 2px solid white;"><i class="fa-solid fa-plane-departure" style="font-size: 16px;"></i></div>`,
+                iconSize: selected ? [38, 38] : [34, 34],
+                iconAnchor: selected ? [19, 19] : [17, 17]
+            });
+        }
         const isPol = asset.type === "Existing Police Camera";
         const color = getTypeColor(asset.type);
         const short = escapeHtml(getTypeShort(asset.type));
