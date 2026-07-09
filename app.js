@@ -598,13 +598,26 @@
                 iconAnchor: selected ? [23, 23] : [21, 21]
             });
         }
+        const isPol = asset.type === "Existing Police Camera";
         const color = getTypeColor(asset.type);
         const short = escapeHtml(getTypeShort(asset.type));
+        
+        let iconSize = selected ? [38, 38] : [32, 32];
+        let iconAnchor = selected ? [19, 19] : [16, 16];
+        let content = short;
+        let style = `--marker-color:${color};background:${color};`;
+        
+        if (isPol) {
+            iconSize = selected ? [20, 20] : [16, 16];
+            iconAnchor = selected ? [10, 10] : [8, 8];
+            content = `<span style="font-size: 7px; line-height: 16px;">POL</span>`;
+        }
+        
         return L.divIcon({
             className: "asset-div-icon",
-            html: `<div class="asset-marker${selected ? " selected" : ""}" style="--marker-color:${color};background:${color};">${short}</div>`,
-            iconSize: selected ? [38, 38] : [32, 32],
-            iconAnchor: selected ? [19, 19] : [16, 16]
+            html: `<div class="asset-marker${selected ? " selected" : ""}${isPol ? " pol-marker" : ""}" style="${style}">${content}</div>`,
+            iconSize: iconSize,
+            iconAnchor: iconAnchor
         });
     }
 
