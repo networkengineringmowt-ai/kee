@@ -1306,12 +1306,12 @@ window.ITS_GEOSPATIAL_DATA = {
           "name": "Entebbe Dual Carriageway",
           "coordinates": [
             [
-              32.439,
-              0.043
+              32.444343,
+              0.045218
             ],
             [
-              32.442,
-              0.0441
+              32.444676,
+              0.045271
             ],
             [
               32.44506,
@@ -2762,8 +2762,8 @@ window.ITS_GEOSPATIAL_DATA = {
       "type": "Airport Entrance",
       "corridor": "EDC",
       "chainageKm": 0,
-      "lat": 0.045268,
-      "lon": 32.44506,
+      "lat": 0.0425,
+      "lon": 32.442,
       "configuration": "Airport Entrance point",
       "purpose": "Marks the start of the corridor at Entebbe Airport."
     },
@@ -3070,8 +3070,8 @@ window.ITS_GEOSPATIAL_DATA = {
       "corridor": "EDC",
       "type": "Proposed PTZ & A.I Camera",
       "site": "EDC Location KM 0.0",
-      "lat": 0.045268,
-      "lon": 32.44506,
+      "lat": 0.0425,
+      "lon": 32.442,
       "km": 0,
       "status": "Proposed",
       "priority": "High",
