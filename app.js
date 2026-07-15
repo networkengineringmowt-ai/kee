@@ -58,11 +58,112 @@
         globalCharts: []
     };
 
+    function synchronizeQuantities() {
+        let vmsCount = 0;
+        let rsuCount = 0;
+        let wimTotal = 0;
+        let wimNew = 0;
+        let wimExisting = 0;
+        let anprCount = 0;
+        let ptzTotal = 0;
+        let commsCount = 0;
+
+        state.assets.forEach(asset => {
+            const t = asset.type;
+            if (t === "VMS") vmsCount++;
+            else if (t === "RSU") rsuCount++;
+            else if (t === "WIM") {
+                wimTotal++;
+                if (asset.site.toLowerCase().includes("new")) wimNew++;
+                else wimExisting++;
+            }
+            else if (t === "ANPR") anprCount++;
+            else if (t === "Comms") commsCount++;
+            else if (t.toLowerCase().includes("camera") || t.toLowerCase().includes("ptz")) ptzTotal++;
+        });
+
+        const vmsGantryCount = vmsCount;
+        const vmsRsuCount = vmsCount;
+        const vmsCivilCount = vmsCount;
+        const ptzRsuCount = ptzTotal;
+        const ptzCivilCount = ptzTotal;
+        const fibreDropsCount = ptzTotal + vmsCount + commsCount;
+
+        const updateQty = (arr, matchStr, qty) => {
+            if (!arr) return;
+            arr.forEach(cat => {
+                if (cat.items) {
+                    cat.items.forEach(item => {
+                        const itemName = (item.item || item.component || "").toLowerCase();
+                        if (itemName.includes(matchStr.toLowerCase())) {
+                            item.qty = qty;
+                        }
+                    });
+                }
+            });
+        };
+
+        if (rssBudget && rssBudget.categories) {
+            updateQty(rssBudget.categories, "TMCS PTZ camera", ptzTotal);
+            updateQty(rssBudget.categories, "Road Side Unit for TMCS", ptzRsuCount);
+            updateQty(rssBudget.categories, "Civil works: M25 foundation", ptzCivilCount);
+            updateQty(rssBudget.categories, "Fixed overhead VMS sign face", vmsCount);
+            updateQty(rssBudget.categories, "Certified overhead VMS gantry", vmsGantryCount);
+            updateQty(rssBudget.categories, "Road Side Unit for VMS", vmsRsuCount);
+            updateQty(rssBudget.categories, "Civil works, overhead VMS gantry", vmsCivilCount);
+            updateQty(rssBudget.categories, "Enhancement of existing static WIM", wimExisting);
+            updateQty(rssBudget.categories, "New high-speed RSS WIM", wimNew);
+            updateQty(rssBudget.categories, "RSS integration of WIM", wimTotal);
+            updateQty(rssBudget.categories, "NEW ANPR camera", anprCount);
+            updateQty(rssBudget.categories, "Field-site fibre drop", fibreDropsCount);
+            updateQty(rssBudget.categories, "12 m galvanized iron", ptzTotal);
+            updateQty(rssBudget.categories, "AI/ML processing units + video", ptzTotal);
+            updateQty(rssBudget.categories, "Installation, testing & commissioning - TMCS", ptzTotal);
+            updateQty(rssBudget.categories, "Installation, testing & commissioning - VMS", vmsCount);
+            updateQty(rssBudget.categories, "UNBS verification", wimTotal);
+            updateQty(rssBudget.categories, "Installation, testing & commissioning - WIM", wimTotal);
+        }
+
+        if (dictionaryData && dictionaryData.length && !dictionaryData.categories) {
+            const updateDictQty = (arr, matchStr, qty) => {
+                arr.forEach(item => {
+                    const itemName = (item.name || item.item || item.component || "").toLowerCase();
+                    if (itemName.includes(matchStr.toLowerCase())) {
+                        item.qty = qty;
+                    }
+                });
+            };
+            updateDictQty(dictionaryData, "TMCS PTZ camera", ptzTotal);
+            updateDictQty(dictionaryData, "PTZ / TMCS traffic monitoring", ptzTotal);
+            updateDictQty(dictionaryData, "Road Side Unit for TMCS", ptzRsuCount);
+            updateDictQty(dictionaryData, "Civil works: M25 foundation", ptzCivilCount);
+            updateDictQty(dictionaryData, "Fixed overhead VMS sign face", vmsCount);
+            updateDictQty(dictionaryData, "Certified overhead VMS gantry", vmsGantryCount);
+            updateDictQty(dictionaryData, "Road Side Unit for VMS", vmsRsuCount);
+            updateDictQty(dictionaryData, "Civil works, overhead VMS gantry", vmsCivilCount);
+            updateDictQty(dictionaryData, "Enhancement of existing static WIM", wimExisting);
+            updateDictQty(dictionaryData, "New high-speed RSS WIM", wimNew);
+            updateDictQty(dictionaryData, "New RSS WIM freight", wimNew);
+            updateDictQty(dictionaryData, "RSS integration of WIM", wimTotal);
+            updateDictQty(dictionaryData, "NEW ANPR camera", anprCount);
+            updateDictQty(dictionaryData, "ANPR camera for WIM", anprCount);
+            updateDictQty(dictionaryData, "Field-site fibre drop", fibreDropsCount);
+            updateDictQty(dictionaryData, "12 m GI pole", ptzTotal);
+            updateDictQty(dictionaryData, "PTZ camera pole", ptzTotal);
+            updateDictQty(dictionaryData, "TMCS video analytics", ptzTotal);
+            updateDictQty(dictionaryData, "AI/ML video analytics engine", ptzTotal);
+            updateDictQty(dictionaryData, "VMS gantry foundation", vmsCount);
+            updateDictQty(dictionaryData, "Camera / ANPR pole foundation", ptzTotal + anprCount);
+        }
+    }
+
     function init() {
         state.corridors = normalizeCorridors(rawItsData);
         state.assetTypes = normalizeAssetTypes(rawItsData);
         state.assets = normalizeAssets(rawItsData);
         state.filteredAssets = [...state.assets];
+
+        synchronizeQuantities();
 
         bindNavigation();
         updateClock();
@@ -2406,7 +2507,7 @@
                 ["fa-cloud-sun-rain", "AI weather model"], ["fa-bullhorn", "Auto notification engine"]] },
             { cls: "l-net", title: "DATA BACKBONE (EXISTING FIBRE)", color: "#34d399", nodes: [
                 ["fa-network-wired", n("Comms") + " site drops"], ["fa-box", n("RSU") + " RSUs (solar-hybrid)"]] },
-            { cls: "l-field", title: "FIELD LAYER - 57.6 KM SCOPE", color: "#fbbf24", nodes: [
+            { cls: "l-field", title: `FIELD LAYER - ${num(CORR_LEN.KEE + CORR_LEN.KNBP + CORR_LEN.EDC, 1)} KM SCOPE`, color: "#fbbf24", nodes: [
                 ["fa-video", n("CCTV") + " PTZ AI-ML cameras"], ["fa-signs-post", n("VMS") + " overhead VMS"],
                 ["fa-weight-hanging", n("WIM") + " WIM sites (2 HS + 3 SWIM)"], ["fa-camera", n("ANPR") + " WIM ANPR"]] },
         ];
@@ -2729,7 +2830,7 @@
             ["Component types", types.length],
             ["Corridors covered", corridors.length],
             ["Scope length (km)", num(CORR_LEN.KEE + CORR_LEN.KNBP + CORR_LEN.EDC)],
-            ["Overall density (comp/km)", num(assets.length / 57.6, 2)],
+            ["Overall density (comp/km)", num(assets.length / (CORR_LEN.KEE + CORR_LEN.KNBP + CORR_LEN.EDC), 2)],
             ["Critical-priority components", assets.filter((a) => a.priority === "Critical").length],
             ["High-priority components", assets.filter((a) => a.priority === "High").length],
             ["Existing installations (enhance & integrate)", assets.filter((a) => /existing/i.test(a.status)).length],
