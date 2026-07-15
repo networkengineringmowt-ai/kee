@@ -1574,6 +1574,7 @@
 
     const DIAGRAMS = {
         cctv:    { c: "#38bdf8", label: "PTZ / TMCS camera", body: "<rect x='150' y='60' width='8' height='110' fill='#64748b'/><ellipse cx='154' cy='172' rx='26' ry='6' fill='#475569'/><rect x='128' y='38' width='52' height='26' rx='6' fill='#38bdf8'/><circle cx='170' cy='51' r='7' fill='#0b0f19'/><path d='M180 51 L260 24 L260 78 Z' fill='#38bdf8' opacity='0.18'/><rect x='60' y='34' width='46' height='20' rx='4' fill='#14532d'/><text x='83' y='48' font-size='11' fill='#86efac' text-anchor='middle' font-family='monospace'>AI/ML</text><line x1='106' y1='44' x2='128' y2='48' stroke='#86efac' stroke-dasharray='3 3'/>" },
+        "simple-cctv": { c: "#38bdf8", label: "CCTV camera", body: "<rect x='150' y='60' width='8' height='110' fill='#64748b'/><ellipse cx='154' cy='172' rx='26' ry='6' fill='#475569'/><rect x='128' y='38' width='52' height='26' rx='6' fill='#38bdf8'/><circle cx='170' cy='51' r='7' fill='#0b0f19'/>" },
         anpr:    { c: "#1d4ed8", label: "ANPR camera", body: "<rect x='120' y='40' width='60' height='34' rx='6' fill='#3b82f6'/><circle cx='168' cy='57' r='8' fill='#0b0f19'/><rect x='128' y='46' width='14' height='10' rx='2' fill='#fbbf24'/><path d='M176 66 L230 116 L196 130 Z' fill='#3b82f6' opacity='0.2'/><rect x='96' y='120' width='128' height='34' rx='5' fill='#f8fafc'/><text x='160' y='143' font-size='18' fill='#0b0f19' text-anchor='middle' font-family='monospace' font-weight='bold'>UBJ 314K</text>" },
         vms:     { c: "#f59e0b", label: "Overhead VMS gantry", body: "<rect x='52' y='60' width='10' height='106' fill='#64748b'/><rect x='258' y='60' width='10' height='106' fill='#64748b'/><rect x='52' y='52' width='216' height='12' fill='#475569'/><rect x='84' y='68' width='152' height='44' rx='4' fill='#0b0f19' stroke='#f59e0b'/><text x='160' y='89' font-size='12' fill='#fbbf24' text-anchor='middle' font-family='monospace'>FOG AHEAD</text><text x='160' y='104' font-size='12' fill='#fbbf24' text-anchor='middle' font-family='monospace'>SLOW - 60</text><rect x='40' y='166' width='240' height='8' fill='#334155'/>" },
         vasd:    { c: "#a78bfa", label: "Speed display + radar", body: "<rect x='150' y='70' width='8' height='96' fill='#64748b'/><rect x='120' y='40' width='68' height='42' rx='6' fill='#0b0f19' stroke='#a78bfa'/><text x='154' y='70' font-size='24' fill='#a78bfa' text-anchor='middle' font-family='monospace' font-weight='bold'>57</text><path d='M196 56 L262 34 L262 82 Z' fill='#a78bfa' opacity='0.2'/>" },
@@ -1647,7 +1648,10 @@
         else if (/radar|speed display|vasd/.test(text)) key = "vasd";
         else if (/weigh|wim|scale/.test(text)) key = "wim";
         else if (/weather|rwis|rain|visibility|wind|water level|flood/.test(text)) key = "weather";
-        else if (/camera|cctv|ptz|surveillance|video/.test(text)) key = definition.category === "avids" ? "avids" : "cctv";
+        else if (/camera|cctv|ptz|surveillance|video/.test(text)) {
+            if (/police|simple|overview|regular/.test(text)) key = "simple-cctv";
+            else key = definition.category === "avids" ? "avids" : "cctv";
+        }
         else if (/barrier|boom|alb|gate/.test(text)) key = "barrier";
         else if (/rfid|dsrc|tag|toll plaza|toll lane|etc system/.test(text)) key = "rfid";
         else if (/payment|cash|drawer|pos|card|bank/.test(text)) key = "payment";
