@@ -1306,12 +1306,12 @@ window.ITS_GEOSPATIAL_DATA = {
           "name": "Entebbe Dual Carriageway",
           "coordinates": [
             [
-              32.444343,
-              0.045218
+              32.439,
+              0.043
             ],
             [
-              32.444676,
-              0.045271
+              32.442,
+              0.0441
             ],
             [
               32.44506,
