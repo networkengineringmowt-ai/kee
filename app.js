@@ -60,29 +60,30 @@
 
     function synchronizeQuantities() {
         let vmsCount = 0;
-        let rsuCount = 0;
-        let wimTotal = 0;
-        let wimNew = 0;
         let wimExisting = 0;
+        let wimNew = 0;
         let anprCount = 0;
         let ptzTotal = 0;
+        let aiCameraCount = 0;
         let commsCount = 0;
 
-        state.assets.forEach(asset => {
-            const t = asset.type;
+        state.assets.forEach(a => {
+            const t = a.type || "";
             if (t === "VMS") vmsCount++;
-            else if (t === "RSU") rsuCount++;
             else if (t === "WIM") {
-                wimTotal++;
-                if (asset.site.toLowerCase().includes("new")) wimNew++;
-                else wimExisting++;
+                if (a.status === "Existing") wimExisting++;
+                else wimNew++;
             }
             else if (t === "ANPR") anprCount++;
             else if (t === "Comms") commsCount++;
-            else if (t.toLowerCase().includes("camera") || t.toLowerCase().includes("ptz")) ptzTotal++;
+            else if (t.toLowerCase().includes("camera") || t.toLowerCase().includes("ptz")) {
+                ptzTotal++;
+                if (t.toLowerCase().includes("a.i") || t.toLowerCase().includes("ai")) aiCameraCount++;
+            }
         });
 
-        const vmsGantryCount = vmsCount;
+        const wimTotal = wimExisting + wimNew;
+        const vmsGantryCount = vmsCount; 
         const vmsRsuCount = vmsCount;
         const vmsCivilCount = vmsCount;
         const ptzRsuCount = ptzTotal;
@@ -117,7 +118,7 @@
             updateQty(rssBudget.categories, "NEW ANPR camera", anprCount);
             updateQty(rssBudget.categories, "Field-site fibre drop", fibreDropsCount);
             updateQty(rssBudget.categories, "12 m galvanized iron", ptzTotal);
-            updateQty(rssBudget.categories, "AI/ML processing units + video", ptzTotal);
+            updateQty(rssBudget.categories, "AI/ML processing units + video", aiCameraCount);
             updateQty(rssBudget.categories, "Installation, testing & commissioning - TMCS", ptzTotal);
             updateQty(rssBudget.categories, "Installation, testing & commissioning - VMS", vmsCount);
             updateQty(rssBudget.categories, "UNBS verification", wimTotal);
@@ -150,8 +151,8 @@
             updateDictQty(dictionaryData, "Field-site fibre drop", fibreDropsCount);
             updateDictQty(dictionaryData, "12 m GI pole", ptzTotal);
             updateDictQty(dictionaryData, "PTZ camera pole", ptzTotal);
-            updateDictQty(dictionaryData, "TMCS video analytics", ptzTotal);
-            updateDictQty(dictionaryData, "AI/ML video analytics engine", ptzTotal);
+            updateDictQty(dictionaryData, "TMCS video analytics", aiCameraCount);
+            updateDictQty(dictionaryData, "AI/ML video analytics engine", aiCameraCount);
             updateDictQty(dictionaryData, "VMS gantry foundation", vmsCount);
             updateDictQty(dictionaryData, "Camera / ANPR pole foundation", ptzTotal + anprCount);
         }

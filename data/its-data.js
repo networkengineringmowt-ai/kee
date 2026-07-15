@@ -2503,312 +2503,6 @@ window.ITS_GEOSPATIAL_DATA = {
             "dependency": "Roadside cabinet"
         },
         {
-            "id": "CCT-KEE-001",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - Busega entry",
-            "lat": 0.308533,
-            "lon": 32.513525,
-            "km": 1.0,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-003",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 4-5 hotspot (26 crashes)",
-            "lat": 0.278438,
-            "lon": 32.515513,
-            "km": 4.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-004",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 6-7 (2 fatal)",
-            "lat": 0.261925,
-            "lon": 32.520675,
-            "km": 6.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-006",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 9-10 hotspot (35 crashes, 2 fatal)",
-            "lat": 0.235498,
-            "lon": 32.523622,
-            "km": 9.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-007",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 11-12 hotspot (46 crashes)",
-            "lat": 0.219322,
-            "lon": 32.530556,
-            "km": 11.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-009",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 14 mid-corridor",
-            "lat": 0.197708,
-            "lon": 32.526248,
-            "km": 14.0,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-010",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 16 (slow response: 68 min avg)",
-            "lat": 0.181024,
-            "lon": 32.52073,
-            "km": 16.0,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-012",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 19-20 (2 fatal)",
-            "lat": 0.151546,
-            "lon": 32.51101,
-            "km": 19.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-014",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 21-22 worst hotspot (risk 98.6, 2 fatal)",
-            "lat": 0.133636,
-            "lon": 32.510712,
-            "km": 21.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KEE-015",
-            "corridor": "KEE",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 23-24 hotspot (slow response: 72 min avg)",
-            "lat": 0.115751,
-            "lon": 32.512276,
-            "km": 23.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KNBP-033",
-            "corridor": "KNBP",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - Namboole section (22,437 ADT measured)",
-            "lat": 0.364703,
-            "lon": 32.647048,
-            "km": 2.0,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KNBP-034",
-            "corridor": "KNBP",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 6.2 (Naalya-Kisaasi)",
-            "lat": 0.368654,
-            "lon": 32.616065,
-            "km": 6.2,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KNBP-035",
-            "corridor": "KNBP",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 10.4 (Kyebando)",
-            "lat": 0.349873,
-            "lon": 32.58692,
-            "km": 10.4,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KNBP-036",
-            "corridor": "KNBP",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 13.7 (Gayaza-Hoima: 47,998 ADT, busiest)",
-            "lat": 0.348752,
-            "lon": 32.55911,
-            "km": 13.7,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KNBP-038",
-            "corridor": "KNBP",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 16.5 (Hoima-Busega: 37,220 ADT)",
-            "lat": 0.341759,
-            "lon": 32.535338,
-            "km": 16.5,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-KNBP-039",
-            "corridor": "KNBP",
-            "type": "Proposed PTZ & A.I Camera",
-            "site": "PTZ - km 18.4 (Hoima-Busega section)",
-            "lat": 0.328319,
-            "lon": 32.52489,
-            "km": 18.4,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "PTZ (TMCS) camera with AI/ML video analytics: all traffic and incident monitoring - detection, classification, queue/flow, and weather-related incidents (fog, flooding, poor visibility) recognised from the video itself; automatic alerts to the central database (RSS).",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-EDC-044",
-            "corridor": "EDC",
-            "type": "Regular Overview Camera",
-            "site": "CCTV - EDC 4",
-            "lat": 0.083691,
-            "lon": 32.482971,
-            "km": 8.9,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-EDC-045",
-            "corridor": "EDC",
-            "type": "Regular Overview Camera",
-            "site": "CCTV - EDC 5",
-            "lat": 0.094684,
-            "lon": 32.50177,
-            "km": 11.4,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
             "id": "POL-001",
             "corridor": "KEE",
             "type": "Existing Police Camera",
@@ -3116,57 +2810,6 @@ window.ITS_GEOSPATIAL_DATA = {
             "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
         },
         {
-            "id": "CCT-EDC-041",
-            "corridor": "EDC",
-            "type": "Regular Overview Camera",
-            "site": "CCTV - EDC 1",
-            "lat": 0.0379215683049047,
-            "lon": 32.45013131365064,
-            "km": 1.3,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-EDC-042",
-            "corridor": "EDC",
-            "type": "Regular Overview Camera",
-            "site": "CCTV - EDC 2",
-            "lat": 0.03633547363581743,
-            "lon": 32.453708198420976,
-            "km": 3.8,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
-            "id": "CCT-EDC-043",
-            "corridor": "EDC",
-            "type": "Regular Overview Camera",
-            "site": "CCTV - EDC 3",
-            "lat": 0.0373491649869656,
-            "lon": 32.4575129269448,
-            "km": 6.3,
-            "status": "Design",
-            "phase": "Single deployment",
-            "priority": "High",
-            "purpose": "Fixed overview camera for general surveillance without PTZ or AI.",
-            "power": "Solar + grid tie",
-            "comms": "Fibre backbone (OFC)",
-            "dependency": "Roadside cabinet",
-            "configuration": " (Mounting: Overbridge if available; else Shared Gantry for VMS; else Roadside Pole)"
-        },
-        {
             "id": "COM-EDC-078",
             "corridor": "EDC",
             "type": "Comms",
@@ -3197,6 +2840,321 @@ window.ITS_GEOSPATIAL_DATA = {
             "power": "Solar + grid tie",
             "comms": "Fibre backbone (OFC)",
             "dependency": "Roadside cabinet"
+        },
+        {
+            "id": "CCTV-NEW-001",
+            "type": "Proposed PTZ & A.I Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.518924,
+                0.315554
+            ],
+            "details": {
+                "location": "Corridor Location KM 0.0",
+                "equipment": "PTZ + AI Engine",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-002",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.52075363597032,
+                0.26625790773467917
+            ],
+            "details": {
+                "location": "Corridor Location KM 6.0",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-003",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.53123307607239,
+                0.21461099661227856
+            ],
+            "details": {
+                "location": "Corridor Location KM 12.0",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-004",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.513471423764905,
+                0.16433064342876014
+            ],
+            "details": {
+                "location": "Corridor Location KM 18.1",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-005",
+            "type": "Proposed PTZ & A.I Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.51325647133323,
+                0.11074582014742958
+            ],
+            "details": {
+                "location": "Corridor Location KM 24.1",
+                "equipment": "PTZ + AI Engine",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-006",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.53406328916657,
+                0.1438242207409976
+            ],
+            "details": {
+                "location": "Corridor Location KM 30.1",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-007",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.56130315719247,
+                0.19058049890604367
+            ],
+            "details": {
+                "location": "Corridor Location KM 36.1",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-008",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.58854302521837,
+                0.23733677707108974
+            ],
+            "details": {
+                "location": "Corridor Location KM 42.1",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-009",
+            "type": "Proposed PTZ & A.I Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.615782893244265,
+                0.2840930552361358
+            ],
+            "details": {
+                "location": "Corridor Location KM 48.1",
+                "equipment": "PTZ + AI Engine",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-010",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.64302276127017,
+                0.3308493334011819
+            ],
+            "details": {
+                "location": "Corridor Location KM 54.2",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-011",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.63437276758436,
+                0.3620082840970419
+            ],
+            "details": {
+                "location": "Corridor Location KM 60.2",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-012",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.59059579254804,
+                0.35482264735823765
+            ],
+            "details": {
+                "location": "Corridor Location KM 66.2",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-013",
+            "type": "Proposed PTZ & A.I Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.541523689126215,
+                0.3447860757937209
+            ],
+            "details": {
+                "location": "Corridor Location KM 72.2",
+                "equipment": "PTZ + AI Engine",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-014",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.514758939883095,
+                0.30051296810689415
+            ],
+            "details": {
+                "location": "Corridor Location KM 78.2",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-015",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.50037083669821,
+                0.24834849583254914
+            ],
+            "details": {
+                "location": "Corridor Location KM 84.2",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-016",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.48598273351333,
+                0.19618402355820425
+            ],
+            "details": {
+                "location": "Corridor Location KM 90.3",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-017",
+            "type": "Proposed PTZ & A.I Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.47159463032845,
+                0.14401955128385938
+            ],
+            "details": {
+                "location": "Corridor Location KM 96.3",
+                "equipment": "PTZ + AI Engine",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-018",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.45720652714356,
+                0.09185507900951437
+            ],
+            "details": {
+                "location": "Corridor Location KM 102.3",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-019",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.44820665445779,
+                0.041651576350465756
+            ],
+            "details": {
+                "location": "Corridor Location KM 108.3",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-020",
+            "type": "Regular Overview Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.474594540053936,
+                0.06553784735186527
+            ],
+            "details": {
+                "location": "Corridor Location KM 114.3",
+                "equipment": "Standard Overview Camera",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
+        },
+        {
+            "id": "CCTV-NEW-021",
+            "type": "Proposed PTZ & A.I Camera",
+            "status": "Proposed",
+            "coordinates": [
+                32.509713,
+                0.1028619999999999
+            ],
+            "details": {
+                "location": "Corridor Location KM 120.3",
+                "equipment": "PTZ + AI Engine",
+                "power": "Solar + Battery Backup",
+                "comms": "Fibre Drop"
+            }
         }
     ]
 };
