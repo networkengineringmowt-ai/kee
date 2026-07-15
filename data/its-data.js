@@ -2843,318 +2843,297 @@ window.ITS_GEOSPATIAL_DATA = {
         },
         {
             "id": "CCTV-NEW-001",
+            "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
+            "site": "Corridor Location KM 0.0",
+            "lat": 0.315554,
+            "lon": 32.518924,
+            "km": 0.0,
             "status": "Proposed",
-            "coordinates": [
-                32.518924,
-                0.315554
-            ],
-            "details": {
-                "location": "Corridor Location KM 0.0",
-                "equipment": "PTZ + AI Engine",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-002",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 6.0",
+            "lat": 0.26625790773467917,
+            "lon": 32.52075363597032,
+            "km": 6.0170196339672,
             "status": "Proposed",
-            "coordinates": [
-                32.52075363597032,
-                0.26625790773467917
-            ],
-            "details": {
-                "location": "Corridor Location KM 6.0",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-003",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 12.0",
+            "lat": 0.21461099661227856,
+            "lon": 32.53123307607239,
+            "km": 12.0340392679344,
             "status": "Proposed",
-            "coordinates": [
-                32.53123307607239,
-                0.21461099661227856
-            ],
-            "details": {
-                "location": "Corridor Location KM 12.0",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-004",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 18.1",
+            "lat": 0.16433064342876014,
+            "lon": 32.513471423764905,
+            "km": 18.0510589019016,
             "status": "Proposed",
-            "coordinates": [
-                32.513471423764905,
-                0.16433064342876014
-            ],
-            "details": {
-                "location": "Corridor Location KM 18.1",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-005",
+            "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
+            "site": "Corridor Location KM 24.1",
+            "lat": 0.11074582014742958,
+            "lon": 32.51325647133323,
+            "km": 24.0680785358688,
             "status": "Proposed",
-            "coordinates": [
-                32.51325647133323,
-                0.11074582014742958
-            ],
-            "details": {
-                "location": "Corridor Location KM 24.1",
-                "equipment": "PTZ + AI Engine",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-006",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 30.1",
+            "lat": 0.1438242207409976,
+            "lon": 32.53406328916657,
+            "km": 30.085098169835998,
             "status": "Proposed",
-            "coordinates": [
-                32.53406328916657,
-                0.1438242207409976
-            ],
-            "details": {
-                "location": "Corridor Location KM 30.1",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-007",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 36.1",
+            "lat": 0.19058049890604367,
+            "lon": 32.56130315719247,
+            "km": 36.1021178038032,
             "status": "Proposed",
-            "coordinates": [
-                32.56130315719247,
-                0.19058049890604367
-            ],
-            "details": {
-                "location": "Corridor Location KM 36.1",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-008",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 42.1",
+            "lat": 0.23733677707108974,
+            "lon": 32.58854302521837,
+            "km": 42.119137437770405,
             "status": "Proposed",
-            "coordinates": [
-                32.58854302521837,
-                0.23733677707108974
-            ],
-            "details": {
-                "location": "Corridor Location KM 42.1",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-009",
+            "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
+            "site": "Corridor Location KM 48.1",
+            "lat": 0.2840930552361358,
+            "lon": 32.615782893244265,
+            "km": 48.1361570717376,
             "status": "Proposed",
-            "coordinates": [
-                32.615782893244265,
-                0.2840930552361358
-            ],
-            "details": {
-                "location": "Corridor Location KM 48.1",
-                "equipment": "PTZ + AI Engine",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-010",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 54.2",
+            "lat": 0.3308493334011819,
+            "lon": 32.64302276127017,
+            "km": 54.1531767057048,
             "status": "Proposed",
-            "coordinates": [
-                32.64302276127017,
-                0.3308493334011819
-            ],
-            "details": {
-                "location": "Corridor Location KM 54.2",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-011",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 60.2",
+            "lat": 0.3620082840970419,
+            "lon": 32.63437276758436,
+            "km": 60.170196339671996,
             "status": "Proposed",
-            "coordinates": [
-                32.63437276758436,
-                0.3620082840970419
-            ],
-            "details": {
-                "location": "Corridor Location KM 60.2",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-012",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 66.2",
+            "lat": 0.35482264735823765,
+            "lon": 32.59059579254804,
+            "km": 66.18721597363921,
             "status": "Proposed",
-            "coordinates": [
-                32.59059579254804,
-                0.35482264735823765
-            ],
-            "details": {
-                "location": "Corridor Location KM 66.2",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-013",
+            "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
+            "site": "Corridor Location KM 72.2",
+            "lat": 0.3447860757937209,
+            "lon": 32.541523689126215,
+            "km": 72.2042356076064,
             "status": "Proposed",
-            "coordinates": [
-                32.541523689126215,
-                0.3447860757937209
-            ],
-            "details": {
-                "location": "Corridor Location KM 72.2",
-                "equipment": "PTZ + AI Engine",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-014",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 78.2",
+            "lat": 0.30051296810689415,
+            "lon": 32.514758939883095,
+            "km": 78.2212552415736,
             "status": "Proposed",
-            "coordinates": [
-                32.514758939883095,
-                0.30051296810689415
-            ],
-            "details": {
-                "location": "Corridor Location KM 78.2",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-015",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 84.2",
+            "lat": 0.24834849583254914,
+            "lon": 32.50037083669821,
+            "km": 84.23827487554081,
             "status": "Proposed",
-            "coordinates": [
-                32.50037083669821,
-                0.24834849583254914
-            ],
-            "details": {
-                "location": "Corridor Location KM 84.2",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-016",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 90.3",
+            "lat": 0.19618402355820425,
+            "lon": 32.48598273351333,
+            "km": 90.255294509508,
             "status": "Proposed",
-            "coordinates": [
-                32.48598273351333,
-                0.19618402355820425
-            ],
-            "details": {
-                "location": "Corridor Location KM 90.3",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-017",
+            "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
+            "site": "Corridor Location KM 96.3",
+            "lat": 0.14401955128385938,
+            "lon": 32.47159463032845,
+            "km": 96.2723141434752,
             "status": "Proposed",
-            "coordinates": [
-                32.47159463032845,
-                0.14401955128385938
-            ],
-            "details": {
-                "location": "Corridor Location KM 96.3",
-                "equipment": "PTZ + AI Engine",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-018",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 102.3",
+            "lat": 0.09185507900951437,
+            "lon": 32.45720652714356,
+            "km": 102.28933377744241,
             "status": "Proposed",
-            "coordinates": [
-                32.45720652714356,
-                0.09185507900951437
-            ],
-            "details": {
-                "location": "Corridor Location KM 102.3",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-019",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 108.3",
+            "lat": 0.041651576350465756,
+            "lon": 32.44820665445779,
+            "km": 108.3063534114096,
             "status": "Proposed",
-            "coordinates": [
-                32.44820665445779,
-                0.041651576350465756
-            ],
-            "details": {
-                "location": "Corridor Location KM 108.3",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-020",
+            "corridor": "KEE",
             "type": "Regular Overview Camera",
+            "site": "Corridor Location KM 114.3",
+            "lat": 0.06553784735186527,
+            "lon": 32.474594540053936,
+            "km": 114.3233730453768,
             "status": "Proposed",
-            "coordinates": [
-                32.474594540053936,
-                0.06553784735186527
-            ],
-            "details": {
-                "location": "Corridor Location KM 114.3",
-                "equipment": "Standard Overview Camera",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         },
         {
             "id": "CCTV-NEW-021",
+            "corridor": "KEE",
             "type": "Proposed PTZ & A.I Camera",
+            "site": "Corridor Location KM 120.3",
+            "lat": 0.1028619999999999,
+            "lon": 32.509713,
+            "km": 120.34039267934399,
             "status": "Proposed",
-            "coordinates": [
-                32.509713,
-                0.1028619999999999
-            ],
-            "details": {
-                "location": "Corridor Location KM 120.3",
-                "equipment": "PTZ + AI Engine",
-                "power": "Solar + Battery Backup",
-                "comms": "Fibre Drop"
-            }
+            "priority": "High",
+            "purpose": "Traffic monitoring",
+            "power": "Solar + Battery Backup",
+            "comms": "Fibre Drop"
         }
     ]
 };
