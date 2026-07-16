@@ -1554,7 +1554,10 @@
             if (/weather|rwis|fog|flood|visibility/.test(t)) return "weather";
             if (/video wall/.test(t)) return "videowall";
             if (/emergency call|\becb\b|sos/.test(t)) return "ecb";
-            if (/camera|cctv|ptz|tmcs|avids|surveillance|nvr|video record/.test(t)) return "cctv";
+            if (/camera|cctv|ptz|tmcs|avids|surveillance|nvr|video record/.test(t)) {
+                if (/police|simple|overview|regular/.test(t)) return "simple-cctv";
+                return "cctv";
+            }
             if (/barrier|boom|\balb\b/.test(t)) return "barrier";
             if (/rfid|dsrc|transponder|tag read|antenna/.test(t)) return "rfid";
             if (/classif|\bavc\b|axle count|loop\b|photocell|treadle/.test(t)) return "avc";

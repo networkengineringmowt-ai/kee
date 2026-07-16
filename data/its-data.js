@@ -2831,6 +2831,7 @@ const ITS_GEOSPATIAL_DATA = {
       "corridor": "KEE",
       "type": "Existing Police Camera",
       "site": "Police Camera 1",
+      "imageUrl": "assets/images/POL-001.jpeg",
       "lat": 0.3492120090904343,
       "lon": 32.65428090345332,
       "km": 0,
