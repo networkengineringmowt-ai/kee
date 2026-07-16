@@ -380,8 +380,8 @@
         const layer = L.geoJSON(context, {
             renderer,
             style: (f) => {
-                const bit = String((f.properties && f.properties.surf) || "").toLowerCase().startsWith("bitumin");
-                return { color: surfaceColor(f.properties && f.properties.surf), weight: bit ? 3.4 : 1.2, opacity: bit ? 0.98 : 0.72, lineCap: "round", lineJoin: "round" };
+                const bit = String((f.properties && f.properties.surface) || "").toLowerCase().startsWith("bitumin");
+                return { color: surfaceColor(f.properties && f.properties.surface), weight: bit ? 3.4 : 1.2, opacity: bit ? 0.98 : 0.72, lineCap: "round", lineJoin: "round" };
             },
             onEachFeature: (feature, roadLayer) => {
                 roadLayer.on("click", (e) => { selectRoad(feature.properties || {}, e.latlng); });
