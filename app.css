@@ -3216,3 +3216,157 @@ body.map-fullscreen-active .map-stage .map-control-overlay,
 .geocat-table td { padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .geocat-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .geocat-table .col-just { color: var(--soft); max-width: 260px; }
+
+/* ================================================================
+   MOBILE RESPONSIVENESS PASS (additive only — desktop rules above
+   are untouched; everything below only takes effect at <=768px)
+   ================================================================ */
+
+@media (max-width: 768px) {
+
+    /* ---- Flex/grid overflow safety net: let items shrink below
+       their content's intrinsic width instead of pushing the page
+       wider than the viewport ---- */
+    .map-control-overlay,
+    .control-deck,
+    .map-header,
+    .map-header-actions,
+    .component-rail,
+    .nav-links,
+    .metric-strip,
+    .analytics-cards,
+    .analytics-breakdowns,
+    .sum-groups,
+    .workspace-grid,
+    .spec-sub-tabs,
+    .cc-legend {
+        min-width: 0;
+    }
+
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+    }
+
+    /* ---- Touch targets: minimum 44px hit area ---- */
+    .ghost-btn,
+    .ghost-button,
+    .icon-button,
+    .chip,
+    .dict-chip,
+    .tab-btn,
+    .btn-analyze,
+    .nav-item,
+    .spec-sub-tab,
+    .boq-sub-tab,
+    .mini-link,
+    .control-select,
+    .search-field input,
+    .def-link,
+    .media-card-btn,
+    .ghost-btn.small {
+        min-height: 44px;
+    }
+
+    .icon-button,
+    .mini-link {
+        min-width: 44px;
+    }
+
+    /* ---- Sub-tabs (BOQ view) become a horizontally scrollable
+       strip instead of wrapping, and get real touch-sized buttons.
+       .boq-sub-tab reuses the .spec-sub-tab look (same component,
+       different class name in the BOQ markup) so it isn't left
+       unstyled on phones. ---- */
+    .spec-sub-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding-bottom: 4px;
+    }
+
+    .spec-sub-tab,
+    .boq-sub-tab {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .boq-sub-tab {
+        padding: 0 16px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid transparent;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 150ms ease;
+    }
+
+    .boq-sub-tab:hover {
+        color: #f1f5f9;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .boq-sub-tab.active {
+        background: rgba(6, 182, 212, 0.1);
+        border-color: rgba(6, 182, 212, 0.3);
+        color: #06b6d4;
+    }
+
+    /* ---- Readable minimum font sizes on dense tables/labels ---- */
+    .dense-table td,
+    .dense-table th,
+    .spec-master-table td,
+    .spec-master-table th,
+    .component-table td,
+    .boq-table td,
+    .budget-table td,
+    .geocat-table td {
+        font-size: 0.82rem;
+    }
+
+    /* ---- KPI / stat cards: stack to one column ---- */
+    .analytics-cards,
+    .global-summary-grid,
+    .component-summary-grid,
+    .metric-strip {
+        grid-template-columns: 1fr;
+    }
+
+    /* ---- Charts: full width, never narrower than their box ---- */
+    .chart-wrapper,
+    .cc-chart,
+    .hotspot-chart {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-item {
+        padding: 8px 2px;
+        font-size: 0.72rem;
+    }
+
+    .brand-block h1 {
+        font-size: 1.05rem;
+    }
+
+    .live-clock {
+        min-width: 78px;
+        font-size: 0.82rem;
+    }
+
+    .an-val {
+        font-size: 1.3rem;
+    }
+
+    .summary-info .value {
+        font-size: 1.5rem;
+    }
+}
