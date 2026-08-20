@@ -1,0 +1,43 @@
+{
+  "date": "2026-08-20",
+  "repo": "kee",
+  "url": "https://networkengineringmowt-ai.github.io/kee/",
+  "technical": {
+    "httpStatus": 200,
+    "loadFailed": false,
+    "pageRendered": true,
+    "bodyTextLength": 1250,
+    "consoleErrors": [
+      "ReferenceError: num is not defined"
+    ],
+    "brokenImages": [],
+    "hashLinksFound": [],
+    "chartElementCount": 3
+  },
+  "uiCohesion": {
+    "amber": "pass",
+    "darkBackground": "fail",
+    "nav": "pass",
+    "mowtBranding": "pass"
+  },
+  "accuracy": {
+    "extractedFigures": [],
+    "discrepancies": []
+  },
+  "consistency": {
+    "districtList": null,
+    "notes": [
+      "uganda_nrms: no audit-log available yet for comparison",
+      "tricycles: no audit-log available yet for comparison",
+      "uganda_npms: no audit-log available yet for comparison",
+      "uganda_network_traffic: no audit-log available yet for comparison",
+      "uganda_ducar: no audit-log available yet for comparison",
+      "uganda_nbms: no audit-log available yet for comparison",
+      "uganda_gis_enterprise: no audit-log available yet for comparison",
+      "bridge_mculverts: no audit-log available yet for comparison",
+      "uganda_kee: no audit-log available yet for comparison",
+      "uganda_kee_rss: no audit-log available yet for comparison",
+      "uganda_ntis: no audit-log available yet for comparison"
+    ]
+  }
+}
