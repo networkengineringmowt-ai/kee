@@ -1,0 +1,31 @@
+{
+  "date": "2026-08-21",
+  "repo": "kee",
+  "url": "https://networkengineringmowt-ai.github.io/kee/",
+  "technical": {
+    "httpStatus": 200,
+    "loadFailed": false,
+    "pageRendered": true,
+    "bodyTextLength": 1250,
+    "consoleErrors": [
+      "ReferenceError: num is not defined"
+    ],
+    "brokenImages": [],
+    "hashLinksFound": [],
+    "chartElementCount": 3
+  },
+  "uiCohesion": {
+    "amber": "pass",
+    "darkBackground": "fail",
+    "nav": "pass",
+    "mowtBranding": "pass"
+  },
+  "accuracy": {
+    "extractedFigures": [],
+    "discrepancies": []
+  },
+  "consistency": {
+    "districtList": null,
+    "notes": []
+  }
+}
