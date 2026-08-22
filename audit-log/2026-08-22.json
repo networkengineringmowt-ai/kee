@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-22",
+  "repo": "kee",
+  "url": "https://networkengineringmowt-ai.github.io/kee/",
+  "technical": {
+    "httpStatus": 200,
+    "loadFailed": false,
+    "pageRendered": true,
+    "bodyTextLength": 1250,
+    "consoleErrors": [
+      "ReferenceError: num is not defined"
+    ],
+    "brokenImages": [],
+    "hashLinksFound": [],
+    "chartElementCount": 3
+  },
+  "accuracy": {
+    "extractedFigures": [],
+    "discrepancies": []
+  },
+  "consistency": {
+    "districtList": null,
+    "notes": [
+      "uganda_gis_enterprise: no audit-log available yet for comparison"
+    ]
+  }
+}
